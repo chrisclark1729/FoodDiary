@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>747DDA62-7EE0-405A-9D3C-71D260EFD6EB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FoodDiary</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F3A9AF92BF8BE4BC7BC6CBF58B37FDBD481192EA</key>
+		<string>https://github.com/chrisclark1729/FoodDiary.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FoodDiary.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F3A9AF92BF8BE4BC7BC6CBF58B37FDBD481192EA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/chrisclark1729/FoodDiary.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F3A9AF92BF8BE4BC7BC6CBF58B37FDBD481192EA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F3A9AF92BF8BE4BC7BC6CBF58B37FDBD481192EA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FoodDiary</string>
+		</dict>
+	</array>
+</dict>
+</plist>
