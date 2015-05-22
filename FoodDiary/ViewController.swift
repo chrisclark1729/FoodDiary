@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        println("Testing Git. added something to your line")
+        println("Changing text in println again.")
         
     }
 
