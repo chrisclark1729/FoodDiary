@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bB4-en-qHx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +16,139 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bqT-nX-Tqt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BqU-YS-7Qq">
+                                    <size key="itemSize" width="384" height="332"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Lqm-yD-pEH" customClass="colViewCell" customModule="FoodDiary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 90%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJ3-mb-5Fv">
+                                                    <rect key="frame" x="26" y="299" width="147" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sprig" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwc-wA-9eK">
+                                                    <rect key="frame" x="25" y="36" width="147" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="May 29, 2015 12:15 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i08-y1-blU">
+                                                    <rect key="frame" x="212" y="21" width="133" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YwU-nm-f2W">
+                                                    <rect key="frame" x="22" y="72" width="322" height="224"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chipotle Chicken Salad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC1-tL-qpT">
+                                                    <rect key="frame" x="23" y="19" width="147" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imgCell" destination="YwU-nm-f2W" id="svA-V0-eqc"/>
+                                            <outlet property="locationNameLblCell" destination="Pwc-wA-9eK" id="V6U-U6-xzq"/>
+                                            <outlet property="mealNameLblCell" destination="cC1-tL-qpT" id="kAW-Uk-4M4"/>
+                                            <outlet property="mealScoreLblCell" destination="SJ3-mb-5Fv" id="IyS-5f-eNb"/>
+                                            <outlet property="timestampLblCell" destination="i08-y1-blU" id="Q0U-c7-pue"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="aaz-Ys-eHp"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Q4y-in-lU3"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bqT-nX-Tqt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="QxC-EB-b2j"/>
+                            <constraint firstItem="bqT-nX-Tqt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="ddz-VZ-sQa"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bqT-nX-Tqt" secondAttribute="bottom" id="inB-RH-HOU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bqT-nX-Tqt" secondAttribute="trailing" constant="-16" id="jqU-uO-6ZO"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="dt7-lA-dS5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1142" y="323"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="FJb-nz-Leg">
+            <objects>
+                <viewController id="HVW-ce-vwM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WjG-qR-vYQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rpx-gy-bVn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fDJ-sB-5lb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1hF-7P-Jel">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="3d9-tC-Ka0"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rpx-gy-bVn" firstAttribute="top" secondItem="1hF-7P-Jel" secondAttribute="bottom" id="3Fz-ib-vRZ"/>
+                            <constraint firstItem="1hF-7P-Jel" firstAttribute="leading" secondItem="fDJ-sB-5lb" secondAttribute="leading" id="ADL-Ih-CFX"/>
+                            <constraint firstItem="1hF-7P-Jel" firstAttribute="leading" secondItem="fDJ-sB-5lb" secondAttribute="leadingMargin" constant="-16" id="EeL-Qa-ouz"/>
+                            <constraint firstItem="1hF-7P-Jel" firstAttribute="top" secondItem="fDJ-sB-5lb" secondAttribute="topMargin" id="Mdl-Nl-NuN"/>
+                            <constraint firstItem="1hF-7P-Jel" firstAttribute="top" secondItem="fDJ-sB-5lb" secondAttribute="topMargin" id="YsY-wr-9rE"/>
+                            <constraint firstItem="1hF-7P-Jel" firstAttribute="leading" secondItem="fDJ-sB-5lb" secondAttribute="leadingMargin" constant="-16" id="np0-wE-c9k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1hF-7P-Jel" secondAttribute="trailing" constant="-16" id="tCG-YE-o8K"/>
+                            <constraint firstItem="Rpx-gy-bVn" firstAttribute="top" secondItem="1hF-7P-Jel" secondAttribute="bottom" id="voa-ay-t3M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1hF-7P-Jel" secondAttribute="trailing" constant="-16" id="zSy-VX-baB"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="BRZ-cP-Iwb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8o-FN-bJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="990"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="7LV-Sc-sJM">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bB4-en-qHx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Ips-Sy-xeZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="1zg-Ag-o57"/>
+                        <segue destination="HVW-ce-vwM" kind="relationship" relationship="viewControllers" id="CM5-Bc-OyK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nrb-T3-Fw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="323"/>
         </scene>
     </scenes>
 </document>
