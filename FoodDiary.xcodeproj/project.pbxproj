@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4911A7131B18BBAE003B3BDF /* colViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911A7121B18BBAE003B3BDF /* colViewCell.swift */; };
 		4911A7151B18C6E2003B3BDF /* biriteicecream.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4911A7141B18C6E2003B3BDF /* biriteicecream.jpg */; };
+		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
+		492E25871B24D659006419EE /* FoodDiary in Resources */ = {isa = PBXBuildFile; fileRef = 492E25861B24D659006419EE /* FoodDiary */; };
 		493746131B16862E001648B3 /* ChipotleChickenSalad.png in Resources */ = {isa = PBXBuildFile; fileRef = 493746121B16862E001648B3 /* ChipotleChickenSalad.png */; };
 		49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4151B068AA6006FA068 /* AppDelegate.swift */; };
 		49C5C4181B068AA6006FA068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4171B068AA6006FA068 /* ViewController.swift */; };
@@ -35,6 +37,8 @@
 		4911A7121B18BBAE003B3BDF /* colViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colViewCell.swift; sourceTree = "<group>"; };
 		4911A7141B18C6E2003B3BDF /* biriteicecream.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = biriteicecream.jpg; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
+		492E25861B24D659006419EE /* FoodDiary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FoodDiary; sourceTree = "<group>"; };
 		493746121B16862E001648B3 /* ChipotleChickenSalad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChipotleChickenSalad.png; sourceTree = "<group>"; };
 		49C5C4101B068AA6006FA068 /* FoodDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C5C4141B068AA6006FA068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 		49C5C4071B068AA6006FA068 = {
 			isa = PBXGroup;
 			children = (
+				492E25861B24D659006419EE /* FoodDiary */,
 				4923314B1B0F87B600AA212E /* bridge.h */,
 				49C5C4121B068AA6006FA068 /* FoodDiary */,
 				49C5C4281B068AA7006FA068 /* FoodDiaryTests */,
@@ -96,6 +101,7 @@
 			children = (
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
 				49C5C4171B068AA6006FA068 /* ViewController.swift */,
+				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
 				4911A7121B18BBAE003B3BDF /* colViewCell.swift */,
 				49C5C41C1B068AA6006FA068 /* Images.xcassets */,
@@ -236,6 +242,7 @@
 				4911A7151B18C6E2003B3BDF /* biriteicecream.jpg in Resources */,
 				493746131B16862E001648B3 /* ChipotleChickenSalad.png in Resources */,
 				49C5C4201B068AA7006FA068 /* LaunchScreen.xib in Resources */,
+				492E25871B24D659006419EE /* FoodDiary in Resources */,
 				49C5C41D1B068AA7006FA068 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +296,7 @@
 			files = (
 				49C5C4181B068AA6006FA068 /* ViewController.swift in Sources */,
 				4911A7131B18BBAE003B3BDF /* colViewCell.swift in Sources */,
+				492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */,
 				49C5C4361B068DD5006FA068 /* FoodTableViewController.swift in Sources */,
 				49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */,
 			);

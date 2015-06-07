@@ -29,8 +29,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: colViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as colViewCell
-        cell.mealNameLblCell.text = mealNameData[indexPath.row]
+        let cell: colViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! colViewCell
+        cell.mealNameLblCell.text = eggsAndBaconAndOatmeal.mealName
         cell.locationNameLblCell.text = locationLabelData[indexPath.row]
         cell.mealScoreLblCell.text = scoreLabelData[indexPath.row]
         cell.timestampLblCell.text = dateLabelData[indexPath.row]
