@@ -38,10 +38,10 @@ class TimelineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-       // return self.dataManager.getFoodDiaryEntries().count
-        return 1
+      return self.dataManager.getFoodDiaryEntries().count
+
     }
-/*
+
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! UITableViewCell
@@ -51,7 +51,7 @@ class TimelineTableViewController: UITableViewController {
         return cell
     }
 
-*/
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
