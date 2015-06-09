@@ -9,9 +9,5 @@
 import UIKit
 
 class colViewCell: UICollectionViewCell {
-    @IBOutlet weak var imgCell: UIImageView!
-    @IBOutlet weak var mealNameLblCell: UILabel!
-    @IBOutlet weak var locationNameLblCell: UILabel!
-    @IBOutlet weak var mealScoreLblCell: UILabel!
-    @IBOutlet weak var timestampLblCell: UILabel!
+
 }

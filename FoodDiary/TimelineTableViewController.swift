@@ -10,6 +10,15 @@ import UIKit
 
 class TimelineTableViewController: UITableViewController {
     
+    // Should these be initialized??
+    @IBOutlet weak var mealName: UILabel!
+    @IBOutlet weak var mealLocation: UILabel!
+    @IBOutlet weak var mealDate: UILabel!
+    @IBOutlet weak var mealTime: UILabel!
+    @IBOutlet weak var mealImage: UIImageView!
+    @IBOutlet weak var mealScore: UILabel!
+    
+    
     var dataManager = DataManager()
 
     override func viewDidLoad() {
@@ -45,8 +54,10 @@ class TimelineTableViewController: UITableViewController {
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! UITableViewCell
-
-       cell.textLabel!.text = "Test"
+        
+      
+        // Configure the cell...
+       // cell.textLabel!.text = "Test"
 
         return cell
     }

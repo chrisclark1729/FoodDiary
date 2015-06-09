@@ -16,12 +16,15 @@ class DataManager {
     
     let toast = FoodDiaryEntry(mealName: "Toast & Coffee", timestamp:1430674241, dayPart:"Late Morning", location:"The Mill", ingredients: "Toast, Butter, Jam, Coffee", imgURL:"https://s3-us-west-1.amazonaws.com/trust-buds/meal-photos/chris-clark/the-mill-10.jpg", calories:375, gramsCarbs:80, gramsProtein:8, gramsFat:3, enjoymentScore:4, healthScore:1, mood:"Anxious", energyLevel:4, otherPeople:"Alex", notes:"Could have skipped toast and just enjoyed time with Alex instead.")
     
+    let chickenHash = FoodDiaryEntry(mealName: "Chicken Hash", timestamp:1430674241, dayPart:"Late Morning", location:"Sprig", ingredients: "Chicken, Sweet Potato, Eggs, Kale", imgURL:"https://s3-us-west-1.amazonaws.com/trust-buds/meal-photos/chris-clark/IMG_20150606_143020.png", calories:570, gramsCarbs:80, gramsProtein:8, gramsFat:3, enjoymentScore:4, healthScore:1, mood:"Happy", energyLevel:4, otherPeople:"Carly", notes:"")
+    
     func getFoodDiaryEntries() ->[FoodDiaryEntry] {
         
         var foodDiaryEntryArray = [FoodDiaryEntry]()
         
         foodDiaryEntryArray.append(eggsAndBaconAndOatmeal)
         foodDiaryEntryArray.append(toast)
+        foodDiaryEntryArray.append(chickenHash)
         
         return foodDiaryEntryArray
     }
