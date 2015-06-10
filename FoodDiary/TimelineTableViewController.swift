@@ -47,15 +47,13 @@ class TimelineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineTableViewCell
         
-        let meal = FoodDiaryEntry(mealID: 3, mealName: "Chicken Hash", timestamp:1430674241, dayPart:"Late Morning", location:"Sprig", ingredients: "Chicken, Sweet Potato, Eggs, Kale", imgURL:"https://s3-us-west-1.amazonaws.com/trust-buds/meal-photos/chris-clark/IMG_20150606_143020.png", calories:570, gramsCarbs:80, gramsProtein:8, gramsFat:3, enjoymentScore:4, healthScore:1, mood:"Happy", energyLevel:4, otherPeople:"Carly", notes:"")
+        let meals = self.dataManager.getFoodDiaryEntries()
+        let meal = meals[indexPath.row];
         
-        cell.mealImage.image = UIImage(named: "placeholder")
-       // cell.mealName.text = FoodDiaryEntry[0]
-        cell.mealLocation.text = "Shit Hole Bar"
-        cell.mealDate.text = "Dec 31, 1999"
-        cell.mealTime.text = "12:59 AM"
-        cell.mealScore.text = "88%"
-
+        cell.mealLocation.text = meal.location
+        cell.mealDate.text = meal.dayPart
+        cell.mealName.text = meal.mealName
+    
         return cell
     }
 
