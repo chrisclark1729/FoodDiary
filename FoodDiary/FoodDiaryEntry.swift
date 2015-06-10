@@ -10,6 +10,7 @@ import UIKit
 
 class FoodDiaryEntry: NSObject {
     
+    var mealID:Double
     var mealName:String
     var timestamp:Double
     var dayPart:String // TODO: make this based on user preferences and derive based on time of day
@@ -26,7 +27,8 @@ class FoodDiaryEntry: NSObject {
     var energyLevel:Int
     var otherPeople:String
     var notes:String
-    init(mealName:String,timestamp:Double,dayPart:String,location:String,ingredients:String,imgURL:String,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
+    init(mealID:Double, mealName:String,timestamp:Double,dayPart:String,location:String,ingredients:String,imgURL:String,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
+        self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
         self.dayPart=dayPart
