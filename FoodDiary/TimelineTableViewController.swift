@@ -52,7 +52,6 @@ class TimelineTableViewController: UITableViewController {
 
     }
 
- 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineTableViewCell
@@ -61,26 +60,8 @@ class TimelineTableViewController: UITableViewController {
         
         let meal = meals![indexPath.row]
         
-        //TODO: Ask Aldrich if this belongs here?
-        
-        /*Meal "Score" is a combination of how healthy the meal is and how much the user enjoyed the meal.
-          The philosophy is that the healthiest life is eating healthy food that you also enjoy.
-          Overtime, I'd like this to be much more sophisticated.                           */
-
-        let mealScore = (meal.healthScore*16)+(meal.enjoymentScore*4)
-        
         var dataString = meal.timestamp as String
         var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
-        
-        /*
-       // dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        let dateValue = dateFormatter.dateFromString(dataString) as NSDate!
-        let dateValueAsString = String(stringInterpolationSegment: dateValue)
-        
-        // convert string into data
-        
-        println(dateValue)
-*/
         
         //TODO: Download Images asynchronously
        let url = NSURL(string: meal.imgURL)
@@ -91,7 +72,7 @@ class TimelineTableViewController: UITableViewController {
         cell.mealLocation.text = meal.location
         cell.mealDate.text = meal.timestamp.substringToIndex(advance(meal.timestamp.startIndex, 10))
         cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!) // mealTimeDate
-        cell.mealScore.text = "Score: \(mealScore)%"
+        cell.mealScore.text = "Score: \(meal.mealScore())%"
         
         return cell
     }

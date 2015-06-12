@@ -46,10 +46,26 @@ class FoodDiaryEntry: NSObject {
         self.otherPeople=otherPeople
         self.notes=notes
     }
+    
+    func mealScore() ->Int {
+        
+        //TODO: Ask Aldrich if this belongs here?
+        
+        /*Meal "Score" is a combination of how healthy the meal is and how much the user enjoyed the meal.
+        The philosophy is that the healthiest life is eating healthy food that you also enjoy.
+        Overtime, I'd like this to be much more sophisticated.                           */
+        
+        let mealScore = (self.healthScore*16)+(self.enjoymentScore*4)
+        
+        return mealScore
+    }
    
 }
 
 // macros calculator 1g Protein = 4 calories, 1g Carbohydrate = 4 calories, 1g Fat = 9 calories
+
+
+
 
 
 

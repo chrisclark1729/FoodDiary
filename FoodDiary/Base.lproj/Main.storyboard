@@ -37,6 +37,7 @@
                     <connections>
                         <segue destination="HVW-ce-vwM" kind="relationship" relationship="viewControllers" id="CM5-Bc-OyK"/>
                         <segue destination="AzW-Qz-x2P" kind="relationship" relationship="viewControllers" id="XSu-oN-k7S"/>
+                        <segue destination="rip-ZD-cCH" kind="relationship" relationship="viewControllers" id="usy-wK-dcu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrb-T3-Fw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -138,6 +139,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOd-N0-avT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097.5" y="327.5"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="ytn-bk-sk4">
+            <objects>
+                <tableViewController id="4q3-sn-fFU" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1Ed-9l-vvE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LQF-mi-Cj1">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LQF-mi-Cj1" id="8MR-7M-s20">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4q3-sn-fFU" id="S9u-Ff-O2Y"/>
+                            <outlet property="delegate" destination="4q3-sn-fFU" id="6uc-Nz-MAx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="AI8-iN-KhE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jv-71-WC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1367.5" y="1099.5"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="PUG-rs-IMi">
+            <objects>
+                <navigationController id="rip-ZD-cCH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="hun-Ai-gBL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xYV-jJ-IOb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4q3-sn-fFU" kind="relationship" relationship="rootViewController" id="3Op-73-a5n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yLd-Lg-hdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="913.5" y="1099.5"/>
         </scene>
         <!--Add Meal Detail View Controller-->
         <scene sceneID="VBz-Xy-zaB">
