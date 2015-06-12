@@ -45,17 +45,54 @@ class TimelineTableViewController: UITableViewController {
 
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineTableViewCell
         
-        let meal = FoodDiaryEntry(mealID: 3, mealName: "Chicken Hash", timestamp:1430674241, dayPart:"Late Morning", location:"Sprig", ingredients: "Chicken, Sweet Potato, Eggs, Kale", imgURL:"https://s3-us-west-1.amazonaws.com/trust-buds/meal-photos/chris-clark/IMG_20150606_143020.png", calories:570, gramsCarbs:80, gramsProtein:8, gramsFat:3, enjoymentScore:4, healthScore:1, mood:"Happy", energyLevel:4, otherPeople:"Carly", notes:"")
         
-        cell.mealImage.image = UIImage(named: "placeholder")
-       // cell.mealName.text = FoodDiaryEntry[0]
-        cell.mealLocation.text = "Shit Hole Bar"
-        cell.mealDate.text = "Dec 31, 1999"
-        cell.mealTime.text = "12:59 AM"
-        cell.mealScore.text = "88%"
+        //TODO: Make sure meals sort descending
+        let meals = self.dataManager.getFoodDiaryEntries()
+        let meal = meals[indexPath.row]
+        
+        //TODO: Ask Aldrich if this belongs here?
+        
+        /*Meal "Score" is a combination of how healthy the meal is and how much the user enjoyed the meal.
+          The philosophy is that the healthiest life is eating healthy food that you also enjoy.
+          Overtime, I'd like this to be much more sophisticated.                           */
 
+        let mealScore = (meal.healthScore*16)+(meal.enjoymentScore*4)
+        
+       /*
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var date = dateFormatter.dateFromString(meal.timestamp) as NSDate!
+        let outputDate = dateFormatter.stringFromDate(date)
+        let dateValue = dateFormatter.dateFromString(dataString) as NSDate!
+        */
+        
+        var dataString = meal.timestamp as String
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+       // dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        
+        let dateValue = dateFormatter.dateFromString(dataString) as NSDate!
+        let dateValueAsString = String(stringInterpolationSegment: dateValue)
+        
+        // convert string into date
+        
+        
+        println(dateValue)
+        
+        //TODO: Download Images asynchronously
+       // let url = NSURL(string: meal.imgURL)
+       // let data = NSData(contentsOfURL: url!) //TODO: make sure image in this url exists
+      //  cell.mealImage.image = UIImage(data: data!) //UIImage(named: "placeholder")
+        
+        cell.mealName.text = meal.mealName
+        cell.mealLocation.text = meal.location
+        cell.mealDate.text = meal.timestamp.substringToIndex(advance(meal.timestamp.startIndex, 10))
+        cell.mealTime.text = dateValueAsString
+        cell.mealScore.text = "Score: \(mealScore)%"
+        
         return cell
     }
 
