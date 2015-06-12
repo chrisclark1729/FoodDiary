@@ -12,18 +12,9 @@ class TimelineTableViewController: UITableViewController {
     
     
     var dataManager = DataManager()
-    var dateFormatter = NSDateFormatter()
-    var timeFormatter = NSDateFormatter()
-    var meals:[FoodDiaryEntry]?
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        meals = self.dataManager.getFoodDiaryEntries()
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        timeFormatter.dateFormat = "HH:mm"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,7 +39,7 @@ class TimelineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-      return self.meals!.count
+      return self.dataManager.getFoodDiaryEntries().count
 
     }
 
@@ -57,9 +48,19 @@ class TimelineTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineTableViewCell
         
-        //TODO: Make sure meals sort descending
+<<<<<<< HEAD
+        let meals = self.dataManager.getFoodDiaryEntries()
+        let meal = meals[indexPath.row];
         
-        let meal = meals![indexPath.row]
+        cell.mealLocation.text = meal.location
+        cell.mealDate.text = meal.dayPart
+        cell.mealName.text = meal.mealName
+    
+=======
+        
+        //TODO: Make sure meals sort descending
+        let meals = self.dataManager.getFoodDiaryEntries()
+        let meal = meals[indexPath.row]
         
         //TODO: Ask Aldrich if this belongs here?
         
@@ -69,30 +70,39 @@ class TimelineTableViewController: UITableViewController {
 
         let mealScore = (meal.healthScore*16)+(meal.enjoymentScore*4)
         
-        var dataString = meal.timestamp as String
-        var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
+       /*
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var date = dateFormatter.dateFromString(meal.timestamp) as NSDate!
+        let outputDate = dateFormatter.stringFromDate(date)
+        let dateValue = dateFormatter.dateFromString(dataString) as NSDate!
+        */
         
-        /*
+        var dataString = meal.timestamp as String
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
        // dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        
         let dateValue = dateFormatter.dateFromString(dataString) as NSDate!
         let dateValueAsString = String(stringInterpolationSegment: dateValue)
         
-        // convert string into data
+        // convert string into date
+        
         
         println(dateValue)
-*/
         
         //TODO: Download Images asynchronously
-       let url = NSURL(string: meal.imgURL)
-       let data = NSData(contentsOfURL: url!) //TODO: make sure image in this url exists
-        cell.mealImage.image = UIImage(data: data!) //UIImage(named: "placeholder")
+       // let url = NSURL(string: meal.imgURL)
+       // let data = NSData(contentsOfURL: url!) //TODO: make sure image in this url exists
+      //  cell.mealImage.image = UIImage(data: data!) //UIImage(named: "placeholder")
         
         cell.mealName.text = meal.mealName
         cell.mealLocation.text = meal.location
         cell.mealDate.text = meal.timestamp.substringToIndex(advance(meal.timestamp.startIndex, 10))
-        cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!) // mealTimeDate
+        cell.mealTime.text = dateValueAsString
         cell.mealScore.text = "Score: \(mealScore)%"
         
+>>>>>>> tempmaster
         return cell
     }
 
