@@ -13,6 +13,7 @@ class TimelineTableViewController: UITableViewController {
     
     var dataManager = DataManager()
     var dateFormatter = NSDateFormatter()
+    var dayFormatter = NSDateFormatter()
     var timeFormatter = NSDateFormatter()
     var meals:[FoodDiaryEntry]?
 
@@ -22,8 +23,10 @@ class TimelineTableViewController: UITableViewController {
         
         meals = self.dataManager.getFoodDiaryEntries()
         
+        
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        timeFormatter.dateFormat = "HH:mm"
+        dayFormatter.dateFormat = "MMM dd, yyyy"
+        timeFormatter.dateFormat = "h:mm a"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -60,7 +63,7 @@ class TimelineTableViewController: UITableViewController {
         
         let meal = meals![indexPath.row]
         
-        var dataString = meal.timestamp as String
+        //var dataString = meal.timestamp as String
         var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
         
         //TODO: Download Images asynchronously
@@ -70,8 +73,8 @@ class TimelineTableViewController: UITableViewController {
         
         cell.mealName.text = meal.mealName
         cell.mealLocation.text = meal.location
-        cell.mealDate.text = meal.timestamp.substringToIndex(advance(meal.timestamp.startIndex, 10))
-        cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!) // mealTimeDate
+        cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
+        cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!)
         cell.mealScore.text = "Score: \(meal.mealScore())%"
         
         return cell

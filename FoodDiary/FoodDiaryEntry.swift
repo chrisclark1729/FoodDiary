@@ -49,8 +49,6 @@ class FoodDiaryEntry: NSObject {
     
     func mealScore() ->Int {
         
-        //TODO: Ask Aldrich if this belongs here?
-        
         /*Meal "Score" is a combination of how healthy the meal is and how much the user enjoyed the meal.
         The philosophy is that the healthiest life is eating healthy food that you also enjoy.
         Overtime, I'd like this to be much more sophisticated.                           */
