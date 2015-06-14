@@ -98,19 +98,14 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHd-W2-A0E">
+                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gHd-W2-A0E">
                                             <rect key="frame" x="0.0" y="53" width="375" height="250"/>
                                             <gestureRecognizers/>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVc-Hx-0iE">
-                                            <rect key="frame" x="169" y="163" width="46" height="30"/>
-                                            <state key="normal" title="Button">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
                                             <connections>
-                                                <segue destination="MwF-CI-CON" kind="push" id="6eX-4t-7l3"/>
+                                                <outletCollection property="gestureRecognizers" destination="PjP-yT-Uib" appends="YES" id="NvX-vU-ygX"/>
+                                                <outletCollection property="gestureRecognizers" destination="PjP-yT-Uib" appends="YES" id="gKs-CX-rTo"/>
                                             </connections>
-                                        </button>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYn-ne-opE">
                                             <rect key="frame" x="249" y="27" width="118" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -137,6 +132,11 @@
                     <navigationItem key="navigationItem" title="Timeline" id="geZ-hh-tyV"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOd-N0-avT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PjP-yT-Uib">
+                    <connections>
+                        <segue destination="MwF-CI-CON" kind="push" id="7dM-AJ-hoi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1097.5" y="327.5"/>
         </scene>
@@ -193,7 +193,7 @@
                         <viewControllerLayoutGuide type="bottom" id="azY-Ne-pge"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OvR-bX-IU7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="WxM-8N-cL1">
@@ -230,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwD-xM-6Da" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1538.5" y="327.5"/>
+            <point key="canvasLocation" x="1538" y="278"/>
         </scene>
     </scenes>
     <resources>
