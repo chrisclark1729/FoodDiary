@@ -10,14 +10,10 @@ import UIKit
 
 class AddMealDetailViewController: UIViewController {
 
-    @IBOutlet weak var mealNameUpdate: UITextField!
-    @IBOutlet weak var mealLocationUpdate: UITextField!
-    
-    @IBOutlet weak var otherPeople: UITextField!
-    
+    @IBOutlet weak var mealNameView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
