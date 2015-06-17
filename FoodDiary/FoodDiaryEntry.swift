@@ -13,7 +13,6 @@ class FoodDiaryEntry: NSObject {
     var mealID:Double
     var mealName:String
     var timestamp:String
-    var dayPart:String // TODO: make this based on user preferences and derive based on time of day
     var location:String
     var ingredients:String
     var imgURL:String
@@ -27,11 +26,10 @@ class FoodDiaryEntry: NSObject {
     var energyLevel:Int
     var otherPeople:String
     var notes:String
-    init(mealID:Double, mealName:String,timestamp:String,dayPart:String,location:String,ingredients:String,imgURL:String,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
+    init(mealID:Double, mealName:String,timestamp:String,location:String,ingredients:String,imgURL:String,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
-        self.dayPart=dayPart
         self.location=location
         self.ingredients=ingredients
         self.imgURL=imgURL
@@ -56,6 +54,21 @@ class FoodDiaryEntry: NSObject {
         let mealScore = (self.healthScore*16)+(self.enjoymentScore*4)
         
         return mealScore
+    }
+    
+    func dayPart() ->NSString {
+        
+        //TODO: Base Day part on user preferences
+        var dayPart = ""
+        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        var mealTimeDate = dateFormatter.dateFromString(self.timestamp)
+        var timeComparisonFormatter = NSDateFormatter()
+        timeComparisonFormatter.dateFormat = "H:mm"
+        
+        
+        return dayPart
     }
    
 }

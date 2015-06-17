@@ -63,7 +63,7 @@ class TimelineTableViewController: UITableViewController {
         
         let meal = meals![indexPath.row]
         
-        //var dataString = meal.timestamp as String
+        
         var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
         
         //TODO: Download Images asynchronously. Using AFNetworking
