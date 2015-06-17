@@ -66,11 +66,8 @@ class TimelineTableViewController: UITableViewController {
         //var dataString = meal.timestamp as String
         var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
         
-        //TODO: Download Images asynchronously
-       let url = NSURL(string: meal.imgURL)
-       let data = NSData(contentsOfURL: url!) //TODO: make sure image in this url exists
-        cell.mealImage.image = UIImage(data: data!) //UIImage(named: "placeholder")
-        
+        //TODO: Download Images asynchronously. Using AFNetworking
+        cell.mealImage.setImageWithURL(NSURL(string: meal.imgURL))
         cell.mealName.text = meal.mealName
         cell.mealLocation.text = meal.location
         cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
