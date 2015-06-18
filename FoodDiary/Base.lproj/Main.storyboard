@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bB4-en-qHx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -40,6 +41,7 @@
                         <segue destination="HVW-ce-vwM" kind="relationship" relationship="viewControllers" id="CM5-Bc-OyK"/>
                         <segue destination="AzW-Qz-x2P" kind="relationship" relationship="viewControllers" id="XSu-oN-k7S"/>
                         <segue destination="rip-ZD-cCH" kind="relationship" relationship="viewControllers" id="usy-wK-dcu"/>
+                        <segue destination="M0S-ej-guC" kind="relationship" relationship="viewControllers" id="Gly-8a-7V7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrb-T3-Fw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,8 +233,56 @@
             </objects>
             <point key="canvasLocation" x="1503" y="278"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="BTr-KC-T1D">
+            <objects>
+                <viewController id="M0S-ej-guC" customClass="AddImageViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dvl-4f-FUo"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Zd-7t-mFd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zIP-Cj-VTV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaE-Kd-o1e">
+                                <rect key="frame" x="16" y="518" width="88" height="30"/>
+                                <state key="normal" title="From Gallery">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFromGallery:" destination="M0S-ej-guC" eventType="touchUpInside" id="Pgo-OO-gOM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-zB-K7c">
+                                <rect key="frame" x="134" y="506" width="53" height="53"/>
+                                <state key="normal" image="camera-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="M0S-ej-guC" eventType="touchUpInside" id="Pfi-Fj-5fw"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4H-cu-p3u">
+                                <rect key="frame" x="0.0" y="28" width="375" height="451"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V4H-cu-p3u" firstAttribute="leading" secondItem="zIP-Cj-VTV" secondAttribute="leadingMargin" constant="-8" id="O82-3p-dsd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V4H-cu-p3u" secondAttribute="trailing" constant="-10" id="UbM-JZ-8hd"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="ZfU-k2-ieW"/>
+                    <navigationItem key="navigationItem" id="XdE-Ji-o6J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CsQ-N5-N2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1502.5" y="-415.5"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="camera-icon" width="512" height="512"/>
         <image name="placeholder" width="360" height="240"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

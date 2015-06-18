@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class AddImageViewController: UIViewController {
+class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBAction func addFromGallery(sender: AnyObject) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +25,34 @@ class AddImageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var imageView = UIImageView()
+    
+    @IBAction func takePhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .Camera
+            picker.mediaTypes = [kUTTypeImage]
+            picker.delegate = self
+            picker.allowsEditing = false
+            presentViewController(picker, animated: true, completion: nil)
+            
+        }
+    }
+    
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        var image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        imageView.image = image
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
     
 
     /*
