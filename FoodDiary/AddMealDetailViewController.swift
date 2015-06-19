@@ -10,16 +10,34 @@ import UIKit
 
 class AddMealDetailViewController: UIViewController {
 
-    @IBOutlet weak var mealNameView: UITextView!
+    @IBOutlet weak var mealName: UITextField!
+    
+    var foodDiaryEntry: FoodDiaryEntry?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if let entry = foodDiaryEntry {
+            self.mealName.text = entry.mealName
+        }
+        else {
+            println("No Food Entry")
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func save() {
+        self.foodDiaryEntry?.mealName = self.mealName.text
+        
     }
     
 

@@ -76,6 +76,10 @@ class TimelineTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("showDetail", sender: self)
+    }
 
 
     /*
@@ -113,14 +117,23 @@ class TimelineTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showDetail" {
+            
+            var destination = segue.destinationViewController as! AddMealDetailViewController
+            var selectedIndexPath = tableView.indexPathForSelectedRow()
+            var meal = meals![selectedIndexPath!.row]
+            
+            destination.foodDiaryEntry = meal
+            
+        }
+        
     }
-    */
+
 
 }

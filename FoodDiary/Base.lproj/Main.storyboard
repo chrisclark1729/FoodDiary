@@ -105,10 +105,6 @@
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gHd-W2-A0E">
                                             <rect key="frame" x="0.0" y="53" width="375" height="250"/>
                                             <gestureRecognizers/>
-                                            <connections>
-                                                <outletCollection property="gestureRecognizers" destination="PjP-yT-Uib" appends="YES" id="NvX-vU-ygX"/>
-                                                <outletCollection property="gestureRecognizers" destination="PjP-yT-Uib" appends="YES" id="gKs-CX-rTo"/>
-                                            </connections>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYn-ne-opE">
                                             <rect key="frame" x="249" y="27" width="118" height="21"/>
@@ -134,13 +130,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Timeline" id="geZ-hh-tyV"/>
+                    <connections>
+                        <segue destination="MwF-CI-CON" kind="push" identifier="showDetail" id="eDZ-AM-nTd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOd-N0-avT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="PjP-yT-Uib">
-                    <connections>
-                        <segue destination="MwF-CI-CON" kind="push" id="7dM-AJ-hoi"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1097.5" y="327.5"/>
         </scene>
@@ -197,24 +191,17 @@
                         <viewControllerLayoutGuide type="bottom" id="azY-Ne-pge"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OvR-bX-IU7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="WxM-8N-cL1">
                                 <rect key="frame" x="-11" y="-156" width="386" height="774"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="MEAL NAME:" translatesAutoresizingMaskIntoConstraints="NO" id="CkF-aD-ka7">
-                                <rect key="frame" x="16" y="119" width="288" height="33"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Meal Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ldb-b6-FOr">
+                                <rect key="frame" x="16" y="97" width="349" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="LOCATION:" translatesAutoresizingMaskIntoConstraints="NO" id="WT7-fm-Gm4">
-                                <rect key="frame" x="16" y="160" width="295" height="25"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -226,12 +213,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mealNameView" destination="CkF-aD-ka7" id="zqh-Be-P4k"/>
+                        <outlet property="mealName" destination="Ldb-b6-FOr" id="kIU-rJ-wq6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwD-xM-6Da" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1503" y="278"/>
+            <point key="canvasLocation" x="1552.5" y="327.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="BTr-KC-T1D">
