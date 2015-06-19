@@ -245,7 +245,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaE-Kd-o1e">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaE-Kd-o1e">
                                 <rect key="frame" x="16" y="518" width="88" height="30"/>
                                 <state key="normal" title="From Gallery">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -254,23 +254,35 @@
                                     <action selector="addFromGallery:" destination="M0S-ej-guC" eventType="touchUpInside" id="Pgo-OO-gOM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-zB-K7c">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-zB-K7c">
                                 <rect key="frame" x="134" y="506" width="53" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="mqf-pC-VTg"/>
+                                </constraints>
                                 <state key="normal" image="camera-icon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="takePhoto:" destination="M0S-ej-guC" eventType="touchUpInside" id="Pfi-Fj-5fw"/>
+                                    <action selector="takePhoto" destination="M0S-ej-guC" eventType="touchUpInside" id="xlc-5S-S2j"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4H-cu-p3u">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V4H-cu-p3u">
                                 <rect key="frame" x="0.0" y="28" width="375" height="451"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="451" id="Qzv-rm-w2B"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V4H-cu-p3u" firstAttribute="leading" secondItem="zIP-Cj-VTV" secondAttribute="leadingMargin" constant="-8" id="O82-3p-dsd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V4H-cu-p3u" secondAttribute="trailing" constant="-10" id="UbM-JZ-8hd"/>
+                            <constraint firstItem="CLr-zB-K7c" firstAttribute="top" secondItem="V4H-cu-p3u" secondAttribute="bottom" constant="27" id="4r3-6x-kE2"/>
+                            <constraint firstItem="CLr-zB-K7c" firstAttribute="leading" secondItem="zaE-Kd-o1e" secondAttribute="trailing" constant="30" id="8Bv-eJ-uZe"/>
+                            <constraint firstItem="V4H-cu-p3u" firstAttribute="leading" secondItem="zIP-Cj-VTV" secondAttribute="leadingMargin" constant="-16" id="O82-3p-dsd"/>
+                            <constraint firstItem="V4H-cu-p3u" firstAttribute="top" secondItem="dvl-4f-FUo" secondAttribute="bottom" constant="8" symbolic="YES" id="Qoa-SW-cN4"/>
+                            <constraint firstItem="zaE-Kd-o1e" firstAttribute="top" secondItem="V4H-cu-p3u" secondAttribute="bottom" constant="39" id="Rku-sk-c61"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V4H-cu-p3u" secondAttribute="trailing" constant="-16" id="UbM-JZ-8hd"/>
+                            <constraint firstItem="2Zd-7t-mFd" firstAttribute="top" secondItem="CLr-zB-K7c" secondAttribute="bottom" constant="59" id="f9d-VE-vaZ"/>
+                            <constraint firstItem="CLr-zB-K7c" firstAttribute="leading" secondItem="zIP-Cj-VTV" secondAttribute="leading" constant="134" id="njW-le-4LT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ZfU-k2-ieW"/>
