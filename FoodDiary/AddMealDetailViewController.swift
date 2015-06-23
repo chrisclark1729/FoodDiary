@@ -11,6 +11,18 @@ import UIKit
 class AddMealDetailViewController: UIViewController {
 
     @IBOutlet weak var mealName: UITextField!
+    @IBOutlet weak var mealLocation: UITextField!
+    @IBOutlet weak var mealTime: UILabel!
+    @IBOutlet weak var calories: UITextField!
+    @IBOutlet weak var mood: UITextField!
+    @IBOutlet weak var otherDiners: UITextField!
+    @IBOutlet weak var healthScore: UITextField!
+    
+    @IBOutlet weak var enjoymentScore: UITextField!
+    
+    @IBOutlet weak var energyLevel: UITextField!
+    
+    @IBOutlet weak var mealNotes: UITextField!
     
     var foodDiaryEntry: FoodDiaryEntry?
     
@@ -24,6 +36,24 @@ class AddMealDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         if let entry = foodDiaryEntry {
             self.mealName.text = entry.mealName
+            self.mealLocation.text = entry.location
+            self.mealTime.text = entry.timestamp
+            self.calories.text = "Calories: " + String(stringInterpolationSegment: entry.calories)
+            self.mood.text = "Mood: " + entry.mood
+            self.otherDiners.text = "Other Diners: " + entry.otherPeople
+            self.healthScore.text = "Health Score: " + String(stringInterpolationSegment: entry.healthScore)
+            self.enjoymentScore.text = "Enjoyment Score: " + String(stringInterpolationSegment: entry.enjoymentScore)
+            self.energyLevel.text = "Energy Level: " + String(stringInterpolationSegment: entry.energyLevel)
+            self.mealNotes.text = entry.notes
+            
+            
+            
+            
+            
+            
+            
+            
+            
         }
         else {
             println("No Food Entry")
