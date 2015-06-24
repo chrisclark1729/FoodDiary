@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class AddMealDetailViewController: UIViewController {
 
     @IBOutlet weak var mealName: UITextField!
@@ -23,6 +24,14 @@ class AddMealDetailViewController: UIViewController {
     @IBOutlet weak var energyLevel: UITextField!
     
     @IBOutlet weak var mealNotes: UITextField!
+    
+    @IBAction func cancelToMealDetailViewController(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func saveIngredients(segue:UIStoryboardSegue) {
+        
+    }
     
     var foodDiaryEntry: FoodDiaryEntry?
     
