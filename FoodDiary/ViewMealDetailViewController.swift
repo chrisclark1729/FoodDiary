@@ -12,9 +12,24 @@ import UIKit
 class AddMealDetailViewController: UITableViewController {
 
     
-    @IBOutlet weak var mealName: UITextField!
+  //  @IBOutlet weak var mealName: UITextField!
     
-    @IBOutlet weak var mealLocation: UITextField!
+    
+    @IBOutlet weak var mealName: UILabel!
+    
+    @IBOutlet weak var mealLocation: UILabel!
+    
+    @IBAction func cancelToViewMealDetailViewController(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func saveMealDetail(segue:UIStoryboardSegue) {
+        
+    }
+    
+
+    
+   
     /*
     @IBOutlet weak var mealName: UITextField!
     @IBOutlet weak var mealLocation: UITextField!
@@ -77,7 +92,7 @@ class AddMealDetailViewController: UITableViewController {
     }
     
     func save() {
-        self.foodDiaryEntry?.mealName = self.mealName.text
+        self.foodDiaryEntry?.mealName = self.mealName.text!
         
     }
     
