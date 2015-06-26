@@ -9,8 +9,13 @@
 import UIKit
 
 
-class AddMealDetailViewController: UIViewController {
+class AddMealDetailViewController: UITableViewController {
 
+    
+    @IBOutlet weak var mealName: UITextField!
+    
+    @IBOutlet weak var mealLocation: UITextField!
+    /*
     @IBOutlet weak var mealName: UITextField!
     @IBOutlet weak var mealLocation: UITextField!
     @IBOutlet weak var mealTime: UILabel!
@@ -32,7 +37,7 @@ class AddMealDetailViewController: UIViewController {
     @IBAction func saveIngredients(segue:UIStoryboardSegue) {
         
     }
-    
+    */
     var foodDiaryEntry: FoodDiaryEntry?
     
     override func viewDidLoad() {
@@ -44,8 +49,13 @@ class AddMealDetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         if let entry = foodDiaryEntry {
+            
             self.mealName.text = entry.mealName
             self.mealLocation.text = entry.location
+            
+            /*
+            self.mealName.text = entry.mealName
+            
             self.mealTime.text = entry.timestamp
             self.calories.text = "Calories: " + String(stringInterpolationSegment: entry.calories)
             self.mood.text = "Mood: " + entry.mood
@@ -54,15 +64,7 @@ class AddMealDetailViewController: UIViewController {
             self.enjoymentScore.text = "Enjoyment Score: " + String(stringInterpolationSegment: entry.enjoymentScore)
             self.energyLevel.text = "Energy Level: " + String(stringInterpolationSegment: entry.energyLevel)
             self.mealNotes.text = entry.notes
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            */
         }
         else {
             println("No Food Entry")
