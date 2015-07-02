@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import Parse
 
 class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
