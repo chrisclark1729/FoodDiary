@@ -13,6 +13,8 @@ class DataManager {
     
     var timelineFoodDiaryData:NSMutableArray! = NSMutableArray()
     
+    var delegate:TimelineTableViewController?
+    
     func loadTimelineData () {
         timelineFoodDiaryData.removeAllObjects()
         
@@ -26,9 +28,14 @@ class DataManager {
                 println("Successfully retrieved \(objects!.count) scores.")
                 // Do something with the found objects
                 
+            var foodDiaryEntryArray = [FoodDiaryEntry]()
+                
                 if let objects = objects as? [PFObject] {
                     for object in objects {
                         println(object.objectId)
+                        var entry = FoodDiaryEntry(mealID: object.objectId!, mealName: object["mealName"]!, timestamp: object["timestamp"]!, location: object["location"]!, ingredients: "To fix", imgURL: "https://s3-us-west-1.amazonaws.com/trust-buds/meal-photos/chris-clark/IMG_20150606_143020.png", calories: object["calories"]!, gramsCarbs: object["gramsCarbs"]!, gramsProtein: object["gramsProtein"]!, gramsFat: object["gramsFat"]!, enjoymentScore: object["enjoymentScore"]!, healthScore: object["healthScore"]!, mood: object["mood"]!, energyLevel: object["energyLevel"]!, otherPeople: object["otherDiners"]!, notes: object["notes"]!)
+                        
+                        foodDiaryEntryArray.append(entry)
                     }
                 }
             } else {
@@ -36,6 +43,8 @@ class DataManager {
                 println("Error: \(error!) \(error!.userInfo!)")
             }
 
+            
+             
     }
 
     }

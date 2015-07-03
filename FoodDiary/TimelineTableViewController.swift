@@ -21,8 +21,8 @@ class TimelineTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        meals = self.dataManager.loadTimelineData()
+        self.dataManager.delegate = self
+        self.dataManager.loadTimelineData()
         
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -52,7 +52,9 @@ class TimelineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-      return self.meals!.count
+    //  return self.meals!.count
+        
+        return 0
 
     }
 
