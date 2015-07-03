@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class AddMealDetailViewController: UITableViewController {
+class ViewMealDetailViewController: UITableViewController {
 
     
   //  @IBOutlet weak var mealName: UITextField!

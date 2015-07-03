@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bB4-en-qHx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -24,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8o-FN-bJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197.5" y="1099.5"/>
+            <point key="canvasLocation" x="87.5" y="1099.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7LV-Sc-sJM">
@@ -41,12 +40,12 @@
                         <segue destination="HVW-ce-vwM" kind="relationship" relationship="viewControllers" id="CM5-Bc-OyK"/>
                         <segue destination="AzW-Qz-x2P" kind="relationship" relationship="viewControllers" id="XSu-oN-k7S"/>
                         <segue destination="rip-ZD-cCH" kind="relationship" relationship="viewControllers" id="usy-wK-dcu"/>
-                        <segue destination="M0S-ej-guC" kind="relationship" relationship="viewControllers" id="Gly-8a-7V7"/>
+                        <segue destination="zkH-2L-Mwv" kind="relationship" relationship="viewControllers" id="TNo-8i-Zaw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrb-T3-Fw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197.86666666666667" y="328.49333333333334"/>
+            <point key="canvasLocation" x="87.5" y="327.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="UpZ-fa-5sP">
@@ -63,7 +62,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6K8-ZU-L4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645.5" y="327.5"/>
+            <point key="canvasLocation" x="569.5" y="327.5"/>
         </scene>
         <!--Timeline-->
         <scene sceneID="kch-zi-wNU">
@@ -135,7 +134,17 @@
                             <outlet property="delegate" destination="u9u-yO-AXa" id="kVe-1S-F2k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Timeline" id="geZ-hh-tyV"/>
+                    <navigationItem key="navigationItem" title="Timeline" id="geZ-hh-tyV">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ej5-fe-Vbr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Gg-2f-dZh">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Manual">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="7io-4o-JnR" kind="push" identifier="showDetail" id="zp0-NH-cmc"/>
                     </connections>
@@ -186,12 +195,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLd-Lg-hdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645.5" y="1099.5"/>
+            <point key="canvasLocation" x="569.5" y="1099.5"/>
         </scene>
         <!--Meal Details-->
         <scene sceneID="PpF-DS-jH4">
             <objects>
-                <tableViewController id="7io-4o-JnR" customClass="AddMealDetailViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7io-4o-JnR" customClass="ViewMealDetailViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="yfh-IB-gUi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -519,76 +528,163 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editMealName" destination="Xdg-f2-FoU" id="1Sq-QO-0op"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgC-BS-6Iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zW5-89-FMD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2501.5" y="327.5"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="BTr-KC-T1D">
+        <!--View Controller-->
+        <scene sceneID="Aoj-Wj-q7z">
             <objects>
-                <viewController id="M0S-ej-guC" customClass="AddImageViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XIJ-C8-Xi6" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dvl-4f-FUo"/>
-                        <viewControllerLayoutGuide type="bottom" id="2Zd-7t-mFd"/>
+                        <viewControllerLayoutGuide type="top" id="dAi-jr-izi"/>
+                        <viewControllerLayoutGuide type="bottom" id="VIj-pm-Rlu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zIP-Cj-VTV">
+                    <view key="view" contentMode="scaleToFill" id="4US-US-oEu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLr-zB-K7c">
-                                <rect key="frame" x="134" y="506" width="53" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="53" id="mqf-pC-VTg"/>
-                                </constraints>
-                                <state key="normal" image="camera-icon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePhoto" destination="M0S-ej-guC" eventType="touchUpInside" id="xlc-5S-S2j"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V4H-cu-p3u">
-                                <rect key="frame" x="0.0" y="28" width="375" height="451"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="451" id="Qzv-rm-w2B"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYb-KY-78q">
-                                <rect key="frame" x="257" y="518" width="102" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tk-jy-eme">
+                                <rect key="frame" x="136" y="319" width="102" height="30"/>
                                 <state key="normal" title="Enter Manually">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaE-Kd-o1e">
-                                <rect key="frame" x="16" y="518" width="88" height="30"/>
-                                <state key="normal" title="From Gallery">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
-                                    <action selector="addFromGallery:" destination="M0S-ej-guC" eventType="touchUpInside" id="Pgo-OO-gOM"/>
+                                    <segue destination="Gd0-Wq-5CW" kind="push" id="APD-Ef-Ndj"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="CLr-zB-K7c" firstAttribute="top" secondItem="V4H-cu-p3u" secondAttribute="bottom" constant="27" id="4r3-6x-kE2"/>
-                            <constraint firstItem="CLr-zB-K7c" firstAttribute="leading" secondItem="zaE-Kd-o1e" secondAttribute="trailing" constant="30" id="8Bv-eJ-uZe"/>
-                            <constraint firstItem="V4H-cu-p3u" firstAttribute="leading" secondItem="zIP-Cj-VTV" secondAttribute="leadingMargin" constant="-16" id="O82-3p-dsd"/>
-                            <constraint firstItem="V4H-cu-p3u" firstAttribute="top" secondItem="dvl-4f-FUo" secondAttribute="bottom" constant="8" symbolic="YES" id="Qoa-SW-cN4"/>
-                            <constraint firstItem="zaE-Kd-o1e" firstAttribute="top" secondItem="V4H-cu-p3u" secondAttribute="bottom" constant="39" id="Rku-sk-c61"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V4H-cu-p3u" secondAttribute="trailing" constant="-16" id="UbM-JZ-8hd"/>
-                            <constraint firstItem="2Zd-7t-mFd" firstAttribute="top" secondItem="CLr-zB-K7c" secondAttribute="bottom" constant="59" id="f9d-VE-vaZ"/>
-                            <constraint firstItem="CLr-zB-K7c" firstAttribute="leading" secondItem="zIP-Cj-VTV" secondAttribute="leading" constant="134" id="njW-le-4LT"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="ZfU-k2-ieW"/>
-                    <navigationItem key="navigationItem" id="XdE-Ji-o6J"/>
+                    <navigationItem key="navigationItem" id="NYf-qU-nKJ"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CsQ-N5-N2i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ueY-qc-d71" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097.5" y="-427.5"/>
+            <point key="canvasLocation" x="1097.5" y="-406.5"/>
+        </scene>
+        <!--Manually Add Meal View Controller-->
+        <scene sceneID="zEM-XI-sj0">
+            <objects>
+                <viewController id="Gd0-Wq-5CW" customClass="ManuallyAddMealViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FyW-hF-l0k"/>
+                        <viewControllerLayoutGuide type="bottom" id="40M-8b-QmY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tfy-bK-2yX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrT-UW-dcc">
+                                <rect key="frame" x="168" y="28" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Meal Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gft-vN-IR6">
+                                <rect key="frame" x="16" y="93" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Meal Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wwM-2f-i7Z">
+                                <rect key="frame" x="16" y="123" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enjoyment Score" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qo-s4-r1n">
+                                <rect key="frame" x="16" y="400" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Calories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AxI-Ys-ega">
+                                <rect key="frame" x="16" y="273" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Protein" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDM-OQ-PUX">
+                                <rect key="frame" x="16" y="362" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Carbs" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ak3-w9-ush">
+                                <rect key="frame" x="16" y="332" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Fat" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-Mf-w8p">
+                                <rect key="frame" x="16" y="302" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Health Score" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VGi-ax-30O">
+                                <rect key="frame" x="16" y="244" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Energy Level" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H56-iJ-JGS">
+                                <rect key="frame" x="16" y="460" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Mood" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AiV-6n-DNk">
+                                <rect key="frame" x="16" y="430" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVp-yv-mjm">
+                                <rect key="frame" x="16" y="529" width="352" height="69"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Ingredients" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cTh-Fx-lh0">
+                                <rect key="frame" x="16" y="182" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Timestamp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EdO-16-bVb">
+                                <rect key="frame" x="16" y="152" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Other Diners" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phA-Wp-Ccm">
+                                <rect key="frame" x="16" y="491" width="352" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nOo-27-YvA">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="ITR-gu-Dxb">
+                            <connections>
+                                <action selector="sendManualFoodDiaryEntry:" destination="Gd0-Wq-5CW" id="ymL-aP-M9S"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="manualEntryCalories" destination="AxI-Ys-ega" id="vDl-pe-CPk"/>
+                        <outlet property="manualEntryEnergyLevel" destination="H56-iJ-JGS" id="zWR-K3-1pN"/>
+                        <outlet property="manualEntryEnjoymentScore" destination="3qo-s4-r1n" id="7nt-Nb-g1C"/>
+                        <outlet property="manualEntryGramsCarbs" destination="Ak3-w9-ush" id="KfL-9Z-MaZ"/>
+                        <outlet property="manualEntryGramsFat" destination="tYz-Mf-w8p" id="zOV-MZ-Khe"/>
+                        <outlet property="manualEntryGramsProtein" destination="aDM-OQ-PUX" id="Zo9-6n-450"/>
+                        <outlet property="manualEntryHealthScore" destination="VGi-ax-30O" id="ro7-W4-ecE"/>
+                        <outlet property="manualEntryIngredientsTextView" destination="cTh-Fx-lh0" id="EoO-WM-Uwv"/>
+                        <outlet property="manualEntryLocationTextView" destination="wwM-2f-i7Z" id="jKH-rE-7cC"/>
+                        <outlet property="manualEntryMealNameTextView" destination="gft-vN-IR6" id="EYq-vK-0K7"/>
+                        <outlet property="manualEntryMood" destination="AiV-6n-DNk" id="o4X-NV-6P9"/>
+                        <outlet property="manualEntryNotes" destination="wVp-yv-mjm" id="ojY-mg-74H"/>
+                        <outlet property="manualEntryOtherDiners" destination="phA-Wp-Ccm" id="y9W-00-nqi"/>
+                        <outlet property="manualEntryTimestampTextView" destination="EdO-16-bVb" id="dN4-2O-zKi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QBa-Hz-alm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1550.5" y="-406.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5gA-N2-vQb">
@@ -608,9 +704,27 @@
             </objects>
             <point key="canvasLocation" x="2045.5" y="327.5"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="3hZ-bm-A9h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zkH-2L-Mwv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="LtZ-EV-HFp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JNU-2g-KLq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XIJ-C8-Xi6" kind="relationship" relationship="rootViewController" id="Foe-Hw-rvL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yy-0Z-9lY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="569.5" y="-411.5"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="camera-icon" width="512" height="512"/>
         <image name="placeholder" width="360" height="240"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

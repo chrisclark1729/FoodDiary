@@ -12,9 +12,13 @@ import Parse
 class EditMealDetailTableViewController: UITableViewController {
     
  
+    @IBOutlet weak var editMealName: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editMealName.becomeFirstResponder()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
