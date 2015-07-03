@@ -22,7 +22,7 @@ class TimelineTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        meals = self.dataManager.getFoodDiaryEntries()
+        meals = self.dataManager.loadTimelineData()
         
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

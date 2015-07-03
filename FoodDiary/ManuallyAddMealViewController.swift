@@ -11,12 +11,10 @@ import Parse
 
 class ManuallyAddMealViewController: UIViewController {
 
-
-    
     @IBOutlet weak var manualEntryMealNameTextView: UITextField!
     @IBOutlet weak var manualEntryLocationTextView: UITextField!
     @IBOutlet weak var manualEntryTimestampTextView: UITextField!
-    @IBOutlet weak var manualEntryIngredientsTextView: UITextField!
+    @IBOutlet weak var manualEntryIngredientsTextView: UITextView!
     @IBOutlet weak var manualEntryHealthScore: UITextField!
     @IBOutlet weak var manualEntryCalories: UITextField!
     @IBOutlet weak var manualEntryGramsFat: UITextField!
@@ -26,19 +24,20 @@ class ManuallyAddMealViewController: UIViewController {
     @IBOutlet weak var manualEntryMood: UITextField!
     @IBOutlet weak var manualEntryEnergyLevel: UITextField!
     @IBOutlet weak var manualEntryOtherDiners: UITextField!
-    @IBOutlet weak var manualEntryNotes: UITextField!
+    @IBOutlet weak var manualEntryNotes: UITextView!
     
     @IBAction func sendManualFoodDiaryEntry(sender: AnyObject) {
         
-        var foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntry")
+        var foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
         
-        foodDiaryEntry["user"] = PFUser.currentUser()
+       // foodDiaryEntry["user"] = PFUser.currentUser()
+        foodDiaryEntry["user"] = "chris test"
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
         foodDiaryEntry["location"] = manualEntryLocationTextView.text
-        foodDiaryEntry["timestam"] = manualEntryTimestampTextView.text
+        foodDiaryEntry["timestamp"] = manualEntryTimestampTextView.text
         foodDiaryEntry["healthScore"] = manualEntryHealthScore.text
-        foodDiaryEntry["calories"] = manualEntryCalories
-        foodDiaryEntry["gramsFat"] = manualEntryGramsFat
+        foodDiaryEntry["calories"] = manualEntryCalories.text
+        foodDiaryEntry["gramsFat"] = manualEntryGramsFat.text
         foodDiaryEntry["gramsCarbs"] = manualEntryGramsCarbs.text
         foodDiaryEntry["gramsProtein"] = manualEntryGramsProtein.text
         foodDiaryEntry["enjoymentScore"] = manualEntryEnjoymentScore.text
@@ -46,6 +45,7 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["energyLevel"] = manualEntryEnergyLevel.text
         foodDiaryEntry["otherDiners"] = manualEntryOtherDiners.text
         foodDiaryEntry["Notes"] = manualEntryNotes.text
+        foodDiaryEntry["wasEaten"] = true
         
         foodDiaryEntry.saveInBackground()
         self.navigationController?.popToRootViewControllerAnimated(true)
