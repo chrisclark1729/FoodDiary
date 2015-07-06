@@ -52,9 +52,15 @@ class TimelineTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-    //  return self.meals!.count
         
-        return 0
+        if let meals = self.meals {
+            return meals.count
+        } else {
+            return 0
+        }
+
+        
+  
 
     }
 
@@ -67,14 +73,13 @@ class TimelineTableViewController: UITableViewController {
         let meal = meals![indexPath.row]
         
         
-        var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
+   //     var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
         
-        //TODO: Download Images asynchronously. Using AFNetworking
         cell.mealImage.setImageWithURL(NSURL(string: meal.imgURL))
         cell.mealName.text = meal.mealName
         cell.mealLocation.text = meal.location
-        cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
-        cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!)
+     //   cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
+     //   cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!)
         cell.mealScore.text = "Score: \(meal.mealScore())%"
         
         return cell

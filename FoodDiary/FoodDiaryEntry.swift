@@ -27,7 +27,7 @@ class FoodDiaryEntry: NSObject {
     var energyLevel:Int
     var otherPeople:String
     var notes:String
-    init(mealID:String, mealName:String,timestamp:String,location:String,ingredients:String,imgURL:String,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
+    init(mealID:String,mealName:String,timestamp:String,location:String,ingredients:String,imgURL:String,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp

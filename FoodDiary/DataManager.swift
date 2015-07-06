@@ -33,6 +33,7 @@ class DataManager {
                 if let objects = objects as? [PFObject] {
                     for object in objects {
                         println(object.objectId)
+                        println(object["mood"])
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! String,
@@ -51,7 +52,11 @@ class DataManager {
                             notes: object["Notes"] as! String)
                         
                         foodDiaryEntryArray.append(entry)
+                    
                     }
+                self.delegate!.meals = foodDiaryEntryArray
+                self.delegate!.tableView.reloadData()
+                    
                 }
             } else {
                 // Log details of the failure

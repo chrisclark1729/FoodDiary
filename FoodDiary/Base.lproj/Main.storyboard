@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bB4-en-qHx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bB4-en-qHx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -134,17 +134,7 @@
                             <outlet property="delegate" destination="u9u-yO-AXa" id="kVe-1S-F2k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Timeline" id="geZ-hh-tyV">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ej5-fe-Vbr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Gg-2f-dZh">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Manual">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Timeline" id="geZ-hh-tyV"/>
                     <connections>
                         <segue destination="7io-4o-JnR" kind="push" identifier="showDetail" id="zp0-NH-cmc"/>
                     </connections>
@@ -537,10 +527,10 @@
             </objects>
             <point key="canvasLocation" x="2489.5" y="327.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Meal Photo View Controller-->
         <scene sceneID="Aoj-Wj-q7z">
             <objects>
-                <viewController id="XIJ-C8-Xi6" sceneMemberID="viewController">
+                <viewController id="XIJ-C8-Xi6" customClass="AddMealPhotoViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dAi-jr-izi"/>
                         <viewControllerLayoutGuide type="bottom" id="VIj-pm-Rlu"/>
@@ -549,8 +539,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJ8-rY-Prw">
+                                <rect key="frame" x="59" y="300" width="75" height="67"/>
+                                <state key="normal" title="Gallery" image="placeholder">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addFromGallery:" destination="XIJ-C8-Xi6" eventType="touchUpInside" id="f3A-n0-Lyg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnK-RG-XDZ">
+                                <rect key="frame" x="157" y="305" width="65" height="62"/>
+                                <state key="normal" title="Button" image="camera-icon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="XIJ-C8-Xi6" eventType="touchUpInside" id="KBI-MH-ehM"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tk-jy-eme">
-                                <rect key="frame" x="136" y="319" width="102" height="30"/>
+                                <rect key="frame" x="238" y="319" width="102" height="30"/>
                                 <state key="normal" title="Enter Manually">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -725,6 +733,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera-icon" width="512" height="512"/>
         <image name="placeholder" width="360" height="240"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
