@@ -34,6 +34,7 @@ class DataManager {
                     for object in objects {
                         println(object.objectId)
                         println(object["mood"])
+                        println(object["calories"])
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! String,
