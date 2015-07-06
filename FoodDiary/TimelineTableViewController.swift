@@ -75,8 +75,22 @@ class TimelineTableViewController: UITableViewController {
         
    //     var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
         
-        cell.mealImage.setImageWithURL(NSURL(string: meal.imgURL))
+   
+        let mealImageFile:PFFile = meal.imgURL as! PFFile
+        
+        mealImageFile.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                if let imageData = imageData {
+                    let image = UIImage(data:imageData)
+                    cell.mealImage.image = image
+                }
+            }
+        }
+        
+
         cell.mealName.text = meal.mealName
+        
         cell.mealLocation.text = meal.location
      //   cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
      //   cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!)

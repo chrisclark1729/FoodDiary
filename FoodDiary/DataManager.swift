@@ -40,7 +40,7 @@ class DataManager {
                             timestamp: object["timestamp"] as! String,
                             location: object["location"] as! String,
                             ingredients: "To fix",
-                            imgURL: "https://s3-us-west-1.amazonaws.com/trust-buds/meal-photos/chris-clark/IMG_20150606_143020.png",
+                            imgURL: object["imageFile"],
                             calories: object["calories"] as! Int,
                             gramsCarbs: object["gramsCarbs"] as! Int,
                             gramsProtein: object["gramsProtein"] as! Int,

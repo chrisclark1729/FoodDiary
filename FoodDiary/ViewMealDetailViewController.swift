@@ -26,6 +26,16 @@ class ViewMealDetailViewController: UITableViewController {
     
     @IBAction func saveMealDetail(segue:UIStoryboardSegue) {
         
+        var query = PFQuery(className:"FoodDiaryEntries")
+        query.getObjectInBackgroundWithId("mealID") {
+            (mealName: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                println(error)
+            } else if let mealName = mealName {
+                mealName.saveInBackground()
+            }
+        }
+        
     }
     
 

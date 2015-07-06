@@ -50,6 +50,21 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         var userPhoto = PFObject(className:"FoodDiaryEntries")
    //     userPhoto["imageName"] = "Name of Image"
         userPhoto["imageFile"] = imageFile
+        userPhoto["mealName"] = ""
+        userPhoto["location"] = ""
+        userPhoto["timestamp"] = ""
+        userPhoto["wasEaten"] = true
+        userPhoto["user"] = "chris test"
+        userPhoto["otherDiners"] = ""
+        userPhoto["mood"] = ""
+        userPhoto["Notes"] = ""
+        userPhoto["calories"] = 0
+        userPhoto["energyLevel"] = 0
+        userPhoto["enjoymentScore"] = 0
+        userPhoto["gramsCarbs"] = 0
+        userPhoto["gramsFat"] = 0
+        userPhoto["gramsProtein"] = 0
+        userPhoto["healthScore"] = 0
         userPhoto.saveInBackground()
     }
     

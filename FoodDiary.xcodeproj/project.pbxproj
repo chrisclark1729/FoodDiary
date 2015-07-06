@@ -519,8 +519,10 @@
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos8.3;
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodDiary/FoodDiary-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -542,8 +544,10 @@
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos8.3;
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodDiary/FoodDiary-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -552,7 +556,6 @@
 		49C5C4331B068AA7006FA068 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -563,7 +566,9 @@
 				);
 				INFOPLIST_FILE = FoodDiaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos8.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodDiary.app/FoodDiary";
 			};
 			name = Debug;
@@ -571,14 +576,15 @@
 		49C5C4341B068AA7006FA068 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = FoodDiaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos8.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodDiary.app/FoodDiary";
 			};
 			name = Release;
