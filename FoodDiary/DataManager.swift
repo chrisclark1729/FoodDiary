@@ -37,7 +37,7 @@ class DataManager {
                         println(object["calories"])
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
-                            timestamp: object["timestamp"] as! String,
+                            timestamp: object["timestamp"] as! NSDate,
                             location: object["location"] as! String,
                             ingredients: "To fix",
                             imgURL: object["imageFile"],
@@ -50,7 +50,8 @@ class DataManager {
                             mood: object["mood"] as! String,
                             energyLevel: object["energyLevel"] as! Int,
                             otherPeople: object["otherDiners"] as! String,
-                            notes: object["Notes"] as! String)
+                            notes: object["Notes"] as! String,
+                            timezone: object["timezone"] as! String)
                         
                         foodDiaryEntryArray.append(entry)
                     

@@ -21,7 +21,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
             picker.sourceType = .Camera
             picker.mediaTypes = [kUTTypeImage]
             picker.delegate = self
-            picker.allowsEditing = false
+            picker.allowsEditing = true
             presentViewController(picker, animated: true, completion: nil)
         
     }
@@ -38,9 +38,14 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
     }
  
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        var image = info[UIImagePickerControllerEditedImage] as? UIImage
+        if image == nil {
+            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        }
         
         imageView.image = image
+        makeRoomForImage()
+        
         dismissViewControllerAnimated(true, completion: nil)
         
         let imageData = UIImagePNGRepresentation(image)
@@ -52,7 +57,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["imageFile"] = imageFile
         userPhoto["mealName"] = ""
         userPhoto["location"] = ""
-        userPhoto["timestamp"] = ""
+        userPhoto["timestamp"] = NSDate()
         userPhoto["wasEaten"] = true
         userPhoto["user"] = "chris test"
         userPhoto["otherDiners"] = ""
@@ -65,6 +70,8 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["gramsFat"] = 0
         userPhoto["gramsProtein"] = 0
         userPhoto["healthScore"] = 0
+        userPhoto["timezone"] = NSTimeZone.localTimeZone().abbreviation!
+      /*  userPhoto["geoPointLocation"] = PFGeoPoint.geoPointForCurrentLocationInBackground as! PFGeoPoint */
         userPhoto.saveInBackground()
     }
     
@@ -83,6 +90,20 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
+    func makeRoomForImage() {
+        var extraHeight: CGFloat = 0
+        if imageView.image?.scale > 0 {
+            if let width = imageView.superview?.frame.size.width {
+                let height = width / imageView.image!.scale
+                extraHeight = height - imageView.frame.height
+                imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            }
+        } else {
+            extraHeight = -imageView.frame.height
+            imageView.frame = CGRectZero
+        }
+        preferredContentSize = CGSize(width: preferredContentSize.width, height: preferredContentSize.height + extraHeight)
+    }
 
     /*
     // MARK: - Navigation

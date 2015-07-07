@@ -13,7 +13,7 @@ class FoodDiaryEntry: NSObject {
     
     var mealID:String
     var mealName:String
-    var timestamp:String
+    var timestamp:NSDate
     var location:String
     var ingredients:String
     var imgURL:AnyObject?
@@ -27,7 +27,8 @@ class FoodDiaryEntry: NSObject {
     var energyLevel:Int
     var otherPeople:String
     var notes:String
-    init(mealID:String,mealName:String,timestamp:String,location:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String ) {
+    var timezone:String
+    init(mealID:String,mealName:String,timestamp:NSDate,location:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -44,6 +45,7 @@ class FoodDiaryEntry: NSObject {
         self.energyLevel=energyLevel
         self.otherPeople=otherPeople
         self.notes=notes
+        self.timezone=timezone
     }
     
     func mealScore() ->Int {
@@ -61,20 +63,20 @@ class FoodDiaryEntry: NSObject {
         
         //TODO: Base Day part on user preferences
         var dayPart = ""
-        
+      /*
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var mealTimeDate = dateFormatter.dateFromString(self.timestamp)
         var timeComparisonFormatter = NSDateFormatter()
         timeComparisonFormatter.dateFormat = "H:mm"
-        
+     */   
         
         return dayPart
     }
    
 }
 
-// macros calculator 1g Protein = 4 calories, 1g Carbohydrate = 4 calories, 1g Fat = 9 calories
+// macros calculator 1g Protein = 4.2 calories, 1g Carbohydrate = 5.7 calories, 1g Fat = 9.4 calories
 
 
 
