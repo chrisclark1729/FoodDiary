@@ -38,7 +38,7 @@ class DataManager {
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
-                            location: object["location"] as! String,
+                            locationName: object["locationName"] as! String,
                             ingredients: "To fix",
                             imgURL: object["imageFile"],
                             calories: object["calories"] as! Int,

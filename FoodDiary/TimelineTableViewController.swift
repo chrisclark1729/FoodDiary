@@ -91,7 +91,7 @@ class TimelineTableViewController: UITableViewController {
 
         cell.mealName.text = meal.mealName
         
-        cell.mealLocation.text = meal.location
+        cell.mealLocationName.text = meal.locationName
      //   cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
      //   cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!)
         cell.mealScore.text = "Score: \(meal.mealScore())%"

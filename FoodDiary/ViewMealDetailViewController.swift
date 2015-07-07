@@ -18,7 +18,7 @@ class ViewMealDetailViewController: UITableViewController {
     
     @IBOutlet weak var mealName: UILabel!
     
-    @IBOutlet weak var mealLocation: UILabel!
+    @IBOutlet weak var mealLocationName: UILabel!
     
     @IBAction func cancelToViewMealDetailViewController(segue:UIStoryboardSegue) {
         
@@ -77,7 +77,7 @@ class ViewMealDetailViewController: UITableViewController {
         if let entry = foodDiaryEntry {
             
             self.mealName.text = entry.mealName
-            self.mealLocation.text = entry.location
+            self.mealLocationName.text = entry.locationName
             
             /*
             self.mealName.text = entry.mealName

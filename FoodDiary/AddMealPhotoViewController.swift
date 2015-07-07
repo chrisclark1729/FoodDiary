@@ -56,7 +56,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
    //     userPhoto["imageName"] = "Name of Image"
         userPhoto["imageFile"] = imageFile
         userPhoto["mealName"] = ""
-        userPhoto["location"] = ""
+        userPhoto["locationName"] = ""
         userPhoto["timestamp"] = NSDate()
         userPhoto["wasEaten"] = true
         userPhoto["user"] = "chris test"

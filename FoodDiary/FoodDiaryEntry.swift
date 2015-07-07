@@ -14,7 +14,7 @@ class FoodDiaryEntry: NSObject {
     var mealID:String
     var mealName:String
     var timestamp:NSDate
-    var location:String
+    var locationName:String
     var ingredients:String
     var imgURL:AnyObject?
     var calories:Int
@@ -28,11 +28,11 @@ class FoodDiaryEntry: NSObject {
     var otherPeople:String
     var notes:String
     var timezone:String
-    init(mealID:String,mealName:String,timestamp:NSDate,location:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String) {
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
-        self.location=location
+        self.locationName=locationName
         self.ingredients=ingredients
         self.imgURL=imgURL
         self.calories=calories

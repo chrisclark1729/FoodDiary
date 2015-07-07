@@ -13,7 +13,7 @@ class TimelineTableViewCell: UITableViewCell {
 
     @IBOutlet weak var mealImage: UIImageView!
     @IBOutlet weak var mealName: UILabel!
-    @IBOutlet weak var mealLocation: UILabel!
+    @IBOutlet weak var mealLocationName: UILabel!
     @IBOutlet weak var mealDate: UILabel!
     @IBOutlet weak var mealTime: UILabel!
     @IBOutlet weak var mealScore: UILabel!
