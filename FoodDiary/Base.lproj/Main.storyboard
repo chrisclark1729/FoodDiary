@@ -122,7 +122,7 @@
                                 <connections>
                                     <outlet property="mealDate" destination="6We-Si-1c7" id="8MK-Ap-YbT"/>
                                     <outlet property="mealImage" destination="gHd-W2-A0E" id="Bx7-jH-PpR"/>
-                                    <outlet property="mealLocation" destination="5gY-Br-Dsx" id="A9B-ag-atb"/>
+                                    <outlet property="mealLocationName" destination="5gY-Br-Dsx" id="Zgu-o4-9pf"/>
                                     <outlet property="mealName" destination="Yyt-7Y-tCu" id="JGG-PY-kXS"/>
                                     <outlet property="mealScore" destination="sHr-2f-sbq" id="EES-aw-Y7g"/>
                                     <outlet property="mealTime" destination="FYn-ne-opE" id="fsn-gW-HMu"/>
@@ -466,7 +466,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="jzo-Uo-jBb"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="mealLocation" destination="iFb-te-KWH" id="uRx-U6-utS"/>
+                        <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>
                     </connections>
                 </tableViewController>

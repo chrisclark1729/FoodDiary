@@ -33,7 +33,7 @@ class ManuallyAddMealViewController: UIViewController {
        // foodDiaryEntry["user"] = PFUser.currentUser()
         foodDiaryEntry["user"] = "chris test"
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
-        foodDiaryEntry["location"] = manualEntryLocationTextView.text
+        foodDiaryEntry["locationName"] = manualEntryLocationTextView.text
         foodDiaryEntry["timestamp"] = manualEntryTimestampTextView.text
         foodDiaryEntry["healthScore"] = manualEntryHealthScore.text.toInt()!
         foodDiaryEntry["calories"] = manualEntryCalories.text.toInt()!
