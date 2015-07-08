@@ -13,6 +13,13 @@ import Parse
 class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var imageView = UIImageView()
+    
+    func noCamera(){
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style:.Default, handler: nil)
+        alertVC.addAction(okAction)
+        presentViewController(alertVC, animated: true, completion: nil)
+    }
 
     @IBAction func takePhoto(sender: AnyObject) {
         
@@ -24,7 +31,9 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
             picker.allowsEditing = true
             presentViewController(picker, animated: true, completion: nil)
         
-    }
+        } else {
+            noCamera()
+        }
 }
         
     @IBAction func addFromGallery(sender: AnyObject) {
