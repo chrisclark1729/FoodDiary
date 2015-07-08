@@ -14,10 +14,36 @@ class EditMealDetailTableViewController: UITableViewController {
  
     @IBOutlet weak var editMealName: UITextField!
 
+    @IBAction func saveMealName(sender: AnyObject) {
+        
+        var query = PFQuery(className:"FoodDiaryEntries")
+        query.getObjectInBackgroundWithId("mealID") {
+            (mealName: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                println(error)
+            } else if let mealName = mealName {
+                println("mealID")
+                mealName.saveInBackground()
+            }
+        }
+        
+    }
+    
+    var foodDiaryEntry: FoodDiaryEntry?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         editMealName.becomeFirstResponder()
+        
+        if let entry = foodDiaryEntry {
+            
+            self.editMealName.text = entry.mealName
+        }
+        else {
+            println("No Food Entry")
+        }
+
         
 
         // Uncomment the following line to preserve selection between presentations

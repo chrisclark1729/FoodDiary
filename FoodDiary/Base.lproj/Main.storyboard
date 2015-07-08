@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bB4-en-qHx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -78,25 +79,25 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hba-7L-cQt" id="DEt-WU-Ny4">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyt-7Y-tCu">
-                                            <rect key="frame" x="8" y="8" width="189" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyt-7Y-tCu">
+                                            <rect key="frame" x="8" y="8" width="74.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6We-Si-1c7">
-                                            <rect key="frame" x="196" y="7" width="171" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6We-Si-1c7">
+                                            <rect key="frame" x="336" y="7" width="30.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gY-Br-Dsx">
-                                            <rect key="frame" x="8" y="27" width="199" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gY-Br-Dsx">
+                                            <rect key="frame" x="8" y="24" width="48.5" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHr-2f-sbq">
-                                            <rect key="frame" x="8" y="354" width="359" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHr-2f-sbq">
+                                            <rect key="frame" x="8" y="357" width="44.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -105,19 +106,34 @@
                                             <rect key="frame" x="0.0" y="53" width="375" height="293"/>
                                             <gestureRecognizers/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYn-ne-opE">
-                                            <rect key="frame" x="249" y="27" width="118" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-oD-WIs">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-oD-WIs">
                                             <rect key="frame" x="323" y="345" width="44" height="30"/>
                                             <state key="normal" title="Delete">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYn-ne-opE">
+                                            <rect key="frame" x="339" y="23" width="27.5" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5gY-Br-Dsx" firstAttribute="top" secondItem="Yyt-7Y-tCu" secondAttribute="bottom" constant="-1" id="1L8-A1-FtH"/>
+                                        <constraint firstItem="6We-Si-1c7" firstAttribute="trailing" secondItem="DEt-WU-Ny4" secondAttribute="trailingMargin" id="2XM-ac-76V"/>
+                                        <constraint firstItem="6We-Si-1c7" firstAttribute="trailing" secondItem="DEt-WU-Ny4" secondAttribute="trailingMargin" id="3JO-Bg-oJE"/>
+                                        <constraint firstItem="6We-Si-1c7" firstAttribute="top" secondItem="DEt-WU-Ny4" secondAttribute="topMargin" constant="-1" id="4SS-Yl-B3i"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QLM-oD-WIs" secondAttribute="bottom" constant="0.5" id="4Xb-fZ-WjJ"/>
+                                        <constraint firstItem="QLM-oD-WIs" firstAttribute="trailing" secondItem="DEt-WU-Ny4" secondAttribute="trailingMargin" id="UGh-dc-7EG"/>
+                                        <constraint firstItem="Yyt-7Y-tCu" firstAttribute="top" secondItem="DEt-WU-Ny4" secondAttribute="topMargin" id="Ysg-oP-Efc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sHr-2f-sbq" secondAttribute="bottom" constant="0.5" id="bcD-En-Q6z"/>
+                                        <constraint firstItem="FYn-ne-opE" firstAttribute="top" secondItem="6We-Si-1c7" secondAttribute="bottom" constant="-1" id="c8J-9I-iGS"/>
+                                        <constraint firstItem="5gY-Br-Dsx" firstAttribute="leading" secondItem="DEt-WU-Ny4" secondAttribute="leadingMargin" id="dcJ-ho-AFP"/>
+                                        <constraint firstItem="Yyt-7Y-tCu" firstAttribute="leading" secondItem="DEt-WU-Ny4" secondAttribute="leadingMargin" id="g7I-PD-2ps"/>
+                                        <constraint firstItem="sHr-2f-sbq" firstAttribute="leading" secondItem="DEt-WU-Ny4" secondAttribute="leadingMargin" id="h6a-l2-gG4"/>
+                                        <constraint firstItem="FYn-ne-opE" firstAttribute="trailing" secondItem="DEt-WU-Ny4" secondAttribute="trailingMargin" id="i2k-f7-1YA"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="mealDate" destination="6We-Si-1c7" id="8MK-Ap-YbT"/>
@@ -462,9 +478,7 @@
                             <outlet property="delegate" destination="7io-4o-JnR" id="X43-1E-Hrl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meal Details" id="ucr-PG-Wyp">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="jzo-Uo-jBb"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Meal Details" id="ucr-PG-Wyp"/>
                     <connections>
                         <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>
@@ -514,7 +528,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Tz0-n5-uZN">
                             <connections>
-                                <segue destination="zW5-89-FMD" kind="unwind" unwindAction="saveMealDetail:" id="zeQ-6g-bwC"/>
+                                <action selector="saveMealName:" destination="RAi-rE-dh9" id="CDK-IQ-GtH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
