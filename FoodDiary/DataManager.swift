@@ -20,6 +20,7 @@ class DataManager {
         
         var getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
         
+        getTimelineData.orderByDescending("timestamp")
         getTimelineData.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
