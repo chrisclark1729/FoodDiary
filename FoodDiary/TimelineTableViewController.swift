@@ -71,10 +71,6 @@ class TimelineTableViewController: UITableViewController {
         //TODO: Make sure meals sort descending
         
         let meal = meals![indexPath.row]
-        
-        
-   //     var mealTimeDate = dateFormatter.dateFromString(meal.timestamp)
-        
    
         let mealImageFile:PFFile = meal.imgURL as! PFFile
         
@@ -92,8 +88,8 @@ class TimelineTableViewController: UITableViewController {
         cell.mealName.text = meal.mealName
         
         cell.mealLocationName.text = meal.locationName
-     //   cell.mealDate.text = dayFormatter.stringFromDate(mealTimeDate!)
-     //   cell.mealTime.text = timeFormatter.stringFromDate(mealTimeDate!)
+        cell.mealDate.text = dayFormatter.stringFromDate(meal.timestamp)
+        cell.mealTime.text = timeFormatter.stringFromDate(meal.timestamp)
         cell.mealScore.text = "Score: \(meal.mealScore())%"
         
         return cell
