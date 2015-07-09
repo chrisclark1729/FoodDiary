@@ -21,6 +21,7 @@ class FoodDiaryEntry: NSObject {
     var gramsCarbs:Int
     var gramsProtein:Int
     var gramsFat:Int
+    var gramsFiber:Int
     var enjoymentScore:Int
     var healthScore:Int
     var mood:String
@@ -28,7 +29,8 @@ class FoodDiaryEntry: NSObject {
     var otherPeople:String
     var notes:String
     var timezone:String
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String) {
+
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -39,6 +41,7 @@ class FoodDiaryEntry: NSObject {
         self.gramsCarbs=gramsCarbs
         self.gramsProtein=gramsProtein
         self.gramsFat=gramsFat
+        self.gramsFiber=gramsFiber
         self.enjoymentScore=enjoymentScore
         self.healthScore=healthScore
         self.mood=mood
@@ -46,6 +49,7 @@ class FoodDiaryEntry: NSObject {
         self.otherPeople=otherPeople
         self.notes=notes
         self.timezone=timezone
+
     }
     
     func mealScore() ->Int {

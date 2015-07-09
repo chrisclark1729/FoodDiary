@@ -46,6 +46,7 @@ class DataManager {
                             gramsCarbs: object["gramsCarbs"] as! Int,
                             gramsProtein: object["gramsProtein"] as! Int,
                             gramsFat: object["gramsFat"] as! Int,
+                            gramsFiber: object["gramsFiber"] as! Int,
                             enjoymentScore: object["enjoymentScore"] as! Int,
                             healthScore: object["healthScore"] as! Int,
                             mood: object["mood"] as! String,
@@ -53,6 +54,7 @@ class DataManager {
                             otherPeople: object["otherDiners"] as! String,
                             notes: object["Notes"] as! String,
                             timezone: object["timezone"] as! String)
+                       //     geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
                         
                         foodDiaryEntryArray.append(entry)
                     

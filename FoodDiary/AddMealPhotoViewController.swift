@@ -78,9 +78,15 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["gramsCarbs"] = 0
         userPhoto["gramsFat"] = 0
         userPhoto["gramsProtein"] = 0
+        userPhoto["gramsFiber"] = 0
         userPhoto["healthScore"] = 0
         userPhoto["timezone"] = NSTimeZone.localTimeZone().abbreviation!
-      /*  userPhoto["geoPointLocation"] = PFGeoPoint.geoPointForCurrentLocationInBackground as! PFGeoPoint */
+    /*    userPhoto["geoPoint"] = geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                // do something with the new geoPoint
+            }
+        } */
         userPhoto.saveInBackground()
     }
     

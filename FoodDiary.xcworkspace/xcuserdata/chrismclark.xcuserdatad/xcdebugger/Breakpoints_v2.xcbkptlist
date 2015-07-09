@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodDiary/FoodDiaryEntry.swift"
-            timestampString = "457975469.116491"
+            timestampString = "458159879.999996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "FoodDiaryEntry"
             landmarkType = "3">
          </BreakpointContent>
