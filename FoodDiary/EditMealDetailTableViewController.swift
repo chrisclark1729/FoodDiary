@@ -23,7 +23,6 @@ class EditMealDetailTableViewController: UITableViewController {
             if error != nil {
                 println(error)
             } else if let entry = FoodDiaryEntry {
-                println("mealID")
                 entry["mealName"] = self.editMealName.text
                 entry.saveInBackground()
                 self.navigationController?.popViewControllerAnimated(true)
