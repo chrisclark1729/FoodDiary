@@ -69,7 +69,6 @@ class ViewMealDetailViewController: UITableViewController {
             println(entry.mealName)
             
             /*
-            self.mealName.text = entry.mealName
             
             self.mealTime.text = entry.timestamp
             self.calories.text = "Calories: " + String(stringInterpolationSegment: entry.calories)
@@ -99,6 +98,20 @@ class ViewMealDetailViewController: UITableViewController {
 
     @IBAction func sendMealDataUpdate(sender: AnyObject) {
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "editFoodDiaryEntry" {
+            
+            var destination = segue.destinationViewController as! EditMealDetailTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+            
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 

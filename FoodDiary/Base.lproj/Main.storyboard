@@ -234,7 +234,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NSw-dp-W6b" kind="modal" id="R10-SQ-OV5"/>
+                                            <segue destination="RAi-rE-dh9" kind="push" identifier="editFoodDiaryEntry" id="sn0-f5-f6C"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mealLocation" textLabel="cQh-GT-eUF" detailTextLabel="iFb-te-KWH" style="IBUITableViewCellStyleSubtitle" id="FfA-ID-Woi">
@@ -278,7 +278,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="time" textLabel="Q2g-7a-JiX" detailTextLabel="1f1-JS-6j6" style="IBUITableViewCellStyleSubtitle" id="IN5-0f-roW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="time" textLabel="Q2g-7a-JiX" detailTextLabel="1f1-JS-6j6" style="IBUITableViewCellStyleSubtitle" id="IN5-0f-roW">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IN5-0f-roW" id="rV8-W3-L9P">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -539,7 +539,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgC-BS-6Iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zW5-89-FMD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2489.5" y="327.5"/>
+            <point key="canvasLocation" x="2005.5" y="327.5"/>
         </scene>
         <!--Add Meal Photo View Controller-->
         <scene sceneID="Aoj-Wj-q7z">
@@ -707,24 +707,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBa-Hz-alm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1550.5" y="-406.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5gA-N2-vQb">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NSw-dp-W6b" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="prG-I7-wkI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="RAi-rE-dh9" kind="relationship" relationship="rootViewController" id="iFK-yP-VHw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SK7-QV-V4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2025.5" y="327.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="3hZ-bm-A9h">

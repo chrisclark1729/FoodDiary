@@ -11,25 +11,28 @@ import Parse
 
 class EditMealDetailTableViewController: UITableViewController {
     
+    var foodDiaryEntry: FoodDiaryEntry?
  
     @IBOutlet weak var editMealName: UITextField!
 
     @IBAction func saveMealName(sender: AnyObject) {
         
         var query = PFQuery(className:"FoodDiaryEntries")
-        query.getObjectInBackgroundWithId("mealID") {
-            (mealName: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(foodDiaryEntry!.mealID) {
+            (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 println(error)
-            } else if let mealName = mealName {
+            } else if let entry = FoodDiaryEntry {
                 println("mealID")
-                mealName.saveInBackground()
+                entry["mealName"] = self.editMealName.text
+                entry.saveInBackground()
+                self.navigationController?.popViewControllerAnimated(true)
             }
         }
         
     }
     
-    var foodDiaryEntry: FoodDiaryEntry?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
