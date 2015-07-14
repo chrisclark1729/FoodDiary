@@ -66,7 +66,7 @@ class ViewMealDetailViewController: UITableViewController {
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
             
-            println(entry.mealName)
+
             
             /*
             
