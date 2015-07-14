@@ -29,8 +29,9 @@ class FoodDiaryEntry: NSObject {
     var otherPeople:String
     var notes:String
     var timezone:String
+    var isVisible:Bool
 
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String) {
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String,isVisible:Bool) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -49,6 +50,7 @@ class FoodDiaryEntry: NSObject {
         self.otherPeople=otherPeople
         self.notes=notes
         self.timezone=timezone
+        self.isVisible=isVisible
 
     }
     

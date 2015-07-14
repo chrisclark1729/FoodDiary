@@ -20,7 +20,16 @@ class DataManager {
         
         var getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
         
+        /*Timeline query restraints:
+        1.) Only grab non-archived images (diary entries)
+        2.) Order by time of entry (most recent first)
+        3.) Limit to only 50 results to improve performance
+        */
+        
+        getTimelineData.whereKey("isVisible", equalTo: true)
         getTimelineData.orderByDescending("timestamp")
+        getTimelineData.limit = 50
+        
         getTimelineData.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
@@ -53,7 +62,8 @@ class DataManager {
                             energyLevel: object["energyLevel"] as! Int,
                             otherPeople: object["otherDiners"] as! String,
                             notes: object["Notes"] as! String,
-                            timezone: object["timezone"] as! String)
+                            timezone: object["timezone"] as! String,
+                            isVisible: object["isVisible"] as! Bool)
                        //     geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
                         
                         foodDiaryEntryArray.append(entry)
