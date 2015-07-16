@@ -478,7 +478,13 @@
                             <outlet property="delegate" destination="7io-4o-JnR" id="X43-1E-Hrl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Meal Details" id="ucr-PG-Wyp"/>
+                    <navigationItem key="navigationItem" title="Meal Details" id="ucr-PG-Wyp">
+                        <barButtonItem key="rightBarButtonItem" title="Archive" id="vX9-fE-akY" customClass="archiveMeal">
+                            <connections>
+                                <action selector="archiveMeal:" destination="7io-4o-JnR" id="pRu-PT-mgq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>

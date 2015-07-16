@@ -25,6 +25,22 @@ class ViewMealDetailViewController: UITableViewController {
     }
     
     
+    @IBAction func archiveMeal(sender: AnyObject) {
+        
+        var query = PFQuery(className:"FoodDiaryEntries")
+        query.getObjectInBackgroundWithId(foodDiaryEntry!.mealID) {
+            (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                println(error)
+            } else if let entry = FoodDiaryEntry {
+                entry["isVisible"] = false
+                entry.saveInBackground()
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
+
+        
+    }
 
     
    
