@@ -29,5 +29,20 @@ extension FoodDiaryEntry {
     
 }
     */
+    
+    func save() {
+        var query = PFQuery(className:"FoodDiaryEntries")
+        query.getObjectInBackgroundWithId(self.mealID) {
+            (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                println(error)
+            } else if let entry = FoodDiaryEntry {
+                entry["mealName"] = self.mealName
+                entry["locationName"] = self.locationName
+                entry["timestamp"] = self.timestamp
+                entry.saveInBackground()
+            }
+        }
+    }
 
 }
