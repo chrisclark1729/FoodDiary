@@ -26,6 +26,8 @@ class ManuallyAddMealViewController: UIViewController {
     @IBOutlet weak var manualEntryOtherDiners: UITextField!
     @IBOutlet weak var manualEntryNotes: UITextView!
     
+    @IBOutlet weak var manualEntryGramsFiber: UITextField!
+    
     @IBAction func sendManualFoodDiaryEntry(sender: AnyObject) {
         
         var foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
@@ -40,12 +42,15 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["gramsFat"] = manualEntryGramsFat.text.toInt()!
         foodDiaryEntry["gramsCarbs"] = manualEntryGramsCarbs.text.toInt()!
         foodDiaryEntry["gramsProtein"] = manualEntryGramsProtein.text.toInt()!
+        foodDiaryEntry["gramsFiber"] = manualEntryGramsFiber.text.toInt()!
         foodDiaryEntry["enjoymentScore"] = manualEntryEnjoymentScore.text.toInt()!
         foodDiaryEntry["mood"] = manualEntryMood.text
         foodDiaryEntry["energyLevel"] = manualEntryEnergyLevel.text.toInt()!
         foodDiaryEntry["otherDiners"] = manualEntryOtherDiners.text
         foodDiaryEntry["Notes"] = manualEntryNotes.text
         foodDiaryEntry["wasEaten"] = true
+        foodDiaryEntry["isVisible"] = true
+        foodDiaryEntry["timezone"] = NSTimeZone.localTimeZone().abbreviation!
         
         foodDiaryEntry.saveInBackground()
         self.navigationController?.popToRootViewControllerAnimated(true)
