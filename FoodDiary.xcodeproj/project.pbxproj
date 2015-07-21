@@ -40,6 +40,8 @@
 		49C5C4201B068AA7006FA068 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C5C41E1B068AA7006FA068 /* LaunchScreen.xib */; };
 		49C5C42C1B068AA7006FA068 /* FoodDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C42B1B068AA7006FA068 /* FoodDiaryTests.swift */; };
 		49C5C4361B068DD5006FA068 /* FoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4351B068DD5006FA068 /* FoodTableViewController.swift */; };
+		49DD19BB1B5DD563004199C2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19BA1B5DD563004199C2 /* FBSDKCoreKit.framework */; };
+		49DD19BD1B5DD6FE004199C2 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19BC1B5DD6FE004199C2 /* ParseFacebookUtils.framework */; };
 		A82E729BD1E98B25979C8C62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E69FBFD3A483213460480A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,8 @@
 		49C5C42A1B068AA7006FA068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C5C42B1B068AA7006FA068 /* FoodDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryTests.swift; sourceTree = "<group>"; };
 		49C5C4351B068DD5006FA068 /* FoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewController.swift; sourceTree = "<group>"; };
+		49DD19BA1B5DD563004199C2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		49DD19BC1B5DD6FE004199C2 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
 		885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodDiary-Bridging-Header.h"; sourceTree = "<group>"; };
 		A928695219479361D72E085E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AE847F1546DD4C74E911B593 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			files = (
 				4972BBEB1B45B2BC0069D44B /* Social.framework in Frameworks */,
 				4972BBE91B45B2B50069D44B /* Accounts.framework in Frameworks */,
+				49DD19BD1B5DD6FE004199C2 /* ParseFacebookUtils.framework in Frameworks */,
+				49DD19BB1B5DD563004199C2 /* FBSDKCoreKit.framework in Frameworks */,
 				4972BBE71B45B29D0069D44B /* libsqlite3.dylib in Frameworks */,
 				4972BBE51B45B2900069D44B /* libz.dylib in Frameworks */,
 				4972BBE31B45B27D0069D44B /* SystemConfiguration.framework in Frameworks */,
@@ -209,6 +215,8 @@
 		B6D3DB1A5FEE6358085C2FCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49DD19BC1B5DD6FE004199C2 /* ParseFacebookUtils.framework */,
+				49DD19BA1B5DD563004199C2 /* FBSDKCoreKit.framework */,
 				4972BBEA1B45B2BC0069D44B /* Social.framework */,
 				4972BBE81B45B2B50069D44B /* Accounts.framework */,
 				4972BBE61B45B29D0069D44B /* libsqlite3.dylib */,
@@ -515,6 +523,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/chrismclark/Documents/FacebookSDK,
+					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -540,6 +550,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/chrismclark/Documents/FacebookSDK,
+					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
