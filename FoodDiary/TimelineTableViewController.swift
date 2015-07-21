@@ -86,7 +86,6 @@ class TimelineTableViewController: UITableViewController {
         
 
         cell.mealName.text = meal.mealName
-        
         cell.mealLocationName.text = meal.locationName
         cell.mealDate.text = dayFormatter.stringFromDate(meal.timestamp)
         cell.mealTime.text = timeFormatter.stringFromDate(meal.timestamp)
