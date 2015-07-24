@@ -17,10 +17,8 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -169,11 +167,6 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         
         self.presentViewController(self.logInViewController, animated: true, completion: nil)
         
-    }
-    
-
-    @IBAction func customAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("custom", sender: self)
     }
     
 
