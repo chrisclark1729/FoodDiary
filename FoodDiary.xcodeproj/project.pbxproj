@@ -40,8 +40,13 @@
 		49C5C4201B068AA7006FA068 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C5C41E1B068AA7006FA068 /* LaunchScreen.xib */; };
 		49C5C42C1B068AA7006FA068 /* FoodDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C42B1B068AA7006FA068 /* FoodDiaryTests.swift */; };
 		49C5C4361B068DD5006FA068 /* FoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4351B068DD5006FA068 /* FoodTableViewController.swift */; };
-		8898857B1B5EB97600ECD82F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898857A1B5EB97600ECD82F /* FBSDKCoreKit.framework */; };
-		8898857D1B5EBD7D00ECD82F /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898857C1B5EBD7D00ECD82F /* ParseFacebookUtilsV4.framework */; };
+		49DD19C01B5EC2DA004199C2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19BE1B5EC2DA004199C2 /* FBSDKCoreKit.framework */; };
+		49DD19C11B5EC2DA004199C2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19BF1B5EC2DA004199C2 /* FBSDKLoginKit.framework */; };
+		49DD19C31B5EC2E1004199C2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19C21B5EC2E1004199C2 /* FBSDKShareKit.framework */; };
+		49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */; };
+		49DD19CB1B62C344004199C2 /* CustomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19CA1B62C344004199C2 /* CustomLoginViewController.swift */; };
+		49DD19CD1B62C352004199C2 /* CustomSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19CC1B62C352004199C2 /* CustomSignupViewController.swift */; };
+		49DD19CF1B62CE11004199C2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19CE1B62CE11004199C2 /* ParseFacebookUtilsV4.framework */; };
 		8898857F1B5EBE0100ECD82F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898857E1B5EBE0100ECD82F /* CoreData.framework */; };
 		889885811B5EBE2100ECD82F /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885801B5EBE2100ECD82F /* Twitter.framework */; };
 		889885831B5EBE3100ECD82F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885821B5EBE3100ECD82F /* AVFoundation.framework */; };
@@ -51,8 +56,6 @@
 		8898858B1B5EBE5900ECD82F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898858A1B5EBE5900ECD82F /* libc++.dylib */; };
 		8898858D1B5EBE6700ECD82F /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898858C1B5EBE6700ECD82F /* libicucore.dylib */; };
 		8898858F1B5EBE6E00ECD82F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898858E1B5EBE6E00ECD82F /* OpenGLES.framework */; };
-		889885911B5EBF2200ECD82F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885901B5EBF2200ECD82F /* FBSDKLoginKit.framework */; };
-		889885931B5EC05B00ECD82F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885921B5EC05B00ECD82F /* FBSDKShareKit.framework */; };
 		A82E729BD1E98B25979C8C62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E69FBFD3A483213460480A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -106,9 +109,14 @@
 		49C5C42A1B068AA7006FA068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C5C42B1B068AA7006FA068 /* FoodDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryTests.swift; sourceTree = "<group>"; };
 		49C5C4351B068DD5006FA068 /* FoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewController.swift; sourceTree = "<group>"; };
+		49DD19BE1B5EC2DA004199C2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		49DD19BF1B5EC2DA004199C2 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		49DD19C21B5EC2E1004199C2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLogInViewController.swift; path = ../FacebookLogInViewController.swift; sourceTree = "<group>"; };
+		49DD19CA1B62C344004199C2 /* CustomLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginViewController.swift; sourceTree = "<group>"; };
+		49DD19CC1B62C352004199C2 /* CustomSignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSignupViewController.swift; sourceTree = "<group>"; };
+		49DD19CE1B62CE11004199C2 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodDiary-Bridging-Header.h"; sourceTree = "<group>"; };
-		8898857A1B5EB97600ECD82F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		8898857C1B5EBD7D00ECD82F /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		8898857E1B5EBE0100ECD82F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		889885801B5EBE2100ECD82F /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		889885821B5EBE3100ECD82F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -118,8 +126,6 @@
 		8898858A1B5EBE5900ECD82F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		8898858C1B5EBE6700ECD82F /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		8898858E1B5EBE6E00ECD82F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		889885901B5EBF2200ECD82F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		889885921B5EC05B00ECD82F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A928695219479361D72E085E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AE847F1546DD4C74E911B593 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,24 +143,24 @@
 				4972BBD51B45B23C0069D44B /* CFNetwork.framework in Frameworks */,
 				4972BBD31B45B2320069D44B /* AudioToolbox.framework in Frameworks */,
 				8898858F1B5EBE6E00ECD82F /* OpenGLES.framework in Frameworks */,
+				49DD19CF1B62CE11004199C2 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				8898858D1B5EBE6700ECD82F /* libicucore.dylib in Frameworks */,
 				8898858B1B5EBE5900ECD82F /* libc++.dylib in Frameworks */,
 				889885891B5EBE4D00ECD82F /* ImageIO.framework in Frameworks */,
 				889885871B5EBE4700ECD82F /* GLKit.framework in Frameworks */,
 				889885851B5EBE4200ECD82F /* CoreText.framework in Frameworks */,
 				4972BBD91B45B24B0069D44B /* CoreLocation.framework in Frameworks */,
-				889885931B5EC05B00ECD82F /* FBSDKShareKit.framework in Frameworks */,
+				49DD19C31B5EC2E1004199C2 /* FBSDKShareKit.framework in Frameworks */,
 				889885831B5EBE3100ECD82F /* AVFoundation.framework in Frameworks */,
 				889885811B5EBE2100ECD82F /* Twitter.framework in Frameworks */,
+				49DD19C01B5EC2DA004199C2 /* FBSDKCoreKit.framework in Frameworks */,
 				4972BBEB1B45B2BC0069D44B /* Social.framework in Frameworks */,
+				49DD19C11B5EC2DA004199C2 /* FBSDKLoginKit.framework in Frameworks */,
 				4972BBE91B45B2B50069D44B /* Accounts.framework in Frameworks */,
-				889885911B5EBF2200ECD82F /* FBSDKLoginKit.framework in Frameworks */,
 				4972BBE71B45B29D0069D44B /* libsqlite3.dylib in Frameworks */,
 				8898857F1B5EBE0100ECD82F /* CoreData.framework in Frameworks */,
-				8898857B1B5EB97600ECD82F /* FBSDKCoreKit.framework in Frameworks */,
 				4972BBE31B45B27D0069D44B /* SystemConfiguration.framework in Frameworks */,
 				4972BBE11B45B2730069D44B /* StoreKit.framework in Frameworks */,
-				8898857D1B5EBD7D00ECD82F /* ParseFacebookUtilsV4.framework in Frameworks */,
 				4972BBD11B45B1C30069D44B /* Bolts.framework in Frameworks */,
 				4972BBCF1B45B1B60069D44B /* Parse.framework in Frameworks */,
 				A82E729BD1E98B25979C8C62 /* libPods.a in Frameworks */,
@@ -197,6 +203,9 @@
 		49C5C4121B068AA6006FA068 /* FoodDiary */ = {
 			isa = PBXGroup;
 			children = (
+				49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */,
+				49DD19CA1B62C344004199C2 /* CustomLoginViewController.swift */,
+				49DD19CC1B62C352004199C2 /* CustomSignupViewController.swift */,
 				885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */,
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
 				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
@@ -248,9 +257,10 @@
 		B6D3DB1A5FEE6358085C2FCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				889885921B5EC05B00ECD82F /* FBSDKShareKit.framework */,
-				889885901B5EBF2200ECD82F /* FBSDKLoginKit.framework */,
-				8898857A1B5EB97600ECD82F /* FBSDKCoreKit.framework */,
+				49DD19CE1B62CE11004199C2 /* ParseFacebookUtilsV4.framework */,
+				49DD19C21B5EC2E1004199C2 /* FBSDKShareKit.framework */,
+				49DD19BE1B5EC2DA004199C2 /* FBSDKCoreKit.framework */,
+				49DD19BF1B5EC2DA004199C2 /* FBSDKLoginKit.framework */,
 				8898858E1B5EBE6E00ECD82F /* OpenGLES.framework */,
 				8898858C1B5EBE6700ECD82F /* libicucore.dylib */,
 				8898858A1B5EBE5900ECD82F /* libc++.dylib */,
@@ -260,7 +270,6 @@
 				889885821B5EBE3100ECD82F /* AVFoundation.framework */,
 				889885801B5EBE2100ECD82F /* Twitter.framework */,
 				8898857E1B5EBE0100ECD82F /* CoreData.framework */,
-				8898857C1B5EBD7D00ECD82F /* ParseFacebookUtilsV4.framework */,
 				4972BBEA1B45B2BC0069D44B /* Social.framework */,
 				4972BBE81B45B2B50069D44B /* Accounts.framework */,
 				4972BBE61B45B29D0069D44B /* libsqlite3.dylib */,
@@ -429,13 +438,16 @@
 				492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */,
 				4972BBCB1B3B12B20069D44B /* AddIngedientsTableViewController.swift in Sources */,
 				492E25951B263C46006419EE /* ViewMealDetailViewController.swift in Sources */,
+				49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */,
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,
 				495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */,
+				49DD19CD1B62C352004199C2 /* CustomSignupViewController.swift in Sources */,
 				49C5C4361B068DD5006FA068 /* FoodTableViewController.swift in Sources */,
 				492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */,
+				49DD19CB1B62C344004199C2 /* CustomLoginViewController.swift in Sources */,
 				49AF6F9F1B321AE900AA64DD /* AddImageViewController.swift in Sources */,
 				49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */,
 			);
@@ -568,6 +580,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/edmund/Documents/FacebookSDK,
+					/Users/chrismclark/Documents/FacebookSDK,
+					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -594,6 +608,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/edmund/Documents/FacebookSDK,
+					/Users/chrismclark/Documents/FacebookSDK,
+					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 				);
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
