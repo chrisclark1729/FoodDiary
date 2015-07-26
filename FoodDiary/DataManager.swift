@@ -27,6 +27,7 @@ class DataManager {
         */
         
         getTimelineData.whereKey("isVisible", equalTo: true)
+        getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
         getTimelineData.orderByDescending("timestamp")
         getTimelineData.limit = 50
         
@@ -61,7 +62,8 @@ class DataManager {
                             otherPeople: object["otherDiners"] as! String,
                             notes: object["Notes"] as! String,
                             timezone: object["timezone"] as! String,
-                            isVisible: object["isVisible"] as! Bool)
+                            isVisible: object["isVisible"] as! Bool,
+                            userId: object["userId"] as! PFUser)
                        //     geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
                         
                         foodDiaryEntryArray.append(entry)

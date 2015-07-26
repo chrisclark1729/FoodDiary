@@ -37,6 +37,7 @@ extension FoodDiaryEntry {
                 entry["notes"] = self.notes
                 entry["timezone"] = self.timezone
                 entry["isVisible"] = self.isVisible
+                entry["userID"] = PFUser.currentUser()
                 
                 entry.saveInBackground()
                 entry.fetch()
@@ -90,7 +91,8 @@ extension FoodDiaryEntry {
                             otherPeople: object["otherDiners"] as! String,
                             notes: object["Notes"] as! String,
                             timezone: object["timezone"] as! String,
-                            isVisible: object["isVisible"] as! Bool)
+                            isVisible: object["isVisible"] as! Bool,
+                            userId: object["userId"] as! PFUser)
                         //     geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
                         
                         foodDiaryEntryArray.append(entry)

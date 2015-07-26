@@ -68,7 +68,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["locationName"] = ""
         userPhoto["timestamp"] = NSDate()
         userPhoto["wasEaten"] = true
-        userPhoto["user"] = "chris test"
+        userPhoto["user"] = "deprecated"
         userPhoto["otherDiners"] = ""
         userPhoto["mood"] = ""
         userPhoto["Notes"] = ""
@@ -82,6 +82,8 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["healthScore"] = 0
         userPhoto["timezone"] = NSTimeZone.localTimeZone().abbreviation!
         userPhoto["isVisible"] = true
+        userPhoto["ingredients"] = ""
+        userPhoto["userId"] = PFUser.currentUser()
     /*    userPhoto["geoPoint"] = geoPointForCurrentLocationInBackground {
             (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
             if error == nil {

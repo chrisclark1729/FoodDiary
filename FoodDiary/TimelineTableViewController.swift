@@ -68,8 +68,6 @@ class TimelineTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineTableViewCell
         
-        //TODO: Make sure meals sort descending
-        
         let meal = meals![indexPath.row]
    
         let mealImageFile:PFFile = meal.imgURL as! PFFile
@@ -84,7 +82,6 @@ class TimelineTableViewController: UITableViewController {
             }
         }
         
-
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
         cell.mealDate.text = dayFormatter.stringFromDate(meal.timestamp)

@@ -32,8 +32,7 @@ class ManuallyAddMealViewController: UIViewController {
         
         var foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
         
-       // foodDiaryEntry["user"] = PFUser.currentUser()
-        foodDiaryEntry["user"] = "chris test"
+        foodDiaryEntry["user"] = "deprecated"
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
         foodDiaryEntry["locationName"] = manualEntryLocationTextView.text
         foodDiaryEntry["timestamp"] = manualEntryTimestampTextView.text
@@ -51,6 +50,7 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["wasEaten"] = true
         foodDiaryEntry["isVisible"] = true
         foodDiaryEntry["timezone"] = NSTimeZone.localTimeZone().abbreviation!
+        foodDiaryEntry["userId"] = PFUser.currentUser()
         
         foodDiaryEntry.saveInBackground()
         self.navigationController?.popToRootViewControllerAnimated(true)
