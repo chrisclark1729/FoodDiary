@@ -14,7 +14,6 @@ class EditMealDetailTableViewController: UITableViewController {
     var foodDiaryEntry: FoodDiaryEntry?
  
     @IBOutlet weak var editMealName: UITextField!
-
     @IBAction func saveMealName(sender: AnyObject) {
         
         self.foodDiaryEntry?.mealName = self.editMealName.text

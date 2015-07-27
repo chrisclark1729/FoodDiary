@@ -11,12 +11,12 @@ import Parse
 
 class DataManager {
     
-    var timelineFoodDiaryData:NSMutableArray! = NSMutableArray()
+    var foodDiaryEntryArray = [FoodDiaryEntry]()
     
     var delegate:TimelineTableViewController?
     
     func loadTimelineData () {
-        timelineFoodDiaryData.removeAllObjects()
+        foodDiaryEntryArray.removeAll(keepCapacity: false)
         
         var getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
         
@@ -37,13 +37,9 @@ class DataManager {
             if error == nil {
                 // The find succeeded.
                 println("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
-                
-            var foodDiaryEntryArray = [FoodDiaryEntry]()
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                       // println(object.objectId)
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
@@ -64,25 +60,23 @@ class DataManager {
                             timezone: object["timezone"] as! String,
                             isVisible: object["isVisible"] as! Bool,
                             userId: object["userId"] as! PFUser)
-                       //     geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
+                            // geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
                         
-                        foodDiaryEntryArray.append(entry)
-                    
+                        self.foodDiaryEntryArray.append(entry)
+                        
                     }
-                self.delegate!.meals = foodDiaryEntryArray
-                self.delegate!.tableView.reloadData()
+                    self.delegate!.meals = self.foodDiaryEntryArray
+                    self.delegate!.tableView.reloadData()
                     
                 }
             } else {
                 // Log details of the failure
                 println("Error: \(error!) \(error!.userInfo!)")
             }
-
             
-             
-    }
-
+        }
+        
     }
     
-}
+   }
 

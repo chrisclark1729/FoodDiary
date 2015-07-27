@@ -46,6 +46,7 @@
 		49DD19D11B62DD49004199C2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D01B62DD49004199C2 /* FBSDKCoreKit.framework */; };
 		49DD19D31B62DD73004199C2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */; };
 		49DD19D51B62DE2B004199C2 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D41B62DE2B004199C2 /* ParseUI.framework */; };
+		49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */; };
 		8898857F1B5EBE0100ECD82F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898857E1B5EBE0100ECD82F /* CoreData.framework */; };
 		889885811B5EBE2100ECD82F /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885801B5EBE2100ECD82F /* Twitter.framework */; };
 		889885831B5EBE3100ECD82F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885821B5EBE3100ECD82F /* AVFoundation.framework */; };
@@ -114,6 +115,7 @@
 		49DD19D01B62DD49004199C2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		49DD19D41B62DE2B004199C2 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
+		49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerViewController.swift; sourceTree = "<group>"; };
 		885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodDiary-Bridging-Header.h"; sourceTree = "<group>"; };
 		8898857E1B5EBE0100ECD82F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		889885801B5EBE2100ECD82F /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -208,6 +210,7 @@
 				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
 				4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
+				49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */,
 				495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */,
 				4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */,
 				4911A7121B18BBAE003B3BDF /* colViewCell.swift */,
@@ -440,6 +443,7 @@
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
+				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,
 				495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */,
 				49C5C4361B068DD5006FA068 /* FoodTableViewController.swift in Sources */,

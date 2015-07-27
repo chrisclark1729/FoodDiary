@@ -277,6 +277,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="7Kk-HX-Imo" kind="push" id="jGw-7X-QPN"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="day" textLabel="lRS-tA-YDT" detailTextLabel="v69-o4-dDL" style="IBUITableViewCellStyleSubtitle" id="mbM-3E-pWo">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -540,7 +543,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="FREQUENT" id="xxR-NH-47r">
+                            <tableViewSection headerTitle="FREQUENT MEALS" id="xxR-NH-47r">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Q8K-BU-H9y">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -609,6 +612,25 @@
                 <exit id="zW5-89-FMD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2005.5" y="327.5"/>
+        </scene>
+        <!--Location Manager View Controller-->
+        <scene sceneID="aKf-cT-Gho">
+            <objects>
+                <viewController id="7Kk-HX-Imo" customClass="LocationManagerViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="krX-HC-M4c"/>
+                        <viewControllerLayoutGuide type="bottom" id="JDM-HF-Cd6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eaf-IY-vhh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qad-pm-28n"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vaQ-Es-EZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2005.5" y="1131.5"/>
         </scene>
         <!--Add Meal Photo View Controller-->
         <scene sceneID="Aoj-Wj-q7z">
