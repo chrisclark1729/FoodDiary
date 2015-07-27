@@ -30,9 +30,10 @@ class FoodDiaryEntry: NSObject {
     var notes:String
     var timezone:String
     var isVisible:Bool
-    var userId: PFUser
+    var userId:PFUser
+    var location:PFGeoPoint
 
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String,isVisible:Bool, userId: PFUser) {
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -53,14 +54,14 @@ class FoodDiaryEntry: NSObject {
         self.timezone=timezone
         self.isVisible=isVisible
         self.userId=userId
+        self.location=location
 
     }
     
     func mealScore() ->Int {
         
         /*Meal "Score" is a combination of how healthy the meal is and how much the user enjoyed the meal.
-        The philosophy is that the healthiest life is eating healthy food that you also enjoy.
-        Overtime, I'd like this to be much more sophisticated.                           */
+        The philosophy is that the healthiest life is eating healthy food that you also enjoy. */
         
         let mealScore = (self.healthScore*16)+(self.enjoymentScore*4)
         

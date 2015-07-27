@@ -40,6 +40,8 @@ class DataManager {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
+                        println(object["mealName"])
+                        println(object["location"])
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
@@ -59,8 +61,8 @@ class DataManager {
                             notes: object["Notes"] as! String,
                             timezone: object["timezone"] as! String,
                             isVisible: object["isVisible"] as! Bool,
-                            userId: object["userId"] as! PFUser)
-                            // geoPoint: object["geoPoint"] as! PFGeoPointResultBlock)
+                            userId: object["userId"] as! PFUser,
+                            location: object["location"] as! PFGeoPoint)
                         
                         self.foodDiaryEntryArray.append(entry)
                         

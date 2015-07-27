@@ -58,11 +58,10 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         dismissViewControllerAnimated(true, completion: nil)
         
         let imageData = UIImagePNGRepresentation(image)
-        //TODO: Set Name of imagefile??
         let imageFile:PFFile = PFFile(data: imageData)
         
         var userPhoto = PFObject(className:"FoodDiaryEntries")
-   //     userPhoto["imageName"] = "Name of Image"
+
         userPhoto["imageFile"] = imageFile
         userPhoto["mealName"] = ""
         userPhoto["locationName"] = ""
@@ -84,12 +83,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["isVisible"] = true
         userPhoto["ingredients"] = ""
         userPhoto["userId"] = PFUser.currentUser()
-    /*    userPhoto["geoPoint"] = geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-            if error == nil {
-                // do something with the new geoPoint
-            }
-        } */
+        userPhoto["location"] = PFGeoPoint(latitude: 1, longitude: 1)
         userPhoto.saveInBackground()
     }
     
