@@ -8,42 +8,55 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class LocationManagerViewController: UIViewController, CLLocationManagerDelegate {
-
+    
     let locationManager = CLLocationManager()
+    static let sharedLocation = LocationManagerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
+            self.locationManager.distanceFilter = 10
             locationManager.startUpdatingLocation()
         }
-
-        // Do any additional setup after loading the view.
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
         
         var lat = locValue.latitude
-        println("\(lat)")
         var lon = locValue.longitude
-        println("\(lon)")
         
     }
     
+    func refreshLocation() {
+        
+        self.locationManager.startUpdatingLocation()
+        
+        
+        self.locationManager.stopUpdatingLocation()
+        
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
+    {
+        println("Error: " + error.localizedDescription)
+    }
 
     /*
     // MARK: - Navigation
@@ -56,3 +69,5 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
     */
 
 }
+
+

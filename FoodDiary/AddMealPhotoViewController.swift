@@ -83,7 +83,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["isVisible"] = true
         userPhoto["ingredients"] = ""
         userPhoto["userId"] = PFUser.currentUser()
-        userPhoto["location"] = PFGeoPoint(latitude: 1, longitude: 1)
+        userPhoto["location"] = PFGeoPoint(latitude: 0.666, longitude: 1)
         userPhoto.saveInBackground()
     }
     
