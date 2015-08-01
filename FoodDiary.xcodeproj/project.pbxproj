@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490672341B6D4F940033D37D /* EditEnjoymentScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490672331B6D4F940033D37D /* EditEnjoymentScoreViewController.swift */; };
 		4911A7131B18BBAE003B3BDF /* colViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911A7121B18BBAE003B3BDF /* colViewCell.swift */; };
 		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
 		492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25881B24DE1A006419EE /* TimelineTableViewController.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		2E69FBFD3A483213460480A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		490672331B6D4F940033D37D /* EditEnjoymentScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEnjoymentScoreViewController.swift; sourceTree = "<group>"; };
 		4911A7121B18BBAE003B3BDF /* colViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colViewCell.swift; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
@@ -210,6 +212,8 @@
 				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
 				4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
+				4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */,
+				490672331B6D4F940033D37D /* EditEnjoymentScoreViewController.swift */,
 				49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */,
 				495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */,
 				4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */,
@@ -219,7 +223,6 @@
 				49C5C4131B068AA6006FA068 /* Supporting Files */,
 				49C5C4351B068DD5006FA068 /* FoodTableViewController.swift */,
 				492E25941B263C46006419EE /* ViewMealDetailViewController.swift */,
-				4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */,
 				492E25881B24DE1A006419EE /* TimelineTableViewController.swift */,
 				492E25961B28A652006419EE /* TimelineTableViewCell.swift */,
 				492E258A1B24DFFC006419EE /* DataManager.swift */,
@@ -445,6 +448,7 @@
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,
+				490672341B6D4F940033D37D /* EditEnjoymentScoreViewController.swift in Sources */,
 				495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */,
 				49C5C4361B068DD5006FA068 /* FoodTableViewController.swift in Sources */,
 				492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */,

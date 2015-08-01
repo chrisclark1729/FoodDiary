@@ -13,10 +13,12 @@ class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
  
+    @IBOutlet weak var editEnjoymentScore: UISlider!
     @IBOutlet weak var editMealName: UITextField!
     @IBAction func saveMealName(sender: AnyObject) {
         
         self.foodDiaryEntry?.mealName = self.editMealName.text
+        self.foodDiaryEntry?.enjoymentScore = 2
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
 
