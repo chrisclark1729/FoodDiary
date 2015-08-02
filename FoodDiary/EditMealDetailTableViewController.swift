@@ -13,12 +13,21 @@ class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
  
-    @IBOutlet weak var editEnjoymentScore: UISlider!
+    @IBAction func saveMood(sender: AnyObject) {
+        
+        self.foodDiaryEntry?.mood = self.editMood.text
+        println(editMood.text)
+        foodDiaryEntry!.save()
+                self.navigationController?.popViewControllerAnimated(true)
+    }
+
+    @IBOutlet weak var editEnergyLevelSlider: UISlider!
+    @IBOutlet weak var editEnjoymentScoreSlider: UISlider!
+    @IBOutlet weak var editMood: UITextField!
     @IBOutlet weak var editMealName: UITextField!
     @IBAction func saveMealName(sender: AnyObject) {
         
         self.foodDiaryEntry?.mealName = self.editMealName.text
-        self.foodDiaryEntry?.enjoymentScore = 2
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
 
@@ -27,18 +36,6 @@ class EditMealDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        editMealName.becomeFirstResponder()
-        
-        if let entry = foodDiaryEntry {
-            
-            self.editMealName.text = entry.mealName
-        }
-        else {
-            println("No Food Entry")
-        }
-
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -46,7 +43,58 @@ class EditMealDetailTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.initMealNameField()
+        self.initMoodField()
+    }
+    
+    func initMealNameField() {
+        if let editMealNameField = self.editMealName {
+            editMealNameField.becomeFirstResponder()
+            
+            if let entry = foodDiaryEntry {
+                
+               editMealName.text = entry.mealName
+            }
+            else {
+                println("No Food Entry")
+            }
+        }
+        
+    }
+    
+    func initMoodField() {
+        if let editMoodField = self.editMood {
+            editMoodField.becomeFirstResponder()
+            
+            if let entry = foodDiaryEntry {
+                
+                editMoodField.text = entry.mood
+            }
+            else {
+                println("No Food Entry")
+            }
+        }
+        
+    }
+    
+    func initSliders() {
+        if let editEnergyLevel = self.editEnergyLevelSlider {
+            
+            if let entry = foodDiaryEntry {
+                
+                editEnergyLevel.value = Float(entry.energyLevel)
+            }
+            else {
+                println("No Food Entry")
+            }
+        }
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

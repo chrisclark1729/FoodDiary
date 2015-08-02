@@ -14,18 +14,12 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
     
     let locationManager = CLLocationManager()
     static let sharedLocation = LocationManagerViewController()
+    var lastKnownLatitude: Float = 0
+    var lastKnownLongitude: Float = 0
+    var lastKnownLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.distanceFilter = 10
-            locationManager.startUpdatingLocation()
-        }
         
     }
     
@@ -36,20 +30,23 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
     
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locValue:CLLocationCoordinate2D = manager.location.coordinate
+      //  var locValue:CLLocationCoordinate2D = manager.location.coordinate
         
-        var lat = locValue.latitude
-        var lon = locValue.longitude
-        
+        self.lastKnownLocation = manager.location
+        println("Location Found")
+        self.locationManager.stopUpdatingLocation()
     }
     
     func refreshLocation() {
         
-        self.locationManager.startUpdatingLocation()
+        self.locationManager.requestWhenInUseAuthorization()
         
-        
-        self.locationManager.stopUpdatingLocation()
-        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.distanceFilter = 10
+            locationManager.startUpdatingLocation()
+        }
         
     }
     

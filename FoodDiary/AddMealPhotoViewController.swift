@@ -83,7 +83,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["isVisible"] = true
         userPhoto["ingredients"] = ""
         userPhoto["userId"] = PFUser.currentUser()
-        userPhoto["location"] = PFGeoPoint(latitude: 0.666, longitude: 1)
+        userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
         userPhoto.saveInBackground()
     }
     
@@ -96,7 +96,11 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
 
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        LocationManagerViewController.sharedLocation.refreshLocation()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

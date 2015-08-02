@@ -17,8 +17,9 @@ class ViewMealDetailViewController: UITableViewController {
     
     
     @IBOutlet weak var mealName: UILabel!
-    
     @IBOutlet weak var mealLocationName: UILabel!
+    @IBOutlet weak var moodLabel: UILabel!
+    
     
     @IBAction func cancelToViewMealDetailViewController(segue:UIStoryboardSegue) {
         
@@ -81,6 +82,7 @@ class ViewMealDetailViewController: UITableViewController {
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
+            self.moodLabel.text = entry.mood
             
 
             
@@ -118,7 +120,9 @@ class ViewMealDetailViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "editFoodDiaryEntry" {
+        if segue.identifier == "editFoodDiaryEntry" ||
+        segue.identifier == "editMood"
+        {
             
             var destination = segue.destinationViewController as! EditMealDetailTableViewController
             

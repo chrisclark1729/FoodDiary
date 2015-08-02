@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
