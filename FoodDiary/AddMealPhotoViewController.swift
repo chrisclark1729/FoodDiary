@@ -93,6 +93,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LocationManagerViewController.sharedLocation.refreshLocation()
 
         // Do any additional setup after loading the view.
     }

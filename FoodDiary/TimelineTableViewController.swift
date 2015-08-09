@@ -28,7 +28,7 @@ class TimelineTableViewController: UITableViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dayFormatter.dateFormat = "MMM dd, yyyy"
         timeFormatter.dateFormat = "h:mm a"
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -58,9 +58,6 @@ class TimelineTableViewController: UITableViewController {
         } else {
             return 0
         }
-
-        
-  
 
     }
 
