@@ -22,18 +22,17 @@ class FoodDiaryEntry: NSObject {
     var gramsProtein:Int
     var gramsFat:Int
     var gramsFiber:Int
-    var enjoymentScore:Int
-    var healthScore:Int
+    var enjoymentScore:Float
+    var healthScore:Float
     var mood:String
-    var energyLevel:Int
+    var energyLevel:Float
     var otherPeople:String
-    var notes:String
     var timezone:String
     var isVisible:Bool
     var userId:PFUser
     var location:PFGeoPoint
 
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Int,healthScore:Int,mood:String,energyLevel:Int,otherPeople:String,notes:String, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float,otherPeople:String, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -50,7 +49,6 @@ class FoodDiaryEntry: NSObject {
         self.mood=mood
         self.energyLevel=energyLevel
         self.otherPeople=otherPeople
-        self.notes=notes
         self.timezone=timezone
         self.isVisible=isVisible
         self.userId=userId
@@ -58,12 +56,12 @@ class FoodDiaryEntry: NSObject {
 
     }
     
-    func mealScore() ->Int {
+    func mealScore() ->NSString {
         
         /*Meal "Score" is a combination of how healthy the meal is and how much the user enjoyed the meal.
         The philosophy is that the healthiest life is eating healthy food that you also enjoy. */
         
-        let mealScore = (self.healthScore*16)+(self.enjoymentScore*4)
+        let mealScore = NSString(format: "%.1f",(self.healthScore*16)+(self.enjoymentScore*4))
         
         return mealScore
     }

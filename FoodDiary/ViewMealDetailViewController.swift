@@ -20,7 +20,11 @@ class ViewMealDetailViewController: UITableViewController {
     @IBOutlet weak var mealLocationName: UILabel!
     @IBOutlet weak var moodLabel: UILabel!
     
+    @IBOutlet weak var enjoymentScoreLabel: UILabel!
     
+    @IBOutlet weak var energyLevelLabel: UILabel!
+    
+    @IBOutlet weak var healthScoreLabel: UILabel!
     @IBAction func cancelToViewMealDetailViewController(segue:UIStoryboardSegue) {
         
     }
@@ -83,9 +87,10 @@ class ViewMealDetailViewController: UITableViewController {
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
             self.moodLabel.text = entry.mood
-            
-
-            
+            self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", entry.enjoymentScore) as String)
+            self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",entry.energyLevel) as String)
+             self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", entry.healthScore) as String)
+    
             /*
             
             self.mealTime.text = entry.timestamp
@@ -93,8 +98,7 @@ class ViewMealDetailViewController: UITableViewController {
             self.mood.text = "Mood: " + entry.mood
             self.otherDiners.text = "Other Diners: " + entry.otherPeople
             self.healthScore.text = "Health Score: " + String(stringInterpolationSegment: entry.healthScore)
-            self.enjoymentScore.text = "Enjoyment Score: " + String(stringInterpolationSegment: entry.enjoymentScore)
-            self.energyLevel.text = "Energy Level: " + String(stringInterpolationSegment: entry.energyLevel)
+
             self.mealNotes.text = entry.notes
             */
         }
@@ -128,6 +132,10 @@ class ViewMealDetailViewController: UITableViewController {
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             
+        } else if segue.identifier == "editMealExperience" {
+            var destination = segue.destinationViewController as! EditMealExperienceTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
         }
         
     }

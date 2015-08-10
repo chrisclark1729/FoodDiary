@@ -67,7 +67,6 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["locationName"] = ""
         userPhoto["timestamp"] = NSDate()
         userPhoto["wasEaten"] = true
-        userPhoto["user"] = "deprecated"
         userPhoto["otherDiners"] = ""
         userPhoto["mood"] = ""
         userPhoto["Notes"] = ""

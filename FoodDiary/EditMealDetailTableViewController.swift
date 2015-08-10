@@ -63,7 +63,6 @@ class EditMealDetailTableViewController: UITableViewController {
     func initMealNameField() {
         if let editMealNameField = self.editMealName {
             
-            println("meal name hello chris")
             editMealNameField.becomeFirstResponder()
             
             if let entry = foodDiaryEntry {
@@ -79,8 +78,7 @@ class EditMealDetailTableViewController: UITableViewController {
     
     func initLocationNameField() {
         if let editLocationNameField = self.editLocationTextField {
-            println("meal location hello chris")
-            println(self.editLocationTextField)
+
             editLocationTextField.becomeFirstResponder()
             
             if let entry = foodDiaryEntry {
@@ -109,19 +107,7 @@ class EditMealDetailTableViewController: UITableViewController {
         
     }
     
-    func initSliders() {
-        if let editEnergyLevel = self.editEnergyLevelSlider {
-            
-            if let entry = foodDiaryEntry {
-                
-                editEnergyLevel.value = Float(entry.energyLevel)
-            }
-            else {
-                println("No Food Entry")
-            }
-        }
-        
-    }
+
     
     
     override func didReceiveMemoryWarning() {
