@@ -37,7 +37,9 @@ extension FoodDiaryEntry {
                 entry["timezone"] = self.timezone
                 entry["isVisible"] = self.isVisible
                 entry["userID"] = PFUser.currentUser()
-                entry["location"] = PFGeoPoint()
+                
+                // Do NOT Update Location when editing
+                //entry["location"] = PFGeoPoint()
                 
                 entry.saveInBackground()
                 entry.fetch()

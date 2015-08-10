@@ -14,10 +14,9 @@ class EditMealDetailTableViewController: UITableViewController {
     var foodDiaryEntry: FoodDiaryEntry?
     
     @IBOutlet weak var editLocationTextField: UITextField!
-    @IBOutlet weak var editEnergyLevelSlider: UISlider!
-    @IBOutlet weak var editEnjoymentScoreSlider: UISlider!
     @IBOutlet weak var editMood: UITextField!
     @IBOutlet weak var editMealName: UITextField!
+    @IBOutlet weak var editTimestampPicker: UIDatePicker!
     
     @IBAction func saveMood(sender: AnyObject) {
         
@@ -105,6 +104,23 @@ class EditMealDetailTableViewController: UITableViewController {
             }
         }
         
+    }
+    
+    func initTimestampPicker() {
+        if let editTimestampPickerField = self.editTimestampPicker {
+            editTimestampPickerField.becomeFirstResponder()
+            
+            if let entry = foodDiaryEntry {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
+                
+                self.editTimestampPicker.date = entry.timestamp
+                
+                println("hi chris")
+            } else {
+                println("No Food Entry")
+            }
+        }
     }
     
 

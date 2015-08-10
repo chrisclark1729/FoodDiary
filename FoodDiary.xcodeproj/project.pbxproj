@@ -34,6 +34,8 @@
 		4972BBEB1B45B2BC0069D44B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBEA1B45B2BC0069D44B /* Social.framework */; };
 		4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */; };
 		49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */; };
+		49A614B31B79028600B66489 /* EditMealComponentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */; };
+		49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B41B79160E00B66489 /* OtherDiners.swift */; };
 		49AF6F9F1B321AE900AA64DD /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */; };
 		49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4151B068AA6006FA068 /* AppDelegate.swift */; };
 		49C5C41B1B068AA6006FA068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49C5C4191B068AA6006FA068 /* Main.storyboard */; };
@@ -100,6 +102,8 @@
 		4972BBEA1B45B2BC0069D44B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuallyAddMealViewController.swift; sourceTree = "<group>"; };
 		49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealExperienceTableViewController.swift; sourceTree = "<group>"; };
+		49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealComponentsTableViewController.swift; sourceTree = "<group>"; };
+		49A614B41B79160E00B66489 /* OtherDiners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDiners.swift; sourceTree = "<group>"; };
 		49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		49C5C4101B068AA6006FA068 /* FoodDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C5C4141B068AA6006FA068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,8 +216,11 @@
 				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
 				4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
-				49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */,
+				49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */,
 				4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */,
+				49A614B41B79160E00B66489 /* OtherDiners.swift */,
+				492E258A1B24DFFC006419EE /* DataManager.swift */,
+				49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */,
 				49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */,
 				495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */,
 				4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */,
@@ -224,7 +231,6 @@
 				492E25881B24DE1A006419EE /* TimelineTableViewController.swift */,
 				4972BBCA1B3B12B20069D44B /* AddIngedientsTableViewController.swift */,
 				49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */,
-				492E258A1B24DFFC006419EE /* DataManager.swift */,
 				49C5C41C1B068AA6006FA068 /* Images.xcassets */,
 				49C5C41E1B068AA7006FA068 /* LaunchScreen.xib */,
 				49C5C4131B068AA6006FA068 /* Supporting Files */,
@@ -443,9 +449,11 @@
 				4972BBCB1B3B12B20069D44B /* AddIngedientsTableViewController.swift in Sources */,
 				492E25951B263C46006419EE /* ViewMealDetailViewController.swift in Sources */,
 				49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */,
+				49A614B31B79028600B66489 /* EditMealComponentsTableViewController.swift in Sources */,
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */,
+				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,

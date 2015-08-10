@@ -281,26 +281,6 @@
                                             <segue destination="ZRX-9E-FRb" kind="push" identifier="editLocation" id="ThY-7w-Oas"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="day" textLabel="lRS-tA-YDT" detailTextLabel="v69-o4-dDL" style="IBUITableViewCellStyleSubtitle" id="mbM-3E-pWo">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mbM-3E-pWo" id="NBZ-lV-hzP">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="DAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lRS-tA-YDT">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v69-o4-dDL">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="time" textLabel="Q2g-7a-JiX" detailTextLabel="1f1-JS-6j6" style="IBUITableViewCellStyleSubtitle" id="IN5-0f-roW">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IN5-0f-roW" id="rV8-W3-L9P">
@@ -320,6 +300,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6Zf-SD-WYd" kind="push" identifier="editMealDetail" id="TWk-Fn-n3r"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mealIngredients" textLabel="qW9-qt-aeU" style="IBUITableViewCellStyleDefault" id="dXR-dE-4De">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -443,6 +426,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vWx-3j-u1z" kind="push" identifier="editMealComponents" id="2sU-1D-6RK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -527,6 +513,7 @@
                         <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>
                         <outlet property="moodLabel" destination="qA8-Ta-74X" id="Hui-i6-430"/>
+                        <outlet property="timeLabel" destination="1f1-JS-6j6" id="zwp-li-irh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5M-yp-YoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -604,6 +591,60 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2908.5" y="327.5"/>
+        </scene>
+        <!--Edit Date & Time-->
+        <scene sceneID="mNZ-Tl-LGe">
+            <objects>
+                <tableViewController id="6Zf-SD-WYd" customClass="EditMealDetailTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="22" sectionFooterHeight="22" id="7II-2T-AS5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="X9S-5o-cyS">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="PHt-XE-lS4">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHt-XE-lS4" id="K9h-km-8L3">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="F9k-Tg-FjI">
+                                                    <rect key="frame" x="-8" y="-14" width="383" height="162"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="460923453.05648202">
+                                                        <!--2015-08-10 18:17:33 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="wAX-ar-XlP">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wAX-ar-XlP" id="jbb-3G-mng">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="qx7-7L-YOz">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qx7-7L-YOz" id="MgX-Y8-umZ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="6Zf-SD-WYd" id="Ytq-eF-kM9"/>
+                            <outlet property="delegate" destination="6Zf-SD-WYd" id="pOs-np-3Jd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Date &amp; Time" id="qkm-i4-vJ3"/>
+                    <connections>
+                        <outlet property="editTimestampPicker" destination="F9k-Tg-FjI" id="Gtr-hf-Z2f"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eym-Vd-vYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1998.5" y="312.5"/>
         </scene>
         <!--Edit Meal Name-->
         <scene sceneID="5lp-Oc-5Fk">
@@ -742,7 +783,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgC-BS-6Iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zW5-89-FMD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2004.5" y="327.5"/>
+            <point key="canvasLocation" x="2876.5" y="-344.5"/>
         </scene>
         <!--Edit Location-->
         <scene sceneID="EaB-3w-Z11">
@@ -843,7 +884,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="6gW-Ad-jPa">
-                                                    <rect key="frame" x="6" y="53" width="363" height="31"/>
+                                                    <rect key="frame" x="27" y="53" width="319" height="31"/>
                                                     <connections>
                                                         <action selector="enjoymentScoreSlider:" destination="SBs-ko-bSF" eventType="valueChanged" id="5W0-ZN-pI6"/>
                                                     </connections>
@@ -868,7 +909,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="KAq-Y8-Zz2">
-                                                    <rect key="frame" x="6" y="53" width="363" height="31"/>
+                                                    <rect key="frame" x="28" y="53" width="319" height="31"/>
                                                     <connections>
                                                         <action selector="energyLevelSlider:" destination="SBs-ko-bSF" eventType="valueChanged" id="nPG-rQ-u2I"/>
                                                     </connections>
@@ -893,7 +934,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-xe-JkM">
-                                                    <rect key="frame" x="6" y="53" width="363" height="31"/>
+                                                    <rect key="frame" x="29" y="53" width="319" height="31"/>
                                                     <connections>
                                                         <action selector="healthScoreSlider:" destination="SBs-ko-bSF" eventType="valueChanged" id="SS5-pa-xn5"/>
                                                     </connections>
@@ -935,6 +976,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJ6-lR-PGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2004.5" y="1136.5"/>
+        </scene>
+        <!--Edit Meal Components Table View Controller-->
+        <scene sceneID="s7L-cT-EzR">
+            <objects>
+                <tableViewController id="vWx-3j-u1z" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DTn-NX-z6K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="diner" textLabel="FH6-49-1Wd" style="IBUITableViewCellStyleDefault" id="REJ-mA-HGR">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REJ-mA-HGR" id="nms-zA-TjA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FH6-49-1Wd">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vWx-3j-u1z" id="R4F-Cp-7cD"/>
+                            <outlet property="delegate" destination="vWx-3j-u1z" id="Nlo-05-x64"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Ush-MD-md8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BqH-6y-BWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2004.5" y="1902.5"/>
         </scene>
         <!--Add Meal Photo View Controller-->
         <scene sceneID="Aoj-Wj-q7z">
