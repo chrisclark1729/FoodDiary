@@ -38,10 +38,22 @@ extension FoodDiaryEntry {
                 entry["isVisible"] = self.isVisible
                 entry["userID"] = PFUser.currentUser()
                 
-                // Do NOT Update Location when editing
-                //entry["location"] = PFGeoPoint()
+                // NOTE: Do NOT Update Location during editing. This will overwrite geoLocation Data.
                 
                 entry.saveInBackground()
+                
+                for diner in self.diners {
+                    println("hey chris, this is your meal ID: \(self.mealID)")
+                    var foodDiaryEntryDiner:PFObject = PFObject(className:"FoodDiaryEntryDiners")
+                    
+                    
+                    foodDiaryEntryDiner["dinerName"] = diner.name
+                    foodDiaryEntryDiner["foodDiaryEntryId"] = FoodDiaryEntry
+                    
+                    foodDiaryEntryDiner.saveInBackground()
+                    
+                }
+                
                 entry.fetch()
             }
         }

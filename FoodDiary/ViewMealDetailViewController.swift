@@ -96,7 +96,7 @@ class ViewMealDetailViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "editFoodDiaryEntry" ||
-        segue.identifier == "editMood" || segue.identifier == "editLocation"
+        segue.identifier == "editMood" || segue.identifier == "editLocation" || segue.identifier == "editMealDetail"
         {
             
             var destination = segue.destinationViewController as! EditMealDetailTableViewController

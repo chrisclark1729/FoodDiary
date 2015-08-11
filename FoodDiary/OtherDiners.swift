@@ -9,16 +9,15 @@
 import UIKit
 import Parse
 
-class OtherDiners: NSObject {
+class OtherDiner: NSObject {
     
     var name: String?
-    var dinerId: PFUser
-    var mealId: PFObject
+    var entry: FoodDiaryEntry?
+  
     
-    init(name: String? = "nil", dinerId: PFUser? = PFUser.currentUser(), mealId: PFObject) {
+    init(entry: FoodDiaryEntry, name: String? = "nil") {
         self.name = name
-        self.dinerId = dinerId!
-        self.mealId = mealId
+        self.entry = entry
         super.init()
     }
     

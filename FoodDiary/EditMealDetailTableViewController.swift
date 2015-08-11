@@ -57,6 +57,7 @@ class EditMealDetailTableViewController: UITableViewController {
         self.initMealNameField()
         self.initMoodField()
         self.initLocationNameField()
+        self.initTimestampPicker()
     }
     
     func initMealNameField() {

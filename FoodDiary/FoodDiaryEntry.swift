@@ -31,6 +31,7 @@ class FoodDiaryEntry: NSObject {
     var isVisible:Bool
     var userId:PFUser
     var location:PFGeoPoint
+    var diners = [OtherDiner]()
 
     init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float,otherPeople:String, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
@@ -54,6 +55,13 @@ class FoodDiaryEntry: NSObject {
         self.userId=userId
         self.location=location
 
+    }
+    
+    func addDiner(diner: OtherDiner) {
+        
+        self.diners.append(diner)
+    
+        
     }
     
     func mealScore() ->NSString {

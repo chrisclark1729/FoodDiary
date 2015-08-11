@@ -14,7 +14,7 @@ class EditMealComponentsTableViewController: UITableViewController {
     var foodDiaryEntry: FoodDiaryEntry?
     
     
-    var otherDiners = [OtherDiners]()
+    var otherDiners = [OtherDiner]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,33 @@ class EditMealComponentsTableViewController: UITableViewController {
     }
     
     func addDiner() {
-        /*
-        let newDiner = Contact(name: "New Contact")
-        self.contacts.append(newContact)
-        let newIndexPath = NSIndexPath(forRow: self.contacts.count - 1, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
-*/
+        
+        var inputTextField: UITextField?
+
+        let actionSheetController: UIAlertController = UIAlertController(title: "Add Diner", message: "", preferredStyle: .Alert)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff 
+        }
+            actionSheetController.addAction(cancelAction)
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
+      
+            println(inputTextField!.text)
+            println("you're the man dog")
+            var diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
+            self.foodDiaryEntry?.addDiner(diner)
+            self.tableView.reloadData()
+            println(self.foodDiaryEntry?.mealID)
+            self.foodDiaryEntry!.save()
+        }
+        actionSheetController.addAction(nextAction)
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            inputTextField = textField
+        }
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
+        
+        
+
     }
     
 
