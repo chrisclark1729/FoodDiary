@@ -13,43 +13,27 @@ class ManuallyAddMealViewController: UIViewController {
 
     @IBOutlet weak var manualEntryMealNameTextView: UITextField!
     @IBOutlet weak var manualEntryLocationTextView: UITextField!
-    @IBOutlet weak var manualEntryTimestampTextView: UITextField!
-    @IBOutlet weak var manualEntryIngredientsTextView: UITextView!
-    @IBOutlet weak var manualEntryHealthScore: UITextField!
-    @IBOutlet weak var manualEntryCalories: UITextField!
-    @IBOutlet weak var manualEntryGramsFat: UITextField!
-    @IBOutlet weak var manualEntryGramsCarbs: UITextField!
-    @IBOutlet weak var manualEntryGramsProtein: UITextField!
-    @IBOutlet weak var manualEntryEnjoymentScore: UITextField!
     @IBOutlet weak var manualEntryMood: UITextField!
-    @IBOutlet weak var manualEntryEnergyLevel: UITextField!
-    @IBOutlet weak var manualEntryOtherDiners: UITextField!
-    @IBOutlet weak var manualEntryNotes: UITextView!
-    
-    @IBOutlet weak var manualEntryGramsFiber: UITextField!
-    
     @IBAction func sendManualFoodDiaryEntry(sender: AnyObject) {
         
         var foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
         
-        foodDiaryEntry["user"] = "deprecated"
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
         foodDiaryEntry["locationName"] = manualEntryLocationTextView.text
-        foodDiaryEntry["timestamp"] = manualEntryTimestampTextView.text
-        foodDiaryEntry["healthScore"] = manualEntryHealthScore.text.toInt()!
-        foodDiaryEntry["calories"] = manualEntryCalories.text.toInt()!
-        foodDiaryEntry["gramsFat"] = manualEntryGramsFat.text.toInt()!
-        foodDiaryEntry["gramsCarbs"] = manualEntryGramsCarbs.text.toInt()!
-        foodDiaryEntry["gramsProtein"] = manualEntryGramsProtein.text.toInt()!
-        foodDiaryEntry["gramsFiber"] = manualEntryGramsFiber.text.toInt()!
-        foodDiaryEntry["enjoymentScore"] = manualEntryEnjoymentScore.text.toInt()!
+        foodDiaryEntry["timestamp"] = NSDate()
+        foodDiaryEntry["healthScore"] = 0
+        foodDiaryEntry["calories"] = 0
+        foodDiaryEntry["gramsFat"] = 0
+        foodDiaryEntry["gramsCarbs"] = 0
+        foodDiaryEntry["gramsProtein"] = 0
+        foodDiaryEntry["gramsFiber"] = 0
+        foodDiaryEntry["enjoymentScore"] = 0
         foodDiaryEntry["mood"] = manualEntryMood.text
-        foodDiaryEntry["energyLevel"] = manualEntryEnergyLevel.text.toInt()!
-        foodDiaryEntry["otherDiners"] = manualEntryOtherDiners.text
-        foodDiaryEntry["Notes"] = manualEntryNotes.text
+        foodDiaryEntry["energyLevel"] = 0
         foodDiaryEntry["wasEaten"] = true
         foodDiaryEntry["isVisible"] = true
         foodDiaryEntry["timezone"] = NSTimeZone.localTimeZone().abbreviation!
+        foodDiaryEntry["location"] = PFGeoPoint(latitude: 0, longitude: 0)
         foodDiaryEntry["userId"] = PFUser.currentUser()
         
         foodDiaryEntry.saveInBackground()

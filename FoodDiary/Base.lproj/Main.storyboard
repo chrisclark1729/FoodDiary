@@ -637,7 +637,20 @@
                             <outlet property="delegate" destination="6Zf-SD-WYd" id="pOs-np-3Jd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Date &amp; Time" id="qkm-i4-vJ3"/>
+                    <navigationItem key="navigationItem" title="Edit Date &amp; Time" id="qkm-i4-vJ3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="JLl-o9-D8O">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iog-Wa-9DR">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveMealTimestamp:" destination="6Zf-SD-WYd" eventType="touchUpInside" id="wcY-Ta-UfI"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="editTimestampPicker" destination="F9k-Tg-FjI" id="Gtr-hf-Z2f"/>
                     </connections>
@@ -1088,68 +1101,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enjoyment Score" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qo-s4-r1n">
-                                <rect key="frame" x="16" y="434" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Calories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AxI-Ys-ega">
-                                <rect key="frame" x="16" y="273" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Protein" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDM-OQ-PUX">
-                                <rect key="frame" x="16" y="362" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Carbs" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ak3-w9-ush">
-                                <rect key="frame" x="16" y="332" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Fat" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-Mf-w8p">
-                                <rect key="frame" x="16" y="302" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Health Score" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VGi-ax-30O">
-                                <rect key="frame" x="16" y="244" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Energy Level" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H56-iJ-JGS">
-                                <rect key="frame" x="16" y="494" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Mood" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AiV-6n-DNk">
-                                <rect key="frame" x="16" y="464" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVp-yv-mjm">
-                                <rect key="frame" x="16" y="563" width="352" height="69"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Ingredients" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cTh-Fx-lh0">
-                                <rect key="frame" x="16" y="182" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Timestamp" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EdO-16-bVb">
-                                <rect key="frame" x="16" y="152" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Other Diners" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phA-Wp-Ccm">
-                                <rect key="frame" x="16" y="525" width="352" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Grams Fiber" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mUk-j3-jES">
-                                <rect key="frame" x="16" y="391" width="352" height="30"/>
+                                <rect key="frame" x="16" y="153" width="352" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1164,21 +1117,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="manualEntryCalories" destination="AxI-Ys-ega" id="vDl-pe-CPk"/>
-                        <outlet property="manualEntryEnergyLevel" destination="H56-iJ-JGS" id="zWR-K3-1pN"/>
-                        <outlet property="manualEntryEnjoymentScore" destination="3qo-s4-r1n" id="7nt-Nb-g1C"/>
-                        <outlet property="manualEntryGramsCarbs" destination="Ak3-w9-ush" id="KfL-9Z-MaZ"/>
-                        <outlet property="manualEntryGramsFat" destination="tYz-Mf-w8p" id="zOV-MZ-Khe"/>
-                        <outlet property="manualEntryGramsFiber" destination="mUk-j3-jES" id="bSl-8D-dzm"/>
-                        <outlet property="manualEntryGramsProtein" destination="aDM-OQ-PUX" id="Zo9-6n-450"/>
-                        <outlet property="manualEntryHealthScore" destination="VGi-ax-30O" id="ro7-W4-ecE"/>
-                        <outlet property="manualEntryIngredientsTextView" destination="cTh-Fx-lh0" id="EoO-WM-Uwv"/>
                         <outlet property="manualEntryLocationTextView" destination="wwM-2f-i7Z" id="jKH-rE-7cC"/>
                         <outlet property="manualEntryMealNameTextView" destination="gft-vN-IR6" id="EYq-vK-0K7"/>
                         <outlet property="manualEntryMood" destination="AiV-6n-DNk" id="o4X-NV-6P9"/>
-                        <outlet property="manualEntryNotes" destination="wVp-yv-mjm" id="ojY-mg-74H"/>
-                        <outlet property="manualEntryOtherDiners" destination="phA-Wp-Ccm" id="y9W-00-nqi"/>
-                        <outlet property="manualEntryTimestampTextView" destination="EdO-16-bVb" id="dN4-2O-zKi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBa-Hz-alm" userLabel="First Responder" sceneMemberID="firstResponder"/>

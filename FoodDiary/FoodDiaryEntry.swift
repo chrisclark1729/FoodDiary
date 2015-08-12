@@ -15,7 +15,6 @@ class FoodDiaryEntry: NSObject {
     var mealName:String
     var timestamp:NSDate
     var locationName:String
-    var ingredients:String
     var imgURL:AnyObject?
     var calories:Int
     var gramsCarbs:Int
@@ -26,19 +25,17 @@ class FoodDiaryEntry: NSObject {
     var healthScore:Float
     var mood:String
     var energyLevel:Float
-    var otherPeople:String
     var timezone:String
     var isVisible:Bool
     var userId:PFUser
     var location:PFGeoPoint
     var diners = [OtherDiner]()
 
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,ingredients:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float,otherPeople:String, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
         self.locationName=locationName
-        self.ingredients=ingredients
         self.imgURL=imgURL
         self.calories=calories
         self.gramsCarbs=gramsCarbs
@@ -49,7 +46,6 @@ class FoodDiaryEntry: NSObject {
         self.healthScore=healthScore
         self.mood=mood
         self.energyLevel=energyLevel
-        self.otherPeople=otherPeople
         self.timezone=timezone
         self.isVisible=isVisible
         self.userId=userId

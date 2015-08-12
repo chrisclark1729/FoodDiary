@@ -23,7 +23,6 @@ extension FoodDiaryEntry {
                 entry["locationName"] = self.locationName
                 entry["timestamp"] = self.timestamp
                 entry["locationName"] = self.locationName
-                entry["ingredients"] = self.ingredients
                 entry["calories"] = self.calories
                 entry["gramsFat"] = self.gramsFat
                 entry["gramsCarbs"] = self.gramsCarbs
@@ -33,7 +32,6 @@ extension FoodDiaryEntry {
                 entry["healthScore"] = self.healthScore
                 entry["mood"] = self.mood
                 entry["energyLevel"] = self.energyLevel
-                entry["otherPeople"] = self.otherPeople
                 entry["timezone"] = self.timezone
                 entry["isVisible"] = self.isVisible
                 entry["userID"] = PFUser.currentUser()
@@ -91,7 +89,6 @@ extension FoodDiaryEntry {
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
                             locationName: object["locationName"] as! String,
-                            ingredients: object["ingredients"] as! String,
                             imgURL: object["imageFile"],
                             calories: object["calories"] as! Int,
                             gramsCarbs: object["gramsCarbs"] as! Int,
@@ -102,7 +99,6 @@ extension FoodDiaryEntry {
                             healthScore: object["healthScore"] as! Float,
                             mood: object["mood"] as! String,
                             energyLevel: object["energyLevel"] as! Float,
-                            otherPeople: object["otherDiners"] as! String,
                             timezone: object["timezone"] as! String,
                             isVisible: object["isVisible"] as! Bool,
                             userId: object["userId"] as! PFUser,

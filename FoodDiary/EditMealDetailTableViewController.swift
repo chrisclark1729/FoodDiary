@@ -42,6 +42,15 @@ class EditMealDetailTableViewController: UITableViewController {
         
     }
     
+    
+    @IBAction func saveMealTimestamp(sender: AnyObject) {
+        
+        self.foodDiaryEntry?.timestamp = self.editTimestampPicker.date
+        foodDiaryEntry!.save()
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
