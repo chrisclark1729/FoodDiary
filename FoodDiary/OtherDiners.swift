@@ -13,6 +13,7 @@ class OtherDiner: NSObject {
     
     var name: String?
     var entry: FoodDiaryEntry?
+    
   
     
     init(entry: FoodDiaryEntry, name: String? = "nil") {

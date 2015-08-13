@@ -427,25 +427,29 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vWx-3j-u1z" kind="push" identifier="editMealComponents" id="2sU-1D-6RK"/>
+                                            <segue destination="kRw-m0-P9a" kind="push" identifier="editMealComponents" id="HPc-T0-RPA"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Notes" id="iKP-C2-Kvm">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notes" id="gGf-Mg-Zch">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="notes" textLabel="uOD-cN-ew4" style="IBUITableViewCellStyleDefault" id="gGf-Mg-Zch">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gGf-Mg-Zch" id="Pj2-qt-qH3">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5E-YQ-IGW">
-                                                    <rect key="frame" x="14" y="5" width="361" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uOD-cN-ew4">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vWx-3j-u1z" kind="push" identifier="editMealComponents" id="OK3-sB-1wl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -990,7 +994,7 @@
             </objects>
             <point key="canvasLocation" x="2004.5" y="1136.5"/>
         </scene>
-        <!--Edit Meal Components Table View Controller-->
+        <!--Add Notes-->
         <scene sceneID="s7L-cT-EzR">
             <objects>
                 <tableViewController id="vWx-3j-u1z" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -1004,7 +1008,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REJ-mA-HGR" id="nms-zA-TjA">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FH6-49-1Wd">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FH6-49-1Wd">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1019,11 +1023,38 @@
                             <outlet property="delegate" destination="vWx-3j-u1z" id="Nlo-05-x64"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ush-MD-md8"/>
+                    <navigationItem key="navigationItem" title="Add Notes" id="Ush-MD-md8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqH-6y-BWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004.5" y="1902.5"/>
+            <point key="canvasLocation" x="2853.5" y="1852.5"/>
+        </scene>
+        <!--Edit Meal Components Table View Controller-->
+        <scene sceneID="g1w-FZ-EGO">
+            <objects>
+                <tableViewController id="kRw-m0-P9a" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="b6X-cW-rvz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ldg-al-l1Q">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ldg-al-l1Q" id="Rxr-AT-47u">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kRw-m0-P9a" id="sPx-dA-w4G"/>
+                            <outlet property="delegate" destination="kRw-m0-P9a" id="oZb-ee-cmk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ufQ-Tm-Wsp"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4B4-ze-iuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2426.5" y="1852.5"/>
         </scene>
         <!--Add Meal Photo View Controller-->
         <scene sceneID="Aoj-Wj-q7z">
@@ -1156,6 +1187,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="mwb-Bg-I1e"/>
+        <segue reference="2YI-vR-XMV"/>
     </inferredMetricsTieBreakers>
 </document>
