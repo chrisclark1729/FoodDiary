@@ -316,6 +316,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vgi-Xi-3Vi" kind="push" identifier="editMealComponents" id="My9-2A-AFT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -532,14 +535,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="Vkd-7q-MwJ">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="vkF-8V-4AC" id="HNG-4L-WB1"/>
-                            </connections>
-                        </searchBar>
                         <sections>
                             <tableViewSection id="WoK-va-wr5">
                                 <cells>
@@ -587,14 +582,13 @@
                 <searchDisplayController id="GeL-pL-YdS">
                     <connections>
                         <outlet property="delegate" destination="vkF-8V-4AC" id="GNU-1f-bye"/>
-                        <outlet property="searchBar" destination="Vkd-7q-MwJ" id="uTB-Q1-fKb"/>
                         <outlet property="searchContentsController" destination="vkF-8V-4AC" id="CPh-M8-IHV"/>
                         <outlet property="searchResultsDataSource" destination="vkF-8V-4AC" id="xeX-ir-GHL"/>
                         <outlet property="searchResultsDelegate" destination="vkF-8V-4AC" id="NTp-ck-rkK"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2908.5" y="327.5"/>
+            <point key="canvasLocation" x="3497.5" y="327.5"/>
         </scene>
         <!--Edit Date & Time-->
         <scene sceneID="mNZ-Tl-LGe">
@@ -661,7 +655,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eym-Vd-vYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1998.5" y="312.5"/>
+            <point key="canvasLocation" x="3045.5" y="327.5"/>
         </scene>
         <!--Edit Meal Name-->
         <scene sceneID="5lp-Oc-5Fk">
@@ -800,7 +794,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgC-BS-6Iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zW5-89-FMD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2876.5" y="-344.5"/>
+            <point key="canvasLocation" x="2581.5" y="327.5"/>
         </scene>
         <!--Edit Location-->
         <scene sceneID="EaB-3w-Z11">
@@ -810,14 +804,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" id="6hp-Gx-VWg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="ZRX-9E-FRb" id="HHS-23-eZ1"/>
-                            </connections>
-                        </searchBar>
                         <sections>
                             <tableViewSection id="95N-gW-J94">
                                 <cells>
@@ -868,14 +854,13 @@
                 <searchDisplayController id="Lux-W7-CgD">
                     <connections>
                         <outlet property="delegate" destination="ZRX-9E-FRb" id="hQS-M3-Hny"/>
-                        <outlet property="searchBar" destination="6hp-Gx-VWg" id="Uv6-0Z-dpV"/>
                         <outlet property="searchContentsController" destination="ZRX-9E-FRb" id="bYl-iM-s6j"/>
                         <outlet property="searchResultsDataSource" destination="ZRX-9E-FRb" id="9YL-r7-aXG"/>
                         <outlet property="searchResultsDelegate" destination="ZRX-9E-FRb" id="YOk-Eg-dGU"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2451.5" y="327.5"/>
+            <point key="canvasLocation" x="2092.5" y="327.5"/>
         </scene>
         <!--Edit Meal Experience-->
         <scene sceneID="oXT-We-82a">
@@ -992,7 +977,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJ6-lR-PGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004.5" y="1136.5"/>
+            <point key="canvasLocation" x="2092.5" y="1099.5"/>
         </scene>
         <!--Add Notes-->
         <scene sceneID="s7L-cT-EzR">
@@ -1027,9 +1012,56 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqH-6y-BWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853.5" y="1852.5"/>
+            <point key="canvasLocation" x="2581.5" y="1852.5"/>
         </scene>
         <!--Edit Meal Components Table View Controller-->
+        <scene sceneID="CHA-P6-sR3">
+            <objects>
+                <tableViewController id="vgi-Xi-3Vi" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Y8i-dm-OTh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="hhq-tR-kO3">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="vgi-Xi-3Vi" id="K5K-30-ffi"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fg4-c8-AbI">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fg4-c8-AbI" id="el7-u8-dJ1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vgi-Xi-3Vi" id="TpC-xU-nMd"/>
+                            <outlet property="delegate" destination="vgi-Xi-3Vi" id="Dfi-f8-euC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JL6-vT-RZQ"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="gS7-CI-8Fi" id="Bly-ca-8Cq"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6k-Vv-w5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="gS7-CI-8Fi">
+                    <connections>
+                        <outlet property="delegate" destination="vgi-Xi-3Vi" id="g0h-jB-BwJ"/>
+                        <outlet property="searchBar" destination="hhq-tR-kO3" id="tnS-mD-6JP"/>
+                        <outlet property="searchContentsController" destination="vgi-Xi-3Vi" id="nSM-gc-k8B"/>
+                        <outlet property="searchResultsDataSource" destination="vgi-Xi-3Vi" id="2ru-UH-xfd"/>
+                        <outlet property="searchResultsDelegate" destination="vgi-Xi-3Vi" id="DGq-Ui-03A"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3045.5" y="1852.5"/>
+        </scene>
+        <!--Add Other Diners-->
         <scene sceneID="g1w-FZ-EGO">
             <objects>
                 <tableViewController id="kRw-m0-P9a" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -1050,11 +1082,11 @@
                             <outlet property="delegate" destination="kRw-m0-P9a" id="oZb-ee-cmk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ufQ-Tm-Wsp"/>
+                    <navigationItem key="navigationItem" title="Add Other Diners" id="ufQ-Tm-Wsp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4B4-ze-iuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2426.5" y="1852.5"/>
+            <point key="canvasLocation" x="2092.5" y="1852.5"/>
         </scene>
         <!--Add Meal Photo View Controller-->
         <scene sceneID="Aoj-Wj-q7z">
