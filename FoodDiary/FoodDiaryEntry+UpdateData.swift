@@ -58,6 +58,12 @@ extension FoodDiaryEntry {
                 entry.fetch()
             }
             
+            var fetchedNotes = self.getNotes()
+            
+            for note in fetchedNotes {
+                note.delete()
+            }
+            
             for note in self.notes {
                 var foodDiaryEntryTag:PFObject = PFObject(className:"FoodDiaryTags")
                 
@@ -148,6 +154,21 @@ extension FoodDiaryEntry {
         
     }
     
-    
+    func getNotes() -> [PFObject] {
+        var getNotes:PFQuery = PFQuery(className:"FoodDiaryTags")
+        
+        getNotes.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getNotes.limit = 30 // Limit query results just in case
+        
+        var fetchedObjects = getNotes.findObjects()
+        var pfObjects = [PFObject]()
+        for object in fetchedObjects! {
+            if let pfObject = object as? PFObject {
+                pfObjects.append(pfObject)
+            }
+        }
+        return pfObjects
+        
+    }
     
 }
