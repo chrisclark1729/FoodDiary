@@ -39,16 +39,19 @@ extension FoodDiaryEntry {
                 // NOTE: Do NOT Update Location during editing. This will overwrite geoLocation Data.
                 
                 entry.saveInBackground()
+                var fetchedDiners = self.getDiners()
+                
+                for diner in fetchedDiners {
+                    diner.delete()
+                }
                 
                 for diner in self.diners {
-                    println("hey chris, this is your meal ID: \(self.mealID)")
                     var foodDiaryEntryDiner:PFObject = PFObject(className:"FoodDiaryEntryDiners")
-                    
                     
                     foodDiaryEntryDiner["dinerName"] = diner.name
                     foodDiaryEntryDiner["foodDiaryEntryId"] = FoodDiaryEntry
                     
-                    foodDiaryEntryDiner.saveInBackground()
+                    foodDiaryEntryDiner.save()
                     
                 }
                 
@@ -116,6 +119,25 @@ extension FoodDiaryEntry {
             
             
             }
- 
     }
+    
+    func getDiners() -> [PFObject] {
+        var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
+        
+        getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getOtherDiners.limit = 30 // Limit query results just in case
+
+        var fetchedObjects = getOtherDiners.findObjects()
+        var pfObjects = [PFObject]()
+        for object in fetchedObjects! {
+            if let pfObject = object as? PFObject {
+                pfObjects.append(pfObject)
+            }
+        }
+        return pfObjects
+        
+    }
+    
+   
+    
 }

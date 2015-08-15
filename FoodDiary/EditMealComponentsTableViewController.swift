@@ -23,7 +23,7 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         
         var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
-        getOtherDiners.whereKey("foodDiaryEntryId", equalTo: foodDiaryEntry!.mealID)
+        getOtherDiners.whereKey("foodDiaryEntryId", equalTo: foodDiaryEntry!.toPFObject!)
         getOtherDiners.limit = 30 // Limit query results just in case
         getOtherDiners.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -31,6 +31,7 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
             if error == nil {
                 // The find succeeded.
                 println("Successfully retrieved \(objects!.count) diners.")
+                println(objects!)
                 
                            } else {
                 // Log details of the failure
@@ -39,15 +40,41 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
             
         }
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addDiner"))
-        navigationItem.rightBarButtonItem = addButton
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    @IBAction func addDiner(sender: AnyObject) {
+        
+        var inputTextField: UITextField?
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: "Add Diner", message: "", preferredStyle: .Alert)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
+            
+            var diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
+            self.foodDiaryEntry?.addDiner(diner)
+            self.tableView.reloadData()
+            println(self.foodDiaryEntry?.mealID)
+            self.foodDiaryEntry!.save()
+        }
+        actionSheetController.addAction(nextAction)
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            inputTextField = textField
+        }
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
+    }
+    
+    /*
+    
+    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addDiner"))
+    navigationItem.rightBarButtonItem = addButton
     
     func addDiner() {
         
@@ -76,7 +103,31 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         
         
     }
-    
+    */
+ 
+    @IBAction func addNote(sender: AnyObject) {
+        var inputTextField: UITextField?
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: "Add Tag/Note", message: "", preferredStyle: .Alert)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
+            
+            var note = Note(entry: self.foodDiaryEntry!, note: inputTextField!.text)
+            self.foodDiaryEntry?.addNote(note)
+            self.tableView.reloadData()
+            println(self.foodDiaryEntry?.mealID)
+            self.foodDiaryEntry!.save()
+        }
+        actionSheetController.addAction(nextAction)
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            inputTextField = textField
+        }
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

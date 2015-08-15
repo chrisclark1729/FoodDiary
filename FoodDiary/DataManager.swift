@@ -58,6 +58,7 @@ class DataManager {
                             isVisible: object["isVisible"] as! Bool,
                             userId: object["userId"] as! PFUser,
                             location: object["location"] as! PFGeoPoint)
+                        entry.toPFObject = object
                         
                         self.foodDiaryEntryArray.append(entry)
                         

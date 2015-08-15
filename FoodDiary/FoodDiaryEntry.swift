@@ -30,6 +30,8 @@ class FoodDiaryEntry: NSObject {
     var userId:PFUser
     var location:PFGeoPoint
     var diners = [OtherDiner]()
+    var notes = [Note]()
+    var toPFObject: PFObject?
 
     init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
@@ -58,6 +60,11 @@ class FoodDiaryEntry: NSObject {
         self.diners.append(diner)
     
         
+    }
+    
+    func addNote(note: Note) {
+        
+        self.notes.append(note)
     }
     
     func mealScore() ->NSString {

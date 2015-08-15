@@ -1008,7 +1008,20 @@
                             <outlet property="delegate" destination="vWx-3j-u1z" id="Nlo-05-x64"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Notes" id="Ush-MD-md8"/>
+                    <navigationItem key="navigationItem" title="Add Notes" id="Ush-MD-md8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="81z-uT-nNp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WRs-Rp-8XM">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNote:" destination="vWx-3j-u1z" eventType="touchUpInside" id="LKX-UJ-dYb"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqH-6y-BWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1082,7 +1095,20 @@
                             <outlet property="delegate" destination="kRw-m0-P9a" id="oZb-ee-cmk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Other Diners" id="ufQ-Tm-Wsp"/>
+                    <navigationItem key="navigationItem" title="Add Other Diners" id="ufQ-Tm-Wsp">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="MQe-7h-hEh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KX2-Li-Txq">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addDiner:" destination="kRw-m0-P9a" eventType="touchUpInside" id="IJ2-BQ-s13"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4B4-ze-iuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
