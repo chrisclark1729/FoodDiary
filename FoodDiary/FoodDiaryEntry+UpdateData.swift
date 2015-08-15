@@ -57,11 +57,21 @@ extension FoodDiaryEntry {
                 
                 entry.fetch()
             }
+            
+            for note in self.notes {
+                var foodDiaryEntryTag:PFObject = PFObject(className:"FoodDiaryTags")
+                
+                foodDiaryEntryTag["foodDiaryTag"] = note.note
+                foodDiaryEntryTag["foodDiaryEntryId"] = FoodDiaryEntry
+                
+                foodDiaryEntryTag.save()
+            }
+            
         }
     }
     
     func loadData() {
-      //  timelineFoodDiaryData.removeAllObjects()
+        //  timelineFoodDiaryData.removeAllObjects()
         
         var getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
         
@@ -81,7 +91,7 @@ extension FoodDiaryEntry {
             if error == nil {
                 // The find succeeded.
                 println("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects 
+                // Do something with the found objects
                 
                 var foodDiaryEntryArray = [FoodDiaryEntry]()
                 
@@ -118,7 +128,7 @@ extension FoodDiaryEntry {
             }
             
             
-            }
+        }
     }
     
     func getDiners() -> [PFObject] {
@@ -126,7 +136,7 @@ extension FoodDiaryEntry {
         
         getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
         getOtherDiners.limit = 30 // Limit query results just in case
-
+        
         var fetchedObjects = getOtherDiners.findObjects()
         var pfObjects = [PFObject]()
         for object in fetchedObjects! {
@@ -138,6 +148,6 @@ extension FoodDiaryEntry {
         
     }
     
-   
+    
     
 }

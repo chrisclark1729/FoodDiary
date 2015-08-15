@@ -24,11 +24,9 @@ class ViewMealDetailViewController: UITableViewController {
     @IBOutlet weak var healthScoreLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var macrosLabel: UILabel!
     
-    
-    @IBAction func cancelToViewMealDetailViewController(segue:UIStoryboardSegue) {
-        
-    }
     
     
     @IBAction func archiveMeal(sender: AnyObject) {
@@ -70,6 +68,8 @@ class ViewMealDetailViewController: UITableViewController {
             self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", entry.enjoymentScore) as String)
             self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",entry.energyLevel) as String)
             self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", entry.healthScore) as String)
+            self.caloriesLabel.text = "Calories: \(entry.calories)"
+            self.macrosLabel.text = "Carbs: \(entry.gramsCarbs) g, Protein: \(entry.gramsProtein) g, Fat: \(entry.gramsFat) g"
     
 
         }

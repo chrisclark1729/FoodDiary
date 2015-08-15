@@ -514,9 +514,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="caloriesLabel" destination="XRs-n8-Dkx" id="nRX-Bh-fJe"/>
                         <outlet property="energyLevelLabel" destination="1qM-Ce-fn3" id="nPq-ao-Cw2"/>
                         <outlet property="enjoymentScoreLabel" destination="izf-h9-7aS" id="gHy-Oz-si9"/>
                         <outlet property="healthScoreLabel" destination="svz-SW-Hug" id="R3c-fj-iJq"/>
+                        <outlet property="macrosLabel" destination="54R-5n-xfj" id="MvS-8t-BZ5"/>
                         <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>
                         <outlet property="moodLabel" destination="qA8-Ta-74X" id="Hui-i6-430"/>
