@@ -36,9 +36,11 @@ extension FoodDiaryEntry {
                 entry["isVisible"] = self.isVisible
                 entry["userID"] = PFUser.currentUser()
                 
-                // NOTE: Do NOT Update Location during editing. This will overwrite geoLocation Data.
+                // WARNING: Do **NOT** Update Location during editing. This will overwrite geoLocation Data.
                 
                 entry.saveInBackground()
+
+       
                 var fetchedDiners = self.getDiners()
                 
                 for diner in fetchedDiners {
@@ -54,10 +56,11 @@ extension FoodDiaryEntry {
                     foodDiaryEntryDiner.save()
                     
                 }
+
                 
                 entry.fetch()
             }
-            
+
             var fetchedNotes = self.getNotes()
             
             for note in fetchedNotes {
@@ -75,6 +78,8 @@ extension FoodDiaryEntry {
             
         }
     }
+    
+    
     
     func loadData() {
         //  timelineFoodDiaryData.removeAllObjects()

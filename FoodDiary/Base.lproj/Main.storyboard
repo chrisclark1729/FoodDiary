@@ -317,7 +317,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vgi-Xi-3Vi" kind="push" identifier="editMealComponents" id="My9-2A-AFT"/>
+                                            <segue destination="rzs-WD-kSw" kind="push" id="N5p-eC-W8R"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -658,6 +658,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eym-Vd-vYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3045.5" y="327.5"/>
+        </scene>
+        <!--Ingredients Search Table View Controller-->
+        <scene sceneID="p8j-1I-cdf">
+            <objects>
+                <tableViewController id="rzs-WD-kSw" customClass="IngredientsSearchTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cWb-Vo-QDn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="3Cw-xJ-Vps">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="rzs-WD-kSw" id="VeG-zK-KJC"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="vBy-ds-xbj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vBy-ds-xbj" id="6s6-qD-3Wa">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rzs-WD-kSw" id="XZo-fe-ECA"/>
+                            <outlet property="delegate" destination="rzs-WD-kSw" id="TcF-8k-shi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lFm-Ei-0aA"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="V5Y-sD-Vfz" id="l2J-W4-GTl"/>
+                        <outlet property="searchIngredients" destination="3Cw-xJ-Vps" id="R40-jk-mSs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EZR-FZ-rJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="V5Y-sD-Vfz">
+                    <connections>
+                        <outlet property="delegate" destination="rzs-WD-kSw" id="OGV-ao-i8F"/>
+                        <outlet property="searchBar" destination="3Cw-xJ-Vps" id="uZG-8m-ybp"/>
+                        <outlet property="searchContentsController" destination="rzs-WD-kSw" id="M2Q-lE-LSB"/>
+                        <outlet property="searchResultsDataSource" destination="rzs-WD-kSw" id="hjy-fj-nOw"/>
+                        <outlet property="searchResultsDelegate" destination="rzs-WD-kSw" id="Gdt-Hz-KOx"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2092.5" y="2622.5"/>
         </scene>
         <!--Edit Meal Name-->
         <scene sceneID="5lp-Oc-5Fk">
@@ -1034,11 +1083,11 @@
             <objects>
                 <tableViewController id="vgi-Xi-3Vi" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Y8i-dm-OTh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="hhq-tR-kO3">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -1085,13 +1134,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ldg-al-l1Q">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="qFj-oO-hpv" style="IBUITableViewCellStyleDefault" id="Ldg-al-l1Q">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ldg-al-l1Q" id="Rxr-AT-47u">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Diner Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qFj-oO-hpv">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="kRw-m0-P9a" id="sPx-dA-w4G"/>
                             <outlet property="delegate" destination="kRw-m0-P9a" id="oZb-ee-cmk"/>

@@ -14,11 +14,9 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
     var foodDiaryEntry: FoodDiaryEntry?
     var otherDiners = [OtherDiner]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("hello")
-        println(foodDiaryEntry!.mealID)
         
         
         var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
@@ -28,10 +26,10 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         getOtherDiners.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
+            
             if error == nil {
                 // The find succeeded.
                 println("Successfully retrieved \(objects!.count) diners.")
-                println(objects!)
                 
                            } else {
                 // Log details of the failure
@@ -39,7 +37,7 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
             }
             
         }
-        
+    
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -70,40 +68,6 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         self.presentViewController(actionSheetController, animated: true, completion: nil)
         
     }
-    
-    /*
-    
-    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addDiner"))
-    navigationItem.rightBarButtonItem = addButton
-    
-    func addDiner() {
-        
-        var inputTextField: UITextField?
-        
-        let actionSheetController: UIAlertController = UIAlertController(title: "Add Diner", message: "", preferredStyle: .Alert)
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-            //Do some stuff
-        }
-        actionSheetController.addAction(cancelAction)
-        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
-            
-            var diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
-            self.foodDiaryEntry?.addDiner(diner)
-            self.tableView.reloadData()
-            println(self.foodDiaryEntry?.mealID)
-            self.foodDiaryEntry!.save()
-        }
-        actionSheetController.addAction(nextAction)
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
-            inputTextField = textField
-        }
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
-        
-        
-        
-        
-    }
-    */
  
     @IBAction func addNote(sender: AnyObject) {
         var inputTextField: UITextField?
@@ -145,21 +109,30 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // Return the number of rows in the section.
+        
         return self.otherDiners.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("diner", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
+        
+        cell.textLabel?.text = "Chris"
+      
+        /*
         let otherDiner = self.otherDiners[indexPath.row]
+        println("is this thing on?")
+        
         
         if let name = otherDiner.name {
-            cell.textLabel?.text = name
+            cell.textLabel?.text = "Chris"
+            //cell.textLabel?.text = name
+            
         } else {
             cell.textLabel?.text = "No Name"
         }
-        
+        */
         return cell
     }
     
