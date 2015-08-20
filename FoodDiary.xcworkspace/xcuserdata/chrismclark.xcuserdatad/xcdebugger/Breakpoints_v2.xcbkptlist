@@ -54,65 +54,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodDiary/DataManager.swift"
-            timestampString = "461278018.106793"
+            timestampString = "461782664.164744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "DataManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodDiary/ViewMealDetailViewController.swift"
-            timestampString = "461362604.258937"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "archiveMeal(_:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "getOtherDinersFromBackend(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FoodDiary.ViewMealDetailViewController.archiveMeal (FoodDiary.ViewMealDetailViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "FoodDiary"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chrismclark/Desktop/ThinkfulSwift/TrustBuds/FoodDiary/FoodDiary/ViewMealDetailViewController.swift"
-                  timestampString = "461516105.58983"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "85">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FoodDiary.ViewMealDetailViewController.(archiveMeal (FoodDiary.ViewMealDetailViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1)"
-                  moduleName = "FoodDiary"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chrismclark/Desktop/ThinkfulSwift/TrustBuds/FoodDiary/FoodDiary/ViewMealDetailViewController.swift"
-                  timestampString = "461516105.590029"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "23">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

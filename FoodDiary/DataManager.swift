@@ -12,6 +12,7 @@ import Parse
 class DataManager {
     
     var foodDiaryEntryArray = [FoodDiaryEntry]()
+    var otherDinersArray: [String] = []
     
     var delegate:TimelineTableViewController?
     
@@ -40,6 +41,7 @@ class DataManager {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
+                        self.getOtherDinersFromBackend(object)
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
@@ -57,9 +59,9 @@ class DataManager {
                             timezone: object["timezone"] as! String,
                             isVisible: object["isVisible"] as! Bool,
                             userId: object["userId"] as! PFUser,
+                          //  diners: self.otherDinersArray,
                             location: object["location"] as! PFGeoPoint)
                         entry.toPFObject = object
-                        
                         self.foodDiaryEntryArray.append(entry)
                         
                     }
@@ -75,6 +77,50 @@ class DataManager {
         }
         
     }
+    
+    func getOtherDinersFromBackend(object:PFObject) -> [String]{
+       
+        for entry in foodDiaryEntryArray {
+            var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
+            
+            getOtherDiners.whereKey("foodDiaryEntryId", equalTo: object)
+            getOtherDiners.limit = 30 // Limit query results just in case
+            
+            self.otherDinersArray = []
+            
+            getOtherDiners.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]?, error: NSError?) -> Void in
+                
+                if let objs = objects {
+                    for object in objs {
+                        if error == nil {
+                            // The find succeeded.
+                            println("Successfully retrieved \(objs.count) diners.")
+                            var name = object["dinerName"] as! String
+                            println(name)
+                            self.otherDinersArray.append(name)
+                            println(self.otherDinersArray)
+                            
+                        } else {
+                            // Log details of the failure
+                            println("Error: \(error!) \(error!.userInfo!)")
+                        }
+                    }
+
+                    
+                }
+                
+
+            }
+           
+            
+    }
+       // println(otherDinersArray)
+        return otherDinersArray
+
+    }
+
+
     
    }
 

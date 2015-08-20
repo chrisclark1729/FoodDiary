@@ -13,6 +13,7 @@ class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
     
+    
     @IBOutlet weak var editLocationTextField: UITextField!
     @IBOutlet weak var editMood: UITextField!
     @IBOutlet weak var editMealName: UITextField!

@@ -43,7 +43,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         let query = PFQuery(className: "Ingredients")
         if(searchText != nil){
             query.whereKey("ingredientName", containsString: searchText)
-        }
+            query.limit = 10        }
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.data = results as? [PFObject]
             self.tableView.reloadData()
@@ -69,6 +69,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let obj = self.data[indexPath.row]
+
         cell.textLabel!.text = obj["ingredientName"] as? String
 
         return cell

@@ -9,7 +9,12 @@
 import UIKit
 import Parse
 
-class EditMealComponentsTableViewController: UITableViewController, UITableViewDataSource {
+class EditMealComponentsTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    @IBOutlet var dinersTableView: UITableView!
+
+    let textCellIdentifier = "TextCell"
     
     var foodDiaryEntry: FoodDiaryEntry?
     var otherDiners = [OtherDiner]()
@@ -17,6 +22,10 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dinersTableView.delegate = self
+        dinersTableView.dataSource = self
+
         
         
         var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
@@ -103,23 +112,24 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         // Return the number of sections.
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // Return the number of rows in the section.
         
-        return self.otherDiners.count
+       // return self.otherDiners.count
+        return 1
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
+        let row = indexPath.row
+        cell.textLabel?.text = "Chris Clark"
         
-        cell.textLabel?.text = "Chris"
-      
         /*
         let otherDiner = self.otherDiners[indexPath.row]
         println("is this thing on?")
@@ -131,10 +141,12 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
             
         } else {
             cell.textLabel?.text = "No Name"
-        }
-        */
+        } */
+        
         return cell
+        
     }
+    
     
     /*
     // Override to support conditional editing of the table view.
