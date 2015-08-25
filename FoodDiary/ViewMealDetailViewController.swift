@@ -70,12 +70,14 @@ class ViewMealDetailViewController: UITableViewController {
             self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", entry.healthScore) as String)
             self.caloriesLabel.text = "Calories: \(entry.calories)"
             self.macrosLabel.text = "Carbs: \(entry.gramsCarbs) g, Protein: \(entry.gramsProtein) g, Fat: \(entry.gramsFat) g"
-    
+            entry.populateDiners()
+            entry.populateIngredients()
 
         }
         else {
             println("No Food Entry")
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

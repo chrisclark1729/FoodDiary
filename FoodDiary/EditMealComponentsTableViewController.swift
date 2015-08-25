@@ -26,8 +26,8 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         dinersTableView.delegate = self
         dinersTableView.dataSource = self
 
-        
-        
+        self.otherDiners = self.foodDiaryEntry!.diners
+        /*
         var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
         getOtherDiners.whereKey("foodDiaryEntryId", equalTo: foodDiaryEntry!.toPFObject!)
@@ -46,7 +46,7 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
             }
             
         }
-    
+    */
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -79,6 +79,7 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
     }
  
     @IBAction func addNote(sender: AnyObject) {
+        //TODO: Make this unique class
         var inputTextField: UITextField?
         
         let actionSheetController: UIAlertController = UIAlertController(title: "Add Tag/Note", message: "", preferredStyle: .Alert)
@@ -112,15 +113,15 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         // Return the number of sections.
-        return 2
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // Return the number of rows in the section.
         
-       // return self.otherDiners.count
-        return 1
+        return self.otherDiners.count
+        
     }
     
     
@@ -128,7 +129,8 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         
         let row = indexPath.row
-        cell.textLabel?.text = "Chris Clark"
+        var diner = self.otherDiners[row]
+        cell.textLabel?.text = diner.name!
         
         /*
         let otherDiner = self.otherDiners[indexPath.row]

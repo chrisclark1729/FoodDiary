@@ -14,7 +14,11 @@ class OtherDiner: NSObject {
     var name: String?
     var entry: FoodDiaryEntry?
     
-  
+    init(entry: FoodDiaryEntry, entity: PFObject) {
+        self.name = entity["dinerName"] as? String
+        self.entry = entry
+        super.init()
+    }
     
     init(entry: FoodDiaryEntry, name: String? = "nil") {
         self.name = name

@@ -41,7 +41,7 @@ class DataManager {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        self.getOtherDinersFromBackend(object)
+            //            self.getOtherDinersFromBackend(object)
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
@@ -118,6 +118,10 @@ class DataManager {
        // println(otherDinersArray)
         return otherDinersArray
 
+    }
+    
+    func getAllIngredients() {
+        
     }
 
 

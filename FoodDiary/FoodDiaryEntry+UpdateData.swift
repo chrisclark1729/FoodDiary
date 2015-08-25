@@ -39,8 +39,8 @@ extension FoodDiaryEntry {
                 // WARNING: Do **NOT** Update Location during editing. This will overwrite geoLocation Data.
                 
                 entry.saveInBackground()
-
-       
+                
+                
                 var fetchedDiners = self.getDiners()
                 
                 for diner in fetchedDiners {
@@ -56,11 +56,11 @@ extension FoodDiaryEntry {
                     foodDiaryEntryDiner.save()
                     
                 }
-
+                
                 
                 entry.fetch()
             }
-
+            
             var fetchedNotes = self.getNotes()
             
             for note in fetchedNotes {
@@ -176,4 +176,47 @@ extension FoodDiaryEntry {
         
     }
     
+    func populateDiners() {
+        var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
+        
+        getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getOtherDiners.limit = 30 // Limit query results just in case
+        
+        var otherDinersArray = [OtherDiner]()
+        
+        getOtherDiners.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if let objs = objects {
+                for object in objs {
+                    if error == nil {
+                        // The find succeeded.
+                        println("Successfully retrieved \(objs.count) diners.")
+                        var diner = OtherDiner(entry: self, entity: object as! PFObject)
+                        otherDinersArray.append(diner)
+                        println(otherDinersArray)
+                        
+                    } else {
+                        // Log details of the failure
+                        println("Error: \(error!) \(error!.userInfo!)")
+                    }
+                }
+                self.diners = otherDinersArray
+            }
+        }
+    }
+    
+    func populateIngredients() {
+        // get from Backend and populate array
+    }
+    
+    func clearIngredients() {
+        // delete all Ingredients related to this foodDiaryEntry
+    }
+    
+    func saveIngredients() {
+        
+        // build all ingredients and save to backend
+        
+    }
 }
