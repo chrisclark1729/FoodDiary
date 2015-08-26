@@ -40,6 +40,7 @@
 		49A614B91B81CC2200B66489 /* IngredientsSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B81B81CC2200B66489 /* IngredientsSearchTableViewController.swift */; };
 		49AF6F9F1B321AE900AA64DD /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */; };
 		49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */; };
+		49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */; };
 		49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4151B068AA6006FA068 /* AppDelegate.swift */; };
 		49C5C41B1B068AA6006FA068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49C5C4191B068AA6006FA068 /* Main.storyboard */; };
 		49C5C41D1B068AA7006FA068 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49C5C41C1B068AA6006FA068 /* Images.xcassets */; };
@@ -111,6 +112,7 @@
 		49A614B81B81CC2200B66489 /* IngredientsSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsSearchTableViewController.swift; sourceTree = "<group>"; };
 		49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
 		49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealTagsTableViewController.swift; sourceTree = "<group>"; };
 		49C5C4101B068AA6006FA068 /* FoodDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C5C4141B068AA6006FA068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C5C4151B068AA6006FA068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */,
 				492E258A1B24DFFC006419EE /* DataManager.swift */,
 				49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */,
+				49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */,
 				4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
 				49A614B81B81CC2200B66489 /* IngredientsSearchTableViewController.swift */,
@@ -466,6 +469,7 @@
 				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
+				49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,
 				495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */,
 				49A614B71B7FBF6000B66489 /* Note.swift in Sources */,

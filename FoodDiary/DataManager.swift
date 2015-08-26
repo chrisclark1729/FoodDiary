@@ -41,7 +41,6 @@ class DataManager {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-            //            self.getOtherDinersFromBackend(object)
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
@@ -77,49 +76,7 @@ class DataManager {
         }
         
     }
-    
-    func getOtherDinersFromBackend(object:PFObject) -> [String]{
-       
-        for entry in foodDiaryEntryArray {
-            var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
-            
-            getOtherDiners.whereKey("foodDiaryEntryId", equalTo: object)
-            getOtherDiners.limit = 30 // Limit query results just in case
-            
-            self.otherDinersArray = []
-            
-            getOtherDiners.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]?, error: NSError?) -> Void in
-                
-                if let objs = objects {
-                    for object in objs {
-                        if error == nil {
-                            // The find succeeded.
-                            println("Successfully retrieved \(objs.count) diners.")
-                            var name = object["dinerName"] as! String
-                            println(name)
-                            self.otherDinersArray.append(name)
-                            println(self.otherDinersArray)
-                            
-                        } else {
-                            // Log details of the failure
-                            println("Error: \(error!) \(error!.userInfo!)")
-                        }
-                    }
-
-                    
-                }
-                
-
-            }
-           
-            
-    }
-       // println(otherDinersArray)
-        return otherDinersArray
-
-    }
-    
+  
     func getAllIngredients() {
         
     }

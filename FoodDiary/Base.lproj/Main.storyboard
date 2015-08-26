@@ -451,7 +451,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vWx-3j-u1z" kind="push" identifier="editMealComponents" id="OK3-sB-1wl"/>
+                                            <segue destination="vWx-3j-u1z" kind="push" identifier="editMealTags" id="OK3-sB-1wl"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -522,6 +522,7 @@
                         <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>
                         <outlet property="moodLabel" destination="qA8-Ta-74X" id="Hui-i6-430"/>
+                        <outlet property="otherDinersLabel" destination="gEg-YU-3IL" id="irj-Zg-efm"/>
                         <outlet property="timeLabel" destination="1f1-JS-6j6" id="zwp-li-irh"/>
                     </connections>
                 </tableViewController>
@@ -1033,18 +1034,18 @@
         <!--Add Notes-->
         <scene sceneID="s7L-cT-EzR">
             <objects>
-                <tableViewController id="vWx-3j-u1z" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DTn-NX-z6K">
+                <tableViewController id="vWx-3j-u1z" customClass="EditMealTagsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="DTn-NX-z6K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="diner" textLabel="FH6-49-1Wd" style="IBUITableViewCellStyleDefault" id="REJ-mA-HGR">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextCell" textLabel="FH6-49-1Wd" style="IBUITableViewCellStyleDefault" id="REJ-mA-HGR">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REJ-mA-HGR" id="nms-zA-TjA">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FH6-49-1Wd">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FH6-49-1Wd">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1068,11 +1069,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addNote:" destination="vWx-3j-u1z" eventType="touchUpInside" id="LKX-UJ-dYb"/>
+                                    <action selector="addNote:" destination="vWx-3j-u1z" eventType="touchUpInside" id="GgL-31-7zy"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="notesTableView" destination="DTn-NX-z6K" id="BS3-ax-FeW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqH-6y-BWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1139,7 +1143,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apw-eZ-FfX" id="BmQ-tY-8YL">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hQ9-Wx-p9j">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Diner Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hQ9-Wx-p9j">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

@@ -180,6 +180,7 @@ extension FoodDiaryEntry {
         var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
         getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getOtherDiners.orderByAscending("dinerName")
         getOtherDiners.limit = 30 // Limit query results just in case
         
         var otherDinersArray = [OtherDiner]()
@@ -202,6 +203,37 @@ extension FoodDiaryEntry {
                     }
                 }
                 self.diners = otherDinersArray
+            }
+        }
+    }
+    
+    func populateNotes() {
+        var getNotes:PFQuery = PFQuery(className:"FoodDiaryTags")
+        
+        getNotes.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getNotes.orderByAscending("dinerName")
+        getNotes.limit = 30 // Limit query results just in case
+        
+        var notesArray = [Note]()
+        
+        getNotes.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if let objs = objects {
+                for object in objs {
+                    if error == nil {
+                        // The find succeeded.
+                        println("Successfully retrieved \(objs.count) notes.")
+                        var note = Note(entry: self, entity: object as! PFObject)
+                        notesArray.append(note)
+                        println(notesArray)
+                        
+                    } else {
+                        // Log details of the failure
+                        println("Error: \(error!) \(error!.userInfo!)")
+                    }
+                }
+                self.notes = notesArray
             }
         }
     }

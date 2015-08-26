@@ -14,6 +14,12 @@ class Note: NSObject {
     var note: String?
     var entry: FoodDiaryEntry?
     
+    init(entry: FoodDiaryEntry, entity: PFObject) {
+        self.note = entity["foodDiaryTag"] as? String
+        self.entry = entry
+        super.init()
+    }
+    
     init(entry: FoodDiaryEntry, note: String? = "nil") {
         self.note = note
         self.entry = entry

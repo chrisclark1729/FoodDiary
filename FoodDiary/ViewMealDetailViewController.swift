@@ -26,7 +26,7 @@ class ViewMealDetailViewController: UITableViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var macrosLabel: UILabel!
-    
+    @IBOutlet weak var otherDinersLabel: UILabel!
     
     
     @IBAction func archiveMeal(sender: AnyObject) {
@@ -54,11 +54,11 @@ class ViewMealDetailViewController: UITableViewController {
         dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
       //  timeFormatter.dateFormat = "h:mm a"
         
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         if let entry = foodDiaryEntry {
+            var dinersCountAsString = String(foodDiaryEntry!.diners.count)
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
@@ -68,10 +68,12 @@ class ViewMealDetailViewController: UITableViewController {
             self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", entry.enjoymentScore) as String)
             self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",entry.energyLevel) as String)
             self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", entry.healthScore) as String)
+            self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
             self.caloriesLabel.text = "Calories: \(entry.calories)"
             self.macrosLabel.text = "Carbs: \(entry.gramsCarbs) g, Protein: \(entry.gramsProtein) g, Fat: \(entry.gramsFat) g"
             entry.populateDiners()
             entry.populateIngredients()
+            entry.populateNotes()
 
         }
         else {
@@ -111,6 +113,10 @@ class ViewMealDetailViewController: UITableViewController {
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealComponents" {
             var destination = segue.destinationViewController as! EditMealComponentsTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+        } else if segue.identifier == "editMealTags" {
+            var destination = segue.destinationViewController as! EditMealTagsTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         }
