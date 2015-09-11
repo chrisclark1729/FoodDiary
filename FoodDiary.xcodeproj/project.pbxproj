@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */; };
 		4911A7131B18BBAE003B3BDF /* colViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911A7121B18BBAE003B3BDF /* colViewCell.swift */; };
 		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
 		492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25881B24DE1A006419EE /* TimelineTableViewController.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		2E69FBFD3A483213460480A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddMealPhoto+UIImageSize.swift"; sourceTree = "<group>"; };
 		4911A7121B18BBAE003B3BDF /* colViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colViewCell.swift; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */,
 				49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */,
 				4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */,
+				490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
 				49A614B81B81CC2200B66489 /* IngredientsSearchTableViewController.swift */,
 				4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */,
@@ -465,6 +468,7 @@
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */,
+				490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */,
 				49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */,
 				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,

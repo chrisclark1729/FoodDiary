@@ -57,7 +57,8 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         
         dismissViewControllerAnimated(true, completion: nil)
         
-        let imageData = UIImagePNGRepresentation(image)
+      //  let imageData = UIImagePNGRepresentation(image)
+        let imageData = image!.lowestQualityJPEGNSData
         let imageFile:PFFile = PFFile(data: imageData)
         
         var userPhoto = PFObject(className:"FoodDiaryEntries")

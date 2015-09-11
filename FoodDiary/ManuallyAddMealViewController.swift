@@ -20,6 +20,7 @@ class ManuallyAddMealViewController: UIViewController {
         
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
         foodDiaryEntry["locationName"] = manualEntryLocationTextView.text
+     //   foodDiaryEntry["imageFile"] =
         foodDiaryEntry["timestamp"] = NSDate()
         foodDiaryEntry["healthScore"] = 0
         foodDiaryEntry["calories"] = 0
@@ -33,7 +34,7 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["wasEaten"] = true
         foodDiaryEntry["isVisible"] = true
         foodDiaryEntry["timezone"] = NSTimeZone.localTimeZone().abbreviation!
-        foodDiaryEntry["location"] = PFGeoPoint(latitude: 0, longitude: 0)
+        foodDiaryEntry["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
         foodDiaryEntry["userId"] = PFUser.currentUser()
         
         foodDiaryEntry.saveInBackground()
