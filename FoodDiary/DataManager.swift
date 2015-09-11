@@ -41,6 +41,7 @@ class DataManager {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
+                     //   if object.objectForKey("imgURL") != nil {
                         var entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
@@ -62,7 +63,7 @@ class DataManager {
                             location: object["location"] as! PFGeoPoint)
                         entry.toPFObject = object
                         self.foodDiaryEntryArray.append(entry)
-                        
+                   //     }
                     }
                     self.delegate!.meals = self.foodDiaryEntryArray
                     self.delegate!.tableView.reloadData()

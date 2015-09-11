@@ -67,16 +67,21 @@ class TimelineTableViewController: UITableViewController {
         
         let meal = meals![indexPath.row]
    
-        let mealImageFile:PFFile = meal.imgURL as! PFFile
+        var mealImageFile:PFFile?
+        mealImageFile = meal.imgURL as? PFFile
         
-        mealImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
-                if let imageData = imageData {
-                    let image = UIImage(data:imageData)
-                    cell.mealImage.image = image
+        if mealImageFile != nil {
+            mealImageFile!.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        let image = UIImage(data:imageData)
+                        cell.mealImage.image = image
+                    }
                 }
             }
+        } else {
+            println("Got a nil one")
         }
         
         cell.mealName.text = meal.mealName
