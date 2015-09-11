@@ -44,6 +44,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         if(searchText != nil){
             query.whereKey("ingredientName", containsString: searchText)
             query.limit = 10        }
+        
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.data = results as? [PFObject]
             self.tableView.reloadData()

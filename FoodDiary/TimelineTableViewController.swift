@@ -80,9 +80,7 @@ class TimelineTableViewController: UITableViewController {
                     }
                 }
             }
-        } else {
-            println("Got a nil one")
-        }
+        } 
         
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
