@@ -12,6 +12,7 @@ import Parse
 class IngredientsSearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchIngredients: UISearchBar!
+    var foodDiaryEntry: FoodDiaryEntry?
     var searchActive : Bool = false
     var data:[PFObject]!
     var filtered:[PFObject]!
@@ -141,5 +142,23 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "addIngredientDetail"
+            
+        {
+            
+            var destination = segue.destinationViewController as! IngredientAddTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+            let selectedIndexPath = self.tableView.indexPathForSelectedRow()
+            let obj = self.data[selectedIndexPath!.row]
+            destination.ingredient = obj
+            
+            
+        }
+        
+    }
 
 }

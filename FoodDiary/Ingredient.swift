@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Parse
 
 class Ingredient: AnyObject {
     
     // Copy from Parse backend
-
+    
+    var ingredientId: PFObject?
+    var name: String?
+    var quantity: Float?
+    
+    
    
 }
