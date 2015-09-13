@@ -34,7 +34,7 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["wasEaten"] = true
         foodDiaryEntry["isVisible"] = true
         foodDiaryEntry["timezone"] = NSTimeZone.localTimeZone().abbreviation!
-        foodDiaryEntry["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
+        foodDiaryEntry["location"] = PFGeoPoint(latitude: 0, longitude: 0)
         foodDiaryEntry["userId"] = PFUser.currentUser()
         
         foodDiaryEntry.saveInBackground()

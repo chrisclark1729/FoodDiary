@@ -660,7 +660,7 @@
             </objects>
             <point key="canvasLocation" x="3045.5" y="327.5"/>
         </scene>
-        <!--Ingredients Search Table View Controller-->
+        <!--Add Ingredients-->
         <scene sceneID="p8j-1I-cdf">
             <objects>
                 <tableViewController id="rzs-WD-kSw" customClass="IngredientsSearchTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -668,7 +668,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="3Cw-xJ-Vps">
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search Ingredients" id="3Cw-xJ-Vps">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -693,7 +693,7 @@
                             <outlet property="delegate" destination="rzs-WD-kSw" id="TcF-8k-shi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="lFm-Ei-0aA"/>
+                    <navigationItem key="navigationItem" title="Add Ingredients" id="lFm-Ei-0aA"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="V5Y-sD-Vfz" id="l2J-W4-GTl"/>
                         <outlet property="searchIngredients" destination="3Cw-xJ-Vps" id="R40-jk-mSs"/>
