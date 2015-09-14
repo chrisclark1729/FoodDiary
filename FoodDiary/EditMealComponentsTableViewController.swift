@@ -48,7 +48,6 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
             var diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
             self.foodDiaryEntry?.addDiner(diner)
             self.tableView.reloadData()
-            println(self.foodDiaryEntry?.mealID)
             self.foodDiaryEntry!.save()
         }
         actionSheetController.addAction(nextAction)

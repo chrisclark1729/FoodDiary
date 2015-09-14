@@ -20,12 +20,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         super.viewDidLoad()
         
         searchIngredients.delegate = self
-     /*
-               for index in 1...10{
-                   let obj = PFObject(className: "Ingredients")
-                   obj["text"] = "Text here \(index)"
-                    obj.save()
-                } */
+
         search()
 
         // Uncomment the following line to preserve selection between presentations
@@ -44,7 +39,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         let query = PFQuery(className: "Ingredients")
         if(searchText != nil){
             query.whereKey("ingredientName", containsString: searchText)
-            query.limit = 10        }
+            query.limit = 100        }
         
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.data = results as? [PFObject]
@@ -71,8 +66,11 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let obj = self.data[indexPath.row]
+        
+        let ingredientName = obj["ingredientName"] as? String
+        let unitOfMeasurement = obj["unitOfMeasurement"] as? String
 
-        cell.textLabel!.text = obj["ingredientName"] as? String
+        cell.textLabel!.text = ingredientName! + " (" + unitOfMeasurement! + ")"
 
         return cell
     }

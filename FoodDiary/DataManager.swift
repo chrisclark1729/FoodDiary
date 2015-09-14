@@ -30,7 +30,7 @@ class DataManager {
         getTimelineData.whereKey("isVisible", equalTo: true)
         getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
         getTimelineData.orderByDescending("timestamp")
-        getTimelineData.limit = 50
+        getTimelineData.limit = 25
         
         getTimelineData.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
