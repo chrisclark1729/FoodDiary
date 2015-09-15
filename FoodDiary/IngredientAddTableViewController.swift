@@ -30,7 +30,7 @@ class IngredientAddTableViewController: UITableViewController {
         
         var foodDiaryDetail = PFObject(className:"FoodDiaryDetail")
         // Gives error: 'PFObject values may not have class: FoodDiary.FoodDiaryEntry'
-       // foodDiaryDetail["foodDiaryEntryId"] = foodDiaryEntry
+        foodDiaryDetail["foodDiaryEntryId"] = foodDiaryEntry?.toPFObject
         foodDiaryDetail["ingredientId"] = ingredient.ingredientId
         foodDiaryDetail["numberOfServings"] = ingredient.quantity
         
@@ -43,6 +43,7 @@ class IngredientAddTableViewController: UITableViewController {
             }
         }
         
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewDidLoad() {

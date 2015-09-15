@@ -16,6 +16,7 @@ extension FoodDiaryEntry {
         var query = PFQuery(className:"FoodDiaryEntries")
         query.getObjectInBackgroundWithId(self.mealID) {
             (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
+            //TODO: Fix this logic. It's ugly.
             if error != nil {
                 println(error)
             } else if let entry = FoodDiaryEntry {
@@ -89,7 +90,7 @@ extension FoodDiaryEntry {
         /*Timeline query restraints:
         1.) Only grab non-archived images (diary entries)
         2.) Order by time of entry (most recent first)
-        3.) Limit to only 50 results to improve performance
+        3.) Limit to only 25 results to improve performance
         */
         
         getTimelineData.whereKey("isVisible", equalTo: true)

@@ -59,13 +59,15 @@ class FoodDiaryEntry: NSObject {
     func addDiner(diner: OtherDiner) {
         
         self.diners.append(diner)
-    
-        
     }
     
     func addNote(note: Note) {
         
         self.notes.append(note)
+    }
+    
+    func addIngredient(ingredient: Ingredient) {
+        self.ingredients.append(ingredient)
     }
     
     func mealScore() ->NSString {

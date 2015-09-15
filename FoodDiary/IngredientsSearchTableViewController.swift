@@ -39,7 +39,8 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         let query = PFQuery(className: "Ingredients")
         if(searchText != nil){
             query.whereKey("ingredientName", containsString: searchText)
-            query.limit = 100        }
+            query.limit = 100
+            query.orderByDescending("ingredientName")}
         
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.data = results as? [PFObject]
