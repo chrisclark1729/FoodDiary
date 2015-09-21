@@ -68,6 +68,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let obj = self.data[indexPath.row]
         
+        
         let ingredientName = obj["ingredientName"] as? String
         let unitOfMeasurement = obj["unitOfMeasurement"] as? String
 

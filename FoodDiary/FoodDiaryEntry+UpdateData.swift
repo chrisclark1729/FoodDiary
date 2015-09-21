@@ -241,6 +241,37 @@ extension FoodDiaryEntry {
     
     func populateIngredients() {
         // get from Backend and populate array
+        var getIngredients:PFQuery = PFQuery(className:"FoodDiaryDetail")
+        
+        getIngredients.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        
+        var ingredientsArray = [Ingredient]()
+        
+        getIngredients.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if let objs = objects {
+                for object in objs {
+                    if error == nil {
+                        // The find succeeded.
+                        println("Successfully retrieved \(objs.count) ingredients.")
+                        /*
+                        var ingredient = Ingredient(ingredientId: object as! PFObject, entry: self, name: "test", calories: 1, gramsCarbs: 1, gramsFat: 1, gramsFiber: 1, gramsProtein: 1, quantity: 1)
+                        ingredientsArray.append(ingredient)
+                        println(ingredientsArray) */
+                        
+                    } else {
+                        // Log details of the failure
+                        println("Error: \(error!) \(error!.userInfo!)")
+                    }
+                }
+                self.ingredients = ingredientsArray
+            }
+        }
+    }
+    
+        
+        
     }
     
     func clearIngredients() {
@@ -252,4 +283,4 @@ extension FoodDiaryEntry {
         // build all ingredients and save to backend
         
     }
-}
+
