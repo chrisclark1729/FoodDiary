@@ -57,7 +57,6 @@ class EditMealComponentsTableViewController: UITableViewController, UITableViewD
         self.presentViewController(actionSheetController, animated: true, completion: nil)
         
     }
- 
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

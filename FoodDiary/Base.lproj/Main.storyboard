@@ -695,20 +695,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Ingredients" id="lFm-Ei-0aA"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="V5Y-sD-Vfz" id="l2J-W4-GTl"/>
                         <outlet property="searchIngredients" destination="3Cw-xJ-Vps" id="R40-jk-mSs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZR-FZ-rJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="V5Y-sD-Vfz">
-                    <connections>
-                        <outlet property="delegate" destination="rzs-WD-kSw" id="OGV-ao-i8F"/>
-                        <outlet property="searchBar" destination="3Cw-xJ-Vps" id="uZG-8m-ybp"/>
-                        <outlet property="searchContentsController" destination="rzs-WD-kSw" id="M2Q-lE-LSB"/>
-                        <outlet property="searchResultsDataSource" destination="rzs-WD-kSw" id="hjy-fj-nOw"/>
-                        <outlet property="searchResultsDelegate" destination="rzs-WD-kSw" id="Gdt-Hz-KOx"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2092.5" y="2622.5"/>
         </scene>

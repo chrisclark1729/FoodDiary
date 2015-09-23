@@ -77,12 +77,6 @@ class DataManager {
         }
         
     }
-  
-    func getAllIngredients() {
-        
-    }
-
-
     
    }
 

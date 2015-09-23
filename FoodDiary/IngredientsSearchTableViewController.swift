@@ -43,8 +43,11 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
             query.orderByDescending("ingredientName")}
         
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            self.data = results as? [PFObject]
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(),{
+                self.data = results as? [PFObject]
+                self.tableView.reloadData()
+            })
+
         }
         
     }

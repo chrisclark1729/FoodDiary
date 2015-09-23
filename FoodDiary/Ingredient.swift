@@ -20,5 +20,33 @@ class Ingredient: AnyObject {
     var gramsCarbs: Float?
     var gramsFiber: Float?
     var quantity: Float?
+    
+    init(){
+    }
+    
+    init(entry: FoodDiaryEntry, entity: PFObject) {
+        self.name = entity["ingredientName"] as? String
+        self.calories = entity["calories"] as? Float
+        self.gramsFat = entity["gramsFat"] as? Float
+        self.gramsProtein = entity["gramsProtein"] as? Float
+        self.gramsCarbs = entity["gramsCarbs"] as? Float
+        self.gramsFiber = entity["gramsFiber"] as? Float
+        self.entry = entry
+    }
+    
+    init(ingredientId: PFObject, entry: FoodDiaryEntry, name: String? = "nil", calories: Float, gramsFat: Float,
+        gramsProtein: Float, gramsCarbs: Float, gramsFiber: Float, quantity: Float) {
+        
+        self.ingredientId = ingredientId
+        self.name = name
+        self.entry = entry
+        self.calories = calories
+        self.gramsFat = gramsFat
+        self.gramsProtein = gramsProtein
+        self.gramsCarbs = gramsCarbs
+        self.gramsFiber = gramsFiber
+        self.quantity = quantity
+
+    }
    
 }

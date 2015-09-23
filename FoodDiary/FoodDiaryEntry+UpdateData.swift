@@ -160,23 +160,6 @@ extension FoodDiaryEntry {
         
     }
     
-    func getNotes() -> [PFObject] {
-        var getNotes:PFQuery = PFQuery(className:"FoodDiaryTags")
-        
-        getNotes.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        getNotes.limit = 30 // Limit query results just in case
-        
-        var fetchedObjects = getNotes.findObjects()
-        var pfObjects = [PFObject]()
-        for object in fetchedObjects! {
-            if let pfObject = object as? PFObject {
-                pfObjects.append(pfObject)
-            }
-        }
-        return pfObjects
-        
-    }
-    
     func populateDiners() {
         var getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
@@ -196,7 +179,6 @@ extension FoodDiaryEntry {
                         println("Successfully retrieved \(objs.count) diners.")
                         var diner = OtherDiner(entry: self, entity: object as! PFObject)
                         otherDinersArray.append(diner)
-                        println(otherDinersArray)
                         
                     } else {
                         // Log details of the failure
@@ -206,6 +188,23 @@ extension FoodDiaryEntry {
                 self.diners = otherDinersArray
             }
         }
+    }
+    
+    func getNotes() -> [PFObject] {
+        var getNotes:PFQuery = PFQuery(className:"FoodDiaryTags")
+        
+        getNotes.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getNotes.limit = 30 // Limit query results just in case
+        
+        var fetchedObjects = getNotes.findObjects()
+        var pfObjects = [PFObject]()
+        for object in fetchedObjects! {
+            if let pfObject = object as? PFObject {
+                pfObjects.append(pfObject)
+            }
+        }
+        return pfObjects
+        
     }
     
     func populateNotes() {
@@ -248,6 +247,7 @@ extension FoodDiaryEntry {
         var ingredientsArray = [Ingredient]()
         
         getIngredients.findObjectsInBackgroundWithBlock {
+            //TODO: Change variable names to describe foodDiaryDetail objects
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
             if let objs = objects {
@@ -255,10 +255,9 @@ extension FoodDiaryEntry {
                     if error == nil {
                         // The find succeeded.
                         println("Successfully retrieved \(objs.count) ingredients.")
-                        /*
-                        var ingredient = Ingredient(ingredientId: object as! PFObject, entry: self, name: "test", calories: 1, gramsCarbs: 1, gramsFat: 1, gramsFiber: 1, gramsProtein: 1, quantity: 1)
+                        
+                        var ingredient = Ingredient(entry: self, entity: object as! PFObject)
                         ingredientsArray.append(ingredient)
-                        println(ingredientsArray) */
                         
                     } else {
                         // Log details of the failure
