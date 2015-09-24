@@ -49,16 +49,17 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         
         if (PFUser.currentUser() == nil) {
             
-            self.logInViewController.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.DismissButton
+            self.logInViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton,
+                .PasswordForgotten, .DismissButton ]
             
-            var logInLogoTitle = UILabel()
+            let logInLogoTitle = UILabel()
             logInLogoTitle.text = "Trust Buds"
             
             self.logInViewController.logInView!.logo = logInLogoTitle
             
             self.logInViewController.delegate = self
             
-            var SignUpLogoTitle = UILabel()
+            let SignUpLogoTitle = UILabel()
             SignUpLogoTitle.text = "Trust Buds"
             
             self.signUpViewController.signUpView!.logo = SignUpLogoTitle
@@ -74,7 +75,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     // Facebook Delegate Methods
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println("User Logged In")
+        print("User Logged In")
         
         if ((error) != nil)
         {
@@ -97,7 +98,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
+        print("User Logged Out")
     }
     
     func returnUserData()
@@ -108,15 +109,15 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
             if ((error) != nil)
             {
                 // Process error
-                println("Error: \(error)")
+                print("Error: \(error)")
             }
             else
             {
-                println("fetched user: \(result)")
+                print("fetched user: \(result)")
                 let userName : NSString = result.valueForKey("name") as! NSString
-                println("User Name is: \(userName)")
+                print("User Name is: \(userName)")
                 let userEmail : NSString = result.valueForKey("email") as! NSString
-                println("User Email is: \(userEmail)")
+                print("User Email is: \(userEmail)")
             }
         })
     }
@@ -143,7 +144,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     }
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
-        println("Failed to login...")
+        print("Failed to login...")
     }
     
     // MARK: Parse Sign Up
@@ -154,11 +155,11 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     }
     
     func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
-        println("Failed to sign up...")
+        print("Failed to sign up...")
     }
     
     func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
-        println("User dismissed sign up.")
+        print("User dismissed sign up.")
     }
     
     // MARK: Actions

@@ -26,7 +26,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let picker = UIImagePickerController()
             picker.sourceType = .Camera
-            picker.mediaTypes = [kUTTypeImage]
+            picker.mediaTypes = [kUTTypeImage as String]
             picker.delegate = self
             picker.allowsEditing = true
             presentViewController(picker, animated: true, completion: nil)
@@ -45,12 +45,18 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         self.presentViewController(imagePicker, animated: true, completion: nil)
         
     }
- 
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        var image = info[UIImagePickerControllerEditedImage] as? UIImage
+        if image == nil {
+            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    }
+ /*
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var image = info[UIImagePickerControllerEditedImage] as? UIImage
         if image == nil {
             image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        }
+        } */
         
         imageView.image = image
         makeRoomForImage()

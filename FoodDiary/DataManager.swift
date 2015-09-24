@@ -19,7 +19,7 @@ class DataManager {
     func loadTimelineData () {
         foodDiaryEntryArray.removeAll(keepCapacity: false)
         
-        var getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
+        let getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
         
         /*Timeline query restraints:
         1.) Only grab non-archived images (diary entries)
@@ -37,7 +37,7 @@ class DataManager {
             
             if error == nil {
                 // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
+                print("Successfully retrieved \(objects!.count) scores.")
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
@@ -71,7 +71,7 @@ class DataManager {
                 }
             } else {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
             
         }

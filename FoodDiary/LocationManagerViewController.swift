@@ -29,11 +29,11 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
     }
     
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       //  var locValue:CLLocationCoordinate2D = manager.location.coordinate
         
         self.lastKnownLocation = manager.location
-        println("Location Found")
+        print("Location Found")
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -52,7 +52,7 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
     {
-        println("Error: " + error.localizedDescription)
+        print("Error: " + error.localizedDescription)
     }
 
     /*

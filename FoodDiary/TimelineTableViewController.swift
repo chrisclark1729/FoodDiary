@@ -140,7 +140,7 @@ class TimelineTableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             
             var destination = segue.destinationViewController as! ViewMealDetailViewController
-            var selectedIndexPath = tableView.indexPathForSelectedRow()
+            var selectedIndexPath = tableView.indexPathForSelectedRow
             var meal = meals![selectedIndexPath!.row]
             
             destination.foodDiaryEntry = meal

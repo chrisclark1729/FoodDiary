@@ -76,7 +76,7 @@ class EditMealExperienceTableViewController: UITableViewController {
                 editMealHealthScore.value = Float(entry.healthScore)
             }
             else {
-                println("No Food Entry")
+                print("No Food Entry")
             }
         }
         

@@ -18,7 +18,7 @@ extension FoodDiaryEntry {
             (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
             //TODO: Fix this logic. It's ugly.
             if error != nil {
-                println(error)
+                print(error)
             } else if let entry = FoodDiaryEntry {
                 entry["mealName"] = self.mealName
                 entry["locationName"] = self.locationName
@@ -102,7 +102,7 @@ extension FoodDiaryEntry {
             
             if error == nil {
                 // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
+                // print(Successfully retrieved  (objects!.count) scores.")
                 // Do something with the found objects
                 
                 var foodDiaryEntryArray = [FoodDiaryEntry]()
@@ -136,7 +136,7 @@ extension FoodDiaryEntry {
                 }
             } else {
                 // Log details of the failure
-                println("Error: \(error!) \(error!.userInfo!)")
+                print("Error: \(error!) \(error!.userInfo)")
             }
             
             
@@ -176,13 +176,13 @@ extension FoodDiaryEntry {
                 for object in objs {
                     if error == nil {
                         // The find succeeded.
-                        println("Successfully retrieved \(objs.count) diners.")
+                        print("Successfully retrieved \(objs.count) diners.")
                         var diner = OtherDiner(entry: self, entity: object as! PFObject)
                         otherDinersArray.append(diner)
                         
                     } else {
                         // Log details of the failure
-                        println("Error: \(error!) \(error!.userInfo!)")
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
                 }
                 self.diners = otherDinersArray
@@ -223,14 +223,14 @@ extension FoodDiaryEntry {
                 for object in objs {
                     if error == nil {
                         // The find succeeded.
-                        println("Successfully retrieved \(objs.count) notes.")
+                        print("Successfully retrieved \(objs.count) notes.")
                         var note = Note(entry: self, entity: object as! PFObject)
                         notesArray.append(note)
-                        println(notesArray)
+                        print(notesArray)
                         
                     } else {
                         // Log details of the failure
-                        println("Error: \(error!) \(error!.userInfo!)")
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
                 }
                 self.notes = notesArray
@@ -254,14 +254,14 @@ extension FoodDiaryEntry {
                 for object in objs {
                     if error == nil {
                         // The find succeeded.
-                        println("Successfully retrieved \(objs.count) ingredients.")
+                        print("Successfully retrieved \(objs.count) ingredients.")
                         
                         var ingredient = Ingredient(entry: self, entity: object as! PFObject)
                         ingredientsArray.append(ingredient)
                         
                     } else {
                         // Log details of the failure
-                        println("Error: \(error!) \(error!.userInfo!)")
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
                 }
                 self.ingredients = ingredientsArray

@@ -80,10 +80,10 @@ class FoodDiaryEntry: NSObject {
         return mealScore
     }
     
-    func dayPart() ->NSString {
+    func dayPart() ->Int {
         
         //TODO: Base Day part on user preferences
-        var dayPart = ""
+
       /*
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -91,8 +91,8 @@ class FoodDiaryEntry: NSObject {
         var timeComparisonFormatter = NSDateFormatter()
         timeComparisonFormatter.dateFormat = "H:mm"
      */   
-        
-        return dayPart
+        return 0
+
     }
    
 }

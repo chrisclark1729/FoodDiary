@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class EditMealComponentsTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class EditMealComponentsTableViewController: UITableViewController {
     
     
     @IBOutlet var dinersTableView: UITableView!

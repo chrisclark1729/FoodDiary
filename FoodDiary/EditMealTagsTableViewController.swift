@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class EditMealTagsTableViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class EditMealTagsTableViewController: UITableViewController {
     
     @IBOutlet var notesTableView: UITableView!
     
@@ -48,7 +48,7 @@ class EditMealTagsTableViewController: UITableViewController, UITableViewDataSou
             var note = Note(entry: self.foodDiaryEntry!, note: inputTextField!.text)
             self.foodDiaryEntry?.addNote(note)
             self.tableView.reloadData()
-            println(self.foodDiaryEntry?.mealID)
+            print(self.foodDiaryEntry?.mealID)
             self.foodDiaryEntry!.save()
         }
         actionSheetController.addAction(nextAction)

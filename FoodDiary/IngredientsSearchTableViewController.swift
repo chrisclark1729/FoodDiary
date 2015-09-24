@@ -97,7 +97,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        search(searchText: searchText)
+        search(searchText)
     }
     
 
@@ -155,7 +155,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
             var destination = segue.destinationViewController as! IngredientAddTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
-            let selectedIndexPath = self.tableView.indexPathForSelectedRow()
+            let selectedIndexPath = self.tableView.indexPathForSelectedRow
             let obj = self.data[selectedIndexPath!.row]
             destination.ingredient = obj
             

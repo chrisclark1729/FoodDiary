@@ -21,14 +21,14 @@ class EditMealDetailTableViewController: UITableViewController {
     
     @IBAction func saveMood(sender: AnyObject) {
         
-        self.foodDiaryEntry?.mood = self.editMood.text
+        self.foodDiaryEntry?.mood = self.editMood.text!
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func saveMealName(sender: AnyObject) {
         
-        self.foodDiaryEntry?.mealName = self.editMealName.text
+        self.foodDiaryEntry?.mealName = self.editMealName.text!
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
         
@@ -36,7 +36,7 @@ class EditMealDetailTableViewController: UITableViewController {
     
     @IBAction func saveMealLocation(sender: AnyObject) {
         
-        self.foodDiaryEntry?.locationName = self.editLocationTextField.text
+        self.foodDiaryEntry?.locationName = self.editLocationTextField.text!
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
         
@@ -80,7 +80,7 @@ class EditMealDetailTableViewController: UITableViewController {
                 editMealName.text = entry.mealName
             }
             else {
-                println("No Food Entry")
+                print("No Food Entry")
             }
         }
         
@@ -96,7 +96,7 @@ class EditMealDetailTableViewController: UITableViewController {
                 editLocationTextField.text = entry.locationName
             }
             else {
-                println("No Food Entry")
+                print("No Food Entry")
             }
         }
         
@@ -111,7 +111,7 @@ class EditMealDetailTableViewController: UITableViewController {
                 editMoodField.text = entry.mood
             }
             else {
-                println("No Food Entry")
+                print("No Food Entry")
             }
         }
         
@@ -127,9 +127,8 @@ class EditMealDetailTableViewController: UITableViewController {
                 
                 self.editTimestampPicker.date = entry.timestamp
                 
-                println("hi chris")
             } else {
-                println("No Food Entry")
+                print("No Food Entry")
             }
         }
     }

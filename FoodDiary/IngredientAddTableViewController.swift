@@ -21,7 +21,7 @@ class IngredientAddTableViewController: UITableViewController {
         
         var ingredient = Ingredient()
         ingredient.ingredientId = self.ingredient
-        ingredient.quantity = (self.numberOfServingsTextField.text).floatValue
+        ingredient.quantity = (self.numberOfServingsTextField.text)!.floatValue
         self.foodDiaryEntry?.ingredients.append(ingredient)
         
      /*

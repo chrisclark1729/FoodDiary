@@ -33,7 +33,7 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             let picker = UIImagePickerController()
             picker.sourceType = .Camera
-            picker.mediaTypes = [kUTTypeImage]
+            picker.mediaTypes = [kUTTypeImage as String]
             picker.delegate = self
             picker.allowsEditing = false
             presentViewController(picker, animated: true, completion: nil)
@@ -43,13 +43,13 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         imageView.image = image
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
