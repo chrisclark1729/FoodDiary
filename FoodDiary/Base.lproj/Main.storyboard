@@ -568,10 +568,12 @@
                         <outlet property="energyLevelLabel" destination="1qM-Ce-fn3" id="nPq-ao-Cw2"/>
                         <outlet property="enjoymentScoreLabel" destination="izf-h9-7aS" id="gHy-Oz-si9"/>
                         <outlet property="healthScoreLabel" destination="svz-SW-Hug" id="R3c-fj-iJq"/>
+                        <outlet property="ingredientsLabel" destination="qW9-qt-aeU" id="ueM-t9-V2X"/>
                         <outlet property="macrosLabel" destination="54R-5n-xfj" id="MvS-8t-BZ5"/>
                         <outlet property="mealLocationName" destination="iFb-te-KWH" id="QpO-Lv-qTX"/>
                         <outlet property="mealName" destination="f92-xC-hDb" id="P5y-iv-hLk"/>
                         <outlet property="moodLabel" destination="qA8-Ta-74X" id="Hui-i6-430"/>
+                        <outlet property="notesLabel" destination="uOD-cN-ew4" id="YCw-oc-btH"/>
                         <outlet property="otherDinersLabel" destination="gEg-YU-3IL" id="irj-Zg-efm"/>
                         <outlet property="timeLabel" destination="1f1-JS-6j6" id="zwp-li-irh"/>
                     </connections>
@@ -699,7 +701,7 @@
                     <navigationItem key="navigationItem" title="Edit Date &amp; Time" id="qkm-i4-vJ3">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="JLl-o9-D8O">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iog-Wa-9DR">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1007,7 +1009,7 @@
                     <navigationItem key="navigationItem" title="Edit Location" id="nzL-7z-wQa">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ueV-Oz-gN4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6HN-OO-tpV">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1211,55 +1213,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqH-6y-BWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2581.5" y="1852.5"/>
-        </scene>
-        <!--Edit Meal Components Table View Controller-->
-        <scene sceneID="CHA-P6-sR3">
-            <objects>
-                <tableViewController id="vgi-Xi-3Vi" customClass="EditMealComponentsTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Y8i-dm-OTh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="hhq-tR-kO3">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="vgi-Xi-3Vi" id="K5K-30-ffi"/>
-                            </connections>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fg4-c8-AbI">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fg4-c8-AbI" id="el7-u8-dJ1">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vgi-Xi-3Vi" id="TpC-xU-nMd"/>
-                            <outlet property="delegate" destination="vgi-Xi-3Vi" id="Dfi-f8-euC"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="JL6-vT-RZQ"/>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="gS7-CI-8Fi" id="Bly-ca-8Cq"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l6k-Vv-w5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="gS7-CI-8Fi">
-                    <connections>
-                        <outlet property="delegate" destination="vgi-Xi-3Vi" id="g0h-jB-BwJ"/>
-                        <outlet property="searchBar" destination="hhq-tR-kO3" id="tnS-mD-6JP"/>
-                        <outlet property="searchContentsController" destination="vgi-Xi-3Vi" id="nSM-gc-k8B"/>
-                        <outlet property="searchResultsDataSource" destination="vgi-Xi-3Vi" id="2ru-UH-xfd"/>
-                        <outlet property="searchResultsDelegate" destination="vgi-Xi-3Vi" id="DGq-Ui-03A"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="3045.5" y="1852.5"/>
         </scene>
         <!--Add Other Diners-->
         <scene sceneID="g1w-FZ-EGO">

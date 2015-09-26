@@ -77,6 +77,11 @@ extension FoodDiaryEntry {
                 foodDiaryEntryTag.save()
             }
             
+            for ingredients in self.ingredients {
+                print("ingredients print")
+                print(ingredients.ingredientId)
+            }
+            
         }
     }
     
@@ -254,7 +259,7 @@ extension FoodDiaryEntry {
                 for object in objs {
                     if error == nil {
                         // The find succeeded.
-                        print("Successfully retrieved \(objs.count) ingredients.")
+                        print("Successfully retrieved \(objs.count) food diary detail rows.")
                         
                         var ingredient = Ingredient(entry: self, entity: object as! PFObject)
                         ingredientsArray.append(ingredient)
@@ -265,6 +270,7 @@ extension FoodDiaryEntry {
                     }
                 }
                 self.ingredients = ingredientsArray
+
             }
         }
     }

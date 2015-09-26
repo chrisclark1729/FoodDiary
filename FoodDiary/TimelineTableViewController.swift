@@ -80,7 +80,9 @@ class TimelineTableViewController: UITableViewController {
                     }
                 }
             }
-        } 
+        } else {
+            print("mealImageFile is nil.")
+        }
         
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
@@ -139,9 +141,9 @@ class TimelineTableViewController: UITableViewController {
         
         if segue.identifier == "showDetail" {
             
-            var destination = segue.destinationViewController as! ViewMealDetailViewController
-            var selectedIndexPath = tableView.indexPathForSelectedRow
-            var meal = meals![selectedIndexPath!.row]
+            let destination = segue.destinationViewController as! ViewMealDetailViewController
+            let selectedIndexPath = tableView.indexPathForSelectedRow
+            let meal = meals![selectedIndexPath!.row]
             
             destination.foodDiaryEntry = meal
             

@@ -19,7 +19,7 @@ class IngredientAddTableViewController: UITableViewController {
 
     @IBAction func addIngredientButtonTapped(sender: AnyObject) {
         
-        var ingredient = Ingredient()
+        let ingredient = Ingredient()
         ingredient.ingredientId = self.ingredient
         ingredient.quantity = (self.numberOfServingsTextField.text)!.floatValue
         self.foodDiaryEntry?.ingredients.append(ingredient)
@@ -28,7 +28,7 @@ class IngredientAddTableViewController: UITableViewController {
         var foodDiaryDetail = FoodDiaryDetail(ingredientId:self.ingredient,entry: self.foodDiaryEntry!, quantity: ingredient.quantity)
 */
         
-        var foodDiaryDetail = PFObject(className:"FoodDiaryDetail")
+        let foodDiaryDetail = PFObject(className:"FoodDiaryDetail")
         // Gives error: 'PFObject values may not have class: FoodDiary.FoodDiaryEntry'
         foodDiaryDetail["foodDiaryEntryId"] = foodDiaryEntry?.toPFObject
         foodDiaryDetail["ingredientId"] = ingredient.ingredientId

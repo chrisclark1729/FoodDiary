@@ -2,29 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>test</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>testWhenInUse</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb505866466230493</string>
-			</array>
-		</dict>
-	</array>
-	<key>FacebookAppID</key>
-	<string>505866466230493</string>
-	<key>FacebookDisplayName</key>
-	<string>Trust Buds</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key><true/>
+    </dict>
+	<key>CFBundleDisplayName</key>
+	<string></string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -35,10 +26,27 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb505866466230493</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>505866466230493</string>
+	<key>FacebookDisplayName</key>
+	<string>Trust Buds</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>test</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>testWhenInUse</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

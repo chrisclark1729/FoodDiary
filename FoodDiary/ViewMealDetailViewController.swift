@@ -27,7 +27,8 @@ class ViewMealDetailViewController: UITableViewController {
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var macrosLabel: UILabel!
     @IBOutlet weak var otherDinersLabel: UILabel!
-    
+    @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
     
     @IBAction func archiveMeal(sender: AnyObject) {
         
@@ -58,7 +59,10 @@ class ViewMealDetailViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         if let entry = foodDiaryEntry {
-            var dinersCountAsString = String(foodDiaryEntry!.diners.count)
+            let dinersCountAsString = String(foodDiaryEntry!.diners.count)
+            let notesCountAsString = String(foodDiaryEntry!.notes.count)
+            let ingredientsCountAsString = String(foodDiaryEntry!.ingredients.count)
+            print(foodDiaryEntry!.ingredients)
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
@@ -69,6 +73,8 @@ class ViewMealDetailViewController: UITableViewController {
             self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",entry.energyLevel) as String)
             self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", entry.healthScore) as String)
             self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
+            self.notesLabel.text = "Notes: " + notesCountAsString
+            self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
             self.caloriesLabel.text = "Calories: \(entry.calories)"
             self.macrosLabel.text = "Carbs: \(entry.gramsCarbs) g, Protein: \(entry.gramsProtein) g, Fat: \(entry.gramsFat) g"
             entry.populateDiners()

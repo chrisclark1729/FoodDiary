@@ -224,10 +224,10 @@
 				885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */,
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
 				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
-				49376FC41BA6A6C40075426C /* FoodDiaryDetail.swift */,
 				492E258A1B24DFFC006419EE /* DataManager.swift */,
 				49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */,
 				49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */,
+				49376FC41BA6A6C40075426C /* FoodDiaryDetail.swift */,
 				4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */,
 				49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */,
 				49A614B41B79160E00B66489 /* OtherDiners.swift */,
@@ -369,7 +369,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Chris Clark";
 				TargetAttributes = {
 					49C5C40F1B068AA6006FA068 = {
@@ -544,7 +544,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -587,6 +589,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -619,9 +622,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos8.3;
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodDiary/FoodDiary-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -651,9 +655,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos8.3;
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodDiary/FoodDiary-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -673,8 +678,9 @@
 				INFOPLIST_FILE = FoodDiaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos8.3;
+				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodDiary.app/FoodDiary";
 			};
 			name = Debug;
@@ -689,8 +695,9 @@
 				INFOPLIST_FILE = FoodDiaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos8.3;
+				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodDiary.app/FoodDiary";
 			};
 			name = Release;
