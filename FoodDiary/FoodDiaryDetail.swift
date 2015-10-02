@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Chris Clark. All rights reserved.
 //
 
-import UIKit
 import Parse
 
 class FoodDiaryDetail: NSObject {

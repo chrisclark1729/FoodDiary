@@ -576,6 +576,7 @@
                         <outlet property="notesLabel" destination="uOD-cN-ew4" id="YCw-oc-btH"/>
                         <outlet property="otherDinersLabel" destination="gEg-YU-3IL" id="irj-Zg-efm"/>
                         <outlet property="timeLabel" destination="1f1-JS-6j6" id="zwp-li-irh"/>
+                        <segue destination="los-MK-ujU" kind="push" identifier="showIngredientsList" id="GTa-yN-GN4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5M-yp-YoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -619,7 +620,7 @@
                     <navigationItem key="navigationItem" title="Edit Mood" id="geS-GA-jOF">
                         <barButtonItem key="rightBarButtonItem" style="done" id="D4q-K4-9ts">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bqf-85-bBO">
-                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -818,6 +819,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk8-RR-Jqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2567.5" y="2622.5"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="m6K-oJ-gTE">
+            <objects>
+                <tableViewController id="los-MK-ujU" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eFP-KF-Vnb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Abe-4l-mAh">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Abe-4l-mAh" id="Xqx-CM-cQc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="los-MK-ujU" id="UKx-S0-njR"/>
+                            <outlet property="delegate" destination="los-MK-ujU" id="sMU-h1-5Rn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nTN-Nq-Jd3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="UqV-im-fRX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g6Y-Y1-1rK">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <segue destination="rzs-WD-kSw" kind="push" identifier="addMoreIngredients" id="L96-26-8Ya"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yNo-Xz-8aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1651.5" y="2622.5"/>
         </scene>
         <!--Edit Meal Name-->
         <scene sceneID="5lp-Oc-5Fk">
@@ -1372,6 +1413,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zkH-2L-Mwv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="LtZ-EV-HFp"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="d07-Ia-rrT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JNU-2g-KLq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1392,5 +1434,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2YI-vR-XMV"/>
+        <segue reference="L96-26-8Ya"/>
     </inferredMetricsTieBreakers>
 </document>

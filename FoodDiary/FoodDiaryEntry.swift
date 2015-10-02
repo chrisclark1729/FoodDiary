@@ -16,7 +16,7 @@ class FoodDiaryEntry: NSObject {
     var timestamp:NSDate
     var locationName:String
     var imgURL:AnyObject?
-    var calories:Int
+    var calories:Float
     var gramsCarbs:Int
     var gramsProtein:Int
     var gramsFat:Int
@@ -34,7 +34,7 @@ class FoodDiaryEntry: NSObject {
     var ingredients = [Ingredient]()
     var toPFObject: PFObject?
 
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,imgURL:AnyObject?,calories:Int,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
+    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,imgURL:AnyObject?,calories:Float,gramsCarbs:Int,gramsProtein:Int,gramsFat:Int,gramsFiber:Int,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp

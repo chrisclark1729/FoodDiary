@@ -41,7 +41,6 @@ extension FoodDiaryEntry {
                 
                 entry.saveInBackground()
                 
-                
                 var fetchedDiners = self.getDiners()
                 
                 for diner in fetchedDiners {
@@ -120,7 +119,7 @@ extension FoodDiaryEntry {
                             timestamp: object["timestamp"] as! NSDate,
                             locationName: object["locationName"] as! String,
                             imgURL: object["imageFile"],
-                            calories: object["calories"] as! Int,
+                            calories: object["calories"] as! Float,
                             gramsCarbs: object["gramsCarbs"] as! Int,
                             gramsProtein: object["gramsProtein"] as! Int,
                             gramsFat: object["gramsFat"] as! Int,
@@ -243,15 +242,42 @@ extension FoodDiaryEntry {
         }
     }
     
+    func getIngredientsFromFoodDiaryDetail(detail:PFObject) -> Ingredient {
+        
+        var fetchedIngredient = detail["ingredientId"] as! PFObject
+        
+        fetchedIngredient.fetch()
+       // print(fetchedIngredient)
+        var ingredient = Ingredient(entry: self, entity: fetchedIngredient)
+      //  print(ingredient)
+        
+        return ingredient
+        
+    }
+    
+    func updateCalories(detail:PFObject, ingredient:PFObject) -> Float {
+        
+        var totalCalories = 0 as! Float
+        let fetchedIngredient = detail["ingredientId"] as! PFObject
+        fetchedIngredient.fetch()
+        
+        let quantity = detail["numberOfServings"] as! Float
+        let calories = fetchedIngredient["calories"] as! Float
+        totalCalories = (calories * quantity)
+        print(totalCalories)
+        
+        return totalCalories
+    }
+    
     func populateIngredients() {
         // get from Backend and populate array
-        var getIngredients:PFQuery = PFQuery(className:"FoodDiaryDetail")
+        var foodDiaryDetails:PFQuery = PFQuery(className:"FoodDiaryDetail")
         
-        getIngredients.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        foodDiaryDetails.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
         
         var ingredientsArray = [Ingredient]()
         
-        getIngredients.findObjectsInBackgroundWithBlock {
+        foodDiaryDetails.findObjectsInBackgroundWithBlock {
             //TODO: Change variable names to describe foodDiaryDetail objects
             (objects: [AnyObject]?, error: NSError?) -> Void in
             
@@ -261,7 +287,9 @@ extension FoodDiaryEntry {
                         // The find succeeded.
                         print("Successfully retrieved \(objs.count) food diary detail rows.")
                         
-                        var ingredient = Ingredient(entry: self, entity: object as! PFObject)
+                   //     var ingredient = Ingredient(entry: self, entity: object as! PFObject)
+                       // ingredientsArray.append(ingredient)
+                        var ingredient = self.getIngredientsFromFoodDiaryDetail(object as! PFObject)
                         ingredientsArray.append(ingredient)
                         
                     } else {

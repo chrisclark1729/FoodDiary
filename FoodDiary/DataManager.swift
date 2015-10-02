@@ -47,7 +47,7 @@ class DataManager {
                             timestamp: object["timestamp"] as! NSDate,
                             locationName: object["locationName"] as! String,
                             imgURL: object["imageFile"],
-                            calories: object["calories"] as! Int,
+                            calories: object["calories"] as! Float,
                             gramsCarbs: object["gramsCarbs"] as! Int,
                             gramsProtein: object["gramsProtein"] as! Int,
                             gramsFat: object["gramsFat"] as! Int,
