@@ -16,7 +16,7 @@ class ManuallyAddMealViewController: UIViewController {
     @IBOutlet weak var manualEntryMood: UITextField!
     @IBAction func sendManualFoodDiaryEntry(sender: AnyObject) {
         
-        var foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
+        let foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
         
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
         foodDiaryEntry["locationName"] = manualEntryLocationTextView.text
@@ -28,6 +28,7 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["gramsCarbs"] = 0
         foodDiaryEntry["gramsProtein"] = 0
         foodDiaryEntry["gramsFiber"] = 0
+        foodDiaryEntry["gramsSaturatedFat"] = 0
         foodDiaryEntry["enjoymentScore"] = 0
         foodDiaryEntry["mood"] = manualEntryMood.text
         foodDiaryEntry["energyLevel"] = 0

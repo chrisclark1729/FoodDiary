@@ -45,7 +45,7 @@ class EditMealComponentsTableViewController: UITableViewController {
         actionSheetController.addAction(cancelAction)
         let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
             
-            var diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
+            let diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
             self.foodDiaryEntry?.addDiner(diner)
             self.tableView.reloadData()
             self.foodDiaryEntry!.save()
@@ -81,10 +81,10 @@ class EditMealComponentsTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
         
         let row = indexPath.row
-        var diner = self.otherDiners[row]
+        let diner = self.otherDiners[row]
         cell.textLabel?.text = diner.name!
         
         return cell

@@ -45,7 +45,7 @@ class EditMealTagsTableViewController: UITableViewController {
         actionSheetController.addAction(cancelAction)
         let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
             
-            var note = Note(entry: self.foodDiaryEntry!, note: inputTextField!.text)
+            let note = Note(entry: self.foodDiaryEntry!, note: inputTextField!.text)
             self.foodDiaryEntry?.addNote(note)
             self.tableView.reloadData()
             print(self.foodDiaryEntry?.mealID)
@@ -80,10 +80,10 @@ class EditMealTagsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
 
         let row = indexPath.row
-        var note = self.notes[row]
+        let note = self.notes[row]
         cell.textLabel?.text = note.note!
 
         return cell

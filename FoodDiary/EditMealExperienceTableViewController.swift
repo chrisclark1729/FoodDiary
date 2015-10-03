@@ -24,17 +24,17 @@ class EditMealExperienceTableViewController: UITableViewController {
     
     @IBAction func enjoymentScoreSlider(sender: AnyObject) {
         
-        var currentEnjoymentScore = NSString(format: "%.1f",self.editMealEnjoymentScoreSlider.value)
+        let currentEnjoymentScore = NSString(format: "%.1f",self.editMealEnjoymentScoreSlider.value)
         enjoymentScoreLabel.text = "Enjoyment Score: \(currentEnjoymentScore)/5.0"
     }
     @IBAction func energyLevelSlider(sender: AnyObject) {
-        var currentEnergyLevel = NSString(format: "%.1f", self.editEnergyLevelSlider.value)
+        let currentEnergyLevel = NSString(format: "%.1f", self.editEnergyLevelSlider.value)
         energyLevelLabel.text = "Energy Level: \(currentEnergyLevel)/5.0"
         
     }
     
     @IBAction func healthScoreSlider(sender: AnyObject) {
-        var currentHealthScore = NSString(format: "%.1f",self.editMealHealthScoreSlider.value)
+        let currentHealthScore = NSString(format: "%.1f",self.editMealHealthScoreSlider.value)
         healthScoreLabel.text = "Health Score: \(currentHealthScore)/5.0"
         
     }

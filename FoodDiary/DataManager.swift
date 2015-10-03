@@ -42,16 +42,17 @@ class DataManager {
                 if let objects = objects as? [PFObject] {
                     for object in objects {
                      //   if object.objectForKey("imgURL") != nil {
-                        var entry = FoodDiaryEntry(mealID: object.objectId!,
+                        let entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,
                             locationName: object["locationName"] as! String,
                             imgURL: object["imageFile"],
                             calories: object["calories"] as! Float,
-                            gramsCarbs: object["gramsCarbs"] as! Int,
-                            gramsProtein: object["gramsProtein"] as! Int,
-                            gramsFat: object["gramsFat"] as! Int,
-                            gramsFiber: object["gramsFiber"] as! Int,
+                            gramsCarbs: object["gramsCarbs"] as! Float,
+                            gramsProtein: object["gramsProtein"] as! Float,
+                            gramsFat: object["gramsFat"] as! Float,
+                            gramsFiber: object["gramsFiber"] as! Float,
+                            gramsSaturatedFat: object["gramsSaturatedFat"] as! Float,
                             enjoymentScore: object["enjoymentScore"] as! Float,
                             healthScore: object["healthScore"] as! Float,
                             mood: object["mood"] as! String,

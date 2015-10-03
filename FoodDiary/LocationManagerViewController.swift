@@ -50,7 +50,7 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
         
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!)
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
     {
         print("Error: " + error.localizedDescription)
     }

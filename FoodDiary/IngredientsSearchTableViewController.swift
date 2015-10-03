@@ -68,7 +68,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let obj = self.data[indexPath.row]
         
         
@@ -152,7 +152,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
             
         {
             
-            var destination = segue.destinationViewController as! IngredientAddTableViewController
+            let destination = segue.destinationViewController as! IngredientAddTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             let selectedIndexPath = self.tableView.indexPathForSelectedRow

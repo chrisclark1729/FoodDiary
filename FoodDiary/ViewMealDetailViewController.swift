@@ -32,7 +32,7 @@ class ViewMealDetailViewController: UITableViewController {
     
     @IBAction func archiveMeal(sender: AnyObject) {
         
-        var query = PFQuery(className:"FoodDiaryEntries")
+        let query = PFQuery(className:"FoodDiaryEntries")
         query.getObjectInBackgroundWithId(foodDiaryEntry!.mealID) {
             (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
             if error != nil {
@@ -109,24 +109,24 @@ class ViewMealDetailViewController: UITableViewController {
         segue.identifier == "editMood" || segue.identifier == "editLocation" || segue.identifier == "editMealDetail"
         {
             
-            var destination = segue.destinationViewController as! EditMealDetailTableViewController
+            let destination = segue.destinationViewController as! EditMealDetailTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             
         } else if segue.identifier == "editMealExperience" {
-            var destination = segue.destinationViewController as! EditMealExperienceTableViewController
+            let destination = segue.destinationViewController as! EditMealExperienceTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealComponents" {
-            var destination = segue.destinationViewController as! EditMealComponentsTableViewController
+            let destination = segue.destinationViewController as! EditMealComponentsTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealTags" {
-            var destination = segue.destinationViewController as! EditMealTagsTableViewController
+            let destination = segue.destinationViewController as! EditMealTagsTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "showSearchIngredients" {
-            var destination = segue.destinationViewController as! IngredientsSearchTableViewController
+            let destination = segue.destinationViewController as! IngredientsSearchTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             

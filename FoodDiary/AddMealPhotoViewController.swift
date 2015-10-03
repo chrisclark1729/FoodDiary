@@ -38,7 +38,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         
     @IBAction func addFromGallery(sender: AnyObject) {
         
-        var imagePicker:UIImagePickerController = UIImagePickerController()
+        let imagePicker:UIImagePickerController = UIImagePickerController()
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.delegate = self
         
@@ -67,7 +67,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         let imageData = image!.lowestQualityJPEGNSData
         let imageFile:PFFile = PFFile(data: imageData)
         
-        var userPhoto = PFObject(className:"FoodDiaryEntries")
+        let userPhoto = PFObject(className:"FoodDiaryEntries")
 
         userPhoto["imageFile"] = imageFile
         userPhoto["mealName"] = ""
@@ -83,6 +83,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["gramsCarbs"] = 0
         userPhoto["gramsFat"] = 0
         userPhoto["gramsProtein"] = 0
+        userPhoto["gramsSaturatedFat"] = 0
         userPhoto["gramsFiber"] = 0
         userPhoto["healthScore"] = 0
         userPhoto["timezone"] = NSTimeZone.localTimeZone().abbreviation!
