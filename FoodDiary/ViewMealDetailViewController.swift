@@ -43,7 +43,6 @@ class ViewMealDetailViewController: UITableViewController {
                 self.navigationController?.popViewControllerAnimated(true)
             }
         }
-
         
     }
 
@@ -52,6 +51,11 @@ class ViewMealDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        foodDiaryEntry?.populateDiners()
+        foodDiaryEntry?.populateIngredients()
+        foodDiaryEntry?.populateNotes()
+        foodDiaryEntry?.save()
+        
         dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
       //  timeFormatter.dateFormat = "h:mm a"
         
@@ -59,10 +63,12 @@ class ViewMealDetailViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         if let entry = foodDiaryEntry {
+            
+            
             let dinersCountAsString = String(foodDiaryEntry!.diners.count)
             let notesCountAsString = String(foodDiaryEntry!.notes.count)
             let ingredientsCountAsString = String(foodDiaryEntry!.ingredients.count)
-            print(foodDiaryEntry!.ingredients)
+            
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName

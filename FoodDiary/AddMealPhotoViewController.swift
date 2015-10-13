@@ -51,19 +51,12 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         if image == nil {
             image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
- /*
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        var image = info[UIImagePickerControllerEditedImage] as? UIImage
-        if image == nil {
-            image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        } */
         
         imageView.image = image
         makeRoomForImage()
         
         dismissViewControllerAnimated(true, completion: nil)
         
-      //  let imageData = UIImagePNGRepresentation(image)
         let imageData = image!.lowestQualityJPEGNSData
         let imageFile:PFFile = PFFile(data: imageData)
         
@@ -92,6 +85,8 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["userId"] = PFUser.currentUser()
         userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
         userPhoto.saveInBackground()
+        
+        
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -128,6 +123,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         }
         preferredContentSize = CGSize(width: preferredContentSize.width, height: preferredContentSize.height + extraHeight)
     }
+    
 
     /*
     // MARK: - Navigation

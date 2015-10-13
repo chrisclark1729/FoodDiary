@@ -289,7 +289,7 @@ extension FoodDiaryEntry {
     
     
     
-    func populateIngredients() {
+    func populateIngredients() -> Int {
         // get from Backend and populate array
         let foodDiaryDetails:PFQuery = PFQuery(className:"FoodDiaryDetail")
         
@@ -301,6 +301,7 @@ extension FoodDiaryEntry {
         var totalGramsCarbs: Float = 0
         var totalGramsFiber: Float = 0
         var totalGramsSaturatedFat: Float = 0
+        var ingredientCount: Int = 0
         
         foodDiaryDetails.findObjectsInBackgroundWithBlock {
             //TODO: Change variable names to describe foodDiaryDetail objects
@@ -323,6 +324,7 @@ extension FoodDiaryEntry {
                         totalGramsCarbs += ingredientTotalCalories.3
                         totalGramsFiber += ingredientTotalCalories.4
                         totalGramsSaturatedFat += ingredientTotalCalories.5
+                        ingredientCount += 1
                         print("ingredient \(ingredientTotalCalories)")
                     } else {
                         // Log details of the failure
@@ -330,7 +332,7 @@ extension FoodDiaryEntry {
                     }
                 }
                 //self.ingredients = ingredientsArray
-                print("end of loop: \(totalCalories)")
+                print("end of loop: \(ingredientCount) ingredients at \(totalCalories) calories")
                 self.calories = totalCalories
                 self.gramsFat = totalGramsFat
                 self.gramsProtein = totalGramsProtein
@@ -340,9 +342,11 @@ extension FoodDiaryEntry {
 
             }
         }
+        print(ingredientCount)
+        return ingredientCount
     }
     
-        
+    
         
     }
     
