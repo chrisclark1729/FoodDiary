@@ -114,7 +114,6 @@ extension FoodDiaryEntry {
                 
                 if let objects = objects as? [PFObject] {
                     for object in objects {
-                        // println(object.objectId)
                         let entry = FoodDiaryEntry(mealID: object.objectId!,
                             mealName: object["mealName"] as! String,
                             timestamp: object["timestamp"] as! NSDate,

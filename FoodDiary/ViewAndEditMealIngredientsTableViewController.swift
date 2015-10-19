@@ -44,7 +44,9 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print(self.foodDiaryEntry!.ingredients)
         return self.foodDiaryEntry!.ingredients.count
+
     }
 
     
