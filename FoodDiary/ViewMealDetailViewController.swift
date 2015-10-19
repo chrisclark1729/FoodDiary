@@ -81,8 +81,8 @@ class ViewMealDetailViewController: UITableViewController {
             self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
             self.notesLabel.text = "Notes: " + notesCountAsString
             self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
-            self.caloriesLabel.text = "Calories: \(entry.calories)"
-            self.macrosLabel.text = "Carbs: \(entry.gramsCarbs) g, Protein: \(entry.gramsProtein) g, Fat: \(entry.gramsFat) g"
+            self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",entry.calories) as String)
+            self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",entry.gramsCarbs) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",entry.gramsProtein) as String) + "g, Fat: "  + (NSString(format: "%.0f",entry.gramsFat) as String) + "g"
             entry.populateDiners()
             entry.populateIngredients()
             entry.populateNotes()
