@@ -17,16 +17,12 @@ class EditMealComponentsTableViewController: UITableViewController {
     let textCellIdentifier = "TextCell"
     
     var foodDiaryEntry: FoodDiaryEntry?
-    var otherDiners = [OtherDiner]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dinersTableView.delegate = self
         dinersTableView.dataSource = self
-
-        self.otherDiners = self.foodDiaryEntry!.diners
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -75,7 +71,7 @@ class EditMealComponentsTableViewController: UITableViewController {
         
         // Return the number of rows in the section.
         
-        return self.otherDiners.count
+        return self.foodDiaryEntry!.diners.count
         
     }
     
@@ -84,7 +80,7 @@ class EditMealComponentsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
         
         let row = indexPath.row
-        let diner = self.otherDiners[row]
+        let diner = self.foodDiaryEntry!.diners[row]
         cell.textLabel?.text = diner.name!
         
         return cell

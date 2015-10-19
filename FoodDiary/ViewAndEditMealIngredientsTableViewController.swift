@@ -9,9 +9,19 @@
 import UIKit
 
 class ViewAndEditMealIngredientsTableViewController: UITableViewController {
+    
 
+    @IBOutlet var ingredientList: UITableView!
+    
+    let textCellIdentifier = "IngredientCell"
+    
+    var foodDiaryEntry: FoodDiaryEntry?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ingredientList.delegate = self
+        ingredientList.dataSource = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +39,27 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.foodDiaryEntry!.ingredients.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
 
-        // Configure the cell...
+        let row = indexPath.row
+        let ingredient = self.foodDiaryEntry!.ingredients[row]
+        print("That new sound you're looking for...")
+        print(ingredient.name)
+        cell.textLabel?.text = ingredient.name
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

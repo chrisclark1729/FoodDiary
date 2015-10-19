@@ -33,6 +33,7 @@ class FoodDiaryEntry: NSObject {
     var diners = [OtherDiner]()
     var notes = [Note]()
     var ingredients = [Ingredient]()
+    var ingredientDetails = [FoodDiaryDetail]()
     var toPFObject: PFObject?
 
     init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,imgURL:AnyObject?,calories:Float,gramsCarbs:Float,gramsProtein:Float,gramsFat:Float,gramsFiber:Float,gramsSaturatedFat:Float,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {

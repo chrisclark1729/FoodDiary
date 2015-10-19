@@ -16,7 +16,7 @@ class EditMealTagsTableViewController: UITableViewController {
     let textCellIdentifier = "TextCell"
     
     var foodDiaryEntry: FoodDiaryEntry?
-    var notes = [Note]()
+  //  var notes = [Note]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class EditMealTagsTableViewController: UITableViewController {
         notesTableView.delegate = self
         notesTableView.dataSource = self
         
-        self.notes = self.foodDiaryEntry!.notes
+    //    self.notes = self.foodDiaryEntry!.notes
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -48,7 +48,6 @@ class EditMealTagsTableViewController: UITableViewController {
             let note = Note(entry: self.foodDiaryEntry!, note: inputTextField!.text)
             self.foodDiaryEntry?.addNote(note)
             self.tableView.reloadData()
-            print(self.foodDiaryEntry?.mealID)
             self.foodDiaryEntry!.save()
         }
         actionSheetController.addAction(nextAction)
@@ -75,7 +74,7 @@ class EditMealTagsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.notes.count
+        return self.foodDiaryEntry!.notes.count
     }
 
     
@@ -83,7 +82,7 @@ class EditMealTagsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
 
         let row = indexPath.row
-        let note = self.notes[row]
+        let note = self.foodDiaryEntry!.notes[row]
         cell.textLabel?.text = note.note!
 
         return cell

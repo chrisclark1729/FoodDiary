@@ -136,6 +136,11 @@ class ViewMealDetailViewController: UITableViewController {
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             
+        } else if segue.identifier == "showIngredientList" {
+            let destination = segue.destinationViewController as! ViewAndEditMealIngredientsTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+            
         }
         
     }

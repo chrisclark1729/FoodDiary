@@ -332,7 +332,6 @@ extension FoodDiaryEntry {
                     }
                 }
                 //self.ingredients = ingredientsArray
-                print("end of loop: \(ingredientCount) ingredients at \(totalCalories) calories")
                 self.calories = totalCalories
                 self.gramsFat = totalGramsFat
                 self.gramsProtein = totalGramsProtein
@@ -342,10 +341,12 @@ extension FoodDiaryEntry {
 
             }
         }
-        print(ingredientCount)
         return ingredientCount
     }
     
+    func updateCalories() {
+        
+    }
     
         
     }
