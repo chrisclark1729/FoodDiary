@@ -242,13 +242,13 @@ extension FoodDiaryEntry {
             }
         }
     }
-    
+    /*
     func getIngredientsFromFoodDiaryDetail(detail:PFObject) -> Ingredient {
-        let fetchIngredient = self.getIngredientsAsPFObjectFromFoodDiaryDetail(detail)
-        let ingredient = Ingredient(entry: self, entity: fetchIngredient)
-      //  print(ingredient)
-        return ingredient
-    }
+    let fetchIngredient = self.getIngredientsAsPFObjectFromFoodDiaryDetail(detail)
+    let ingredient = Ingredient(entry: self, entity: fetchIngredient)
+    //  print(ingredient)
+    return ingredient
+    } */
     
     func getIngredientsAsPFObjectFromFoodDiaryDetail(detail:PFObject) -> PFObject {
         let fetchedIngredient = detail["ingredientId"] as! PFObject
@@ -286,13 +286,8 @@ extension FoodDiaryEntry {
         return (totalCalories, totalGramsFat, totalGramsProtein, totalGramsCarbs, totalGramsFiber, totalGramsSaturatedFat)
     }
     
-    
-    
     func populateIngredients() -> Int {
-        // get from Backend and populate array
-        let foodDiaryDetails:PFQuery = PFQuery(className:"FoodDiaryDetail")
         
-        foodDiaryDetails.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
         
         var totalCalories: Float = 0
         var totalGramsFat: Float = 0
@@ -302,61 +297,55 @@ extension FoodDiaryEntry {
         var totalGramsSaturatedFat: Float = 0
         var ingredientCount: Int = 0
         
-        foodDiaryDetails.findObjectsInBackgroundWithBlock {
-            //TODO: Change variable names to describe foodDiaryDetail objects
-            (fetchedDetails: [AnyObject]?, error: NSError?) -> Void in
-            
-            if let details = fetchedDetails {
-                for detail in details {
-                    if error == nil {
-                        // The find succeeded.
-                        print("Successfully retrieved \(detail.count) food diary detail rows.")
-                        
-                   //     var ingredient = Ingredient(entry: self, entity: object as! PFObject)
-                       // ingredientsArray.append(ingredient)
-                        let ingredient = self.getIngredientsAsPFObjectFromFoodDiaryDetail(detail as! PFObject)
-                      //  ingredientsArray.append(ingredient)
-                        let ingredientTotalCalories = self.getTotalCaloriesForIngredient(detail as! PFObject, ingredient: ingredient)
-                        totalCalories += ingredientTotalCalories.0
-                        totalGramsFat += ingredientTotalCalories.1
-                        totalGramsProtein += ingredientTotalCalories.2
-                        totalGramsCarbs += ingredientTotalCalories.3
-                        totalGramsFiber += ingredientTotalCalories.4
-                        totalGramsSaturatedFat += ingredientTotalCalories.5
-                        ingredientCount += 1
-                        print("ingredient \(ingredientTotalCalories)")
-                    } else {
-                        // Log details of the failure
-                        print("Error: \(error!) \(error!.userInfo)")
-                    }
-                }
-                //self.ingredients = ingredientsArray
-                self.calories = totalCalories
-                self.gramsFat = totalGramsFat
-                self.gramsProtein = totalGramsProtein
-                self.gramsCarbs = totalGramsCarbs
-                self.gramsFiber = totalGramsFiber
-                self.gramsSaturatedFat = totalGramsSaturatedFat
-
+        let fetchedDetails = self.fetchFoodDiaryDetails()
+        
+        if let details = fetchedDetails {
+            for detail in details {
+                
+                print("Successfully retrieved \(detail.count) food diary detail rows.")
+                
+                let ingredient = self.getIngredientsAsPFObjectFromFoodDiaryDetail(detail as! PFObject)
+                let ingredientTotalCalories = self.getTotalCaloriesForIngredient(detail as! PFObject, ingredient: ingredient)
+                totalCalories += ingredientTotalCalories.0
+                totalGramsFat += ingredientTotalCalories.1
+                totalGramsProtein += ingredientTotalCalories.2
+                totalGramsCarbs += ingredientTotalCalories.3
+                totalGramsFiber += ingredientTotalCalories.4
+                totalGramsSaturatedFat += ingredientTotalCalories.5
+                ingredientCount += 1
+                print("ingredient \(ingredientTotalCalories)")
+                
             }
+            self.calories = totalCalories
+            self.gramsFat = totalGramsFat
+            self.gramsProtein = totalGramsProtein
+            self.gramsCarbs = totalGramsCarbs
+            self.gramsFiber = totalGramsFiber
+            self.gramsSaturatedFat = totalGramsSaturatedFat
+            
         }
         return ingredientCount
     }
     
-    func updateCalories() {
+    func fetchFoodDiaryDetails() -> [AnyObject]? {
+        // get from Backend and populate array
+        let foodDiaryDetails:PFQuery = PFQuery(className:"FoodDiaryDetail")
+        foodDiaryDetails.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        let fetchedDetails = foodDiaryDetails.findObjects()
         
+        return fetchedDetails
     }
     
-        
+    func populateIngredientDetails() {
+        self.ingredientDetails = []
+        let fetchedDetails = self.fetchFoodDiaryDetails()
+        if let details = fetchedDetails {
+            for detail in details {
+                let foodDiaryDetail = FoodDiaryDetail(entry: self, entity: detail as! PFObject)
+                self.ingredientDetails.append(foodDiaryDetail)
+                
+            }
+        }
     }
     
-    func clearIngredients() {
-        // delete all Ingredients related to this foodDiaryEntry
-    }
-    
-    func saveIngredients() {
-        
-        // build all ingredients and save to backend
-        
-    }
-
+}

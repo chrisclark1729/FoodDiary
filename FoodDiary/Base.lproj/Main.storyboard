@@ -340,7 +340,7 @@
                                             <segue destination="rzs-WD-kSw" kind="push" identifier="showSearchIngredients" id="zpG-xY-bRR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="mealIngredients" textLabel="qW9-qt-aeU" style="IBUITableViewCellStyleDefault" id="dXR-dE-4De" userLabel="showMealIngredients">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="showMealIngredients" textLabel="qW9-qt-aeU" style="IBUITableViewCellStyleDefault" id="dXR-dE-4De" userLabel="showMealIngredients">
                                         <rect key="frame" x="0.0" y="275" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dXR-dE-4De" id="Eii-BU-04c">
@@ -847,7 +847,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Ingredient" textLabel="rJk-tW-nuO" style="IBUITableViewCellStyleDefault" id="Abe-4l-mAh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="rJk-tW-nuO" style="IBUITableViewCellStyleDefault" id="Abe-4l-mAh">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Abe-4l-mAh" id="Xqx-CM-cQc">

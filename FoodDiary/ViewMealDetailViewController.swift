@@ -15,7 +15,6 @@ class ViewMealDetailViewController: UITableViewController {
     var dayFormatter = NSDateFormatter()
     var timeFormatter = NSDateFormatter()
     
-    
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealLocationName: UILabel!
     @IBOutlet weak var moodLabel: UILabel!
@@ -52,8 +51,9 @@ class ViewMealDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         foodDiaryEntry?.populateDiners()
-        foodDiaryEntry?.populateIngredients()
+ //       foodDiaryEntry?.populateIngredients()
         foodDiaryEntry?.populateNotes()
+        foodDiaryEntry?.populateIngredientDetails()
         foodDiaryEntry?.save()
         
         dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
@@ -67,12 +67,11 @@ class ViewMealDetailViewController: UITableViewController {
             
             let dinersCountAsString = String(foodDiaryEntry!.diners.count)
             let notesCountAsString = String(foodDiaryEntry!.notes.count)
-            let ingredientsCountAsString = String(foodDiaryEntry!.ingredients.count)
+            let ingredientsCountAsString = String(foodDiaryEntry!.ingredientDetails.count)
             
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
-         //   self.dayLabel.text = dayFormatter.stringFromDate(entry.timestamp)
             self.timeLabel.text = dayFormatter.stringFromDate(entry.timestamp)
             self.moodLabel.text = entry.mood
             self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", entry.enjoymentScore) as String)

@@ -9,8 +9,16 @@
 import Parse
 
 class FoodDiaryDetail: NSObject {
-   
+    
+    var foodDiaryEntryId: PFObject?
     var ingredientId: PFObject?
     var entry: FoodDiaryEntry?
     var quantity: Float?
+    
+    init(entry: FoodDiaryEntry, entity: PFObject) {
+        self.ingredientId = entity["ingredientId"] as? PFObject
+        self.quantity = entity["numberOfServings"] as? Float
+        self.foodDiaryEntryId = entity["foodDiaryEntryId"] as? PFObject
+    }
+    
 }

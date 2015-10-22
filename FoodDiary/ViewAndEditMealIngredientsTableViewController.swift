@@ -43,9 +43,8 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print(self.foodDiaryEntry!.ingredients)
-        return self.foodDiaryEntry!.ingredients.count
+
+        return self.foodDiaryEntry!.ingredientDetails.count
 
     }
 
@@ -54,11 +53,21 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
 
         let row = indexPath.row
-        let ingredient = self.foodDiaryEntry!.ingredients[row]
-        print("That new sound you're looking for...")
-        print(ingredient.name)
-        cell.textLabel?.text = ingredient.name
+        let ingredientDetail = self.foodDiaryEntry!.ingredientDetails[row]
+        let ingredientId = ingredientDetail.ingredientId
+        ingredientId?.fetch()
+        let ingredientName = ingredientId!["ingredientName"] as? String
+        let ingredientUnitOfMeasurement = ingredientId!["unitOfMeasurement"] as? String
+        let calories = ingredientId!["calories"] as? Float
+        let totalCalories = calories! * ingredientDetail.quantity!
+        var unitOfMeasurementSeparator = ") "
+        
+        if ingredientDetail.quantity! == 1 {
+            unitOfMeasurementSeparator = "s) "
+        }
 
+        cell.textLabel?.text = ingredientName! + " (" + (NSString(format: "%.1f",ingredientDetail.quantity!) as String) + " " + ingredientUnitOfMeasurement! + unitOfMeasurementSeparator + (NSString(format: "%.0f",totalCalories) as String) + " cal."
+        
         return cell
     }
 
