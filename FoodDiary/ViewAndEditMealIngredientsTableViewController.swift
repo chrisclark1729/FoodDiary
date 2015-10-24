@@ -29,6 +29,12 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.foodDiaryEntry?.populateIngredientDetails()
+        self.foodDiaryEntry?.populateIngredients()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,6 +76,16 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         
         return cell
     }
+  
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "editMealExperience" {
+            let destination = segue.destinationViewController as! EditMealExperienceTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+        }
+    } */
 
 
     /*

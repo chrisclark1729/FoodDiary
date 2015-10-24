@@ -348,4 +348,12 @@ extension FoodDiaryEntry {
         }
     }
     
+    func hasIngredients() -> Bool {
+        if self.ingredientDetails.count > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }

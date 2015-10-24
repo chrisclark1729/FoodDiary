@@ -19,6 +19,8 @@ class IngredientAddTableViewController: UITableViewController {
 
     @IBAction func addIngredientButtonTapped(sender: AnyObject) {
         
+        self.foodDiaryEntry = Session.sharedInstance.currentFoodDiaryEntry!
+        
         let ingredient = Ingredient()
         ingredient.ingredientId = self.ingredient
         ingredient.quantity = (self.numberOfServingsTextField.text)!.floatValue

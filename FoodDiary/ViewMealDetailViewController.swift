@@ -51,7 +51,7 @@ class ViewMealDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         foodDiaryEntry?.populateDiners()
- //       foodDiaryEntry?.populateIngredients()
+        foodDiaryEntry?.populateIngredients()
         foodDiaryEntry?.populateNotes()
         foodDiaryEntry?.populateIngredientDetails()
         foodDiaryEntry?.save()
@@ -64,11 +64,16 @@ class ViewMealDetailViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         if let entry = foodDiaryEntry {
             
+            Session.sharedInstance.currentFoodDiaryEntry = entry
+            
+            entry.populateDiners()
+            entry.populateIngredients()
+            entry.populateNotes()
+            entry.populateIngredientDetails()
             
             let dinersCountAsString = String(foodDiaryEntry!.diners.count)
             let notesCountAsString = String(foodDiaryEntry!.notes.count)
             let ingredientsCountAsString = String(foodDiaryEntry!.ingredientDetails.count)
-            
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
@@ -82,9 +87,6 @@ class ViewMealDetailViewController: UITableViewController {
             self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
             self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",entry.calories) as String)
             self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",entry.gramsCarbs) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",entry.gramsProtein) as String) + "g, Fat: "  + (NSString(format: "%.0f",entry.gramsFat) as String) + "g"
-            entry.populateDiners()
-            entry.populateIngredients()
-            entry.populateNotes()
 
         }
         else {
@@ -142,6 +144,21 @@ class ViewMealDetailViewController: UITableViewController {
             
         }
         
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let shortPath = (indexPath.section, indexPath.row)
+        switch shortPath {
+        case (0, 3):
+            if self.foodDiaryEntry!.hasIngredients()  {
+                self.performSegueWithIdentifier("showIngredientList", sender: self)
+            } else {
+                self.performSegueWithIdentifier("showSearchIngredients", sender: self)
+            }
+            break
+        default:
+            break
+        }
     }
     
     /*
