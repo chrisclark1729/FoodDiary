@@ -57,7 +57,6 @@ class ViewMealDetailViewController: UITableViewController {
         foodDiaryEntry?.save()
         
         dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
-      //  timeFormatter.dateFormat = "h:mm a"
         
     }
     
