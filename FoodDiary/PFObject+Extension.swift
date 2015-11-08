@@ -31,4 +31,30 @@ extension PFObject {
         self["isVisible"] = entry.isVisible
         // WARNING: Do **NOT** Update Location during editing. This will overwrite geoLocation Data.
     }
+    
+    static func foodDiaryEntryPFObject() -> PFObject {
+        let userPhoto = PFObject(className:"FoodDiaryEntries")
+
+        userPhoto["mealName"] = ""
+        userPhoto["locationName"] = ""
+        userPhoto["timestamp"] = NSDate()
+        userPhoto["wasEaten"] = true
+        userPhoto["otherDiners"] = ""
+        userPhoto["mood"] = ""
+        userPhoto["Notes"] = ""
+        userPhoto["calories"] = 0
+        userPhoto["energyLevel"] = 0
+        userPhoto["enjoymentScore"] = 0
+        userPhoto["gramsCarbs"] = 0
+        userPhoto["gramsFat"] = 0
+        userPhoto["gramsProtein"] = 0
+        userPhoto["gramsSaturatedFat"] = 0
+        userPhoto["gramsFiber"] = 0
+        userPhoto["healthScore"] = 0
+        userPhoto["timezone"] = NSTimeZone.localTimeZone().abbreviation!
+        userPhoto["isVisible"] = true
+        userPhoto["ingredients"] = ""
+        
+        return userPhoto
+    }
 }

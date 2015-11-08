@@ -25,11 +25,8 @@ extension FoodDiaryEntry {
                 
                 entry.saveInBackground()
                 
-                let fetchedDiners = self.getDiners()
-                
-                for diner in fetchedDiners {
-                    diner.delete()
-                }
+                self.deleteAllDiners()
+                self.writeDinersToBackend()
                 
                 for diner in self.diners {
                     let foodDiaryEntryDiner:PFObject = PFObject(className:"FoodDiaryEntryDiners")
@@ -44,20 +41,8 @@ extension FoodDiaryEntry {
                 entry.fetch()
             }
             
-            let fetchedNotes = self.getNotes()
-            
-            for note in fetchedNotes {
-                note.delete()
-            }
-            
-            for note in self.notes {
-                let foodDiaryEntryTag:PFObject = PFObject(className:"FoodDiaryTags")
-                
-                foodDiaryEntryTag["foodDiaryTag"] = note.note
-                foodDiaryEntryTag["foodDiaryEntryId"] = FoodDiaryEntry
-                
-                foodDiaryEntryTag.save()
-            }
+         self.deleteAllNotes()
+         self.writeNotesToBackend()
             
             for ingredients in self.ingredients {
                 print("ingredients print")
@@ -66,7 +51,29 @@ extension FoodDiaryEntry {
             
         }
     }
-
+    
+//MARK: Diners
+    
+    func deleteAllDiners() {
+        let fetchedDiners = self.getDiners()
+        
+        for diner in fetchedDiners {
+            diner.delete()
+        }
+    }
+    
+    func writeDinersToBackend() {
+        for diner in self.diners {
+            let foodDiaryEntryDiner:PFObject = PFObject(className:"FoodDiaryEntryDiners")
+            
+            foodDiaryEntryDiner["dinerName"] = diner.name
+            foodDiaryEntryDiner["foodDiaryEntryId"] = FoodDiaryEntry.self
+            
+            foodDiaryEntryDiner.save()
+            
+        }
+    }
+    
     func getDiners() -> [PFObject] {
         let getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
@@ -112,6 +119,29 @@ extension FoodDiaryEntry {
                 self.diners = otherDinersArray
             }
         }
+    }
+    
+//MARK: Notes
+    
+    func deleteAllNotes() {
+        let fetchedNotes = self.getNotes()
+        
+        for note in fetchedNotes {
+            note.delete()
+        }
+        
+    }
+    
+    func writeNotesToBackend() {
+        for note in self.notes {
+            let foodDiaryEntryTag:PFObject = PFObject(className:"FoodDiaryTags")
+            
+            foodDiaryEntryTag["foodDiaryTag"] = note.note
+            foodDiaryEntryTag["foodDiaryEntryId"] = FoodDiaryEntry.self
+            
+            foodDiaryEntryTag.save()
+        }
+        
     }
     
     func getNotes() -> [PFObject] {
