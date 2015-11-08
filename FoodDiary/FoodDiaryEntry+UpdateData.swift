@@ -20,25 +20,8 @@ extension FoodDiaryEntry {
             if error != nil {
                 print(error)
             } else if let entry = FoodDiaryEntry {
-                entry["mealName"] = self.mealName
-                entry["locationName"] = self.locationName
-                entry["timestamp"] = self.timestamp
-                entry["locationName"] = self.locationName
-                entry["calories"] = self.calories
-                entry["gramsFat"] = self.gramsFat
-                entry["gramsCarbs"] = self.gramsCarbs
-                entry["gramsProtein"] = self.gramsProtein
-                entry["gramsFiber"] = self.gramsFiber
-                entry["gramsSaturatedFat"] = self.gramsSaturatedFat
-                entry["enjoymentScore"] = self.enjoymentScore
-                entry["healthScore"] = self.healthScore
-                entry["mood"] = self.mood
-                entry["energyLevel"] = self.energyLevel
-                entry["timezone"] = self.timezone
-                entry["isVisible"] = self.isVisible
+                entry.populateWithFoodDiaryEntry(self)
                 entry["userID"] = PFUser.currentUser()
-                
-                // WARNING: Do **NOT** Update Location during editing. This will overwrite geoLocation Data.
                 
                 entry.saveInBackground()
                 
