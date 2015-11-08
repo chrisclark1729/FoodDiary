@@ -58,7 +58,6 @@ extension FoodDiaryEntry {
                     
                 }
                 
-                
                 entry.fetch()
             }
             
@@ -84,70 +83,7 @@ extension FoodDiaryEntry {
             
         }
     }
-    
-    
-    
-    func loadData() {
-        //  timelineFoodDiaryData.removeAllObjects()
-        
-        let getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        
-        /*Timeline query restraints:
-        1.) Only grab non-archived images (diary entries)
-        2.) Order by time of entry (most recent first)
-        3.) Limit to only 25 results to improve performance
-        */
-        
-        getTimelineData.whereKey("isVisible", equalTo: true)
-        getTimelineData.orderByDescending("timestamp")
-        getTimelineData.limit = 25
-        
-        getTimelineData.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                // print(Successfully retrieved  (objects!.count) scores.")
-                // Do something with the found objects
-                
-                var foodDiaryEntryArray = [FoodDiaryEntry]()
-                
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        let entry = FoodDiaryEntry(mealID: object.objectId!,
-                            mealName: object["mealName"] as! String,
-                            timestamp: object["timestamp"] as! NSDate,
-                            locationName: object["locationName"] as! String,
-                            imgURL: object["imageFile"],
-                            calories: object["calories"] as! Float,
-                            gramsCarbs: object["gramsCarbs"] as! Float,
-                            gramsProtein: object["gramsProtein"] as! Float,
-                            gramsFat: object["gramsFat"] as! Float,
-                            gramsFiber: object["gramsFiber"] as! Float,
-                            gramsSaturatedFat: object["gramsSaturatedFat"] as! Float,
-                            enjoymentScore: object["enjoymentScore"] as! Float,
-                            healthScore: object["healthScore"] as! Float,
-                            mood: object["mood"] as! String,
-                            energyLevel: object["energyLevel"] as! Float,
-                            timezone: object["timezone"] as! String,
-                            isVisible: object["isVisible"] as! Bool,
-                            userId: object["userId"] as! PFUser,
-                            location: object["geoPoint"] as! PFGeoPoint)
-                        
-                        foodDiaryEntryArray.append(entry)
-                        
-                    }
-                    
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-            
-            
-        }
-    }
-    
+
     func getDiners() -> [PFObject] {
         let getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
@@ -242,13 +178,6 @@ extension FoodDiaryEntry {
             }
         }
     }
-    /*
-    func getIngredientsFromFoodDiaryDetail(detail:PFObject) -> Ingredient {
-    let fetchIngredient = self.getIngredientsAsPFObjectFromFoodDiaryDetail(detail)
-    let ingredient = Ingredient(entry: self, entity: fetchIngredient)
-    //  print(ingredient)
-    return ingredient
-    } */
     
     func getIngredientsAsPFObjectFromFoodDiaryDetail(detail:PFObject) -> PFObject {
         let fetchedIngredient = detail["ingredientId"] as! PFObject
