@@ -140,5 +140,16 @@ class TimelineTableViewController: UITableViewController {
         
     }
 
+    func hideAllArchived() {
+        if let meals = self.meals {
+            var archived = [FoodDiaryEntry]()
+            
+            for meal in meals {
+                if !meal.isVisible {
+                    archived.append(meal)
+                }
+            }
+        }
+    }
 
 }

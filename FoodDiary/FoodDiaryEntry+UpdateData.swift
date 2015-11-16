@@ -16,7 +16,7 @@ extension FoodDiaryEntry {
         let query = PFQuery(className:"FoodDiaryEntries")
         query.getObjectInBackgroundWithId(self.mealID) {
             (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
-            //TODO: Fix this logic. It's ugly.
+
             if error != nil {
                 print(error)
             } else if let entry = FoodDiaryEntry {
@@ -27,22 +27,11 @@ extension FoodDiaryEntry {
                 
                 self.deleteAllDiners()
                 self.writeDinersToBackend()
-                
-                for diner in self.diners {
-                    let foodDiaryEntryDiner:PFObject = PFObject(className:"FoodDiaryEntryDiners")
-                    
-                    foodDiaryEntryDiner["dinerName"] = diner.name
-                    foodDiaryEntryDiner["foodDiaryEntryId"] = FoodDiaryEntry
-                    
-                    foodDiaryEntryDiner.save()
-                    
-                }
+                self.deleteAllNotes()
+                self.writeNotesToBackend()
                 
                 entry.fetch()
             }
-            
-         self.deleteAllNotes()
-         self.writeNotesToBackend()
             
             for ingredients in self.ingredients {
                 print("ingredients print")
@@ -67,7 +56,7 @@ extension FoodDiaryEntry {
             let foodDiaryEntryDiner:PFObject = PFObject(className:"FoodDiaryEntryDiners")
             
             foodDiaryEntryDiner["dinerName"] = diner.name
-            foodDiaryEntryDiner["foodDiaryEntryId"] = FoodDiaryEntry.self
+            foodDiaryEntryDiner["foodDiaryEntryId"] = self.toPFObject
             
             foodDiaryEntryDiner.save()
             
@@ -137,7 +126,7 @@ extension FoodDiaryEntry {
             let foodDiaryEntryTag:PFObject = PFObject(className:"FoodDiaryTags")
             
             foodDiaryEntryTag["foodDiaryTag"] = note.note
-            foodDiaryEntryTag["foodDiaryEntryId"] = FoodDiaryEntry.self
+            foodDiaryEntryTag["foodDiaryEntryId"] = self.toPFObject
             
             foodDiaryEntryTag.save()
         }
