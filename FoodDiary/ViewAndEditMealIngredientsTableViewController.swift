@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     
@@ -66,10 +67,10 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         let ingredientUnitOfMeasurement = ingredientId!["unitOfMeasurement"] as? String
         let calories = ingredientId!["calories"] as? Float
         let totalCalories = calories! * ingredientDetail.quantity!
-        var unitOfMeasurementSeparator = ") "
+        var unitOfMeasurementSeparator = "): "
         
-        if ingredientDetail.quantity! == 1 {
-            unitOfMeasurementSeparator = "s) "
+        if ingredientDetail.quantity! <= 1 {
+            unitOfMeasurementSeparator = "s): "
         }
 
         cell.textLabel?.text = ingredientName! + " (" + (NSString(format: "%.1f",ingredientDetail.quantity!) as String) + " " + ingredientUnitOfMeasurement! + unitOfMeasurementSeparator + (NSString(format: "%.0f",totalCalories) as String) + " cal."
@@ -88,25 +89,28 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     } */
 
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+        
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            //TODO: Actually delete data from Parse Backend
+
+            self.foodDiaryEntry!.ingredientDetails.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

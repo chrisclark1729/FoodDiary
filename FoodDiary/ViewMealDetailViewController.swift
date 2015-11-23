@@ -104,10 +104,6 @@ class ViewMealDetailViewController: UITableViewController {
         
     }
     
-
-    @IBAction func sendMealDataUpdate(sender: AnyObject) {
-    }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

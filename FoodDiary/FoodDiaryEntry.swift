@@ -59,6 +59,30 @@ class FoodDiaryEntry: NSObject {
 
     }
     
+    init(fetchedObject: PFObject){
+        self.mealID=fetchedObject.objectId!
+        self.mealName=fetchedObject["mealName"] as! String
+        self.timestamp=fetchedObject["timestamp"] as! NSDate
+        self.locationName=fetchedObject["locationName"] as! String
+        self.imgURL=fetchedObject["imageFile"]
+        self.calories=fetchedObject["calories"] as! Float
+        self.gramsCarbs=fetchedObject["gramsCarbs"] as! Float
+        self.gramsProtein=fetchedObject["gramsProtein"] as! Float
+        self.gramsFat=fetchedObject["gramsFat"] as! Float
+        self.gramsFiber=fetchedObject["gramsFiber"] as! Float
+        self.gramsSaturatedFat=fetchedObject["gramsSaturatedFat"] as! Float
+        self.enjoymentScore=fetchedObject["enjoymentScore"] as! Float
+        self.healthScore=fetchedObject["healthScore"] as! Float
+        self.mood=fetchedObject["mood"] as! String
+        self.energyLevel=fetchedObject["energyLevel"] as! Float
+        self.timezone=fetchedObject["timezone"] as! String
+        self.isVisible=fetchedObject["isVisible"] as! Bool
+        self.userId=fetchedObject["userId"] as! PFUser
+        self.location=fetchedObject["location"] as! PFGeoPoint
+        self.toPFObject = fetchedObject
+        
+    }
+    
     func addDiner(diner: OtherDiner) {
         
         self.diners.append(diner)
@@ -83,18 +107,25 @@ class FoodDiaryEntry: NSObject {
         return mealScore
     }
     
-    func dayPart() ->Int {
+    func dayPart() -> (String, Int) {
         
         //TODO: Base Day part on user preferences
+        let date = self.timestamp
+        let calendar = NSCalendar.currentCalendar()
+        print(date)
+        print(calendar)
+        
+        /*
+        Morning: 4 - 8:59 am
+        Late Morning: 9 - 11:59 am
+        Afternoon: 12 - 4:59pm
+        Evening: 5 - 8:59pm
+        Night: 9:00pm - 11:59 pm
+        Late Night: 12am - 3:59am
+        */
 
-      /*
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var mealTimeDate = dateFormatter.dateFromString(self.timestamp)
-        var timeComparisonFormatter = NSDateFormatter()
-        timeComparisonFormatter.dateFormat = "H:mm"
-     */   
-        return 0
+       
+        return ("placeholder", 0)
 
     }
    
