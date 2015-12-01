@@ -13,16 +13,34 @@ class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
     
-    
-    
-    // TODO: Query
-    //var mealNameSuggestions:[foodDiaryEnry] = ["suggestion1", "suggestion2", "suggestion3"]
-    var mealNameSuggestions:[String] = ["suggestion1", "suggestion2", "suggestion3", "booze"]
+    var mealNameSuggestions:[Meal] = []
     var selectedSuggestion:String?
     var mealNameField: UITextField?
     
     @IBOutlet weak var editMood: UITextField!
     @IBOutlet weak var editTimestampPicker: UIDatePicker!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.initMealNameField()
+        self.initMoodField()
+        self.initTimestampPicker()
+        
+        self.mealNameSuggestions = Meal.getAllMealsInLocation((foodDiaryEntry?.location)!)
+        self.tableView.reloadData()
+        
+    }
     
     @IBAction func saveMood(sender: AnyObject) {
         
@@ -48,22 +66,7 @@ class EditMealDetailTableViewController: UITableViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.initMealNameField()
-        self.initMoodField()
-        self.initTimestampPicker()
-    }
+   
     
    
     func initMealNameField() {
@@ -132,13 +135,18 @@ class EditMealDetailTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
-            cell.mealNameField.text = self.selectedSuggestion
+            if let suggestion = self.selectedSuggestion {
+                cell.mealNameField.text = suggestion
+            } else {
+                cell.mealNameField.text = foodDiaryEntry?.mealName
+            }
+            
             self.mealNameField = cell.mealNameField
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath) 
-            cell.textLabel!.text = self.mealNameSuggestions[indexPath.row]
+            cell.textLabel!.text = self.mealNameSuggestions[indexPath.row].getMealName()
             return cell
         }
     
@@ -147,8 +155,12 @@ class EditMealDetailTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        self.selectedSuggestion = self.mealNameSuggestions[indexPath.row]
+        let meal = self.mealNameSuggestions[indexPath.row]
+        print(meal.getMealIngredients())
+        
+        self.selectedSuggestion = meal.getMealName()
         self.tableView.reloadData()
+        
     }
     
     /*
