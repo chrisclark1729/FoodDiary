@@ -14,9 +14,14 @@ class EditMealDetailTableViewController: UITableViewController {
     var foodDiaryEntry: FoodDiaryEntry?
     
     
-    @IBOutlet weak var editLocationTextField: UITextField!
+    
+    // TODO: Query
+    //var mealNameSuggestions:[foodDiaryEnry] = ["suggestion1", "suggestion2", "suggestion3"]
+    var mealNameSuggestions:[String] = ["suggestion1", "suggestion2", "suggestion3", "booze"]
+    var selectedSuggestion:String?
+    var mealNameField: UITextField?
+    
     @IBOutlet weak var editMood: UITextField!
-    @IBOutlet weak var editMealName: UITextField!
     @IBOutlet weak var editTimestampPicker: UIDatePicker!
     
     @IBAction func saveMood(sender: AnyObject) {
@@ -25,21 +30,12 @@ class EditMealDetailTableViewController: UITableViewController {
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
+   
     @IBAction func saveMealName(sender: AnyObject) {
         
-        self.foodDiaryEntry?.mealName = self.editMealName.text!
+        self.foodDiaryEntry?.mealName = self.mealNameField!.text!
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
-        
-    }
-    
-    @IBAction func saveMealLocation(sender: AnyObject) {
-        
-        self.foodDiaryEntry?.locationName = self.editLocationTextField.text!
-        foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
-        
         
     }
     
@@ -66,40 +62,12 @@ class EditMealDetailTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         self.initMealNameField()
         self.initMoodField()
-        self.initLocationNameField()
         self.initTimestampPicker()
     }
     
+   
     func initMealNameField() {
-        if let editMealNameField = self.editMealName {
-            
-            editMealNameField.becomeFirstResponder()
-            
-            if let entry = foodDiaryEntry {
-                
-                editMealName.text = entry.mealName
-            }
-            else {
-                print("No Food Entry")
-            }
-        }
-        
-    }
-    
-    func initLocationNameField() {
-        if let editLocationNameField = self.editLocationTextField {
-
-            editLocationTextField.becomeFirstResponder()
-            
-            if let entry = foodDiaryEntry {
-                
-                editLocationTextField.text = entry.locationName
-            }
-            else {
-                print("No Food Entry")
-            }
-        }
-        
+      self.mealNameField!.text = self.foodDiaryEntry?.mealName
     }
     
     func initMoodField() {
@@ -146,24 +114,42 @@ class EditMealDetailTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 1
+        if section == 0 {
+            return 1
+        } else {
+            return mealNameSuggestions.count
+        }
     }
     
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
+            cell.mealNameField.text = self.selectedSuggestion
+            self.mealNameField = cell.mealNameField
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath) 
+            cell.textLabel!.text = self.mealNameSuggestions[indexPath.row]
+            return cell
+        }
     
-    // Configure the cell...
-    
-    return cell
+
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.selectedSuggestion = self.mealNameSuggestions[indexPath.row]
+        self.tableView.reloadData()
+    }
     
     /*
     // Override to support conditional editing of the table view.

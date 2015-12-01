@@ -53,6 +53,9 @@
 		49C5C4201B068AA7006FA068 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C5C41E1B068AA7006FA068 /* LaunchScreen.xib */; };
 		49C5C42C1B068AA7006FA068 /* FoodDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C42B1B068AA7006FA068 /* FoodDiaryTests.swift */; };
 		49DB30B71C02632400DA1E9B /* NutritionSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */; };
+		49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */; };
+		49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */; };
+		49DB30BD1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30BC1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift */; };
 		49DD19C11B5EC2DA004199C2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19BF1B5EC2DA004199C2 /* FBSDKLoginKit.framework */; };
 		49DD19C31B5EC2E1004199C2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19C21B5EC2E1004199C2 /* FBSDKShareKit.framework */; };
 		49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */; };
@@ -135,6 +138,9 @@
 		49C5C42A1B068AA7006FA068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49C5C42B1B068AA7006FA068 /* FoodDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDiaryTests.swift; sourceTree = "<group>"; };
 		49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryTableViewController.swift; sourceTree = "<group>"; };
+		49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealNameFieldTableViewCell.swift; sourceTree = "<group>"; };
+		49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealLocationTableViewController.swift; sourceTree = "<group>"; };
+		49DB30BC1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNameFieldTableViewCell.swift; sourceTree = "<group>"; };
 		49DD19BF1B5EC2DA004199C2 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		49DD19C21B5EC2E1004199C2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLogInViewController.swift; path = ../FacebookLogInViewController.swift; sourceTree = "<group>"; };
@@ -276,7 +282,10 @@
 				49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
 				49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */,
+				49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */,
 				4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */,
+				49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */,
+				49DB30BC1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift */,
 				49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */,
 				49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */,
 				495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */,
@@ -498,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49DB30BD1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift in Sources */,
 				492E25971B28A652006419EE /* TimelineTableViewCell.swift in Sources */,
 				492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */,
 				495704BC1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift in Sources */,
@@ -513,11 +523,13 @@
 				49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */,
 				490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */,
 				49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */,
+				49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */,
 				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
 				49941ED31BEFE5A80088EE52 /* PFObject+Extension.swift in Sources */,
 				49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */,
+				49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,
 				495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */,
 				49941ED01BDC242D0088EE52 /* Session.swift in Sources */,
