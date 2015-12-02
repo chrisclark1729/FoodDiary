@@ -375,7 +375,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="6Zf-SD-WYd" kind="push" identifier="editMealDetail" id="TWk-Fn-n3r"/>
+                                            <segue destination="6Zf-SD-WYd" kind="push" identifier="editTimestamp" id="TWk-Fn-n3r"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="showMealIngredients" textLabel="qW9-qt-aeU" style="IBUITableViewCellStyleDefault" id="dXR-dE-4De" userLabel="showMealIngredients">
@@ -641,32 +641,49 @@
         <!--Edit Mood-->
         <scene sceneID="e5l-ad-R9i">
             <objects>
-                <tableViewController id="vkF-8V-4AC" customClass="EditMealDetailTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eCv-w4-kS5">
+                <tableViewController id="vkF-8V-4AC" customClass="EditMoodTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="eCv-w4-kS5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="WoK-va-wr5">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rnn-o3-7Zt">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnn-o3-7Zt" id="GJV-i4-fsH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mood" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ElN-W4-aGr">
-                                                    <rect key="frame" x="12" y="7" width="355" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moodCell" id="rnn-o3-7Zt" customClass="MoodFieldTableViewCell" customModule="FoodDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rnn-o3-7Zt" id="GJV-i4-fsH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mood" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ElN-W4-aGr">
+                                            <rect key="frame" x="12" y="7" width="355" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="moodField" destination="ElN-W4-aGr" id="Cv9-g7-QXB"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moodSuggestionCell" textLabel="ZRn-ek-ijb" style="IBUITableViewCellStyleDefault" id="VpH-pM-mfl">
+                                <rect key="frame" x="0.0" y="157.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VpH-pM-mfl" id="ms5-yc-npm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZRn-ek-ijb">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="vkF-8V-4AC" id="TJD-WM-DSO"/>
                             <outlet property="delegate" destination="vkF-8V-4AC" id="xgr-As-X9M"/>
@@ -681,13 +698,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveMood:" destination="vkF-8V-4AC" eventType="touchUpInside" id="NSd-aJ-Nfb"/>
+                                    <action selector="updateMood:" destination="vkF-8V-4AC" eventType="touchUpInside" id="wUo-Ej-Szx"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editMood" destination="ElN-W4-aGr" id="U5e-PI-th1"/>
                         <outlet property="searchDisplayController" destination="GeL-pL-YdS" id="C5M-rL-XVJ"/>
                     </connections>
                 </tableViewController>
@@ -706,7 +722,7 @@
         <!--Edit Date & Time-->
         <scene sceneID="mNZ-Tl-LGe">
             <objects>
-                <tableViewController id="6Zf-SD-WYd" customClass="EditMealDetailTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6Zf-SD-WYd" customClass="EditTimestampTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="22" sectionFooterHeight="22" id="7II-2T-AS5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -763,13 +779,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveMealTimestamp:" destination="6Zf-SD-WYd" eventType="touchUpInside" id="wcY-Ta-UfI"/>
+                                    <action selector="saveMealTimestamp:" destination="6Zf-SD-WYd" eventType="touchUpInside" id="FjK-F0-HFf"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editTimestampPicker" destination="F9k-Tg-FjI" id="Gtr-hf-Z2f"/>
+                        <outlet property="editTimestampPicker" destination="F9k-Tg-FjI" id="Qnc-CF-uQH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eym-Vd-vYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1053,9 +1069,6 @@
                                     <action selector="updateLocationName:" destination="ZRX-9E-FRb" eventType="touchUpInside" id="LfZ-FY-ggn"/>
                                 </connections>
                             </button>
-                            <connections>
-                                <action selector="saveMealLocation:" destination="ZRX-9E-FRb" id="TJB-Wm-3zf"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

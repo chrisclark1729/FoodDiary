@@ -12,18 +12,12 @@ import Parse
 class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
-    
     var mealNameSuggestions:[Meal] = []
     var selectedSuggestion:String?
     var mealNameField: UITextField?
     
-    @IBOutlet weak var editMood: UITextField!
-    @IBOutlet weak var editTimestampPicker: UIDatePicker!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -34,77 +28,20 @@ class EditMealDetailTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.initMealNameField()
-        self.initMoodField()
-        self.initTimestampPicker()
-        
         self.mealNameSuggestions = Meal.getAllMealsInLocation((foodDiaryEntry?.location)!)
         self.tableView.reloadData()
         
     }
-    
-    @IBAction func saveMood(sender: AnyObject) {
-        
-        self.foodDiaryEntry?.mood = self.editMood.text!
-        foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
-    }
    
     @IBAction func saveMealName(sender: AnyObject) {
-        
         self.foodDiaryEntry?.mealName = self.mealNameField!.text!
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
-    
-    @IBAction func saveMealTimestamp(sender: AnyObject) {
-        
-        self.foodDiaryEntry?.timestamp = self.editTimestampPicker.date
-        foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
-        
-    }
-    
-   
-    
-   
     func initMealNameField() {
-      self.mealNameField!.text = self.foodDiaryEntry?.mealName
+        self.mealNameField!.text = self.foodDiaryEntry?.mealName
     }
-    
-    func initMoodField() {
-        if let editMoodField = self.editMood {
-            editMoodField.becomeFirstResponder()
-            
-            if let entry = foodDiaryEntry {
-                
-                editMoodField.text = entry.mood
-            }
-            else {
-                print("No Food Entry")
-            }
-        }
-        
-    }
-    
-    func initTimestampPicker() {
-        if let editTimestampPickerField = self.editTimestampPicker {
-            editTimestampPickerField.becomeFirstResponder()
-            
-            if let entry = foodDiaryEntry {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
-                
-                self.editTimestampPicker.date = entry.timestamp
-                
-            } else {
-                print("No Food Entry")
-            }
-        }
-    }
-    
-
     
     
     override func didReceiveMemoryWarning() {

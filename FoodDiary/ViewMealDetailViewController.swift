@@ -107,20 +107,21 @@ class ViewMealDetailViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "editFoodDiaryEntry" ||
-        segue.identifier == "editMood" || segue.identifier == "editMealDetail"
+        if segue.identifier == "editFoodDiaryEntry"
         {
-            
             let destination = segue.destinationViewController as! EditMealDetailTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
-            
         } else if segue.identifier == "editMealExperience" {
             let destination = segue.destinationViewController as! EditMealExperienceTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealComponents" {
             let destination = segue.destinationViewController as! EditMealComponentsTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+        } else if segue.identifier == "editMood" {
+            let destination = segue.destinationViewController as! EditMoodTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealTags" {
@@ -139,6 +140,10 @@ class ViewMealDetailViewController: UITableViewController {
             
         } else if segue.identifier == "editLocation" {
             let destination = segue.destinationViewController as! EditMealLocationTableViewController
+            
+            destination.foodDiaryEntry = self.foodDiaryEntry
+        } else if segue.identifier == "editTimestamp" {
+            let destination = segue.destinationViewController as! EditTimestampTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         }
