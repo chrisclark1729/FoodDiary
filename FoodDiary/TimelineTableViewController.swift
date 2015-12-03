@@ -73,11 +73,14 @@ class TimelineTableViewController: UITableViewController {
             print("mealImageFile is nil.")
         }
         
+        let calories = NSString(format: "%.0f", meal.calories)
+        
+        print (meal.dayPart())
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
         cell.mealDate.text = dayFormatter.stringFromDate(meal.timestamp)
         cell.mealTime.text = timeFormatter.stringFromDate(meal.timestamp)
-        cell.mealScore.text = "Score: \(meal.mealScore())%"
+        cell.mealScore.text = "Score: \(meal.mealScore())% (\(calories) cal.)"
         
         return cell
     }

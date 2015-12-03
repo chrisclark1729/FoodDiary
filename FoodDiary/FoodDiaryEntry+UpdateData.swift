@@ -32,11 +32,12 @@ extension FoodDiaryEntry {
                 
                 entry.fetch()
             }
-            
+           
+            /*
             for ingredients in self.ingredients {
-                print("ingredients print")
-                print(ingredients.ingredientId)
-            }
+             //   print("ingredients print")
+             //   print(ingredients.ingredientId)
+            } */
             
         }
     }

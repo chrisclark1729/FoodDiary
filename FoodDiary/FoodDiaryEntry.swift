@@ -107,14 +107,16 @@ class FoodDiaryEntry: NSObject {
         return mealScore
     }
     
-    func dayPart() -> (String, Int) {
+    func dayPart() -> (String) {
         
         //TODO: Base Day part on user preferences
         let date = self.timestamp
-        let calendar = NSCalendar.currentCalendar()
-        print(date)
-        print(calendar)
-        
+       // let calendar = NSCalendar.currentCalendar()
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        let timeOfDay = timeFormatter.stringFromDate(date)
+
+        var dayPart = ""
         /*
         Morning: 4 - 8:59 am
         Late Morning: 9 - 11:59 am
@@ -123,9 +125,25 @@ class FoodDiaryEntry: NSObject {
         Night: 9:00pm - 11:59 pm
         Late Night: 12am - 3:59am
         */
-
-       
-        return ("placeholder", 0)
+        
+        switch(timeOfDay)
+        {
+            case "04:00"..."08:59":
+                dayPart = "morning"
+            case "09:00"..."11:59":
+                dayPart = "late morning"
+            case "12:00"..."16:59":
+                dayPart = "afternoon"
+            case "17:00"..."20:59":
+                dayPart = "evening"
+            case "21:00"..."23:59":
+                dayPart = "night"
+            case "00:00"..."4:00":
+                dayPart = "late night"
+            default: dayPart = "Not set"
+        }
+        
+        return dayPart
 
     }
    

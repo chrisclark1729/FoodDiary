@@ -28,7 +28,7 @@ class EditMealDetailTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.initMealNameField()
-        self.mealNameSuggestions = Meal.getAllMealsInLocation((foodDiaryEntry?.location)!)
+        self.mealNameSuggestions = Meal.getAllMealsInLocation((foodDiaryEntry?.location)!, dayPart: (self.foodDiaryEntry?.dayPart())!)
         self.tableView.reloadData()
         
     }
