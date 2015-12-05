@@ -20,7 +20,6 @@ extension Meal {
         nearbyMeals.orderByDescending("count")
         nearbyMeals.limit = 15
         
-        //TODO: Get +/- 3 hours as a condition. Issue is need to extract "time part" only irrespective of day.
         let fetchedObjects = nearbyMeals.findObjects()
         var entries = [Meal]()
         for fetchedObject in fetchedObjects! {

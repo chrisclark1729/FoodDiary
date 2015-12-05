@@ -11,11 +11,8 @@ import Parse
 
 class EditMealComponentsTableViewController: UITableViewController {
     
-    
     @IBOutlet var dinersTableView: UITableView!
-
     let textCellIdentifier = "TextCell"
-    
     var foodDiaryEntry: FoodDiaryEntry?
     
     override func viewDidLoad() {
@@ -30,6 +27,7 @@ class EditMealComponentsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
     @IBAction func addDiner(sender: AnyObject) {
         
         var inputTextField: UITextField?
@@ -51,7 +49,6 @@ class EditMealComponentsTableViewController: UITableViewController {
             inputTextField = textField
         }
         self.presentViewController(actionSheetController, animated: true, completion: nil)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,13 +65,9 @@ class EditMealComponentsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         // Return the number of rows in the section.
-        
         return self.foodDiaryEntry!.diners.count
-        
     }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
@@ -95,18 +88,17 @@ class EditMealComponentsTableViewController: UITableViewController {
     return true
     }
     */
-    
-    /*
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
     // Delete the row from the data source
+        self.foodDiaryEntry!.diners.removeAtIndex(indexPath.row)
+        self.foodDiaryEntry!.save()
     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     } else if editingStyle == .Insert {
     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
     }
-    */
+
     
     /*
     // Override to support rearranging the table view.

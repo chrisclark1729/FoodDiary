@@ -59,6 +59,30 @@ extension FoodDiaryEntry {
         return entries
     }
     
+    static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [PFObject] {
+        let nearbyLocations:PFQuery = PFQuery(className:"FoodDiaryEntries")
+        nearbyLocations.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
+        nearbyLocations.limit = 5
+        nearbyLocations.whereKey("locationName", notEqualTo: "")
+        nearbyLocations.selectKeys(["locationName"])
+        nearbyLocations.orderByDescending("timstamp")
+        
+        let fetchedObjects = nearbyLocations.findObjects()
+        var entries = [PFObject]()
+        print(fetchedObjects)
+        print("I just printed fetchedObjects")
+        for fetchedObject in fetchedObjects! {
+            let entry = fetchedObject
+            entries.append(entry as! PFObject)
+        }
+        
+        return entries
+    }
+    
+    func getLocationName() -> String {
+        return self.locationName
+    }
+    
     /*
     
     static func getMealSuggestions() -> [Meal] {

@@ -12,19 +12,14 @@ import Parse
 class EditMealTagsTableViewController: UITableViewController {
     
     @IBOutlet var notesTableView: UITableView!
-    
     let textCellIdentifier = "TextCell"
-    
     var foodDiaryEntry: FoodDiaryEntry?
-  //  var notes = [Note]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         notesTableView.delegate = self
         notesTableView.dataSource = self
-        
-    //    self.notes = self.foodDiaryEntry!.notes
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,7 +27,6 @@ class EditMealTagsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
     
     @IBAction func addNote(sender: AnyObject) {
         //TODO: Make this unique class
@@ -57,7 +51,6 @@ class EditMealTagsTableViewController: UITableViewController {
         self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,11 +65,9 @@ class EditMealTagsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.foodDiaryEntry!.notes.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
@@ -97,8 +88,6 @@ class EditMealTagsTableViewController: UITableViewController {
     }
     */
 
-    
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source

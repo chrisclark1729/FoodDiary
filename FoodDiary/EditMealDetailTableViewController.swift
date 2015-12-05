@@ -43,7 +43,6 @@ class EditMealDetailTableViewController: UITableViewController {
         self.mealNameField!.text = self.foodDiaryEntry?.mealName
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,24 +51,21 @@ class EditMealDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
+        
         return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
         if section == 0 {
             return 1
         } else {
+            print("your counting meal name suggestions")
             return mealNameSuggestions.count
         }
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
             if let suggestion = self.selectedSuggestion {
@@ -93,7 +89,6 @@ class EditMealDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let meal = self.mealNameSuggestions[indexPath.row]
-        print(meal.getMealIngredients())
         
         self.selectedSuggestion = meal.getMealName()
         self.tableView.reloadData()

@@ -12,26 +12,15 @@ import Parse
 class EditMealLocationTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
-    
-    // TODO: Query
-    //var locationNameSuggestions:[foodDiaryEnry] = ["suggestion1", "suggestion2", "suggestion3"]
-    var locationNameSuggestions:[String] = ["suggestion1", "suggestion2", "suggestion3"]
+    var locationNameSuggestions:[PFObject] = []
     var selectedSuggestion:String?
     var locationNameField: UITextField?
     
-    @IBAction func updateLocationName(sender: UIButton) {
-        self.foodDiaryEntry?.locationName = self.locationNameField!.text!
-        foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -39,7 +28,15 @@ class EditMealLocationTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.initLocationNameField()
-
+        self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(self.foodDiaryEntry!.location)
+        self.tableView.reloadData()
+        
+    }
+    
+    @IBAction func updateLocationName(sender: UIButton) {
+        self.foodDiaryEntry?.locationName = self.locationNameField!.text!
+        foodDiaryEntry!.save()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func initLocationNameField() {
@@ -62,29 +59,36 @@ class EditMealLocationTableViewController: UITableViewController {
         if section == 0 {
             return 1
         } else {
-            return locationNameSuggestions.count
+            print("location Name Suggesions are counting: \(locationNameSuggestions.count)")
+           return locationNameSuggestions.count
         }
 
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("LocationNameCell", forIndexPath: indexPath) as! LocationNameFieldTableViewCell
-            cell.locationNameField.text = self.selectedSuggestion
+            if let suggestion = self.selectedSuggestion {
+                cell.locationNameField.text = suggestion
+            } else {
+                cell.locationNameField.text = foodDiaryEntry?.locationName
+            }
+            
             self.locationNameField = cell.locationNameField
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("LocationNameSuggestionCell", forIndexPath: indexPath)
-            cell.textLabel!.text = self.locationNameSuggestions[indexPath.row]
+            cell.textLabel!.text = self.locationNameSuggestions[indexPath.row].objectForKey("locationName") as? String
             return cell
         }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        self.selectedSuggestion = self.locationNameSuggestions[indexPath.row]
+        let locationName = self.locationNameSuggestions[indexPath.row]
+        
+        self.selectedSuggestion = locationName.objectForKey("locationName") as? String
         self.tableView.reloadData()
     }
     
