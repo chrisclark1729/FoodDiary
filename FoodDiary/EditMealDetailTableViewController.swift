@@ -59,7 +59,6 @@ class EditMealDetailTableViewController: UITableViewController {
         if section == 0 {
             return 1
         } else {
-            print("your counting meal name suggestions")
             return mealNameSuggestions.count
         }
     }

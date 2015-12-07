@@ -11,8 +11,8 @@ import Parse
 
 class MealIngredients: BaseEntity {
     func getMealId() -> Meal {
-        var mealId = self.entity["mealId"] as! PFObject
-        var meal = Meal(entity: mealId)
+        let mealId = self.entity["mealId"] as! PFObject
+        let meal = Meal(entity: mealId)
         
         return meal
     }

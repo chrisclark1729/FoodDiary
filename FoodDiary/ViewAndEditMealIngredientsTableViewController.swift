@@ -104,6 +104,10 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
             // Delete the row from the data source
             //TODO: Actually delete data from Parse Backend
 
+            let ingredientDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
+            
+            print(ingredientDetail)
+
             self.foodDiaryEntry!.ingredientDetails.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {

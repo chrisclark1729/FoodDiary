@@ -288,4 +288,8 @@ extension FoodDiaryEntry {
         }
     }
     
+    func deleteIngredientFromFoodDiaryDetail(ingredientForDeletion: PFObject) {
+        ingredientForDeletion.deleteInBackground()
+    }
+    
 }
