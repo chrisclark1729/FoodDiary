@@ -60,7 +60,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         let imageData = image!.lowestQualityJPEGNSData
         let imageFile:PFFile = PFFile(data: imageData)
         
-        let userPhoto = PFObject.foodDiaryEntryPFObject()
+        let userPhoto = PFObject.createFoodDiaryEntryPFObject()
 
         userPhoto["imageFile"] = imageFile
         userPhoto["userId"] = PFUser.currentUser()

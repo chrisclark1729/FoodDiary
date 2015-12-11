@@ -75,7 +75,6 @@ class TimelineTableViewController: UITableViewController {
         
         let calories = NSString(format: "%.0f", meal.calories)
         
-        print (meal.dayPart())
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
         cell.mealDate.text = dayFormatter.stringFromDate(meal.timestamp)

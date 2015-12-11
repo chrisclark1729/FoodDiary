@@ -32,7 +32,7 @@ extension PFObject {
         // WARNING: Do **NOT** Update Location during editing. This will overwrite geoLocation Data.
     }
     
-    static func foodDiaryEntryPFObject() -> PFObject {
+    static func createFoodDiaryEntryPFObject() -> PFObject {
         let userPhoto = PFObject(className:"FoodDiaryEntries")
 
         userPhoto["mealName"] = ""
@@ -56,5 +56,16 @@ extension PFObject {
         userPhoto["ingredients"] = ""
         
         return userPhoto
+    }
+    
+    static func createMealPFObject() -> PFObject {
+        let meal = PFObject(className:"Meal")
+        
+        meal["mealName"] = ""
+        meal["isVerified"] = false
+        meal["count"] = 1
+        meal["location"] = PFGeoPoint(latitude: 0, longitude: 0)
+        
+        return meal
     }
 }

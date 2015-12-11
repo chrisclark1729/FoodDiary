@@ -13,7 +13,7 @@ class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
     var mealNameSuggestions:[Meal] = []
-    var selectedSuggestion:String?
+    var selectedSuggestion:Meal?
     var mealNameField: UITextField?
     
     override func viewDidLoad() {
@@ -35,6 +35,10 @@ class EditMealDetailTableViewController: UITableViewController {
    
     @IBAction func saveMealName(sender: AnyObject) {
         self.foodDiaryEntry?.mealName = self.mealNameField!.text!
+        let mealIngredients = self.selectedSuggestion?.getMealIngredients()
+        if (mealIngredients != nil){
+            self.foodDiaryEntry?.addFoodDiaryDetailFromMealIngredients(mealIngredients!)
+        }
         foodDiaryEntry!.save()
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -68,7 +72,7 @@ class EditMealDetailTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
             if let suggestion = self.selectedSuggestion {
-                cell.mealNameField.text = suggestion
+                cell.mealNameField.text = suggestion.getMealName()
             } else {
                 cell.mealNameField.text = foodDiaryEntry?.mealName
             }
@@ -89,7 +93,7 @@ class EditMealDetailTableViewController: UITableViewController {
         
         let meal = self.mealNameSuggestions[indexPath.row]
         
-        self.selectedSuggestion = meal.getMealName()
+        self.selectedSuggestion = meal
         self.tableView.reloadData()
         
     }

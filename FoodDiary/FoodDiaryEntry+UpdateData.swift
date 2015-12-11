@@ -12,6 +12,7 @@ import Parse
 
 extension FoodDiaryEntry {
     
+    
     func save() {
         let query = PFQuery(className:"FoodDiaryEntries")
         query.getObjectInBackgroundWithId(self.mealID) {
@@ -32,13 +33,6 @@ extension FoodDiaryEntry {
                 
                 entry.fetch()
             }
-           
-            /*
-            for ingredients in self.ingredients {
-             //   print("ingredients print")
-             //   print(ingredients.ingredientId)
-            } */
-            
         }
     }
     
@@ -290,6 +284,21 @@ extension FoodDiaryEntry {
     
     func deleteIngredientFromFoodDiaryDetail(ingredientForDeletion: PFObject) {
         ingredientForDeletion.deleteInBackground()
+    }
+    
+    func addFoodDiaryDetailFromMealIngredients(mealIngredients: [MealIngredients]) {
+        
+        for mealIngredient in mealIngredients {
+            let foodDiaryDetail = PFObject(className:"FoodDiaryDetail")
+            foodDiaryDetail["foodDiaryEntryId"] = self.toPFObject
+            foodDiaryDetail["ingredientId"] = mealIngredient.getIngredientId()
+            foodDiaryDetail["numberOfServings"] = mealIngredient.getNumberOfServings()
+            
+            foodDiaryDetail.save()
+            
+        }
+        
+
     }
     
 }

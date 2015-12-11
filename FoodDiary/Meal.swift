@@ -27,7 +27,7 @@ class Meal: BaseEntity {
     func getMealIngredients() -> [MealIngredients] {
         var ingredients:[MealIngredients] = []
         
-        let fetchedIngredients:PFQuery = PFQuery(className:"mealIngredients")
+        let fetchedIngredients:PFQuery = PFQuery(className:"MealIngredients")
         fetchedIngredients.whereKey("mealId", equalTo: self.entity)
         let mealIngredients = fetchedIngredients.findObjects()
         

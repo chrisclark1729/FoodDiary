@@ -38,6 +38,17 @@ class ViewMealDetailViewController: UITableViewController {
                 print(error)
             } else if let entry = FoodDiaryEntry {
                 entry["isVisible"] = false
+                // Remember to count ingredients before saving to Meal table
+                // If ingredients.count = 0, do nothing else, save
+                
+                let ingredientCount = self.foodDiaryEntry?.ingredientDetails.count
+                
+                if ingredientCount == 0 {
+                    print("No Ingredients. Nothing to save.")
+                } else {
+                    self.foodDiaryEntry?.createMealFromFoodDiaryEntry()
+                }
+                
                 entry.saveInBackground()
                 self.navigationController?.popViewControllerAnimated(true)
             }
@@ -61,6 +72,7 @@ class ViewMealDetailViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        foodDiaryEntry?.save()
         if let entry = foodDiaryEntry {
             
             Session.sharedInstance.currentFoodDiaryEntry = entry

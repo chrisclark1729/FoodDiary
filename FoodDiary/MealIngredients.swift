@@ -16,5 +16,23 @@ class MealIngredients: BaseEntity {
         
         return meal
     }
+    
+    func getNumberOfServings() -> Float {
+        
+        return self.entity["numberOfServings"] as! Float
+    }
+    
+    func setNumberOfServings(numberOfServings: Float) {
+        self.entity["numberOfServings"] = numberOfServings
+        
+    }
+    
+    func getIngredientId() -> PFObject {
+        return self.entity["ingredientId"] as! PFObject
+    }
+    
+    func setIngredientId(ingredientId: PFObject) {
+        self.entity["ingredientId"] = ingredientId
+    }
 
 }
