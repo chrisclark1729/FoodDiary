@@ -55,10 +55,8 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
 
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
-
         let row = indexPath.row
         let ingredientDetail = self.foodDiaryEntry!.ingredientDetails[row]
         let ingredientId = ingredientDetail.ingredientId
@@ -103,10 +101,6 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             //TODO: Actually delete data from Parse Backend
-
-            let ingredientDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
-            
-            print(ingredientDetail)
 
             self.foodDiaryEntry!.ingredientDetails.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

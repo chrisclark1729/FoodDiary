@@ -62,7 +62,7 @@ extension PFObject {
         let meal = PFObject(className:"Meal")
         
         meal["mealName"] = ""
-        meal["isVerified"] = false
+        meal["isVerified"] = true
         meal["count"] = 1
         meal["location"] = PFGeoPoint(latitude: 0, longitude: 0)
         
