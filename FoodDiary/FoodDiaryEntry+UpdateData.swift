@@ -262,6 +262,28 @@ extension FoodDiaryEntry {
         return fetchedDetails
     }
     
+    func deleteAllFoodDiaryDetails() {
+        let details = self.fetchFoodDiaryDetails()
+        
+        for detail in details! {
+            detail.delete()
+        }
+    }
+    
+    func deleteFoodDiaryDetail(foodDiaryDetail: FoodDiaryDetail) {
+        let details = self.fetchFoodDiaryDetails()
+      //  let detailObjectId = foodDiaryDetail.objectId
+        
+        for detail in details! {
+            let fetchedObjectId = detail.objectId
+            if foodDiaryDetail.objectId == fetchedObjectId {
+                detail.delete()
+            }
+
+        }
+
+    }
+    
     func populateIngredientDetails() {
         self.ingredientDetails = []
         let fetchedDetails = self.fetchFoodDiaryDetails()

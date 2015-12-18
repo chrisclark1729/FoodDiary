@@ -1,131 +1,74 @@
 //
-//  EditMoodTableViewController.swift
+//  IngrdientDetailTableViewController.swift
 //  FoodDiary
 //
-//  Created by Chris Clark on 12/2/15.
+//  Created by Chris Clark on 12/15/15.
 //  Copyright © 2015 Chris Clark. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
+class IngrdientDetailTableViewController: UITableViewController {
 
-    @IBOutlet weak var moodSearch: UISearchBar!
-    var foodDiaryEntry: FoodDiaryEntry?
-    var searchActive: Bool = false
-    var selectedMood:String = ""
-    var data:[PFObject]!
-    var filtered:[PFObject]!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        moodSearch.delegate = self
-        search()
-        
+        print(Session.sharedInstance.currentSelectedFoodDiaryDetail)
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    var selectedSuggestion:String?
-    var moodField: UITextField?
-    
-    func search(searchText: String? = nil) {
-        let searchMood = PFQuery(className: "Mood")
-            searchMood.whereKey("mood", containsString: searchText)
-            searchMood.limit = 10
-            searchMood.orderByAscending("facebookMobileRank")
-        
-        searchMood.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(),{
-                self.data = results as? [PFObject]
-                self.tableView.reloadData()
-            })
-            
-        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.initMoodField()
-    }
-    
-    
-    func initMoodField() {
-        if let editMoodField = self.moodField {
-            editMoodField.becomeFirstResponder()
-            
-            if let entry = foodDiaryEntry {
-                
-                editMoodField.text = entry.mood
-            }
-            else {
-                print("No Food Entry")
-            }
-        }
-        
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(self.data != nil){
-            return self.data.count
+        // #warning Incomplete implementation, return the number of rows
+        
+        if section == 0 {
+            return 2
+        } else if section == 1 {
+            return 1
         }
+        
         return 0
     }
 
-    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 44
+        } else if indexPath.section == 1 {
+            return 200
+        } else {
+            return 44
+        }
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("moodCell", forIndexPath: indexPath)
-        let obj = self.data[indexPath.row]
-        let mood = obj["mood"] as? String
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath: indexPath)
+            return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PickerCell", forIndexPath: indexPath)
+            return cell
+        }
         
-        cell.textLabel!.text = mood
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
         return cell
-
-    }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true;
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false;
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        search(searchText)
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let mood = self.data[indexPath.row]["mood"]
-        self.foodDiaryEntry?.mood = mood! as! String
-        foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
-    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -13,4 +13,5 @@ class Session {
     static let sharedInstance = Session()
     var currentFoodDiaryEntry: FoodDiaryEntry?
     var currentMeals:[FoodDiaryEntry]?
+    var currentSelectedFoodDiaryDetail:FoodDiaryDetail?
 }

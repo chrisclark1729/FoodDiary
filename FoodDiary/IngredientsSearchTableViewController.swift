@@ -13,14 +13,13 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
 
     @IBOutlet weak var searchIngredients: UISearchBar!
     var foodDiaryEntry: FoodDiaryEntry?
-    var searchActive : Bool = false
+    var searchActive: Bool = false
     var data:[PFObject]!
     var filtered:[PFObject]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchIngredients.delegate = self
-
         search()
 
         // Uncomment the following line to preserve selection between presentations
@@ -37,10 +36,9 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
     
     func search(searchText: String? = nil){
         let query = PFQuery(className: "Ingredients")
-        if(searchText != nil){
             query.whereKey("ingredientName", containsString: searchText)
             query.limit = 100
-            query.orderByDescending("ingredientName")}
+            query.orderByDescending("ingredientName")
         
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             dispatch_async(dispatch_get_main_queue(),{

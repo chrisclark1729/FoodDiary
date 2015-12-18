@@ -69,8 +69,9 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         
         if ingredientDetail.quantity! <= 1 {
             unitOfMeasurementSeparator = "s): "
+        
         }
-
+        
         cell.textLabel?.text = ingredientName! + " (" + (NSString(format: "%.1f",ingredientDetail.quantity!) as String) + " " + ingredientUnitOfMeasurement! + unitOfMeasurementSeparator + (NSString(format: "%.0f",totalCalories) as String) + " cal."
         
         return cell
@@ -101,7 +102,8 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             //TODO: Actually delete data from Parse Backend
-
+            let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
+            self.foodDiaryEntry?.deleteFoodDiaryDetail(foodDiaryDetail)
             self.foodDiaryEntry!.ingredientDetails.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
@@ -109,6 +111,11 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         }    
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
+        Session.sharedInstance.currentSelectedFoodDiaryDetail = foodDiaryDetail
+        self.performSegueWithIdentifier("showIngredientInfo", sender: self)
+    }
 
     /*
     // Override to support rearranging the table view.
