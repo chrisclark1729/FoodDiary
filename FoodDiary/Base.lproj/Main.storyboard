@@ -891,9 +891,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="0ul-uh-iEJ" kind="push" identifier="editIngredientQuantity" id="DUy-Z1-hMk"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -915,6 +912,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="ingredientList" destination="eFP-KF-Vnb" id="ghQ-wR-9iE"/>
+                        <segue destination="0ul-uh-iEJ" kind="push" identifier="editIngredientQuantity" id="K8Y-ww-au0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNo-Xz-8aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1418,7 +1416,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2YI-vR-XMV"/>
-        <segue reference="DUy-Z1-hMk"/>
+        <segue reference="K8Y-ww-au0"/>
         <segue reference="L96-26-8Ya"/>
     </inferredMetricsTieBreakers>
 </document>

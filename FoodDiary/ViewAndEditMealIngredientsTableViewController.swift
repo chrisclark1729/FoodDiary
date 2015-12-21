@@ -15,7 +15,6 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     @IBOutlet var ingredientList: UITableView!
     
     let textCellIdentifier = "IngredientCell"
-    
     var foodDiaryEntry: FoodDiaryEntry?
     
     override func viewDidLoad() {
@@ -35,6 +34,12 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         self.foodDiaryEntry?.populateIngredientDetails()
         self.foodDiaryEntry?.populateIngredients()
+        self.ingredientList.reloadData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        Session.sharedInstance.currentSelectedFoodDiaryDetail = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,11 +117,12 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
         Session.sharedInstance.currentSelectedFoodDiaryDetail = foodDiaryDetail
-      /*
+        print("selected ingredient \(foodDiaryDetail)")
+      
         self.performSegueWithIdentifier("editIngredientQuantity", sender: self)
-        let destination = segue.destinationViewController as! IngredientAddTableViewController
+       // let destination = segue.destinationViewController as! IngredientAddTableViewController
         
-        destination.foodDiaryEntry = self.foodDiaryEntry */
+     //   destination.foodDiaryEntry = self.foodDiaryEntry
 
     }
 
@@ -135,14 +141,15 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

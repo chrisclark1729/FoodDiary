@@ -15,12 +15,14 @@ class FoodDiaryDetail: NSObject {
     var ingredientId: PFObject?
     var entry: FoodDiaryEntry?
     var quantity: Float?
+    var toPFObject: PFObject?
     
     init(entry: FoodDiaryEntry, entity: PFObject) {
         self.objectId = entity.objectId!
         self.ingredientId = entity["ingredientId"] as? PFObject
         self.quantity = entity["numberOfServings"] as? Float
         self.foodDiaryEntryId = entity["foodDiaryEntryId"] as? PFObject
+        self.toPFObject = entity
     }
     
 }
