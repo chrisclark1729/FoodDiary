@@ -164,7 +164,6 @@ extension FoodDiaryEntry {
                         print("Successfully retrieved \(objs.count) notes.")
                         let note = Note(entry: self, entity: object as! PFObject)
                         notesArray.append(note)
-                        print(notesArray)
                         
                     } else {
                         // Log details of the failure
@@ -239,7 +238,6 @@ extension FoodDiaryEntry {
                 totalGramsFiber += ingredientTotalCalories.4
                 totalGramsSaturatedFat += ingredientTotalCalories.5
                 ingredientCount += 1
-                print("ingredient \(ingredientTotalCalories)")
                 
             }
             self.calories = totalCalories

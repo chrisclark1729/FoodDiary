@@ -15,11 +15,19 @@ class IngredientAddTableViewController: UITableViewController {
     var ingredient: PFObject?
     var foodDiaryDetail = [FoodDiaryDetail]()
     
+    
     @IBOutlet weak var numberOfServingsTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(foodDiaryDetail)
+        
+    }
 
-    @IBAction func addIngredientButtonTapped(sender: AnyObject) {
+    @IBAction func addIngredientButtonTapped(sender: UIButton) {
         
         self.foodDiaryEntry = Session.sharedInstance.currentFoodDiaryEntry!
+        
         
         let ingredient = Ingredient()
         ingredient.ingredientId = self.ingredient
@@ -48,17 +56,14 @@ class IngredientAddTableViewController: UITableViewController {
                 self.foodDiaryEntry!.save()
                 self.navigationController?.popViewControllerAnimated(true)
             } else {
-                // There was a problem, check error.description
+                print("There was a problem, check error.description")
             }
         }
         
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+
     
     
 }

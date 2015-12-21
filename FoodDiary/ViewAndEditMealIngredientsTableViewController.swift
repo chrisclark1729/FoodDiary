@@ -100,8 +100,6 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            //TODO: Actually delete data from Parse Backend
             let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
             self.foodDiaryEntry?.deleteFoodDiaryDetail(foodDiaryDetail)
             self.foodDiaryEntry!.ingredientDetails.removeAtIndex(indexPath.row)
@@ -114,7 +112,12 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
         Session.sharedInstance.currentSelectedFoodDiaryDetail = foodDiaryDetail
-        self.performSegueWithIdentifier("showIngredientInfo", sender: self)
+      /*
+        self.performSegueWithIdentifier("editIngredientQuantity", sender: self)
+        let destination = segue.destinationViewController as! IngredientAddTableViewController
+        
+        destination.foodDiaryEntry = self.foodDiaryEntry */
+
     }
 
     /*
