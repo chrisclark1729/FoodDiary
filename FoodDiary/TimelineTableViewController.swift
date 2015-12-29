@@ -29,6 +29,11 @@ class TimelineTableViewController: UITableViewController {
         timeFormatter.dateFormat = "h:mm a"
 
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

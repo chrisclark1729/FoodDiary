@@ -11,7 +11,7 @@ import Parse
 
 
 class ViewMealDetailViewController: UITableViewController {
-
+    
     var dayFormatter = NSDateFormatter()
     var timeFormatter = NSDateFormatter()
     
@@ -31,31 +31,18 @@ class ViewMealDetailViewController: UITableViewController {
     
     @IBAction func archiveMeal(sender: AnyObject) {
         
-        let query = PFQuery(className:"FoodDiaryEntries")
-        query.getObjectInBackgroundWithId(foodDiaryEntry!.mealID) {
-            (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            } else if let entry = FoodDiaryEntry {
-                entry["isVisible"] = false
-                // Remember to count ingredients before saving to Meal table
-                // If ingredients.count = 0, do nothing else, save
-                
-                let ingredientCount = self.foodDiaryEntry?.ingredientDetails.count
-                
-                if ingredientCount == 0 {
-                    print("No Ingredients. Nothing to save.")
-                } else {
-                    self.foodDiaryEntry?.createMealFromFoodDiaryEntry()
-                }
-                
-                entry.saveInBackground()
-                self.navigationController?.popViewControllerAnimated(true)
-            }
+        self.foodDiaryEntry?.archiveMeal()
+        let ingredientCount = self.foodDiaryEntry?.ingredientDetails.count
+        
+        if ingredientCount == 0 {
+            print("No Ingredients. Nothing to save.")
+        } else {
+            self.foodDiaryEntry?.createMealFromFoodDiaryEntry()
         }
+        self.navigationController?.popViewControllerAnimated(true)
         
     }
-
+    
     var foodDiaryEntry: FoodDiaryEntry?
     
     override func viewDidLoad() {
@@ -98,14 +85,14 @@ class ViewMealDetailViewController: UITableViewController {
             self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
             self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",entry.calories) as String)
             self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",entry.gramsCarbs) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",entry.gramsProtein) as String) + "g, Fat: "  + (NSString(format: "%.0f",entry.gramsFat) as String) + "g"
-
+            
         }
         else {
             print("No Food Entry")
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -179,12 +166,12 @@ class ViewMealDetailViewController: UITableViewController {
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

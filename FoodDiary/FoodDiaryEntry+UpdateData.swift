@@ -321,4 +321,11 @@ extension FoodDiaryEntry {
 
     }
     
+    func archiveMeal() {
+        self.isVisible = false
+        self.toPFObject!["isVisible"] = false
+        self.toPFObject!.save()
+        
+    }
+    
 }
