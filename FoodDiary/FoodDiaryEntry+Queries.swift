@@ -60,8 +60,8 @@ extension FoodDiaryEntry {
     
     static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [PFObject] {
         let nearbyLocations:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        nearbyLocations.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
-        nearbyLocations.limit = 5
+        nearbyLocations.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.04)
+        nearbyLocations.limit = 10
         nearbyLocations.whereKey("locationName", notEqualTo: "")
         nearbyLocations.selectKeys(["locationName"])
         nearbyLocations.orderByDescending("timestamp")
@@ -70,7 +70,19 @@ extension FoodDiaryEntry {
         var entries = [PFObject]()
         for fetchedObject in fetchedObjects! {
             let entry = fetchedObject
-            entries.append(entry as! PFObject)
+
+            if entries.count > 0 {
+                let mostRecentName = entries.last!["locationName"] as! String
+                let nameForConsideration = fetchedObject["locationName"] as! String
+    
+                if mostRecentName == nameForConsideration {
+                    print("Location already in array.")
+                } else {
+                    entries.append(entry as! PFObject)
+                }
+            } else {
+                entries.append(entry as! PFObject)
+            }
         }
         
         return entries
