@@ -69,19 +69,18 @@ extension FoodDiaryEntry {
         var entries = [String]()
         for fetchedObject in fetchedObjects! {
             let entry = fetchedObject
-            
             if entries.count > 0 {
-                
                 let nameForConsideration = fetchedObject["locationName"] as! String
                 
                 if entries.contains(nameForConsideration) {
-                    print("Location already in array.")
                 } else {
-                    entries.append(entry as! String)
+                    entries.append(entry["locationName"] as! String)
                 }
-                
+            } else {
+                entries.append(entry["locationName"] as! String)
             }
         }
+        
         return entries
     }
     
