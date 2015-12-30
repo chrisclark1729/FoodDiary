@@ -12,7 +12,7 @@ import Parse
 class EditMealLocationTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
-    var locationNameSuggestions:[PFObject] = []
+    var locationNameSuggestions:[String] = []
     var selectedSuggestion:String?
     var locationNameField: UITextField?
     
@@ -79,7 +79,7 @@ class EditMealLocationTableViewController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("LocationNameSuggestionCell", forIndexPath: indexPath)
-            cell.textLabel!.text = self.locationNameSuggestions[indexPath.row].objectForKey("locationName") as? String
+            cell.textLabel!.text = self.locationNameSuggestions[indexPath.row]
             return cell
         }
     }
@@ -88,7 +88,7 @@ class EditMealLocationTableViewController: UITableViewController {
         
         let locationName = self.locationNameSuggestions[indexPath.row]
         
-        self.selectedSuggestion = locationName.objectForKey("locationName") as? String
+        self.selectedSuggestion = locationName
         self.tableView.reloadData()
     }
     

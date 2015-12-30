@@ -54,11 +54,11 @@ extension FoodDiaryEntry {
             let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
             entries.append(entry)
         }
-       
+        
         return entries
     }
     
-    static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [PFObject] {
+    static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [String] {
         let nearbyLocations:PFQuery = PFQuery(className:"FoodDiaryEntries")
         nearbyLocations.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.04)
         nearbyLocations.limit = 10
@@ -66,24 +66,22 @@ extension FoodDiaryEntry {
         nearbyLocations.selectKeys(["locationName"])
         
         let fetchedObjects = nearbyLocations.findObjects()
-        var entries = [PFObject]()
+        var entries = [String]()
         for fetchedObject in fetchedObjects! {
             let entry = fetchedObject
-
+            
             if entries.count > 0 {
-                let mostRecentName = entries.last!["locationName"] as! String
+                
                 let nameForConsideration = fetchedObject["locationName"] as! String
-    
-                if mostRecentName == nameForConsideration {
+                
+                if entries.contains(nameForConsideration) {
                     print("Location already in array.")
                 } else {
-                    entries.append(entry as! PFObject)
+                    entries.append(entry as! String)
                 }
-            } else {
-                entries.append(entry as! PFObject)
+                
             }
         }
-        
         return entries
     }
     
@@ -94,22 +92,22 @@ extension FoodDiaryEntry {
     /*
     
     static func getMealSuggestions() -> [Meal] {
-        let geoPoint = self.location
-        let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
-        //TODO: Get +/- 3 hours as a condition. Issue is need to extract "time part" only irrespective of day.
-        let fetchedObjects = nearbyMeals.findObjects()
-        var entries = [FoodDiaryEntry]()
-        for fetchedObject in fetchedObjects! {
-            let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
-            entries.append(entry)
-        }
-        
-        return entries
+    let geoPoint = self.location
+    let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
+    nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
+    //TODO: Get +/- 3 hours as a condition. Issue is need to extract "time part" only irrespective of day.
+    let fetchedObjects = nearbyMeals.findObjects()
+    var entries = [FoodDiaryEntry]()
+    for fetchedObject in fetchedObjects! {
+    let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
+    entries.append(entry)
     }
-
-   */ 
-
+    
+    return entries
+    }
+    
+    */
+    
 }
 
 

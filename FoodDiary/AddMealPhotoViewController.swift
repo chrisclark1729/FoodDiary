@@ -9,13 +9,13 @@
 import UIKit
 import MobileCoreServices
 import Parse
-import GoogleMaps
+//import GoogleMaps
 
 class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var imageView = UIImageView()
-    var placesClient: GMSPlacesClient?
-    var locationNameSuggestions:[PFObject] = []
+ //   var placesClient: GMSPlacesClient?
+    var locationNameSuggestions:[String] = []
     var foodDiaryEntry: FoodDiaryEntry?
     
     func noCamera(){
@@ -71,7 +71,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["userId"] = PFUser.currentUser()
         userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
         if self.locationNameSuggestions.count > 0 {
-            userPhoto["locationName"] = self.locationNameSuggestions[0]["locationName"]
+            userPhoto["locationName"] = self.locationNameSuggestions[0]
         }
         userPhoto.saveInBackground()
         
@@ -115,7 +115,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
    // MARK: - Location
-    
+   /*
     func getCurrentLocationName() {
 
         self.placesClient?.currentPlaceWithCallback({ (placeLikelihoods: GMSPlaceLikelihoodList?, error) -> Void in
@@ -134,7 +134,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
                 }
             }
         })
-    }
+    } */
 
     /*
     // MARK: - Navigation

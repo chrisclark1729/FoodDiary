@@ -37,9 +37,7 @@
 		4972BBE91B45B2B50069D44B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBE81B45B2B50069D44B /* Accounts.framework */; };
 		4972BBEB1B45B2BC0069D44B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBEA1B45B2BC0069D44B /* Social.framework */; };
 		4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */; };
-		4982BF641C3449E800EBF6C7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4982BF631C3449E800EBF6C7 /* GoogleMaps.bundle */; };
 		4982BF661C344B6200EBF6C7 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4982BF651C344B6200EBF6C7 /* CoreBluetooth.framework */; };
-		4982BF671C34516400EBF6C7 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4982BF611C34499100EBF6C7 /* GoogleMaps.framework */; };
 		4982BF691C34520000EBF6C7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4982BF681C34520000EBF6C7 /* Accelerate.framework */; };
 		498E8AC51C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E8AC41C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift */; };
 		49941ED01BDC242D0088EE52 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941ECF1BDC242D0088EE52 /* Session.swift */; };
@@ -132,8 +130,6 @@
 		4972BBE81B45B2B50069D44B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4972BBEA1B45B2BC0069D44B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuallyAddMealViewController.swift; sourceTree = "<group>"; };
-		4982BF611C34499100EBF6C7 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		4982BF631C3449E800EBF6C7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		4982BF651C344B6200EBF6C7 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4982BF681C34520000EBF6C7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		498E8AC41C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+MealUpdateData.swift"; sourceTree = "<group>"; };
@@ -210,7 +206,6 @@
 				8898858F1B5EBE6E00ECD82F /* OpenGLES.framework in Frameworks */,
 				8898858D1B5EBE6700ECD82F /* libicucore.dylib in Frameworks */,
 				8898858B1B5EBE5900ECD82F /* libc++.dylib in Frameworks */,
-				4982BF671C34516400EBF6C7 /* GoogleMaps.framework in Frameworks */,
 				49DD19D51B62DE2B004199C2 /* ParseUI.framework in Frameworks */,
 				889885891B5EBE4D00ECD82F /* ImageIO.framework in Frameworks */,
 				889885871B5EBE4700ECD82F /* GLKit.framework in Frameworks */,
@@ -266,7 +261,6 @@
 				4982BF651C344B6200EBF6C7 /* CoreBluetooth.framework */,
 				4972BBCE1B45B1B60069D44B /* Parse.framework */,
 				4972BBD01B45B1C30069D44B /* Bolts.framework */,
-				4982BF611C34499100EBF6C7 /* GoogleMaps.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -312,7 +306,6 @@
 		49C5C4071B068AA6006FA068 = {
 			isa = PBXGroup;
 			children = (
-				4982BF631C3449E800EBF6C7 /* GoogleMaps.bundle */,
 				4982BF601C34499100EBF6C7 /* Frameworks */,
 				4923314B1B0F87B600AA212E /* bridge.h */,
 				49C5C4121B068AA6006FA068 /* FoodDiary */,
@@ -518,7 +511,6 @@
 				49C5C41B1B068AA6006FA068 /* Main.storyboard in Resources */,
 				49C5C4201B068AA7006FA068 /* LaunchScreen.xib in Resources */,
 				49C5C41D1B068AA7006FA068 /* Images.xcassets in Resources */,
-				4982BF641C3449E800EBF6C7 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
