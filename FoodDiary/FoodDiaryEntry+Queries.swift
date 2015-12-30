@@ -64,7 +64,6 @@ extension FoodDiaryEntry {
         nearbyLocations.limit = 10
         nearbyLocations.whereKey("locationName", notEqualTo: "")
         nearbyLocations.selectKeys(["locationName"])
-        nearbyLocations.orderByDescending("timestamp")
         
         let fetchedObjects = nearbyLocations.findObjects()
         var entries = [PFObject]()

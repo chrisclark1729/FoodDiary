@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Bolts
+import GoogleMaps
 
 //testing imports
 import FBSDKCoreKit

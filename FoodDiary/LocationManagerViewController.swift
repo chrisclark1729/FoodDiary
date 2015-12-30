@@ -40,6 +40,7 @@ class LocationManagerViewController: UIViewController, CLLocationManagerDelegate
     func refreshLocation() {
         
         self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self

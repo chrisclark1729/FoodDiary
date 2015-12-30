@@ -9,10 +9,14 @@
 import UIKit
 import MobileCoreServices
 import Parse
+import GoogleMaps
 
 class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var imageView = UIImageView()
+    var placesClient: GMSPlacesClient?
+    var locationNameSuggestions:[PFObject] = []
+    var foodDiaryEntry: FoodDiaryEntry?
     
     func noCamera(){
         let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .Alert)
@@ -41,6 +45,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         let imagePicker:UIImagePickerController = UIImagePickerController()
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.delegate = self
+       // self.getCurrentLocationName()
         
         self.presentViewController(imagePicker, animated: true, completion: nil)
         
@@ -65,6 +70,9 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         userPhoto["imageFile"] = imageFile
         userPhoto["userId"] = PFUser.currentUser()
         userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
+        if self.locationNameSuggestions.count > 0 {
+            userPhoto["locationName"] = self.locationNameSuggestions[0]["locationName"]
+        }
         userPhoto.saveInBackground()
         
         
@@ -83,6 +91,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         LocationManagerViewController.sharedLocation.refreshLocation()
+        self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation))
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,6 +114,27 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         preferredContentSize = CGSize(width: preferredContentSize.width, height: preferredContentSize.height + extraHeight)
     }
     
+   // MARK: - Location
+    
+    func getCurrentLocationName() {
+
+        self.placesClient?.currentPlaceWithCallback({ (placeLikelihoods: GMSPlaceLikelihoodList?, error) -> Void in
+            if error != nil {
+                print("Current Place error: \(error!.localizedDescription)")
+                return
+            }
+            
+            for likelihood in placeLikelihoods!.likelihoods {
+                if let likelihood = likelihood as? GMSPlaceLikelihood {
+                    let place = likelihood.place
+                    print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
+                    print("Current Place address \(place.formattedAddress)")
+                    print("Current Place attributions \(place.attributions)")
+                    print("Current PlaceID \(place.placeID)")
+                }
+            }
+        })
+    }
 
     /*
     // MARK: - Navigation
