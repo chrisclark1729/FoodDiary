@@ -63,6 +63,7 @@ extension FoodDiaryEntry {
         nearbyLocations.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.04)
         nearbyLocations.limit = 10
         nearbyLocations.whereKey("locationName", notEqualTo: "")
+        nearbyLocations.orderByDescending("timestamp")
         nearbyLocations.selectKeys(["locationName"])
         
         let fetchedObjects = nearbyLocations.findObjects()

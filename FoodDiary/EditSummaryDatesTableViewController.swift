@@ -1,28 +1,29 @@
 //
-//  NutritionSummaryTableViewController.swift
+//  EditSummaryDatesTableViewController.swift
 //  FoodDiary
 //
-//  Created by Chris Clark on 11/22/15.
-//  Copyright © 2015 Chris Clark. All rights reserved.
+//  Created by Chris Clark on 1/4/16.
+//  Copyright © 2016 Chris Clark. All rights reserved.
 //
 
 import UIKit
-import Parse
 
-class NutritionSummaryTableViewController: UITableViewController {
+class EditSummaryDatesTableViewController: UITableViewController {
     
     
-    @IBOutlet weak var startDateLabel: UILabel!
-    @IBOutlet weak var endDateLabel: UILabel!
-    @IBOutlet weak var dayCountLabel: UILabel!
-    @IBOutlet weak var mealCountLabel: UILabel!
-    @IBOutlet weak var caloriesPerDayLabel: UILabel!
-    @IBOutlet weak var caloriesPerMealLabel: UILabel!
-    
+    @IBOutlet weak var editSummaryStartDatePicker: UIDatePicker!
+    @IBOutlet weak var editSummaryEndDatePicker: UIDatePicker!
+
+    @IBAction func updateNutritionSummaryData(sender: UIButton) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,19 +32,16 @@ class NutritionSummaryTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    /*
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
-    } 
-    */
-    
-    /*
+    }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 2
     }
-    */
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -99,23 +97,5 @@ class NutritionSummaryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func getFoodDiaryEntriesForCalorieCount(startDate: NSDate, endDate: NSDate) -> Int {
-        let calories = 0
-        let query:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        query.whereKey("timestamp", greaterThanOrEqualTo: startDate)
-        query.whereKey("timestamp", lessThanOrEqualTo: endDate)
-        
-        let fetchedObjects = query.findObjects()
-        
-        var entries = [FoodDiaryEntry]()
-        for fetchedObject in fetchedObjects! {
-            let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
-            entries.append(entry)
-        }
-        
-        print("Bro, calories are: \(calories)")
-        return calories
-    }
 
 }
