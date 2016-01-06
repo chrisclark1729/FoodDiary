@@ -14,4 +14,6 @@ class Session {
     var currentFoodDiaryEntry: FoodDiaryEntry?
     var currentMeals:[FoodDiaryEntry]?
     var currentSelectedFoodDiaryDetail:FoodDiaryDetail?
+    var currentSelectedStartDate:NSDate?
+    var currentSelectedEndDate:NSDate?
 }

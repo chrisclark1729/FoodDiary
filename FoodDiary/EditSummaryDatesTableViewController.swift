@@ -15,7 +15,15 @@ class EditSummaryDatesTableViewController: UITableViewController {
     @IBOutlet weak var editSummaryEndDatePicker: UIDatePicker!
 
     @IBAction func updateNutritionSummaryData(sender: UIButton) {
+        print("\(editSummaryStartDatePicker.date)")
+        print("\(editSummaryEndDatePicker.date)")
+        
+        Session.sharedInstance.currentSelectedStartDate = editSummaryStartDatePicker.date
+        Session.sharedInstance.currentSelectedEndDate = editSummaryEndDatePicker.date
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -371,6 +371,12 @@
                                                     <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Count of Meals that Have not been reviewed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrN-36-SIx">
+                                                    <rect key="frame" x="13" y="13" width="287" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -410,6 +416,7 @@
                         <outlet property="endDateLabel" destination="LBB-hm-vdG" id="h6O-KD-oYT"/>
                         <outlet property="mealCountLabel" destination="hvb-L5-9W0" id="R8F-Gh-lXE"/>
                         <outlet property="startDateLabel" destination="2MN-ip-rsx" id="LyL-tn-9GN"/>
+                        <outlet property="unarchivedMealCountLabel" destination="HrN-36-SIx" id="cqN-7e-hkr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jv-71-WC9" userLabel="First Responder" sceneMemberID="firstResponder"/>

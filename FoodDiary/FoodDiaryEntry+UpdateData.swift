@@ -213,7 +213,6 @@ extension FoodDiaryEntry {
     
     func populateIngredients() -> Int {
         
-        
         var totalCalories: Float = 0
         var totalGramsFat: Float = 0
         var totalGramsProtein: Float = 0
@@ -228,7 +227,6 @@ extension FoodDiaryEntry {
             for detail in details {
                 
                 print("Successfully retrieved \(detail.count) food diary detail rows.")
-                
                 let ingredient = self.getIngredientsAsPFObjectFromFoodDiaryDetail(detail as! PFObject)
                 let ingredientTotalCalories = self.getTotalCaloriesForIngredient(detail as! PFObject, ingredient: ingredient)
                 totalCalories += ingredientTotalCalories.0

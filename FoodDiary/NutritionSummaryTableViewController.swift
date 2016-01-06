@@ -11,7 +11,8 @@ import Parse
 
 class NutritionSummaryTableViewController: UITableViewController {
     
-    
+    var dayFormatter = NSDateFormatter()
+    @IBOutlet weak var unarchivedMealCountLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var dayCountLabel: UILabel!
@@ -19,15 +20,80 @@ class NutritionSummaryTableViewController: UITableViewController {
     @IBOutlet weak var caloriesPerDayLabel: UILabel!
     @IBOutlet weak var caloriesPerMealLabel: UILabel!
     
+    var foodDiaryEntries: [FoodDiaryEntry]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayFormatter.dateFormat = "MMM dd, yyyy"
         
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let startDate = Session.sharedInstance.currentSelectedStartDate {
+            self.startDateLabel.text = dayFormatter.stringFromDate(startDate)
+            if let endDate = Session.sharedInstance.currentSelectedEndDate {
+                self.endDateLabel.text = dayFormatter.stringFromDate(endDate)
+                self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate, endDate: endDate)
+                self.dayCountLabel.text = "Days: \(sumCalories().0)"
+                self.mealCountLabel.text = "Meals: \(sumCalories().1)"
+                self.caloriesPerDayLabel.text = "\(sumCalories().2)"
+                self.caloriesPerMealLabel.text = "\(sumCalories().3)"
+                self.unarchivedMealCountLabel.text = "\(sumCalories().4)"
+            }
+
+        }
+        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func sumCalories()-> (Int, Int, Float, Float, Int) {
+        var totalCalories: Float = 0
+        var archivedMeals: Int = 0
+        var openMeals: Int = 0
+        var daysInRange: Int = 0
+        var caloriesPerDay: Float = 0
+        var caloriesPerMeal: Float = 0
+        
+        for entry in self.foodDiaryEntries! {
+            totalCalories += entry.calories
+            if entry.isVisible == true {
+                openMeals += 1
+            } else {
+                archivedMeals += 1
+            }
+        }
+        
+        if archivedMeals != 0 {
+            caloriesPerMeal = totalCalories/Float(archivedMeals)
+        }
+        
+        
+        
+        return (daysInRange, archivedMeals, caloriesPerDay, caloriesPerMeal, openMeals)
+    }
+    
+    func getMacros() -> (Float, Float, Float) {
+        var carbs: Float = 0
+        var protein: Float = 0
+        var fat: Float = 0
+        
+        for entry in self.foodDiaryEntries! {
+            if entry.isVisible == false {
+                carbs += entry.gramsCarbs
+                protein += entry.gramsProtein
+                fat += entry.gramsFat
+            }
+        }
+        
+        return (carbs, protein, fat)
     }
 
     // MARK: - Table view data source
