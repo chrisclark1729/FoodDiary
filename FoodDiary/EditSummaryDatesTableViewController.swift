@@ -10,11 +10,13 @@ import UIKit
 
 class EditSummaryDatesTableViewController: UITableViewController {
     
-    
+    var dayFormatter = NSDateFormatter()
     @IBOutlet weak var editSummaryStartDatePicker: UIDatePicker!
     @IBOutlet weak var editSummaryEndDatePicker: UIDatePicker!
 
     @IBAction func updateNutritionSummaryData(sender: UIButton) {
+        let startDateOnly = dayFormatter.stringFromDate(editSummaryStartDatePicker.date)
+        print(startDateOnly)
         print("\(editSummaryStartDatePicker.date)")
         print("\(editSummaryEndDatePicker.date)")
         
@@ -26,6 +28,7 @@ class EditSummaryDatesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayFormatter.dateFormat = "MM dd, yyyy"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
