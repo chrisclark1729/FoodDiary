@@ -17,6 +17,7 @@ class NutritionSummaryTableViewController: UITableViewController {
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var dayCountLabel: UILabel!
     @IBOutlet weak var mealCountLabel: UILabel!
+    @IBOutlet weak var mealsPerDay: UILabel!
     @IBOutlet weak var caloriesPerDayLabel: UILabel!
     @IBOutlet weak var caloriesPerMealLabel: UILabel!
     @IBOutlet weak var carbsLabel: UILabel!
@@ -38,10 +39,7 @@ class NutritionSummaryTableViewController: UITableViewController {
         components.second = 0
         Session.sharedInstance.currentSelectedEndDate = calendar.dateFromComponents(components)
         self.endDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedEndDate!)
-    /*
-        let offsetComponents = calendar.components(unitFlags, fromDate: Session.sharedInstance.currentSelectedEndDate!)
-        offsetComponents.day = -7
-        Session.sharedInstance.currentSelectedStartDate = calendar.dateByAddingComponents(offsetComponents, toDate: Session.sharedInstance.currentSelectedEndDate!, options: []) */
+  
         let startDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-7*24*60*60)
         Session.sharedInstance.currentSelectedStartDate = startDate
         self.startDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedStartDate!)
@@ -67,6 +65,7 @@ class NutritionSummaryTableViewController: UITableViewController {
                 self.caloriesPerDayLabel.text = "\(sumCalories().2)"
                 self.caloriesPerMealLabel.text = "\(sumCalories().3)"
                 self.unarchivedMealCountLabel.text = "\(sumCalories().4)"
+                self.mealsPerDay.text = "Meals per Day: \(sumCalories().5)"
                 self.carbsLabel.text = "Carbs: \(getMacros().3)%"
                 self.proteinLabel.text = "Protein: \(getMacros().4)%"
                 self.fatLabel.text = "Fat: \(getMacros().5)%"
@@ -82,14 +81,15 @@ class NutritionSummaryTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func sumCalories()-> (Int, Int, Float, Float, Int) {
+    func sumCalories()-> (Int, Int, String, String, Int, String) {
     
         var totalCalories: Float = 0
         var archivedMeals: Int = 0
         var mealsToBeReviewed: Int = 0
         var daysInRange: Int = 0
-        var caloriesPerDay: Float = 0
-        var caloriesPerMeal: Float = 0
+        var mealsPerDay: String = ""
+        var caloriesPerDay: String = ""
+        var caloriesPerMeal: String = ""
         var daysArray = [String]()
         
         for entry in self.foodDiaryEntries! {
@@ -109,20 +109,21 @@ class NutritionSummaryTableViewController: UITableViewController {
         }
         
         if archivedMeals != 0 {
-            caloriesPerMeal = totalCalories/Float(archivedMeals)
-            caloriesPerDay = totalCalories/Float(daysInRange)
+            caloriesPerMeal = NSString(format: "%.0f", totalCalories/Float(archivedMeals)) as String
+            caloriesPerDay = NSString(format: "%.0f", totalCalories/Float(daysInRange)) as String
+            mealsPerDay =  NSString(format: "%.1f", Float(archivedMeals)/Float(daysInRange)) as String
         }
         
         
         self.getMacros()
-        return (daysInRange, archivedMeals, caloriesPerDay, caloriesPerMeal, mealsToBeReviewed)
+        return (daysInRange, archivedMeals, caloriesPerDay, caloriesPerMeal, mealsToBeReviewed, mealsPerDay)
     }
     
-    func getMacros() -> (Float, Float, Float, Float, Float, Float) {
+    func getMacros() -> (Float, Float, Float, String, String, String) {
         var totalCalories: Float = 0
-        var carbsBreakdown: Float = 0
-        var proteinBreakdown: Float = 0
-        var fatBreakdown: Float = 0
+        var carbsBreakdown: String = ""
+        var proteinBreakdown: String = ""
+        var fatBreakdown: String = ""
         var gramsCarbs: Float = 0
         var gramsProtein: Float = 0
         var gramsFat: Float = 0
@@ -136,9 +137,9 @@ class NutritionSummaryTableViewController: UITableViewController {
         }
         
         totalCalories = 4*gramsCarbs + 4*gramsProtein + 9*gramsFat
-        carbsBreakdown = 4*gramsCarbs/totalCalories*100
-        proteinBreakdown = 4*gramsProtein/totalCalories*100
-        fatBreakdown = 9*gramsFat/totalCalories*100
+        carbsBreakdown = NSString(format: "%.0f", 4*gramsCarbs/totalCalories*100) as String
+        proteinBreakdown = NSString(format: "%.0f", 4*gramsProtein/totalCalories*100) as String
+        fatBreakdown = NSString(format: "%.0f", 9*gramsFat/totalCalories*100) as String
         
         return (gramsCarbs, gramsProtein, gramsFat, carbsBreakdown, proteinBreakdown, fatBreakdown)
     }

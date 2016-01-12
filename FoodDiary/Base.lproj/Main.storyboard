@@ -257,8 +257,14 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meals per Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vss-a7-J5r">
+                                                    <rect key="frame" x="230" y="10" width="137" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meal Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-L5-9W0">
-                                                    <rect key="frame" x="246" y="10" width="113" height="21"/>
+                                                    <rect key="frame" x="109" y="9" width="113" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -330,13 +336,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thu-gq-2Hs">
-                                                    <rect key="frame" x="261" y="12" width="106" height="21"/>
+                                                    <rect key="frame" x="232" y="13" width="106" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protein" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuv-5S-G4e">
-                                                    <rect key="frame" x="136" y="12" width="102" height="21"/>
+                                                    <rect key="frame" x="113" y="13" width="102" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -403,6 +409,7 @@
                         <outlet property="endDateLabel" destination="LBB-hm-vdG" id="h6O-KD-oYT"/>
                         <outlet property="fatLabel" destination="Thu-gq-2Hs" id="qJo-yO-QS5"/>
                         <outlet property="mealCountLabel" destination="hvb-L5-9W0" id="R8F-Gh-lXE"/>
+                        <outlet property="mealsPerDay" destination="vss-a7-J5r" id="VCM-SB-Xhq"/>
                         <outlet property="proteinLabel" destination="fuv-5S-G4e" id="Yck-7w-9vA"/>
                         <outlet property="startDateLabel" destination="2MN-ip-rsx" id="LyL-tn-9GN"/>
                         <outlet property="unarchivedMealCountLabel" destination="HrN-36-SIx" id="cqN-7e-hkr"/>
