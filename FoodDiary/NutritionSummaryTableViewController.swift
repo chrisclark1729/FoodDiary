@@ -29,11 +29,33 @@ class NutritionSummaryTableViewController: UITableViewController {
         super.viewDidLoad()
         dayFormatter.dateFormat = "MMM dd, yyyy"
         
+        Session.sharedInstance.currentSelectedEndDate = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let unitFlags: NSCalendarUnit = [.Year,.Month,.Day,.Hour,.Minute,.Second]
+        let components = calendar.components(unitFlags, fromDate: Session.sharedInstance.currentSelectedEndDate!)
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        Session.sharedInstance.currentSelectedEndDate = calendar.dateFromComponents(components)
+        self.endDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedEndDate!)
+    /*
+        let offsetComponents = calendar.components(unitFlags, fromDate: Session.sharedInstance.currentSelectedEndDate!)
+        offsetComponents.day = -7
+        Session.sharedInstance.currentSelectedStartDate = calendar.dateByAddingComponents(offsetComponents, toDate: Session.sharedInstance.currentSelectedEndDate!, options: []) */
+        let startDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-7*24*60*60)
+        Session.sharedInstance.currentSelectedStartDate = startDate
+        self.startDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedStartDate!)
+        print(Session.sharedInstance.currentSelectedStartDate)
+        print(Session.sharedInstance.currentSelectedEndDate)
+        
+        
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
         
         if let startDate = Session.sharedInstance.currentSelectedStartDate {
             self.startDateLabel.text = dayFormatter.stringFromDate(startDate)

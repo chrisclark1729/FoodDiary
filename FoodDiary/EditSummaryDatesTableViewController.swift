@@ -28,7 +28,8 @@ class EditSummaryDatesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dayFormatter.dateFormat = "MM dd, yyyy"
+        self.editSummaryStartDatePicker.date = Session.sharedInstance.currentSelectedStartDate!
+        self.editSummaryEndDatePicker.date = Session.sharedInstance.currentSelectedEndDate!
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

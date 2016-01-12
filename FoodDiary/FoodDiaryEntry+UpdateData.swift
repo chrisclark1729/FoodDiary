@@ -323,7 +323,7 @@ extension FoodDiaryEntry {
         self.isVisible = false
         self.toPFObject!["isVisible"] = false
         self.toPFObject!.save()
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("archiveMealNotification", object: self)
     }
     
 }
