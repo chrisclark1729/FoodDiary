@@ -28,7 +28,7 @@ class NutritionSummaryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dayFormatter.dateFormat = "MMM dd, yyyy"
+        dayFormatter.dateFormat = "EEEE: MMM dd, yyyy"
         
         Session.sharedInstance.currentSelectedEndDate = NSDate()
         let calendar = NSCalendar.currentCalendar()
@@ -43,11 +43,7 @@ class NutritionSummaryTableViewController: UITableViewController {
         let startDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-7*24*60*60)
         Session.sharedInstance.currentSelectedStartDate = startDate
         self.startDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedStartDate!)
-        print(Session.sharedInstance.currentSelectedStartDate)
-        print(Session.sharedInstance.currentSelectedEndDate)
-        
-        
-        
+
     }
     
     override func viewDidAppear(animated: Bool) {

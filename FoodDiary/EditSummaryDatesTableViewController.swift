@@ -15,10 +15,6 @@ class EditSummaryDatesTableViewController: UITableViewController {
     @IBOutlet weak var editSummaryEndDatePicker: UIDatePicker!
 
     @IBAction func updateNutritionSummaryData(sender: UIButton) {
-        let startDateOnly = dayFormatter.stringFromDate(editSummaryStartDatePicker.date)
-        print(startDateOnly)
-        print("\(editSummaryStartDatePicker.date)")
-        print("\(editSummaryEndDatePicker.date)")
         
         Session.sharedInstance.currentSelectedStartDate = editSummaryStartDatePicker.date
         Session.sharedInstance.currentSelectedEndDate = editSummaryEndDatePicker.date
@@ -30,6 +26,9 @@ class EditSummaryDatesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.editSummaryStartDatePicker.date = Session.sharedInstance.currentSelectedStartDate!
         self.editSummaryEndDatePicker.date = Session.sharedInstance.currentSelectedEndDate!
+        
+        //User can only review at most one quarter at a time (92 days is length of Q3 & Q4)
+        self.editSummaryStartDatePicker.minimumDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-92*24*60*60)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
