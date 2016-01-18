@@ -9,11 +9,10 @@
 import UIKit
 import Parse
 
-
 class ViewMealDetailViewController: UITableViewController {
     
+    var foodDiaryEntry: FoodDiaryEntry?
     var dayFormatter = NSDateFormatter()
-    var timeFormatter = NSDateFormatter()
     
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealLocationName: UILabel!
@@ -42,9 +41,7 @@ class ViewMealDetailViewController: UITableViewController {
         self.navigationController?.popViewControllerAnimated(true)
         
     }
-    
-    var foodDiaryEntry: FoodDiaryEntry?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,10 +95,11 @@ class ViewMealDetailViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+ /*
     func save() {
         self.foodDiaryEntry?.mealName = self.mealName.text!
         
-    }
+    } */
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
