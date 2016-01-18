@@ -326,4 +326,15 @@ extension FoodDiaryEntry {
         NSNotificationCenter.defaultCenter().postNotificationName("archiveMealNotification", object: self)
     }
     
+    func addDinerWithName(dinerNameString: String) {
+        let diner = OtherDiner(entry: self, name: dinerNameString)
+        self.addDiner(diner)
+        self.save()
+
+    }
+    
+    func deleteFromBackEnd() {
+        self.toPFObject!.delete()
+    }
+    
 }

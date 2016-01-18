@@ -17,6 +17,7 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     var dayFormatter = NSDateFormatter()
     var timeFormatter = NSDateFormatter()
     var meals:[FoodDiaryEntry]?
+    var rowToDelete: NSIndexPath?
     
     
     override func viewDidLoad() {
@@ -66,8 +67,16 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         return 1
     }
     
-    @IBAction func deleteFoodDiaryEntry(sender: UIButton) {
+    @IBAction func deleteFoodDiaryEntry(button: UIButton) {
         let alert: UIAlertView = UIAlertView()
+        
+            if let superview = button.superview {
+                if let cell = superview.superview as? TimelineTableViewCell {
+                    let indexPath = self.tableView.indexPathForCell(cell)
+                    self.rowToDelete = indexPath
+                }
+        }
+        
         alert.title = "Delete"
         alert.message = "Are you sure you want to delete this entry?"
         alert.addButtonWithTitle("Yes")
@@ -82,7 +91,11 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         print("\(buttonTitle!) pressed")
         if buttonTitle == "Yes" {
             // TODO: Figure out how I know what the current food Diary Entry Id is?
-            print("If I knew shit about shit, you would have just deleted a food diary entry")
+            let entry = self.meals![self.rowToDelete!.row]
+            entry.deleteFromBackEnd()
+            self.meals!.removeAtIndex(self.rowToDelete!.row)
+            tableView.reloadData()
+            
         }
     }
     

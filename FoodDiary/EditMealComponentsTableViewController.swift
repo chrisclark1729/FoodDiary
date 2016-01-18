@@ -14,12 +14,19 @@ class EditMealComponentsTableViewController: UITableViewController {
     @IBOutlet var dinersTableView: UITableView!
     let textCellIdentifier = "TextCell"
     var foodDiaryEntry: FoodDiaryEntry?
+    var suggestedDiners = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dinersTableView.delegate = self
         dinersTableView.dataSource = self
+        
+        if let entry = self.foodDiaryEntry {
+            let suggestedDinersFromQuery = entry.getDinerSuggestions()
+            self.suggestedDiners = suggestedDinersFromQuery
+            
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -61,23 +68,58 @@ class EditMealComponentsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         // Return the number of sections.
-        return 1
+        if self.suggestedDiners.count > 0 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "Suggested Diners"
+        } else {
+            return "Other Diners"
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return self.foodDiaryEntry!.diners.count
+        if section == 0 {
+            return self.foodDiaryEntry!.diners.count
+        } else if section == 1 {
+            return self.suggestedDiners.count
+        }
+        
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
         let row = indexPath.row
-        let diner = self.foodDiaryEntry!.diners[row]
-        cell.textLabel?.text = diner.name!
+        if indexPath.section == 0 {
+            let diner = self.foodDiaryEntry!.diners[row]
+            cell.textLabel?.text = diner.name!
+            
+            return cell
+        } else if indexPath.section == 1 {
+            let dinerNameString = self.suggestedDiners[row]
+            cell.textLabel?.text = dinerNameString
+            
+            return cell
+        } else {
+            return cell
+        }
         
-        return cell
-        
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            let dinerNameString = self.suggestedDiners[indexPath.row]
+            self.foodDiaryEntry!.addDinerWithName(dinerNameString)
+            self.suggestedDiners.removeAtIndex(indexPath.row)
+            self.tableView.reloadData()
+        }
     }
     
     

@@ -44,10 +44,10 @@ extension FoodDiaryEntry {
         return entries
     }
     
-    func getNearbyFoodDiaryEntries() -> [FoodDiaryEntry] {
+    func getNearbyFoodDiaryEntries(distance: Double) -> [FoodDiaryEntry] {
         let geoPoint = self.location
         let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 1.0)
+        nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
         let fetchedObjects = nearbyMeals.findObjects()
         var entries = [FoodDiaryEntry]()
         for fetchedObject in fetchedObjects! {
@@ -58,12 +58,41 @@ extension FoodDiaryEntry {
         return entries
     }
     
-    static func getDinerSuggestions(entries: [FoodDiaryEntry]) -> [String] {
-     //   var nearbyFoodDiaryEntries = [FoodDiaryEntry]()
-     //   let nearbyFoodDiaryEntries = self.getNearbyFoodDiaryEntries(self)
+     func getNearbyFoodDiaryEntriesPFObjects(distance: Double) -> [PFObject] {
+        let geoPoint = self.location
+        let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
+        nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
+        let fetchedObjects = nearbyMeals.findObjects()
+        /*
+        var entries = [FoodDiaryEntry]()
+        for fetchedObject in fetchedObjects! {
+            let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
+            entries.append(entry)
+        }
+        */
+        return fetchedObjects as! [PFObject]
+    }
+    
+     func getDinerSuggestions() -> [String] {
         var dinerNameSuggestions = [String]()
         let dinerSuggestions:PFQuery = PFQuery(className: "FoodDiaryEntryDiners")
-   //     dinerSuggestions.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntries())
+        dinerSuggestions.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntriesPFObjects(1.0))
+        let fetchedObjects = dinerSuggestions.findObjects()
+        for fetchedObject in fetchedObjects! {
+            print(fetchedObject["locationName"])
+            let entry = fetchedObject
+            if dinerNameSuggestions.count > 0 {
+                let nameForConsideration = fetchedObject["dinerName"] as! String
+                
+                if dinerNameSuggestions.contains(nameForConsideration) {
+                    print("\(entry["dinerName"]) already in array.")
+                } else {
+                    dinerNameSuggestions.append(entry["dinerName"] as! String)
+                }
+            } else {
+                dinerNameSuggestions.append(entry["dinerName"] as! String)
+            }
+        }
         
         return dinerNameSuggestions
     }
