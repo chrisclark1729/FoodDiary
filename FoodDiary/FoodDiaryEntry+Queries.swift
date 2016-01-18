@@ -47,7 +47,7 @@ extension FoodDiaryEntry {
     func getNearbyFoodDiaryEntries() -> [FoodDiaryEntry] {
         let geoPoint = self.location
         let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
+        nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 1.0)
         let fetchedObjects = nearbyMeals.findObjects()
         var entries = [FoodDiaryEntry]()
         for fetchedObject in fetchedObjects! {
