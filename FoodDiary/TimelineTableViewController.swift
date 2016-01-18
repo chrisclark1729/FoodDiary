@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TimelineTableViewController: UITableViewController {
+class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     
     
     var dataManager = DataManager()
@@ -65,6 +65,28 @@ class TimelineTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    @IBAction func deleteFoodDiaryEntry(sender: UIButton) {
+        let alert: UIAlertView = UIAlertView()
+        alert.title = "Delete"
+        alert.message = "Are you sure you want to delete this entry?"
+        alert.addButtonWithTitle("Yes")
+        alert.addButtonWithTitle("No")
+        alert.delegate = self  // set the delegate here
+        alert.show()
+    
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        let buttonTitle = alertView.buttonTitleAtIndex(buttonIndex)
+        print("\(buttonTitle!) pressed")
+        if buttonTitle == "Yes" {
+            // TODO: Figure out how I know what the current food Diary Entry Id is?
+            print("If I knew shit about shit, you would have just deleted a food diary entry")
+        }
+    }
+    
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let meals = self.meals {

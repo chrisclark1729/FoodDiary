@@ -129,6 +129,9 @@
                                             <state key="normal" title="Delete">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="deleteFoodDiaryEntry:" destination="u9u-yO-AXa" eventType="touchUpInside" id="3O0-nV-ZXz"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYn-ne-opE">
                                             <rect key="frame" x="339" y="23" width="27.5" height="14.5"/>
@@ -216,7 +219,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="OwH-pa-AGS" kind="push" identifier="editNutritionSummaryDates" id="9dl-mb-S0V"/>
+                                            <segue destination="OwH-pa-AGS" kind="push" identifier="editNutritionSummaryStartDate" id="9dl-mb-S0V"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="43" id="hxA-XU-Wvq">
@@ -240,6 +243,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="OwH-pa-AGS" kind="push" identifier="editNutritionSummaryEndDate" id="tbd-dJ-yoo"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1641,8 +1647,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kim-DO-WLk"/>
+        <segue reference="tbd-dJ-yoo"/>
         <segue reference="2YI-vR-XMV"/>
-        <segue reference="L96-26-8Ya"/>
         <segue reference="K8Y-ww-au0"/>
+        <segue reference="L96-26-8Ya"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -38,6 +38,10 @@ class NutritionSummaryTableViewController: UITableViewController {
         components.minute = 0
         components.second = 0
         Session.sharedInstance.currentSelectedEndDate = calendar.dateFromComponents(components)
+      //  let endDateLabel = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-9*60*60)
+       // print(endDateLabel)
+        //     self.endDateLabel.text = dayFormatter.stringFromDate(endDateLabel!)
+
         self.endDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedEndDate!)
   
         let startDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-7*24*60*60)
