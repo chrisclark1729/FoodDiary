@@ -25,7 +25,6 @@ class EditMealComponentsTableViewController: UITableViewController {
         if let entry = self.foodDiaryEntry {
             let suggestedDinersFromQuery = entry.getDinerSuggestions()
             self.suggestedDiners = suggestedDinersFromQuery
-            
         }
 
         // Uncomment the following line to preserve selection between presentations
@@ -77,7 +76,7 @@ class EditMealComponentsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
-            return "Suggested Diners"
+            return "Frequent Diners"
         } else {
             return "Other Diners"
         }

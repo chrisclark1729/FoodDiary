@@ -62,6 +62,7 @@ extension FoodDiaryEntry {
         let geoPoint = self.location
         let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
         nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
+        nearbyMeals.whereKey("userId", equalTo: PFUser.currentUser()!)
         let fetchedObjects = nearbyMeals.findObjects()
         /*
         var entries = [FoodDiaryEntry]()
@@ -79,22 +80,45 @@ extension FoodDiaryEntry {
         dinerSuggestions.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntriesPFObjects(1.0))
         let fetchedObjects = dinerSuggestions.findObjects()
         for fetchedObject in fetchedObjects! {
-            print(fetchedObject["locationName"])
             let entry = fetchedObject
             if dinerNameSuggestions.count > 0 {
                 let nameForConsideration = fetchedObject["dinerName"] as! String
-                
+
                 if dinerNameSuggestions.contains(nameForConsideration) {
-                    print("\(entry["dinerName"]) already in array.")
+                    print("\(entry["dinerName"]) already in suggestions array.")
                 } else {
                     dinerNameSuggestions.append(entry["dinerName"] as! String)
                 }
+                
             } else {
                 dinerNameSuggestions.append(entry["dinerName"] as! String)
             }
         }
         
         return dinerNameSuggestions
+    }
+    
+    func getTagSuggestions() -> [String] {
+        var tagSuggestions = [String]()
+        let tagSuggestionsQuery:PFQuery = PFQuery(className: "FoodDiaryTags")
+        tagSuggestionsQuery.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntriesPFObjects(5.0))
+        let fetchedObjects = tagSuggestionsQuery.findObjects()
+        for fetchedObject in fetchedObjects! {
+            let entry = fetchedObject
+            if tagSuggestions.count > 0 {
+                let tagForConsideration = fetchedObject["foodDiaryTag"] as! String
+                
+                if tagSuggestions.contains(tagForConsideration) {
+                    print("\(entry["foodDiaryTag"]) already in array.")
+                } else {
+                    tagSuggestions.append(entry["foodDiaryTag"] as! String)
+                }
+            } else {
+                tagSuggestions.append(entry["foodDiaryTag"] as! String)
+            }
+        }
+        
+        return tagSuggestions
     }
     
     static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [String] {

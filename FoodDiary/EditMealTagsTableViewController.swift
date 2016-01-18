@@ -14,12 +14,18 @@ class EditMealTagsTableViewController: UITableViewController {
     @IBOutlet var notesTableView: UITableView!
     let textCellIdentifier = "TextCell"
     var foodDiaryEntry: FoodDiaryEntry?
+    var suggestedTags = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         notesTableView.delegate = self
         notesTableView.dataSource = self
+        
+        if let entry = self.foodDiaryEntry {
+            let suggestedTagsFromQuery = entry.getTagSuggestions()
+            self.suggestedTags = suggestedTagsFromQuery
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -59,27 +65,61 @@ class EditMealTagsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
+
         // Return the number of sections.
-        return 1
+        if self.suggestedTags.count > 0 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "Frequently Used Notes"
+        } else {
+            return "Notes"
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return self.foodDiaryEntry!.notes.count
+        if section == 0 {
+            return self.foodDiaryEntry!.notes.count
+        } else if section == 1 {
+            return self.suggestedTags.count
+        }
+        
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) 
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
         let row = indexPath.row
-        let note = self.foodDiaryEntry!.notes[row]
-        cell.textLabel?.text = note.note!
-
-        return cell
+        if indexPath.section == 0 {
+            let note = self.foodDiaryEntry!.notes[row]
+            cell.textLabel?.text = note.note!
+            
+            return cell
+        } else if indexPath.section == 1 {
+            let tagString = self.suggestedTags[row]
+            cell.textLabel?.text = tagString
+            
+            return cell
+        } else {
+            return cell
+        }
+        
     }
     
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            let tagString = self.suggestedTags[indexPath.row]
+            self.foodDiaryEntry!.addNoteWithName(tagString)
+            self.suggestedTags.removeAtIndex(indexPath.row)
+            self.tableView.reloadData()
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

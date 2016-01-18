@@ -333,6 +333,12 @@ extension FoodDiaryEntry {
 
     }
     
+    func addNoteWithName(tagString: String) {
+        let tag = Note(entry: self, note: tagString)
+        self.addNote(tag)
+        self.save()
+    }
+    
     func deleteFromBackEnd() {
         self.toPFObject!.delete()
     }
