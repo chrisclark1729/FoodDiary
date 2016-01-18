@@ -61,10 +61,11 @@ extension FoodDiaryEntry {
     static func getDinerSuggestions(entries: [FoodDiaryEntry]) -> [String] {
      //   var nearbyFoodDiaryEntries = [FoodDiaryEntry]()
      //   let nearbyFoodDiaryEntries = self.getNearbyFoodDiaryEntries(self)
-        var dinerSuggestions = [String]()
+        var dinerNameSuggestions = [String]()
+        let dinerSuggestions:PFQuery = PFQuery(className: "FoodDiaryEntryDiners")
+   //     dinerSuggestions.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntries())
         
-        
-        return dinerSuggestions
+        return dinerNameSuggestions
     }
     
     static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [String] {
