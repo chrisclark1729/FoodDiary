@@ -10,16 +10,6 @@ import Foundation
 import Parse
 
 extension FoodDiaryEntry {
-    static func getRecentFoodDiaryEntryPFObjectsWithWhereKey(whereString: String) -> [AnyObject] {
-        let foodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        foodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
-        foodDiaryEntries.orderByDescending("timestamp")
-        foodDiaryEntries.limit = 10
-        
-        let entries = foodDiaryEntries.findObjects()
-        
-        return entries!
-    }
     
     static func getRecentFoodDiaryEntryPFObjects() -> [AnyObject] {
         let getRecentFoodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
@@ -39,7 +29,6 @@ extension FoodDiaryEntry {
             let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
             entries.append(entry)
         }
-        
         
         return entries
     }
@@ -153,6 +142,7 @@ extension FoodDiaryEntry {
     func getLocationName() -> String {
         return self.locationName
     }
+    
     
     /*
     

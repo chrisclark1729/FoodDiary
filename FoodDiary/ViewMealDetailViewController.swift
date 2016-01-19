@@ -61,11 +61,13 @@ class ViewMealDetailViewController: UITableViewController {
             
             Session.sharedInstance.currentFoodDiaryEntry = entry
             
+            // Why was this running twice??
+            /*
             entry.populateDiners()
             entry.populateIngredients()
             entry.populateNotes()
             entry.populateIngredientDetails()
-            
+            */
             let dinersCountAsString = String(foodDiaryEntry!.diners.count)
             let notesCountAsString = String(foodDiaryEntry!.notes.count)
             let ingredientsCountAsString = String(foodDiaryEntry!.ingredientDetails.count)

@@ -12,7 +12,6 @@ import Parse
 
 extension FoodDiaryEntry {
     
-    
     static func fetchFoodDiaryPFObjectsForSummary(startDate:NSDate, endDate:NSDate) -> [PFObject] {
         let summaryFoodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
         summaryFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)

@@ -12,6 +12,7 @@ import Parse
 class NutritionSummaryTableViewController: UITableViewController {
     
     var dayFormatter = NSDateFormatter()
+    var foodDiaryEntries: [FoodDiaryEntry]?
     @IBOutlet weak var unarchivedMealCountLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
@@ -23,8 +24,6 @@ class NutritionSummaryTableViewController: UITableViewController {
     @IBOutlet weak var carbsLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
-    
-    var foodDiaryEntries: [FoodDiaryEntry]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +37,6 @@ class NutritionSummaryTableViewController: UITableViewController {
         components.minute = 0
         components.second = 0
         Session.sharedInstance.currentSelectedEndDate = calendar.dateFromComponents(components)
-      //  let endDateLabel = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-9*60*60)
-       // print(endDateLabel)
-        //     self.endDateLabel.text = dayFormatter.stringFromDate(endDateLabel!)
 
         self.endDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedEndDate!)
   
@@ -52,8 +48,6 @@ class NutritionSummaryTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
         
         if let startDate = Session.sharedInstance.currentSelectedStartDate {
             self.startDateLabel.text = dayFormatter.stringFromDate(startDate)
@@ -70,10 +64,7 @@ class NutritionSummaryTableViewController: UITableViewController {
                 self.proteinLabel.text = "Protein: \(getMacros().4)%"
                 self.fatLabel.text = "Fat: \(getMacros().5)%"
             }
-
         }
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,7 +104,6 @@ class NutritionSummaryTableViewController: UITableViewController {
             caloriesPerDay = NSString(format: "%.0f", totalCalories/Float(daysInRange)) as String
             mealsPerDay =  NSString(format: "%.1f", Float(archivedMeals)/Float(daysInRange)) as String
         }
-        
         
         self.getMacros()
         return (daysInRange, archivedMeals, caloriesPerDay, caloriesPerMeal, mealsToBeReviewed, mealsPerDay)
@@ -213,23 +203,5 @@ class NutritionSummaryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func getFoodDiaryEntriesForCalorieCount(startDate: NSDate, endDate: NSDate) -> Int {
-        let calories = 0
-        let query:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        query.whereKey("timestamp", greaterThanOrEqualTo: startDate)
-        query.whereKey("timestamp", lessThanOrEqualTo: endDate)
-        
-        let fetchedObjects = query.findObjects()
-        
-        var entries = [FoodDiaryEntry]()
-        for fetchedObject in fetchedObjects! {
-            let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
-            entries.append(entry)
-        }
-        
-        print("Bro, calories are: \(calories)")
-        return calories
-    }
 
 }
