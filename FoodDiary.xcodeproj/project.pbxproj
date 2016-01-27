@@ -59,6 +59,7 @@
 		49CB8D3A1C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */; };
 		49CB8D3D1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D3C1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift */; };
 		49CB8D3F1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D3E1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift */; };
+		49CB8D411C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */; };
 		49DB30B71C02632400DA1E9B /* NutritionSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */; };
 		49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */; };
 		49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */; };
@@ -159,6 +160,7 @@
 		49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSummaryDatesTableViewController.swift; sourceTree = "<group>"; };
 		49CB8D3C1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+NutritionSummary.swift"; sourceTree = "<group>"; };
 		49CB8D3E1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryBreakdownStartTableViewController.swift; sourceTree = "<group>"; };
+		49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
 		49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryTableViewController.swift; sourceTree = "<group>"; };
 		49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealNameFieldTableViewCell.swift; sourceTree = "<group>"; };
 		49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealLocationTableViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */,
 				49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */,
 				49CB8D3E1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift */,
+				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
 			);
 			name = "Nutrition Summary Data";
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				49DB30C51C0E3ABA00DA1E9B /* Meal+Queries.swift in Sources */,
 				49DB30CD1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift in Sources */,
 				492E25971B28A652006419EE /* TimelineTableViewCell.swift in Sources */,
+				49CB8D411C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift in Sources */,
 				492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */,
 				495704BC1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift in Sources */,
 				49DB30BF1C0E370F00DA1E9B /* Meal.swift in Sources */,
