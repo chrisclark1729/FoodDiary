@@ -10,14 +10,15 @@ import UIKit
 
 class LocationSummaryBreakdownTableViewController: UITableViewController {
     
-    var locationSummaryData = [String: (entryCount: Int, mealCount: Int, calories: Float, enjoymentScore: Float, healthScore: Float, lastTimestamp: NSDate)]()
-    var locationSummary = [String: (Int, Float, Float, Float, Float)]()
+  //  var locationSummaryData = [String: (entryCount: Int, mealCount: Int, calories: Float, enjoymentScore: Float, healthScore: Float, lastTimestamp: NSDate)]()
+    var locationSummaries = [LocationSummary]()
     var foodDiaryEntries: [FoodDiaryEntry]?
     let startDate = Session.sharedInstance.currentSelectedStartDate
     let endDate = Session.sharedInstance.currentSelectedEndDate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationSummaries = self.getLocationSummary()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,84 +32,73 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
 
     }
     
-    //
+    func getTotalCalories(entries: [FoodDiaryEntry]) -> Float {
+        var totalCalories: Float = 0
+        
+        for entry in entries {
+            totalCalories += entry.calories
+        }
+        
+        return totalCalories
+    }
     
-    func getLocationSummary()  {
+    func islocationExisting(locationName: String, summaries: [LocationSummary]) -> Bool {
+        
+        for summary in summaries {
+            if summary.locationName == locationName {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func getLocationSummaryWithName(locationName: String, summaries: [LocationSummary]) -> LocationSummary? {
+        for summary in summaries {
+            if summary.locationName == locationName {
+                return summary
+            }
+        }
+        return nil
+    }
+    
+    func getLocationSummaryFromEntries(entries: [FoodDiaryEntry]) -> [LocationSummary]{
+        var summaries = [LocationSummary]()
+        
+        for entry in entries {
+            if !self.islocationExisting(entry.locationName, summaries: summaries) {
+                let locationSummary = LocationSummary(entry: entry)
+                summaries.append(locationSummary)
+            } else {
+                let locationSummary = self.getLocationSummaryWithName(entry.locationName, summaries: summaries)
+                locationSummary!.updateLocationSummary(entry)
+                
+            }
+
+        }
+        return summaries
+    }
+    
+    
+    func getLocationSummary() -> [LocationSummary]  {
         self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate!, endDate: endDate!)
-        var totalCalories:Float = 0
+       // var totalCalories:Float = self.getTotalCalories(self.foodDiaryEntries!)
         var totalMeals:Int = 0
         var maxCaloriesPerMeal:Float = 0
+        let locationSummaryData = self.getLocationSummaryFromEntries(self.foodDiaryEntries!)
         
-        for entry in self.foodDiaryEntries! {
-            
-            if (locationSummaryData[entry.locationName] == nil) {
-                locationSummaryData[entry.locationName] = (1, 1, entry.calories, entry.enjoymentScore, entry.healthScore, entry.timestamp)
-                totalCalories += entry.calories
-                totalMeals += 1
-            } else {
-                let minutesDifference = -NSCalendar.currentCalendar().components(.Minute, fromDate: locationSummaryData[entry.locationName]!.lastTimestamp, toDate: entry.timestamp, options: []).minute
-                
-                if minutesDifference < 75 {
-                    locationSummaryData[entry.locationName]!.0 += 1
-                    locationSummaryData[entry.locationName]!.2 += entry.calories
-                    locationSummaryData[entry.locationName]!.3 += entry.enjoymentScore
-                    locationSummaryData[entry.locationName]!.4 += entry.healthScore
-                    locationSummaryData[entry.locationName]!.5 = entry.timestamp
-                    totalCalories += entry.calories
-                } else {
-                    locationSummaryData[entry.locationName]!.0 += 1
-                    locationSummaryData[entry.locationName]!.1 += 1
-                    locationSummaryData[entry.locationName]!.2 += entry.calories
-                    locationSummaryData[entry.locationName]!.3 += entry.enjoymentScore
-                    locationSummaryData[entry.locationName]!.4 += entry.healthScore
-                    locationSummaryData[entry.locationName]!.5 = entry.timestamp
-                    totalCalories += entry.calories
-                    totalMeals += 1
-                }
+        for summary in locationSummaryData {
+            print(summary)
+            totalMeals += summary.mealCount
+            if maxCaloriesPerMeal < summary.caloriesPerMeal {
+                maxCaloriesPerMeal = summary.caloriesPerMeal
             }
-            
         }
         
-        for location in locationSummaryData {
-            var mealCount = 0
-            var entryCount = 0
-            var caloriesPerMeal: Float = 0
-            var percentTotalCalories: Float = 0
-            var enjoymentScore: Float = 0
-            var attentionScore: Float = 0
-            var healthScore: Float = 0
-            var experienceScores: Float = 0
-            let locationName = location.0
-            
-            mealCount = location.1.mealCount
-            entryCount = location.1.entryCount
-            caloriesPerMeal = location.1.calories/Float(mealCount)
-            percentTotalCalories = location.1.calories/totalCalories
-            enjoymentScore = location.1.enjoymentScore/Float(entryCount)
-            healthScore = location.1.healthScore/Float(entryCount)
-            
-            //Rank locations to be sorted by various criteria:
-            if maxCaloriesPerMeal < (location.1.calories/Float(mealCount)) {
-                maxCaloriesPerMeal = location.1.calories
-            }
-            
-            experienceScores = ((5 - enjoymentScore) * 0.04) + ((Float(mealCount)/Float(totalMeals)) * 0.1) + (5 - healthScore)/100
-            attentionScore = (caloriesPerMeal/maxCaloriesPerMeal)*0.4 + percentTotalCalories*0.25 + experienceScores
-            locationSummary[locationName] = (mealCount, caloriesPerMeal, percentTotalCalories, enjoymentScore, attentionScore)
-            
-            
-           // locationAggregated = ("Name", mealCount, caloriesPerMeal, percentTotalCalories, enjoymentScore, attentionScore)
-            
-            
-            /*
-            locationSummary.append("Name", mealCount: mealCount, caloriesPerMeal: caloriesPerMeal, percentTotalCalories: percentTotalCalories, enjoymentScore: enjoymentScore, attentionScore: attentionScore) */
-            
+        for summary in locationSummaryData {
+            summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        print(locationSummary)
-        
-        // return locationSummary
-
+        return locationSummaryData.sort({ $0.attentionScore > $1.attentionScore })
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,13 +115,15 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return locationSummary.count
+        return locationSummaries.count
     }
     
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("locationData", forIndexPath: indexPath)
-        
+        let summaryData = self.locationSummaries[indexPath.row]
+        cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+        cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
         return cell
     }
 

@@ -105,6 +105,8 @@ class NutritionSummaryTableViewController: UITableViewController {
             mealsPerDay =  NSString(format: "%.1f", Float(archivedMeals)/Float(daysInRange)) as String
         }
         
+        Session.sharedInstance.currentTotalCalories = totalCalories
+        Session.sharedInstance.currentMealCount = archivedMeals
         self.getMacros()
         return (daysInRange, archivedMeals, caloriesPerDay, caloriesPerMeal, mealsToBeReviewed, mealsPerDay)
     }

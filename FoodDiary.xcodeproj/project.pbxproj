@@ -60,6 +60,7 @@
 		49CB8D3D1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D3C1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift */; };
 		49CB8D3F1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D3E1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift */; };
 		49CB8D411C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */; };
+		49CB8D431C596AA600F0A38D /* LocationSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB8D421C596AA600F0A38D /* LocationSummary.swift */; };
 		49DB30B71C02632400DA1E9B /* NutritionSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */; };
 		49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */; };
 		49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */; };
@@ -161,6 +162,7 @@
 		49CB8D3C1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+NutritionSummary.swift"; sourceTree = "<group>"; };
 		49CB8D3E1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryBreakdownStartTableViewController.swift; sourceTree = "<group>"; };
 		49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
+		49CB8D421C596AA600F0A38D /* LocationSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSummary.swift; sourceTree = "<group>"; };
 		49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryTableViewController.swift; sourceTree = "<group>"; };
 		49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealNameFieldTableViewCell.swift; sourceTree = "<group>"; };
 		49DB30BA1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealLocationTableViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */,
 				49CB8D3E1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift */,
 				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
+				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
 			);
 			name = "Nutrition Summary Data";
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				49DB30CB1C0F597B00DA1E9B /* MoodFieldTableViewCell.swift in Sources */,
 				49CB8D3F1C4E9EE200F0A38D /* NutritionSummaryBreakdownStartTableViewController.swift in Sources */,
 				49DB30C31C0E3A4100DA1E9B /* BaseEntity.swift in Sources */,
+				49CB8D431C596AA600F0A38D /* LocationSummary.swift in Sources */,
 				49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */,
 				49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */,
 				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,

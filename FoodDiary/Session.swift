@@ -16,4 +16,8 @@ class Session {
     var currentSelectedFoodDiaryDetail:FoodDiaryDetail?
     var currentSelectedStartDate:NSDate?
     var currentSelectedEndDate:NSDate?
+    var currentTotalCalories:Float?
+    var currentMealCount:Int?
+    
+    
 }
