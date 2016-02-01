@@ -111,7 +111,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         if section == 0 {
             return "Primary Focus"
         } else {
-            return "Other Items"
+            return "Other Focus Items"
         }
     }
 
@@ -119,7 +119,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         
         if section == 0 {
-            return 5
+            return min(5, locationSummaries.count)
         } else {
             if locationSummaries.count > 5 {
                 return locationSummaries.count - 5
@@ -129,24 +129,27 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
             
         }
         
-        
     }
     
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("locationData", forIndexPath: indexPath)
         let row = indexPath.row
         
         if indexPath.section == 0 {
             let summaryData = self.locationSummaries[row]
+            
             cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
             return cell
         } else {
-            let summaryData = self.locationSummaries[row + 5]
-            cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
-            cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
-            return cell
+            if self.locationSummaries.count > 5 {
+                let summaryData = self.locationSummaries[row + 5]
+                cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+                cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
+                return cell
+            } else {
+                return cell
+            }
 
             }
 
