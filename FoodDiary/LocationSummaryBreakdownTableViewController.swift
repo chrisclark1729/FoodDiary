@@ -10,7 +10,6 @@ import UIKit
 
 class LocationSummaryBreakdownTableViewController: UITableViewController {
     
-  //  var locationSummaryData = [String: (entryCount: Int, mealCount: Int, calories: Float, enjoymentScore: Float, healthScore: Float, lastTimestamp: NSDate)]()
     var locationSummaries = [LocationSummary]()
     var foodDiaryEntries: [FoodDiaryEntry]?
     let startDate = Session.sharedInstance.currentSelectedStartDate
@@ -30,16 +29,6 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         self.getLocationSummary()
 
-    }
-    
-    func getTotalCalories(entries: [FoodDiaryEntry]) -> Float {
-        var totalCalories: Float = 0
-        
-        for entry in entries {
-            totalCalories += entry.calories
-        }
-        
-        return totalCalories
     }
     
     func islocationExisting(locationName: String, summaries: [LocationSummary]) -> Bool {
@@ -87,7 +76,6 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         let locationSummaryData = self.getLocationSummaryFromEntries(self.foodDiaryEntries!)
         
         for summary in locationSummaryData {
-            print(summary)
             totalMeals += summary.mealCount
             if maxCaloriesPerMeal < summary.caloriesPerMeal {
                 maxCaloriesPerMeal = summary.caloriesPerMeal
@@ -110,21 +98,58 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        if locationSummaries.count > 5 {
+            return 2
+        } else {
+            return 1
+        }
+
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Primary Focus"
+        } else {
+            return "Other Items"
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return locationSummaries.count
+        
+        if section == 0 {
+            return 5
+        } else {
+            if locationSummaries.count > 5 {
+                return locationSummaries.count - 5
+            } else {
+                return 0
+            }
+            
+        }
+        
+        
     }
     
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("locationData", forIndexPath: indexPath)
-        let summaryData = self.locationSummaries[indexPath.row]
-        cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
-        cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
-        return cell
+        let row = indexPath.row
+        
+        if indexPath.section == 0 {
+            let summaryData = self.locationSummaries[row]
+            cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+            cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
+            return cell
+        } else {
+            let summaryData = self.locationSummaries[row + 5]
+            cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+            cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "
+            return cell
+
+            }
+
     }
 
 
