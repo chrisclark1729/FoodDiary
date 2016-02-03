@@ -34,7 +34,6 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     func archiveMeal(notification: NSNotification) {
-        print(notification.object)
         let mealToArchive: FoodDiaryEntry = notification.object as! FoodDiaryEntry
         var indexToArchive: Int?
         for (index, element) in meals!.enumerate() {

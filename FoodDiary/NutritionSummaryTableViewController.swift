@@ -135,6 +135,20 @@ class NutritionSummaryTableViewController: UITableViewController {
         
         return (gramsCarbs, gramsProtein, gramsFat, carbsBreakdown, proteinBreakdown, fatBreakdown)
     }
+    
+    /*
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("viewLocationSummary", sender: self )
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewLocationSummary"
+        {
+            Session.sharedInstance.currentOneToOneDimensionForSummary = "entry.locationName"
+        } else if segue.identifier == "viewTimeOfDaySummary" {
+            Session.sharedInstance.currentOneToOneDimensionForSummary = "entry.dayPart()"
+        }
+    } */
 
     // MARK: - Table view data source
     /*

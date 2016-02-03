@@ -18,6 +18,7 @@ class Session {
     var currentSelectedEndDate:NSDate?
     var currentTotalCalories:Float?
     var currentMealCount:Int?
+    var currentOneToOneDimensionForSummary:String?
     
     
 }

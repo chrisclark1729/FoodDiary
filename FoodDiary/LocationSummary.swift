@@ -37,9 +37,9 @@ class LocationSummary {
     }
     
     func updateLocationSummary(entry: FoodDiaryEntry) {
-        let minutesDifference = -NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
+        let minutesDifference = NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
         
-        if minutesDifference < 75 {
+        if abs(minutesDifference) < 75 {
             self.entryCount += 1
         } else {
             self.entryCount += 1

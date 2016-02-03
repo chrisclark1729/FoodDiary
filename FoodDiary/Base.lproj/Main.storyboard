@@ -1142,6 +1142,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ej1-Qs-p4U" kind="push" identifier="viewTimeOfDaySummary" id="eQ5-Ar-jLf"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="9x6-Mp-JXN">
                                         <rect key="frame" x="0.0" y="201.5" width="375" height="44"/>
@@ -1881,7 +1884,8 @@
         <segue reference="kim-DO-WLk"/>
         <segue reference="tbd-dJ-yoo"/>
         <segue reference="2YI-vR-XMV"/>
-        <segue reference="K8Y-ww-au0"/>
         <segue reference="L96-26-8Ya"/>
+        <segue reference="K8Y-ww-au0"/>
+        <segue reference="eQ5-Ar-jLf"/>
     </inferredMetricsTieBreakers>
 </document>

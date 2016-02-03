@@ -17,6 +17,7 @@ extension FoodDiaryEntry {
         summaryFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
         summaryFoodDiaryEntries.whereKey("timestamp", greaterThanOrEqualTo: startDate)
         summaryFoodDiaryEntries.whereKey("timestamp", lessThanOrEqualTo: endDate)
+        summaryFoodDiaryEntries.orderByAscending("timestamp")
         summaryFoodDiaryEntries.limit = 1000
     
         let entries = summaryFoodDiaryEntries.findObjects() as! [PFObject]
