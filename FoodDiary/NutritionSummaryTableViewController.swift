@@ -48,11 +48,13 @@ class NutritionSummaryTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        let calendar = NSCalendar.currentCalendar()
         
         if let startDate = Session.sharedInstance.currentSelectedStartDate {
             self.startDateLabel.text = dayFormatter.stringFromDate(startDate)
             if let endDate = Session.sharedInstance.currentSelectedEndDate {
-                self.endDateLabel.text = dayFormatter.stringFromDate(endDate)
+                let endDateForLabel = calendar.dateByAddingUnit(.Day, value: -1, toDate: endDate, options: [])
+                self.endDateLabel.text = dayFormatter.stringFromDate(endDateForLabel!)
                 self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate, endDate: endDate)
                 self.dayCountLabel.text = "Days: \(sumCalories().0)"
                 self.mealCountLabel.text = "Meals: \(sumCalories().1)"
