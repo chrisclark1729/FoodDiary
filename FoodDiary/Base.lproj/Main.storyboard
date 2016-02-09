@@ -1103,7 +1103,7 @@
         <!--Get Nutrition Detail-->
         <scene sceneID="MaP-zm-1fs">
             <objects>
-                <tableViewController id="UJv-dF-Egw" customClass="NutritionSummaryBreakdownStartTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UJv-dF-Egw" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rl9-5G-eXI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1272,6 +1272,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ou2-lf-dNI" kind="push" identifier="viewOtherDinersSummary" id="SDa-MP-MQa"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1286,6 +1289,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6q-l1-zp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097.5" y="3509.5"/>
+        </scene>
+        <!--Other Diners Summary-->
+        <scene sceneID="tE7-hL-t4G">
+            <objects>
+                <tableViewController id="ou2-lf-dNI" customClass="OtherDinersSummaryBreakdownTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="du6-2X-r2i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dinerSummaryCell" textLabel="uaJ-Cw-jF7" detailTextLabel="BuO-E2-6tF" style="IBUITableViewCellStyleSubtitle" id="kFs-56-7Lj">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kFs-56-7Lj" id="75c-G1-8ng">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uaJ-Cw-jF7">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BuO-E2-6tF">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ou2-lf-dNI" id="Erf-bA-IfJ"/>
+                            <outlet property="delegate" destination="ou2-lf-dNI" id="I5b-TL-Hyg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Other Diners Summary" id="MuI-8u-zTt"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Db0-aj-Eco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2065.5" y="3509.5"/>
         </scene>
         <!--Location Summary Breakdown Table View Controller-->
         <scene sceneID="mGM-9t-D67">
@@ -1886,6 +1934,6 @@
         <segue reference="2YI-vR-XMV"/>
         <segue reference="L96-26-8Ya"/>
         <segue reference="K8Y-ww-au0"/>
-        <segue reference="eQ5-Ar-jLf"/>
+        <segue reference="kWt-Xg-Yvc"/>
     </inferredMetricsTieBreakers>
 </document>

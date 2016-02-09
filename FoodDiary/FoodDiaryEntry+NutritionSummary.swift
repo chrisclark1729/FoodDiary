@@ -37,6 +37,10 @@ extension FoodDiaryEntry {
         return foodDiaryEntries
     }
     
+    static func populateDiners() {
+        
+    }
+    
     
 
 

@@ -79,6 +79,10 @@
 		49DD19D31B62DD73004199C2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */; };
 		49DD19D51B62DE2B004199C2 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D41B62DE2B004199C2 /* ParseUI.framework */; };
 		49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */; };
+		49F2F6501C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */; };
+		49F2F6521C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */; };
+		49F2F6541C6298240051BA3C /* OtherDinersSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */; };
+		49F2F6561C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */; };
 		8898857F1B5EBE0100ECD82F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898857E1B5EBE0100ECD82F /* CoreData.framework */; };
 		889885811B5EBE2100ECD82F /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885801B5EBE2100ECD82F /* Twitter.framework */; };
 		889885831B5EBE3100ECD82F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889885821B5EBE3100ECD82F /* AVFoundation.framework */; };
@@ -180,6 +184,10 @@
 		49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		49DD19D41B62DE2B004199C2 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
 		49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerViewController.swift; sourceTree = "<group>"; };
+		49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDaySummaryTableViewController.swift; sourceTree = "<group>"; };
+		49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDinersSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
+		49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDinersSummary.swift; sourceTree = "<group>"; };
+		49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryDetailStartTableViewController.swift; sourceTree = "<group>"; };
 		885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodDiary-Bridging-Header.h"; sourceTree = "<group>"; };
 		8898857E1B5EBE0100ECD82F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		889885801B5EBE2100ECD82F /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -394,7 +402,11 @@
 			children = (
 				49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */,
 				49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */,
+				49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */,
 				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
+				49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */,
+				49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */,
+				49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */,
 				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
 			);
 			name = "Nutrition Summary Data";
@@ -589,6 +601,7 @@
 				49CB8D411C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift in Sources */,
 				492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */,
 				495704BC1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift in Sources */,
+				49F2F6521C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift in Sources */,
 				49DB30BF1C0E370F00DA1E9B /* Meal.swift in Sources */,
 				493914DE1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift in Sources */,
 				49376FC11BA611F80075426C /* IngredientAddTableViewController.swift in Sources */,
@@ -600,6 +613,7 @@
 				49DB30C71C0E413300DA1E9B /* MealIngredients.swift in Sources */,
 				49AE09B21C23890B004240FA /* Mood.swift in Sources */,
 				49376FC51BA6A6C40075426C /* FoodDiaryDetail.swift in Sources */,
+				49F2F6501C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift in Sources */,
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */,
@@ -612,9 +626,11 @@
 				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,
 				49DB30C11C0E384700DA1E9B /* MealDetails.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
+				49F2F6541C6298240051BA3C /* OtherDinersSummary.swift in Sources */,
 				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
 				49941ED31BEFE5A80088EE52 /* PFObject+Extension.swift in Sources */,
 				49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */,
+				49F2F6561C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift in Sources */,
 				49CB8D3D1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift in Sources */,
 				49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,

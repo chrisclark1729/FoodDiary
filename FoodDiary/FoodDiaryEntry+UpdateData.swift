@@ -258,6 +258,14 @@ extension FoodDiaryEntry {
         return fetchedDetails
     }
     
+    func fetchOtherDiners() -> [AnyObject]? {
+        let otherDiners:PFQuery = PFQuery(className: "FoodDiaryEntryDiners")
+        otherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        let fetchedDiners = otherDiners.findObjects()
+        
+        return fetchedDiners
+    }
+    
     func deleteAllFoodDiaryDetails() {
         let details = self.fetchFoodDiaryDetails()
         
