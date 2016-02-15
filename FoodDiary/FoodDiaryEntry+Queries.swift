@@ -63,7 +63,16 @@ extension FoodDiaryEntry {
         return fetchedObjects as! [PFObject]
     }
     
-     func getDinerSuggestions() -> [String] {
+    func isDinerNameSelected(dinerName: String) -> Bool {
+        for diner in self.diners {
+            if diner.name == dinerName {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func getDinerSuggestions() -> [String] {
         var dinerNameSuggestions = [String]()
         let dinerSuggestions:PFQuery = PFQuery(className: "FoodDiaryEntryDiners")
         dinerSuggestions.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntriesPFObjects(1.0))
@@ -72,10 +81,13 @@ extension FoodDiaryEntry {
             let entry = fetchedObject
             if dinerNameSuggestions.count > 0 {
                 let nameForConsideration = fetchedObject["dinerName"] as! String
-
+                
                 if dinerNameSuggestions.contains(nameForConsideration) {
                     print("\(entry["dinerName"]) already in suggestions array.")
-                } else {
+                } else if self.isDinerNameSelected(nameForConsideration) {
+                    print("\(nameForConsideration) is already selected.")
+                }
+                else {
                     dinerNameSuggestions.append(entry["dinerName"] as! String)
                 }
                 

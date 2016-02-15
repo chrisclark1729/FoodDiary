@@ -22,8 +22,8 @@ class OtherDinersSummary {
     
     init(entries: [FoodDiaryEntry], dinerName: String) {
         self.dinerName = dinerName
-        self.mealCount = 1
-        self.entryCount = 1
+        self.mealCount = 0
+        self.entryCount = 0
         self.dinerTotalCalories = 0
         self.caloriesPerMeal = 0
         self.enjoymentScore = 0
@@ -32,12 +32,21 @@ class OtherDinersSummary {
         self.lastTimestamp = NSDate()
         
         for entry in entries {
+            let minutesDifference = NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
+            
+            if abs(minutesDifference) < 75 {
+                self.entryCount += 1
+            } else {
+                self.entryCount += 1
+                self.mealCount += 1
+            }
             self.dinerTotalCalories += entry.calories
-            self.caloriesPerMeal += entry.calories/Float(self.mealCount)
             self.enjoymentScore += entry.enjoymentScore
             self.healthScore += entry.healthScore
             self.lastTimestamp = entry.timestamp
         }
+        
+        self.caloriesPerMeal += self.dinerTotalCalories/Float(self.mealCount)
         
         if Session.sharedInstance.currentTotalCalories! == 0 {
             self.percentTotalCalories = 0
@@ -45,4 +54,25 @@ class OtherDinersSummary {
             self.percentTotalCalories = self.dinerTotalCalories/Session.sharedInstance.currentTotalCalories!
         }
     }
+    
+    func calculateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) -> Float {
+        var experienceScores: Float = 0
+        var attentionScore:Float = 0
+        var compareAgainstTotal:Float = 0
+        var enjoymentScoreForCalc:Float = 0
+        var healthScoreForCalc:Float = 0
+        
+        enjoymentScoreForCalc = ((5 - self.enjoymentScore/Float(self.entryCount)) * 0.04)
+        healthScoreForCalc = (5 - self.healthScore/Float(self.entryCount))/100
+        experienceScores = enjoymentScoreForCalc + healthScoreForCalc
+        compareAgainstTotal = ((Float(self.mealCount)/Float(totalMeals)) * 0.1)
+        attentionScore = (self.caloriesPerMeal/maxCaloriesPerMeal)*0.4 + self.percentTotalCalories!*0.25 + experienceScores + compareAgainstTotal
+        
+        return attentionScore
+    }
+    
+    func populateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) {
+        self.attentionScore = self.calculateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
+    }
+    
 }

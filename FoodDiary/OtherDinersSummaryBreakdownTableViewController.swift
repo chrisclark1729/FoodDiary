@@ -31,40 +31,37 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.summaries.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("dinerSummaryCell", forIndexPath: indexPath)
-        let summary = self.summaries[indexPath.row]
-        cell.textLabel?.text = summary.dinerName
-     //   let row = indexPath.row
-        
-        return cell
-    }
     
     func getOtherDinerSummary() -> [OtherDinersSummary] {
         var summaries = [OtherDinersSummary]()
         self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate!, endDate: endDate!)
+        var totalMeals:Int = 0
+        var maxCaloriesPerMeal:Float = 0
+        for entry in self.foodDiaryEntries! {
+            entry.populateDinersSync()
+        }
+        
         let diners = self.getUniqueDiners(self.foodDiaryEntries!)
         
         for diner in diners {
+
             let filteredEntries = self.getFoodDiaryEntriesWithDiner(diner)
             let summary = OtherDinersSummary(entries: filteredEntries, dinerName: diner)
             summaries.append(summary)
+            totalMeals += summary.mealCount
+            
+            if maxCaloriesPerMeal < summary.caloriesPerMeal {
+                maxCaloriesPerMeal = summary.caloriesPerMeal
+            }
+            
         }
         
-        return summaries
+        for summary in summaries {
+            summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
+        }
+        
+        return summaries.sort({ $0.attentionScore > $1.attentionScore })
+
     }
     
     func getUniqueDiners(entries: [FoodDiaryEntry]) -> Set<String> {
@@ -78,21 +75,82 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
     }
     
     func getFoodDiaryEntriesWithDiner(dinerName: String) -> [FoodDiaryEntry] {
-        let filteredEntries = [FoodDiaryEntry]()
+        var filteredEntries = [FoodDiaryEntry]()
+        for entry in self.foodDiaryEntries! {
+            for diner in entry.diners {
+                if diner.name == dinerName {
+                    filteredEntries.append(entry)
+                    break
+                }
+            }
+        }
         
         return filteredEntries
     }
+
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        if summaries.count > 5 {
+            return 2
+        } else {
+            return 1
+        }
+
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Primary Focus"
+        } else {
+            return "Other Focus Items"
+        }
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if section == 0 {
+            return min(5, self.summaries.count)
+        } else {
+            if self.summaries.count > 5 {
+                return self.summaries.count - 5
+            } else {
+                return 0
+            }
+            
+        }
+
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("dinerSummaryCell", forIndexPath: indexPath)
+        
+        let row = indexPath.row
+        
+        if indexPath.section == 0 {
+            let summaryData = self.summaries[row]
+            
+            cell.textLabel!.text = " \(summaryData.dinerName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+            cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals)"
+            return cell
+        } else {
+            if self.summaries.count > 5 {
+                let summaryData = self.summaries[row + 5]
+                cell.textLabel!.text = " \(summaryData.dinerName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+                cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals)"
+                return cell
+            } else {
+                return cell
+            }
+            
+        }
+
+    }
+    
     
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+  
 
     /*
     // Override to support conditional editing of the table view.

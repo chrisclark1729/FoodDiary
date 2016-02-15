@@ -105,6 +105,25 @@ extension FoodDiaryEntry {
         }
     }
     
+    func populateDinersSync() {
+        let getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
+        
+        getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getOtherDiners.orderByAscending("dinerName")
+        getOtherDiners.limit = 30 // Limit query results just in case
+        
+        var otherDinersArray = [OtherDiner]()
+        let otherDiners = getOtherDiners.findObjects()
+        
+        for object in otherDiners! {
+                print("Successfully retrieved \(otherDiners!.count) diners.")
+                let diner = OtherDiner(entry: self, entity: object as! PFObject)
+                otherDinersArray.append(diner)
+        }
+        self.diners = otherDinersArray
+        
+    }
+    
 //MARK: Notes
     
     func deleteAllNotes() {

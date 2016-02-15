@@ -403,11 +403,11 @@
 				49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */,
 				49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */,
 				49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */,
+				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
 				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
 				49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */,
 				49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */,
 				49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */,
-				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
 			);
 			name = "Nutrition Summary Data";
 			sourceTree = "<group>";
