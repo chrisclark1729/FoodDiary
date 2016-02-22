@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490431E01C727739008B5536 /* ServingSizeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490431DF1C727739008B5536 /* ServingSizeOption.swift */; };
 		490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */; };
 		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
 		492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25881B24DE1A006419EE /* TimelineTableViewController.swift */; };
@@ -107,6 +108,7 @@
 
 /* Begin PBXFileReference section */
 		2E69FBFD3A483213460480A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		490431DF1C727739008B5536 /* ServingSizeOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServingSizeOption.swift; sourceTree = "<group>"; };
 		490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddMealPhoto+UIImageSize.swift"; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				49376FC41BA6A6C40075426C /* FoodDiaryDetail.swift */,
 				492E25841B20A774006419EE /* FoodDiaryEntry.swift */,
 				49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */,
+				490431DF1C727739008B5536 /* ServingSizeOption.swift */,
 				49DB30BE1C0E370F00DA1E9B /* Meal.swift */,
 				49DB30C61C0E413300DA1E9B /* MealIngredients.swift */,
 				49AE09B11C23890B004240FA /* Mood.swift */,
@@ -613,6 +616,7 @@
 				49DB30C71C0E413300DA1E9B /* MealIngredients.swift in Sources */,
 				49AE09B21C23890B004240FA /* Mood.swift in Sources */,
 				49376FC51BA6A6C40075426C /* FoodDiaryDetail.swift in Sources */,
+				490431E01C727739008B5536 /* ServingSizeOption.swift in Sources */,
 				49F2F6501C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift in Sources */,
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,

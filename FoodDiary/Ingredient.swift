@@ -20,6 +20,7 @@ class Ingredient: AnyObject {
     var gramsCarbs: Float?
     var gramsFiber: Float?
     var quantity: Float?
+    var servingSizeOptions: [ServingSizeOption]?
     
     init(){
     }
@@ -32,6 +33,7 @@ class Ingredient: AnyObject {
         self.gramsCarbs = entity["gramsCarbs"] as? Float
         self.gramsFiber = entity["gramsFiber"] as? Float
         self.entry = entry
+        
     }
     
     init(ingredientId: PFObject, entry: FoodDiaryEntry, name: String? = "nil", calories: Float, gramsFat: Float,

@@ -370,4 +370,9 @@ extension FoodDiaryEntry {
         self.toPFObject!.delete()
     }
     
+    func populateServingOptions() {
+        // Take possible serving options and add to self.servingOptions
+        
+    }
+    
 }
