@@ -18,6 +18,7 @@ class FDLocationManager: NSObject, CLLocationManagerDelegate {
     var lastKnownLatitude: Float = 0
     var lastKnownLongitude: Float = 0
     var lastKnownLocation: CLLocation?
+    var locationNameGuess = ""
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       //  var locValue:CLLocationCoordinate2D = manager.location.coordinate
@@ -48,9 +49,8 @@ class FDLocationManager: NSObject, CLLocationManagerDelegate {
     
     let placesClient = GMSPlacesClient()
     
-    func getCurrentPlace() -> String {
+    func getCurrentPlace()  {
         
-        var locationNameGuess = ""
         var likelihoodScore:Double = 0
         
         placesClient.currentPlaceWithCallback({ (placeLikelihoods, error) -> Void in
@@ -65,23 +65,24 @@ class FDLocationManager: NSObject, CLLocationManagerDelegate {
                     
                     if likelihood.likelihood > likelihoodScore {
                         likelihoodScore = likelihood.likelihood
-                        locationNameGuess = place.name
+                        self.locationNameGuess = place.name
                     }
                     
-                    print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
+                    print("likelihood score is now: \(likelihoodScore)")
+                    
+             // print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
                 }
+            }
+            
+            if likelihoodScore < 0.8 {
+                self.locationNameGuess = self.getLocationNameFromBackend()
             }
         })
         
-        if likelihoodScore < 0.8 {
-            locationNameGuess = self.getLocationNameFromBackend()
-        }
-        
-        return locationNameGuess
     }
     
     func getLocationNameFromBackend() -> String {
-     //   var locationNameSuggestions:[String] = []
+
         let locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: FDLocationManager.sharedLocation.lastKnownLocation))
         
         var locationName = ""

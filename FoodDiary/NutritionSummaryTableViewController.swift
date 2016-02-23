@@ -92,7 +92,6 @@ class NutritionSummaryTableViewController: UITableViewController {
             } else {
                 let date = dayFormatter.stringFromDate(entry.timestamp)
                 if daysArray.contains(date) {
-                    print("Day already counted")
                 } else {
                     daysArray.append(date)
                     daysInRange += 1

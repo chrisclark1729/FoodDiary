@@ -83,9 +83,9 @@ extension FoodDiaryEntry {
                 let nameForConsideration = fetchedObject["dinerName"] as! String
                 
                 if dinerNameSuggestions.contains(nameForConsideration) {
-                    print("\(entry["dinerName"]) already in suggestions array.")
+                    
                 } else if self.isDinerNameSelected(nameForConsideration) {
-                    print("\(nameForConsideration) is already selected.")
+                    
                 }
                 else {
                     dinerNameSuggestions.append(entry["dinerName"] as! String)
@@ -110,7 +110,7 @@ extension FoodDiaryEntry {
                 let tagForConsideration = fetchedObject["foodDiaryTag"] as! String
                 
                 if tagSuggestions.contains(tagForConsideration) {
-                    print("\(entry["foodDiaryTag"]) already in array.")
+                    
                 } else {
                     tagSuggestions.append(entry["foodDiaryTag"] as! String)
                 }
@@ -133,13 +133,11 @@ extension FoodDiaryEntry {
         let fetchedObjects = nearbyLocations.findObjects()
         var entries = [String]()
         for fetchedObject in fetchedObjects! {
-            print(fetchedObject["locationName"])
             let entry = fetchedObject
             if entries.count > 0 {
                 let nameForConsideration = fetchedObject["locationName"] as! String
                 
                 if entries.contains(nameForConsideration) {
-                    print("\(entry["locationName"]) already in array.")
                 } else {
                     entries.append(entry["locationName"] as! String)
                 }
