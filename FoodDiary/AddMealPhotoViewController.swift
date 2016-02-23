@@ -69,7 +69,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
 
         userPhoto["imageFile"] = imageFile
         userPhoto["userId"] = PFUser.currentUser()
-        userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
+        userPhoto["location"] = PFGeoPoint(location: FDLocationManager.sharedLocation.lastKnownLocation)
         if self.locationNameSuggestions.count > 0 {
             userPhoto["locationName"] = self.locationNameSuggestions[0]
         }
@@ -84,14 +84,15 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LocationManagerViewController.sharedLocation.refreshLocation()
+        FDLocationManager.sharedLocation.refreshLocation()
+        FDLocationManager.sharedLocation.getCurrentPlace()
 
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        LocationManagerViewController.sharedLocation.refreshLocation()
-        self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation))
+        FDLocationManager.sharedLocation.refreshLocation()
+        self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: FDLocationManager.sharedLocation.lastKnownLocation))
     }
     
     override func didReceiveMemoryWarning() {

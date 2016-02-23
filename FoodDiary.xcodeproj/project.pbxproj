@@ -79,7 +79,7 @@
 		49DD19D11B62DD49004199C2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D01B62DD49004199C2 /* FBSDKCoreKit.framework */; };
 		49DD19D31B62DD73004199C2 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */; };
 		49DD19D51B62DE2B004199C2 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DD19D41B62DE2B004199C2 /* ParseUI.framework */; };
-		49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */; };
+		49DD19D71B65AB6B004199C2 /* FDLocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19D61B65AB6B004199C2 /* FDLocationManger.swift */; };
 		49F2F6501C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */; };
 		49F2F6521C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */; };
 		49F2F6541C6298240051BA3C /* OtherDinersSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */; };
@@ -185,7 +185,7 @@
 		49DD19D01B62DD49004199C2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		49DD19D41B62DE2B004199C2 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
-		49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerViewController.swift; sourceTree = "<group>"; };
+		49DD19D61B65AB6B004199C2 /* FDLocationManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDLocationManger.swift; sourceTree = "<group>"; };
 		49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDaySummaryTableViewController.swift; sourceTree = "<group>"; };
 		49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDinersSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
 		49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDinersSummary.swift; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 				49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */,
 				49DB30BC1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift */,
 				49DB30CA1C0F597A00DA1E9B /* MoodFieldTableViewCell.swift */,
-				49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */,
+				49DD19D61B65AB6B004199C2 /* FDLocationManger.swift */,
 				495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */,
 				4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */,
 				492E25941B263C46006419EE /* ViewMealDetailViewController.swift */,
@@ -471,6 +471,7 @@
 				49C5C40D1B068AA6006FA068 /* Frameworks */,
 				49C5C40E1B068AA6006FA068 /* Resources */,
 				169A452A965A5B10DD426ED3 /* Copy Pods Resources */,
+				3DF8F02CC9CBFEBEE2779E75 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -574,6 +575,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3DF8F02CC9CBFEBEE2779E75 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		56930E211DB1C4FB6C8B7C88 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,7 +647,7 @@
 				49DB30C11C0E384700DA1E9B /* MealDetails.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				49F2F6541C6298240051BA3C /* OtherDinersSummary.swift in Sources */,
-				49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */,
+				49DD19D71B65AB6B004199C2 /* FDLocationManger.swift in Sources */,
 				49941ED31BEFE5A80088EE52 /* PFObject+Extension.swift in Sources */,
 				49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */,
 				49F2F6561C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift in Sources */,
@@ -784,10 +800,55 @@
 					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 					"$(PROJECT_DIR)/Frameworks",
 				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					/Users/chrismclark/Documents/FacebookSDK,
+					"/Users/chrismclark/Downloads/parse-library-1.7.5",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-force_load",
+					"$(PROJECT_DIR)/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/GoogleMaps",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-force_load",
+					"$(PROJECT_DIR)/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/GoogleMaps",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -822,6 +883,42 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-force_load",
+					"$(PROJECT_DIR)/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/GoogleMaps",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

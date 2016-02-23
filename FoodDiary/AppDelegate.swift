@@ -9,7 +9,6 @@
 import UIKit
 import Parse
 import Bolts
-// import GoogleMaps
 
 //testing imports
 import FBSDKCoreKit
@@ -27,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tababarController = self.window!.rootViewController as! UITabBarController
             tababarController.selectedIndex = 3
         }
-        
+
+        GMSServices.provideAPIKey("AIzaSyANLhVSKdgb7Mx1mPs6EdeznC5vcQjs8dI")
         Parse.enableLocalDatastore()
         
         // Initialize Parse.
