@@ -74,7 +74,7 @@ class FDLocationManager: NSObject, CLLocationManagerDelegate {
                 }
             }
             
-            if likelihoodScore < 0.8 {
+            if likelihoodScore < 0.4 {
                 self.locationNameGuess = self.getLocationNameFromBackend()
             }
         })
