@@ -49,6 +49,7 @@
 		49A614B91B81CC2200B66489 /* IngredientsSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B81B81CC2200B66489 /* IngredientsSearchTableViewController.swift */; };
 		49AE09B21C23890B004240FA /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AE09B11C23890B004240FA /* Mood.swift */; };
 		49AF6F9F1B321AE900AA64DD /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */; };
+		49B2604A1C97593900984E8F /* FDLocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B260491C97593900984E8F /* FDLocationManger.swift */; };
 		49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */; };
 		49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */; };
 		49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5C4151B068AA6006FA068 /* AppDelegate.swift */; };
@@ -150,6 +151,7 @@
 		49A614B81B81CC2200B66489 /* IngredientsSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsSearchTableViewController.swift; sourceTree = "<group>"; };
 		49AE09B11C23890B004240FA /* Mood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		49AF6F9E1B321AE900AA64DD /* AddImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
+		49B260491C97593900984E8F /* FDLocationManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDLocationManger.swift; sourceTree = "<group>"; };
 		49B99E7B1B8BB71200C4C1E0 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		49B99EAD1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealTagsTableViewController.swift; sourceTree = "<group>"; };
 		49C5C4101B068AA6006FA068 /* FoodDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +360,7 @@
 				49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */,
 				49DB30BC1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift */,
 				49DB30CA1C0F597A00DA1E9B /* MoodFieldTableViewCell.swift */,
+				49B260491C97593900984E8F /* FDLocationManger.swift */,
 				49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */,
 				495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */,
 				4972BBEC1B45EBF10069D44B /* ManuallyAddMealViewController.swift */,
@@ -594,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				498E8AC51C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift in Sources */,
+				49B2604A1C97593900984E8F /* FDLocationManger.swift in Sources */,
 				49DB30BD1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift in Sources */,
 				49DB30C51C0E3ABA00DA1E9B /* Meal+Queries.swift in Sources */,
 				49DB30CD1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift in Sources */,

@@ -12,7 +12,7 @@ import MapKit
 import Parse
 
 class FDLocationManager: NSObject, CLLocationManagerDelegate {
-    
+    /*
     let locationManager = CLLocationManager()
     static let sharedLocation = FDLocationManager()
     var lastKnownLatitude: Float = 0
@@ -105,7 +105,7 @@ class FDLocationManager: NSObject, CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+*/
 }
 
 

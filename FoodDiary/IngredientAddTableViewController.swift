@@ -30,6 +30,10 @@ class IngredientAddTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ingredient = Session.sharedInstance.currentIngredient
+        self.ingredient?.fetch()
+        print(ingredient)
 
         let calories = ingredient!["calories"]!
         let fatGrams = ingredient!["gramsFat"]!

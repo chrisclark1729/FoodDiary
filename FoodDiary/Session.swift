@@ -19,6 +19,7 @@ class Session {
     var currentTotalCalories:Float?
     var currentMealCount:Int?
     var currentOneToOneDimensionForSummary:String?
+    var currentIngredient: PFObject?
     
     
 }

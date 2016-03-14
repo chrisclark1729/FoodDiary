@@ -117,6 +117,7 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
         Session.sharedInstance.currentSelectedFoodDiaryDetail = foodDiaryDetail
+        Session.sharedInstance.currentIngredient = foodDiaryDetail.ingredientId
         print("selected ingredient \(foodDiaryDetail)")
       
         self.performSegueWithIdentifier("editIngredientQuantity", sender: self)
