@@ -156,6 +156,7 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
             let selectedIndexPath = self.tableView.indexPathForSelectedRow
             let obj = self.data[selectedIndexPath!.row]
             destination.ingredient = obj
+            Session.sharedInstance.currentIngredient = obj
             
             
         }

@@ -14,9 +14,6 @@ class IngredientAddTableViewController: UITableViewController {
     var foodDiaryEntry: FoodDiaryEntry?
     var ingredient: PFObject?
     var foodDiaryDetail = [FoodDiaryDetail]()
-    var servingSizes = [PFObject]()
-    var multiplier:Float = 1
-    
     
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var fatGramsLabel: UILabel!
@@ -27,18 +24,15 @@ class IngredientAddTableViewController: UITableViewController {
     @IBOutlet weak var gramsFiberLabel: UILabel!
     @IBOutlet weak var gramsSugarLabel: UILabel!
     @IBOutlet weak var gramsProteinLabel: UILabel!
-    @IBOutlet weak var servingSizeLabel: UILabel!
+    
     
     @IBOutlet weak var numberOfServingsTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.ingredient = Session.sharedInstance.currentIngredient
-        self.ingredient?.fetch()
-        self.servingSizes = (self.ingredient?.getServingSize())!
-        
-        let servingSize = ingredient!["unitOfMeasurement"]!
+<<<<<<< HEAD
+        print(foodDiaryDetail)
+=======
         let calories = ingredient!["calories"]!
         let fatGrams = ingredient!["gramsFat"]!
         let saturatedFatGrams = ingredient!["gramsSaturatedFat"]!
@@ -48,28 +42,27 @@ class IngredientAddTableViewController: UITableViewController {
         let fiber = ingredient!["gramsFiber"]!
         let sugar = ingredient!["gramsSugar"]!
         let protein = ingredient!["gramsProtein"]!
-        var caloriesDisplay: Float = 0
-        var fatGramsDisplay: Float = 0
-        var saturatedFatGramsDisplay: Float = 0
-        var cholesterolDisplay: Float = 0
-        var sodiumDisplay: Float = 0
-        var gramsCarbsDisplay: Float = 0
-        var fiberDisplay: Float = 0
-        var sugarDisplay: Float = 0
-        var proteinDisplay: Float = 0
+        var caloriesDisplay: Int = 0
+        var fatGramsDisplay: Int = 0
+        var saturatedFatGramsDisplay: Int = 0
+        var cholesterolDisplay: Int = 0
+        var sodiumDisplay: Int = 0
+        var gramsCarbsDisplay: Int = 0
+        var fiberDisplay: Int = 0
+        var sugarDisplay: Int = 0
+        var proteinDisplay: Int = 0
+        var multiplier = 1
         
+        caloriesDisplay = (calories as? Int)! * multiplier
+        fatGramsDisplay = (fatGrams as? Int)! * multiplier
+        saturatedFatGramsDisplay = (saturatedFatGrams as? Int)! * multiplier
+        cholesterolDisplay = (cholesterol as? Int)! * multiplier
+        sodiumDisplay = (sodium as? Int)! * multiplier
+        gramsCarbsDisplay = (gramsCarbs as? Int)! * multiplier
+        fiberDisplay = (fiber as? Int)! * multiplier
+        sugarDisplay = (sugar as? Int)! * multiplier
+        proteinDisplay = (protein as? Int)! * multiplier
         
-        caloriesDisplay = (calories as? Float)! * multiplier
-        fatGramsDisplay = (fatGrams as? Float)! * multiplier
-        saturatedFatGramsDisplay = (saturatedFatGrams as? Float)! * multiplier
-        cholesterolDisplay = (cholesterol as? Float)! * multiplier
-        sodiumDisplay = (sodium as? Float)! * multiplier
-        gramsCarbsDisplay = (gramsCarbs as? Float)! * multiplier
-        fiberDisplay = (fiber as? Float)! * multiplier
-        sugarDisplay = (sugar as? Float)! * multiplier
-        proteinDisplay = (protein as? Float)! * multiplier
-        
-        self.servingSizeLabel.text = String(servingSize)
         self.caloriesLabel.text = String(caloriesDisplay)
         self.fatGramsLabel.text = String(fatGramsDisplay)
         self.saturatedFatGramsLabel.text = String(saturatedFatGramsDisplay)
@@ -79,6 +72,7 @@ class IngredientAddTableViewController: UITableViewController {
         self.gramsFiberLabel.text = String(fiberDisplay)
         self.gramsSugarLabel.text = String(sugarDisplay)
         self.gramsProteinLabel.text = String(proteinDisplay)
+>>>>>>> a8d951f... Meeting.
         
     }
 
@@ -143,7 +137,7 @@ class IngredientAddTableViewController: UITableViewController {
         if section == 0 {
             let ingredientName = ingredient!["ingredientName"] as? String
             let unitOfMeasurement = ingredient!["unitOfMeasurement"] as? String
-            return ingredientName! + " (" +  unitOfMeasurement! + ")" as? String
+            return ingredientName! + " (" + unitOfMeasurement! + ")" as? String
         } else {
             return "Nutrition Facts"
         }
@@ -158,25 +152,24 @@ class IngredientAddTableViewController: UITableViewController {
                 return 9
             }
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-           
-            if servingSizes.count != 0 {
-                let alertController = UIAlertController(title: "Serving Size", message: "Select from serving sizes below", preferredStyle: .ActionSheet)
-                
-                for servingSizeOption in servingSizes {
-                    let button = UIAlertAction(title: servingSizeOption["unitOfMeasurement"]! as? String, style: .Default, handler: { (action) -> Void in
-                        self.multiplier = servingSizeOption["multiplier"]! as! Float
-                        self.tableView.reloadData()
-                    })
-                    
-                    alertController.addAction(button)
-                }
-                presentViewController(alertController, animated: true, completion: nil)
-            }
-            }
-
+  
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ingredientNutritionData", forIndexPath: indexPath)
+        let row = indexPath.row
+        let calories = ingredient!["calories"] as! Int
+        let caloriesAsString = String(calories)
+        
+        if row == 0 {
+            cell.textLabel?.text = caloriesAsString
+        }
+        
+        print(self.ingredient!["calories"])
+        
+        return cell
     }
+    
+*/
+    
     
 }
