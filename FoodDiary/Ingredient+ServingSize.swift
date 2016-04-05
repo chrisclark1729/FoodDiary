@@ -15,7 +15,7 @@ extension PFObject {
         let getServingSizes:PFQuery = PFQuery(className:"IngredientServingSizeOptions")
         getServingSizes.whereKey("ingredientId", equalTo: self)
         getServingSizes.orderByDescending("unitOfMeasurement")
-        getServingSizes.limit = 10
+        getServingSizes.limit = 15
         
         let servingSizes = getServingSizes.findObjects() as! [PFObject]
         

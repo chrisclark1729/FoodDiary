@@ -168,6 +168,7 @@ class IngredientAddTableViewController: UITableViewController {
                 for servingSizeOption in servingSizes {
                     let button = UIAlertAction(title: servingSizeOption["unitOfMeasurement"]! as? String, style: .Default, handler: { (action) -> Void in
                         self.multiplier = servingSizeOption["multiplier"]! as! Float
+                        self.servingSizeLabel.text = servingSizeOption["unitOfMeasurement"]! as? String
                         self.tableView.reloadData()
                     })
                     
