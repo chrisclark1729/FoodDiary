@@ -33,6 +33,11 @@ class IngredientAddTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateView()
+        
+    }
+    
+    func updateView() {
         
         self.ingredient = Session.sharedInstance.currentIngredient
         self.ingredient?.fetch()
@@ -58,7 +63,6 @@ class IngredientAddTableViewController: UITableViewController {
         var sugarDisplay: Float = 0
         var proteinDisplay: Float = 0
         
-        
         caloriesDisplay = (calories as? Float)! * multiplier
         fatGramsDisplay = (fatGrams as? Float)! * multiplier
         saturatedFatGramsDisplay = (saturatedFatGrams as? Float)! * multiplier
@@ -79,7 +83,6 @@ class IngredientAddTableViewController: UITableViewController {
         self.gramsFiberLabel.text = String(fiberDisplay)
         self.gramsSugarLabel.text = String(sugarDisplay)
         self.gramsProteinLabel.text = String(proteinDisplay)
-        
     }
 
     @IBAction func addIngredientButtonTapped(sender: UIButton) {
@@ -108,7 +111,7 @@ class IngredientAddTableViewController: UITableViewController {
             let foodDiaryDetail = PFObject(className:"FoodDiaryDetail")
             foodDiaryDetail["foodDiaryEntryId"] = foodDiaryEntry?.toPFObject
             foodDiaryDetail["ingredientId"] = ingredient.ingredientId
-            foodDiaryDetail["numberOfServings"] = ingredient.quantity
+            foodDiaryDetail["numberOfServings"] = ingredient.quantity! * self.multiplier
             
             foodDiaryDetail.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
@@ -165,10 +168,20 @@ class IngredientAddTableViewController: UITableViewController {
             if servingSizes.count != 0 {
                 let alertController = UIAlertController(title: "Serving Size", message: "Select from serving sizes below", preferredStyle: .ActionSheet)
                 
+                let button = UIAlertAction(title: ingredient!["unitOfMeasurement"]! as? String, style: .Default, handler: { (action) -> Void in
+                    self.multiplier = 1.0
+                    self.servingSizeLabel.text = self.ingredient!["unitOfMeasurement"]! as? String
+                    self.updateView()
+                    self.tableView.reloadData()
+                })
+                
+                alertController.addAction(button)
+                
                 for servingSizeOption in servingSizes {
                     let button = UIAlertAction(title: servingSizeOption["unitOfMeasurement"]! as? String, style: .Default, handler: { (action) -> Void in
                         self.multiplier = servingSizeOption["multiplier"]! as! Float
                         self.servingSizeLabel.text = servingSizeOption["unitOfMeasurement"]! as? String
+                        self.updateView()
                         self.tableView.reloadData()
                     })
                     

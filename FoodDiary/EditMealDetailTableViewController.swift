@@ -56,11 +56,11 @@ class EditMealDetailTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 || section == 1 {
             return 1
         } else {
             return mealNameSuggestions.count
@@ -69,7 +69,12 @@ class EditMealDetailTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath)
+            return cell
+
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
             if let suggestion = self.selectedSuggestion {
                 cell.mealNameField.text = suggestion.getMealName()
@@ -90,6 +95,11 @@ class EditMealDetailTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.section == 0 {
+            self.performSegueWithIdentifier("mealSearch", sender: self)
+            
+        }
         
         let meal = self.mealNameSuggestions[indexPath.row]
         
