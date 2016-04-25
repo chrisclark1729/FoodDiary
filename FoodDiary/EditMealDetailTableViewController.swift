@@ -13,7 +13,7 @@ class EditMealDetailTableViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
     var mealNameSuggestions:[Meal] = []
-    var selectedSuggestion:Meal?
+  
     var mealNameField: UITextField?
     
     override func viewDidLoad() {
@@ -29,13 +29,15 @@ class EditMealDetailTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         self.initMealNameField()
         self.mealNameSuggestions = Meal.getAllMealsInLocation((foodDiaryEntry?.location)!, dayPart: (self.foodDiaryEntry?.dayPart())!)
+        
         self.tableView.reloadData()
+        
         
     }
    
     @IBAction func saveMealName(sender: AnyObject) {
         self.foodDiaryEntry?.mealName = self.mealNameField!.text!
-        let mealIngredients = self.selectedSuggestion?.getMealIngredients()
+        let mealIngredients = Session.sharedInstance.currentSelectedMeal?.getMealIngredients()
         if (mealIngredients != nil){
             self.foodDiaryEntry?.addFoodDiaryDetailFromMealIngredients(mealIngredients!)
         }
@@ -76,7 +78,7 @@ class EditMealDetailTableViewController: UITableViewController {
 
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
-            if let suggestion = self.selectedSuggestion {
+            if let suggestion = Session.sharedInstance.currentSelectedMeal {
                 cell.mealNameField.text = suggestion.getMealName()
             } else {
                 cell.mealNameField.text = foodDiaryEntry?.mealName
@@ -98,14 +100,12 @@ class EditMealDetailTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             self.performSegueWithIdentifier("mealSearch", sender: self)
+        } else {
+            let meal = self.mealNameSuggestions[indexPath.row]
             
+            Session.sharedInstance.currentSelectedMeal = meal
+            self.tableView.reloadData()
         }
-        
-        let meal = self.mealNameSuggestions[indexPath.row]
-        
-        self.selectedSuggestion = meal
-        self.tableView.reloadData()
-        
     }
     
     /*

@@ -30,6 +30,26 @@ extension Meal {
         return entries
     }
     
+    static func searchMeals(searchText: String? = nil) -> [Meal] {
+        let query = PFQuery(className: "Meal")
+        query.whereKey("mealName", containsString: searchText)
+        query.limit = 20
+        query.orderByDescending("mealName")
+        
+        let fetchedObjects = query.findObjects()
+        
+        var entries = [Meal]()
+        for fetchedObject in fetchedObjects! {
+            let entry = Meal(entity: fetchedObject as! PFObject)
+            entries.append(entry)
+        }
+
+        return entries
+        
+        }
+
+    
+    
     static func saveFoodDiaryEntryToMeals() {
         
     }

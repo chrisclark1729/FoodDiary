@@ -18,6 +18,7 @@
 		49376FC51BA6A6C40075426C /* FoodDiaryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49376FC41BA6A6C40075426C /* FoodDiaryDetail.swift */; };
 		493914DE1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493914DD1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift */; };
 		495704BC1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495704BB1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift */; };
+		4957B5661CC5719300621335 /* MealSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5651CC5719300621335 /* MealSearchTableViewController.swift */; };
 		495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */; };
 		495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */; };
 		4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */; };
@@ -121,6 +122,7 @@
 		49376FC41BA6A6C40075426C /* FoodDiaryDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryDetail.swift; sourceTree = "<group>"; };
 		493914DD1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+Queries.swift"; sourceTree = "<group>"; };
 		495704BB1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAndEditMealIngredientsTableViewController.swift; sourceTree = "<group>"; };
+		4957B5651CC5719300621335 /* MealSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealSearchTableViewController.swift; sourceTree = "<group>"; };
 		4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+UpdateData.swift"; sourceTree = "<group>"; };
 		495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMealPhotoViewController.swift; sourceTree = "<group>"; };
 		4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				49DB30CC1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift */,
 				49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */,
 				4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */,
+				4957B5651CC5719300621335 /* MealSearchTableViewController.swift */,
 			);
 			name = "Edit Meal Details";
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */,
+				4957B5661CC5719300621335 /* MealSearchTableViewController.swift in Sources */,
 				490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */,
 				49DB30CB1C0F597B00DA1E9B /* MoodFieldTableViewCell.swift in Sources */,
 				49DB30C31C0E3A4100DA1E9B /* BaseEntity.swift in Sources */,
