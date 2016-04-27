@@ -1397,7 +1397,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ej1-Qs-p4U" kind="push" identifier="viewTimeOfDaySummary" id="eQ5-Ar-jLf"/>
+                                            <segue destination="qMB-A6-sBq" kind="push" identifier="getDayPartSummary" id="eN3-tT-jAE"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="9x6-Mp-JXN">
@@ -1542,7 +1542,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6q-l1-zp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097.5" y="3509.5"/>
+            <point key="canvasLocation" x="1077.5" y="3488.5"/>
         </scene>
         <!--Other Diners Summary-->
         <scene sceneID="tE7-hL-t4G">
@@ -1810,6 +1810,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1KU-4T-zjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2581.5" y="1105.5"/>
+        </scene>
+        <!--One To One Nutrition Summary Table View Controller-->
+        <scene sceneID="ZUe-Ds-2Wy">
+            <objects>
+                <tableViewController id="qMB-A6-sBq" customClass="OneToOneNutritionSummaryTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xdc-Gn-5T3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayPartCell" textLabel="EBj-XN-XZc" detailTextLabel="7iH-xq-Yae" style="IBUITableViewCellStyleSubtitle" id="p76-nK-Tyd">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p76-nK-Tyd" id="PYT-4E-tvu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EBj-XN-XZc">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7iH-xq-Yae">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qMB-A6-sBq" id="YEt-hD-hMu"/>
+                            <outlet property="delegate" destination="qMB-A6-sBq" id="Civ-fn-398"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rJx-x8-IqV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PLJ-YJ-YKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1503.5" y="4357.5"/>
         </scene>
         <!--Edit Location-->
         <scene sceneID="EaB-3w-Z11">
@@ -2247,8 +2292,7 @@
         <segue reference="tbd-dJ-yoo"/>
         <segue reference="kim-DO-WLk"/>
         <segue reference="2YI-vR-XMV"/>
-        <segue reference="L96-26-8Ya"/>
         <segue reference="K8Y-ww-au0"/>
-        <segue reference="eQ5-Ar-jLf"/>
+        <segue reference="L96-26-8Ya"/>
     </inferredMetricsTieBreakers>
 </document>
