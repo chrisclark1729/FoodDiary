@@ -39,20 +39,44 @@ class OneToOneNutritionSummaryTableViewController: UITableViewController {
                 lateMorningEntries.append(entry)
             }
         }
-
         
-        /*
-        Morning: 4 - 8:59 am
-        Late Morning: 9 - 11:59 am
-        Afternoon: 12 - 4:59pm
-        Evening: 5 - 8:59pm
-        Night: 9:00pm - 11:59 pm
-        Late Night: 12am - 3:59am
-        */
+        var afternoonEntries = [FoodDiaryEntry]()
+        for entry in self.foodDiaryEntries! {
+            if entry.dayPart() == "afternoon" {
+                lateMorningEntries.append(entry)
+            }
+        }
+        
+        var eveningEntries = [FoodDiaryEntry]()
+        for entry in self.foodDiaryEntries! {
+            if entry.dayPart() == "evening" {
+                lateMorningEntries.append(entry)
+            }
+        }
+        
+        var nightEntries = [FoodDiaryEntry]()
+        for entry in self.foodDiaryEntries! {
+            if entry.dayPart() == "night" {
+                lateMorningEntries.append(entry)
+            }
+        }
+        
+        var lateNightEntries = [FoodDiaryEntry]()
+        for entry in self.foodDiaryEntries! {
+            if entry.dayPart() == "late night" {
+                lateMorningEntries.append(entry)
+            }
+        }
+
         let morningSummary = DayPartSummary(entries: morningEntries)
         let lateMorningSummary = DayPartSummary(entries: lateMorningEntries)
+        let afternoonSummary = DayPartSummary(entries: afternoonEntries)
+        let eveningSummary = DayPartSummary(entries: eveningEntries)
+        let nightSummary = DayPartSummary(entries: nightEntries)
+        let lateNightSummary = DayPartSummary(entries: lateNightEntries)
+
         
-        return [morningSummary, lateMorningSummary]
+        return [morningSummary, lateMorningSummary, afternoonSummary, eveningSummary, nightSummary, lateNightSummary]
 
 
     }
@@ -102,6 +126,14 @@ class OneToOneNutritionSummaryTableViewController: UITableViewController {
         } else if indexPath.row == 1 {
             cell.textLabel!.text = "Late Morning: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
             
+        } else if indexPath.row == 2 {
+            cell.textLabel!.text = "Afternoon: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+        } else if indexPath.row == 3 {
+            cell.textLabel!.text = "Evening: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+        } else if indexPath.row == 4 {
+            cell.textLabel!.text = "Night: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+        } else if indexPath.row == 5 {
+            cell.textLabel!.text = "Late Night: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
         }
         
         cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals) "

@@ -1438,6 +1438,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="pd9-W5-uPj" kind="push" identifier="viewMoodSummary" id="Ymg-8G-s9V"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="jBO-7z-U2K">
                                         <rect key="frame" x="0.0" y="339.5" width="375" height="44"/>
@@ -1542,7 +1545,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i6q-l1-zp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5" y="3488.5"/>
+            <point key="canvasLocation" x="1113.5" y="3509.5"/>
         </scene>
         <!--Other Diners Summary-->
         <scene sceneID="tE7-hL-t4G">
@@ -1587,7 +1590,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Db0-aj-Eco" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065.5" y="3509.5"/>
+            <point key="canvasLocation" x="1583.5" y="3509.5"/>
         </scene>
         <!--Location Summary Breakdown Table View Controller-->
         <scene sceneID="mGM-9t-D67">
@@ -1632,7 +1635,52 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nf-ec-yqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1567.5" y="3509.5"/>
+            <point key="canvasLocation" x="1583.5" y="4329.5"/>
+        </scene>
+        <!--Mood Summary Breakdown Table View Controller-->
+        <scene sceneID="t4o-ye-b1f">
+            <objects>
+                <tableViewController id="pd9-W5-uPj" customClass="MoodSummaryBreakdownTableViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="TvR-Lm-fAM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moodData" textLabel="Sgw-c3-DwX" detailTextLabel="1nE-fq-KlU" style="IBUITableViewCellStyleSubtitle" id="Ju3-D9-dvM">
+                                <rect key="frame" x="0.0" y="113.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ju3-D9-dvM" id="W1D-o7-08H">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sgw-c3-DwX">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1nE-fq-KlU">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pd9-W5-uPj" id="ZwF-bX-Brv"/>
+                            <outlet property="delegate" destination="pd9-W5-uPj" id="N1v-DP-Rko"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Elw-Zg-CbU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="npa-q9-ALX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2036.5" y="4329.5"/>
         </scene>
         <!--View And Edit Meal Ingredients Table View Controller-->
         <scene sceneID="m6K-oJ-gTE">
@@ -1854,7 +1902,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLJ-YJ-YKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1503.5" y="4357.5"/>
+            <point key="canvasLocation" x="87.5" y="4265.5"/>
         </scene>
         <!--Edit Location-->
         <scene sceneID="EaB-3w-Z11">

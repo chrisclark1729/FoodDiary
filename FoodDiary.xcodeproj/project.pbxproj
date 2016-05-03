@@ -23,6 +23,8 @@
 		4957B56A1CD008DB00621335 /* NSDate+Extentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5691CD008DB00621335 /* NSDate+Extentsion.swift */; };
 		4957B56C1CD0119E00621335 /* NutritionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B56B1CD0119E00621335 /* NutritionSummary.swift */; };
 		4957B56E1CD0138C00621335 /* DayPartSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B56D1CD0138C00621335 /* DayPartSummary.swift */; };
+		4957B5701CD930C400621335 /* MoodSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B56F1CD930C400621335 /* MoodSummary.swift */; };
+		4957B5741CD9325600621335 /* MoodSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5731CD9325600621335 /* MoodSummaryTableViewController.swift */; };
 		495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */; };
 		495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */; };
 		4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */; };
@@ -131,6 +133,8 @@
 		4957B5691CD008DB00621335 /* NSDate+Extentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extentsion.swift"; sourceTree = "<group>"; };
 		4957B56B1CD0119E00621335 /* NutritionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummary.swift; sourceTree = "<group>"; };
 		4957B56D1CD0138C00621335 /* DayPartSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPartSummary.swift; sourceTree = "<group>"; };
+		4957B56F1CD930C400621335 /* MoodSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodSummary.swift; sourceTree = "<group>"; };
+		4957B5731CD9325600621335 /* MoodSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodSummaryTableViewController.swift; sourceTree = "<group>"; };
 		4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+UpdateData.swift"; sourceTree = "<group>"; };
 		495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMealPhotoViewController.swift; sourceTree = "<group>"; };
 		4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -422,8 +426,10 @@
 				49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */,
 				49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */,
 				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
+				4957B56F1CD930C400621335 /* MoodSummary.swift */,
 				4957B56D1CD0138C00621335 /* DayPartSummary.swift */,
 				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
+				4957B5731CD9325600621335 /* MoodSummaryTableViewController.swift */,
 				49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */,
 				49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */,
 				49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */,
@@ -633,6 +639,7 @@
 				49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */,
 				49CB8D3A1C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift in Sources */,
 				49A614B31B79028600B66489 /* EditMealComponentsTableViewController.swift in Sources */,
+				4957B5741CD9325600621335 /* MoodSummaryTableViewController.swift in Sources */,
 				49DB30C71C0E413300DA1E9B /* MealIngredients.swift in Sources */,
 				49AE09B21C23890B004240FA /* Mood.swift in Sources */,
 				49376FC51BA6A6C40075426C /* FoodDiaryDetail.swift in Sources */,
@@ -657,6 +664,7 @@
 				49941ED31BEFE5A80088EE52 /* PFObject+Extension.swift in Sources */,
 				49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */,
 				49F2F6561C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift in Sources */,
+				4957B5701CD930C400621335 /* MoodSummary.swift in Sources */,
 				49CB8D3D1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift in Sources */,
 				49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */,
 				492E258B1B24DFFC006419EE /* DataManager.swift in Sources */,
