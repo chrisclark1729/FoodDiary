@@ -124,6 +124,25 @@ extension FoodDiaryEntry {
         
     }
     
+    func populateIngredientsSync() {
+        let getOtherIngredients:PFQuery = PFQuery(className:"FoodDiaryDetail")
+        
+        getOtherIngredients.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
+        getOtherIngredients.orderByAscending("ingredientId")
+        getOtherIngredients.limit = 500 // Limit query results just in case
+        
+        var otherIngredientsArray = [Ingredient]()
+        let otherIngredients = getOtherIngredients.findObjects()
+        
+        for object in otherIngredients! {
+            print("Successfully retrieved \(otherIngredients!.count) ingredients.")
+            let ingredient = Ingredient(entry: self, entity: object as! PFObject)
+            otherIngredientsArray.append(ingredient)
+        }
+        self.ingredients = otherIngredientsArray
+        
+    }
+    
 //MARK: Notes
     
     func deleteAllNotes() {

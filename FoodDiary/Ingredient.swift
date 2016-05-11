@@ -14,6 +14,7 @@ class Ingredient: AnyObject {
     var ingredientId: PFObject?
     var entry: FoodDiaryEntry? //Does this make sense? Why does an ingredient need a FoodDiaryEntry??
     var name: String?
+    var category: String?
     var calories: Float?
     var gramsFat: Float?
     var gramsProtein: Float?
@@ -26,6 +27,7 @@ class Ingredient: AnyObject {
     
     init(entry: FoodDiaryEntry, entity: PFObject) {
         self.name = entity["ingredientName"] as? String
+        self.category = entity["ingredientCategory"] as? String
         self.calories = entity["calories"] as? Float
         self.gramsFat = entity["gramsFat"] as? Float
         self.gramsProtein = entity["gramsProtein"] as? Float

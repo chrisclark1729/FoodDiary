@@ -43,28 +43,28 @@ class OneToOneNutritionSummaryTableViewController: UITableViewController {
         var afternoonEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             if entry.dayPart() == "afternoon" {
-                lateMorningEntries.append(entry)
+                afternoonEntries.append(entry)
             }
         }
         
         var eveningEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             if entry.dayPart() == "evening" {
-                lateMorningEntries.append(entry)
+                eveningEntries.append(entry)
             }
         }
         
         var nightEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             if entry.dayPart() == "night" {
-                lateMorningEntries.append(entry)
+                nightEntries.append(entry)
             }
         }
         
         var lateNightEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             if entry.dayPart() == "late night" {
-                lateMorningEntries.append(entry)
+                lateNightEntries.append(entry)
             }
         }
 
