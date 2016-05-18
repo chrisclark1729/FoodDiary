@@ -28,11 +28,13 @@
 		4957B5761CDAC1B900621335 /* IngredientsSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5751CDAC1B900621335 /* IngredientsSummaryBreakdownTableViewController.swift */; };
 		4957B5781CDAC21900621335 /* IngredientsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5771CDAC21900621335 /* IngredientsSummary.swift */; };
 		4957B57A1CE1120200621335 /* TimeOfDaySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5791CE1120200621335 /* TimeOfDaySummary.swift */; };
+		4957B5891CEAAE2000621335 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957B5881CEAAE2000621335 /* Parse.framework */; };
+		4957B58B1CEAAE2D00621335 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957B58A1CEAAE2D00621335 /* Bolts.framework */; };
+		4957B58D1CEAAEAD00621335 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957B58C1CEAAEAD00621335 /* libz.tbd */; };
+		4957B58F1CEAAEC000621335 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957B58E1CEAAEC000621335 /* libsqlite3.0.tbd */; };
 		495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */; };
 		495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */; };
 		4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */; };
-		4972BBCF1B45B1B60069D44B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBCE1B45B1B60069D44B /* Parse.framework */; };
-		4972BBD11B45B1C30069D44B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBD01B45B1C30069D44B /* Bolts.framework */; };
 		4972BBD31B45B2320069D44B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBD21B45B2320069D44B /* AudioToolbox.framework */; };
 		4972BBD51B45B23C0069D44B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBD41B45B23C0069D44B /* CFNetwork.framework */; };
 		4972BBD71B45B2430069D44B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBD61B45B2430069D44B /* CoreGraphics.framework */; };
@@ -141,11 +143,13 @@
 		4957B5751CDAC1B900621335 /* IngredientsSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
 		4957B5771CDAC21900621335 /* IngredientsSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsSummary.swift; sourceTree = "<group>"; };
 		4957B5791CE1120200621335 /* TimeOfDaySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeOfDaySummary.swift; sourceTree = "<group>"; };
+		4957B5881CEAAE2000621335 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		4957B58A1CEAAE2D00621335 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		4957B58C1CEAAEAD00621335 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4957B58E1CEAAEC000621335 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+UpdateData.swift"; sourceTree = "<group>"; };
 		495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMealPhotoViewController.swift; sourceTree = "<group>"; };
 		4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealDetailTableViewController.swift; sourceTree = "<group>"; };
-		4972BBCE1B45B1B60069D44B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
-		4972BBD01B45B1C30069D44B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Bolts.framework; sourceTree = "<group>"; };
 		4972BBD21B45B2320069D44B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4972BBD41B45B23C0069D44B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		4972BBD61B45B2430069D44B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -231,12 +235,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4957B58F1CEAAEC000621335 /* libsqlite3.0.tbd in Frameworks */,
+				4957B58D1CEAAEAD00621335 /* libz.tbd in Frameworks */,
 				4982BF691C34520000EBF6C7 /* Accelerate.framework in Frameworks */,
 				4982BF661C344B6200EBF6C7 /* CoreBluetooth.framework in Frameworks */,
 				889885831B5EBE3100ECD82F /* AVFoundation.framework in Frameworks */,
 				4972BBDF1B45B2690069D44B /* Security.framework in Frameworks */,
 				4972BBDD1B45B25F0069D44B /* QuartzCore.framework in Frameworks */,
 				49DD19D11B62DD49004199C2 /* FBSDKCoreKit.framework in Frameworks */,
+				4957B5891CEAAE2000621335 /* Parse.framework in Frameworks */,
 				4972BBDB1B45B2570069D44B /* MobileCoreServices.framework in Frameworks */,
 				4972BBE51B45B2900069D44B /* libz.dylib in Frameworks */,
 				4972BBD71B45B2430069D44B /* CoreGraphics.framework in Frameworks */,
@@ -245,6 +252,7 @@
 				49DD19D31B62DD73004199C2 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				8898858F1B5EBE6E00ECD82F /* OpenGLES.framework in Frameworks */,
 				8898858D1B5EBE6700ECD82F /* libicucore.dylib in Frameworks */,
+				4957B58B1CEAAE2D00621335 /* Bolts.framework in Frameworks */,
 				8898858B1B5EBE5900ECD82F /* libc++.dylib in Frameworks */,
 				49DD19D51B62DE2B004199C2 /* ParseUI.framework in Frameworks */,
 				889885891B5EBE4D00ECD82F /* ImageIO.framework in Frameworks */,
@@ -260,8 +268,6 @@
 				8898857F1B5EBE0100ECD82F /* CoreData.framework in Frameworks */,
 				4972BBE31B45B27D0069D44B /* SystemConfiguration.framework in Frameworks */,
 				4972BBE11B45B2730069D44B /* StoreKit.framework in Frameworks */,
-				4972BBD11B45B1C30069D44B /* Bolts.framework in Frameworks */,
-				4972BBCF1B45B1B60069D44B /* Parse.framework in Frameworks */,
 				A82E729BD1E98B25979C8C62 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,10 +303,10 @@
 		4982BF601C34499100EBF6C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4957B58E1CEAAEC000621335 /* libsqlite3.0.tbd */,
+				4957B58C1CEAAEAD00621335 /* libz.tbd */,
 				4982BF681C34520000EBF6C7 /* Accelerate.framework */,
 				4982BF651C344B6200EBF6C7 /* CoreBluetooth.framework */,
-				4972BBCE1B45B1B60069D44B /* Parse.framework */,
-				4972BBD01B45B1C30069D44B /* Bolts.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -350,6 +356,8 @@
 		49C5C4071B068AA6006FA068 = {
 			isa = PBXGroup;
 			children = (
+				4957B58A1CEAAE2D00621335 /* Bolts.framework */,
+				4957B5881CEAAE2000621335 /* Parse.framework */,
 				4982BF601C34499100EBF6C7 /* Frameworks */,
 				4923314B1B0F87B600AA212E /* bridge.h */,
 				49C5C4121B068AA6006FA068 /* FoodDiary */,
@@ -827,6 +835,9 @@
 					/Users/chrismclark/Documents/FacebookSDK,
 					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/parse-library-1.12.0",
+					"(1)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = FoodDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -855,6 +866,9 @@
 					/Users/chrismclark/Documents/FacebookSDK,
 					"/Users/chrismclark/Downloads/parse-library-1.7.5",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks/parse-library-1.12.0",
+					"(1)",
+					"$(PROJECT_DIR)",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",

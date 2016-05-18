@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize Parse.
         Parse.setApplicationId("G6Yn7q96WMpM9jPDPy4rpNZjKUn4TAuB36Dv49sX",
             clientKey: "TFKLutf7v2XWyqV5DvXckoZBRNP1r2sdHJCVCPHt")
+        Parse.initialize()
+      //  let config = ParseClientConfiguration(block: {()
+      //  let config = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in ParseMutableClientConfiguration.applicationId = "..."; ParseMutableClientConfiguration.clientKey = "..."; ParseMutableClientConfiguration.server = "..."; }); Parse.initializeWithConfiguration(config)
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
