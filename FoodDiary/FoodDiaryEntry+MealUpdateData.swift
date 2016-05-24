@@ -17,11 +17,11 @@ extension FoodDiaryEntry {
         mealCheck.whereKey("location", nearGeoPoint: self.location, withinMiles: 0.08)
         mealCheck.whereKey("mealName", equalTo: self.mealName)
         mealCheck.whereKey("dayPart", equalTo: self.dayPart())
-        let fetchedMeal = mealCheck.getFirstObject()
+        let fetchedMeal = mealCheck.getFirstObjectInBackground()
         
         if (fetchedMeal != nil) {
-            fetchedMeal?.incrementKey("count")
-            fetchedMeal?.saveInBackground()
+            fetchedMeal.incrementKey("count")
+            fetchedMeal.saveInBackground()
             return (true)
         } else {
            

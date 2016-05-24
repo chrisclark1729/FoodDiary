@@ -115,7 +115,7 @@ extension FoodDiaryEntry {
         var otherDinersArray = [OtherDiner]()
         let otherDiners = getOtherDiners.findObjects()
         
-        for object in otherDiners! {
+        for object in otherDiners {
                 print("Successfully retrieved \(otherDiners!.count) diners.")
                 let diner = OtherDiner(entry: self, entity: object as! PFObject)
                 otherDinersArray.append(diner)
@@ -308,7 +308,7 @@ extension FoodDiaryEntry {
         let details = self.fetchFoodDiaryDetails()
         
         for detail in details! {
-            detail.delete()
+            detail.deleteInBackground()
         }
     }
     
@@ -319,7 +319,7 @@ extension FoodDiaryEntry {
         for detail in details! {
             let fetchedObjectId = detail.objectId
             if foodDiaryDetail.objectId == fetchedObjectId {
-                detail.delete()
+                detail.deleteInBackground()
             }
 
         }

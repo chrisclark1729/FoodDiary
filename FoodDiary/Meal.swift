@@ -29,10 +29,10 @@ class Meal: BaseEntity {
         
         let fetchedIngredients:PFQuery = PFQuery(className:"MealIngredients")
         fetchedIngredients.whereKey("mealId", equalTo: self.entity)
-        let mealIngredients = fetchedIngredients.findObjects()
+        let mealIngredients = fetchedIngredients.findObjectsInBackground()
         
-        for ingredient in mealIngredients! {
-            let ingredientDetail = MealIngredients(entity:ingredient as! PFObject)
+        for ingredient in mealIngredients as [PFObject] {
+            let ingredientDetail = MealIngredients(entity:ingredient )
             
             ingredients.append(ingredientDetail)
             

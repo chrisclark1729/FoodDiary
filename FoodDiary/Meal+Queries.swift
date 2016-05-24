@@ -22,7 +22,7 @@ extension Meal {
         
         let fetchedObjects = nearbyMeals.findObjects()
         var entries = [Meal]()
-        for fetchedObject in fetchedObjects! {
+        for fetchedObject in fetchedObjects {
             let entry = Meal(entity: fetchedObject as! PFObject)
             entries.append(entry)
         }
@@ -35,22 +35,26 @@ extension Meal {
         query.whereKey("mealName", containsString: searchText)
         query.limit = 20
         query.orderByDescending("mealName")
-        
-        let fetchedObjects = query.findObjects()
-        
+        query.findObjectsInBackgroundWithBlock{
+            (objects:[PFObject]?, error:NSError?) -> Void in
+            if (error == nil && objects != nil) {
+                var entries = [Meal]()
+                for object:PFObject! in objects! {
+                    let entry = Meal(entity: object)
+                    entries.append(entry)
+                }
+            }
+        /*
+        let fetchedObjects = query.findObjectsInBackgroundWithBlock()
         var entries = [Meal]()
-        for fetchedObject in fetchedObjects! {
-            let entry = Meal(entity: fetchedObject as! PFObject)
+        for fetchedObject in fetchedObjects {
+            let entry = Meal(entity: fetchedObject)
             entries.append(entry)
         }
 
         return entries
-        
+        */
+            return entries
         }
 
-    
-    
-    static func saveFoodDiaryEntryToMeals() {
-        
-    }
 }

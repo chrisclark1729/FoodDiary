@@ -19,7 +19,7 @@ extension FoodDiaryEntry {
         
         let entries = getRecentFoodDiaryEntries.findObjects()
         
-        return entries!
+        return entries
     }
     
     func getRecentFoodDiaryEntries() -> [FoodDiaryEntry] {
@@ -39,7 +39,7 @@ extension FoodDiaryEntry {
         nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
         let fetchedObjects = nearbyMeals.findObjects()
         var entries = [FoodDiaryEntry]()
-        for fetchedObject in fetchedObjects! {
+        for fetchedObject in fetchedObjects {
             let entry = FoodDiaryEntry(fetchedObject: fetchedObject as! PFObject)
             entries.append(entry)
         }
@@ -77,7 +77,7 @@ extension FoodDiaryEntry {
         let dinerSuggestions:PFQuery = PFQuery(className: "FoodDiaryEntryDiners")
         dinerSuggestions.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntriesPFObjects(1.0))
         let fetchedObjects = dinerSuggestions.findObjects()
-        for fetchedObject in fetchedObjects! {
+        for fetchedObject in fetchedObjects {
             let entry = fetchedObject
             if dinerNameSuggestions.count > 0 {
                 let nameForConsideration = fetchedObject["dinerName"] as! String
@@ -104,7 +104,7 @@ extension FoodDiaryEntry {
         let tagSuggestionsQuery:PFQuery = PFQuery(className: "FoodDiaryTags")
         tagSuggestionsQuery.whereKey("foodDiaryEntryId", containedIn: self.getNearbyFoodDiaryEntriesPFObjects(5.0))
         let fetchedObjects = tagSuggestionsQuery.findObjects()
-        for fetchedObject in fetchedObjects! {
+        for fetchedObject in fetchedObjects {
             let entry = fetchedObject
             if tagSuggestions.count > 0 {
                 let tagForConsideration = fetchedObject["foodDiaryTag"] as! String
@@ -132,7 +132,7 @@ extension FoodDiaryEntry {
         
         let fetchedObjects = nearbyLocations.findObjects()
         var entries = [String]()
-        for fetchedObject in fetchedObjects! {
+        for fetchedObject in fetchedObjects {
             print(fetchedObject["locationName"])
             let entry = fetchedObject
             if entries.count > 0 {
