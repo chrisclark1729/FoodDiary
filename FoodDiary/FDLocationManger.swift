@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
-import Parse
+//import Parse
 
 class FDLocationManager: NSObject, CLLocationManagerDelegate {
     /*

@@ -10,6 +10,7 @@
 #define FoodDiary_bridge_h
 
 #import "AFNetworking/AFNetworking.h"
-
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 #endif

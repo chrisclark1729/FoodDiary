@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Parse
-import ParseUI
+//import Parse
+//import ParseUI
 
 class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     

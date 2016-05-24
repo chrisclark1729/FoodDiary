@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Parse
+//import ParseUI
 
 extension FoodDiaryEntry {
     

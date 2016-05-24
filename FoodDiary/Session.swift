@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Parse
+//import Parse
 
 class Session {
     static let sharedInstance = Session()

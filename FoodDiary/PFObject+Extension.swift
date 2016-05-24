@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Parse
+//import Parse
 
 //Pass a food diary entry object and this populates the properties
 

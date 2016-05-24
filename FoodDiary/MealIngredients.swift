@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+//import Parse
 
 class MealIngredients: BaseEntity {
     func getMealId() -> Meal {

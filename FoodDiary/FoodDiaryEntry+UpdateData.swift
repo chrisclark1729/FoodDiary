@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Parse
+//import Parse
 
 extension FoodDiaryEntry {
     

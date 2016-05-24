@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+//import Parse
 
 class BaseEntity: AnyObject {
     var entity:PFObject

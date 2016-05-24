@@ -8,7 +8,7 @@
 
 import UIKit
 import MobileCoreServices
-import Parse
+//import Parse
 //import GoogleMaps
 
 class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {

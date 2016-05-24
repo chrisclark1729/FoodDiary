@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import Parse
-import Bolts
+//import Parse
+//import Bolts
 // import GoogleMaps
-
 //testing imports
-import FBSDKCoreKit
-import FBSDKShareKit
-import FBSDKLoginKit
+//import FBSDKCoreKit
+//import FBSDKShareKit
+//import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -46,13 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
-        
     }
 
     func applicationWillResignActive(application: UIApplication) {
