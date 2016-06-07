@@ -35,13 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //        clientKey: "TFKLutf7v2XWyqV5DvXckoZBRNP1r2sdHJCVCPHt")
      //   Parse.initialize()
         
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "G6Yn7q96WMpM9jPDPy4rpNZjKUn4TAuB36Dv49sX"
+            $0.clientKey = "TFKLutf7v2XWyqV5DvXckoZBRNP1r2sdHJCVCPHt"
+            $0.server = "https://secret-bastion-12792.herokuapp.com/parse"
+        }
+        /*
         let config = ParseClientConfiguration(block: {
             (ParseMutableClientConfiguration) -> Void in
             ParseMutableClientConfiguration.applicationId = "G6Yn7q96WMpM9jPDPy4rpNZjKUn4TAuB36Dv49sX";
             ParseMutableClientConfiguration.clientKey = "TFKLutf7v2XWyqV5DvXckoZBRNP1r2sdHJCVCPHt";
-            ParseMutableClientConfiguration.server = "https://secret-bastion-12792.herokuapp.com/parse"; });
+            ParseMutableClientConfiguration.server = "https://secret-bastion-12792.herokuapp.com/parse"; }); */
         
-        Parse.initializeWithConfiguration(config)
+        Parse.initializeWithConfiguration(configuration)
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)

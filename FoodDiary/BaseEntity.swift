@@ -16,7 +16,12 @@ class BaseEntity: AnyObject {
     }
     
     func save() {
-        self.entity.save()
+        do {
+          try self.entity.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
     }
 
 }

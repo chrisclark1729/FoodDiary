@@ -65,7 +65,11 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         let row = indexPath.row
         let ingredientDetail = self.foodDiaryEntry!.ingredientDetails[row]
         let ingredientId = ingredientDetail.ingredientId
-        ingredientId?.fetch()
+        do {
+          try ingredientId?.fetch()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         let ingredientName = ingredientId!["ingredientName"] as? String
         let ingredientUnitOfMeasurement = ingredientId!["unitOfMeasurement"] as? String
         let calories = ingredientId!["calories"] as? Float

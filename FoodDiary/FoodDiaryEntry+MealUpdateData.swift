@@ -17,17 +17,20 @@ extension FoodDiaryEntry {
         mealCheck.whereKey("location", nearGeoPoint: self.location, withinMiles: 0.08)
         mealCheck.whereKey("mealName", equalTo: self.mealName)
         mealCheck.whereKey("dayPart", equalTo: self.dayPart())
-        let fetchedMeal = mealCheck.getFirstObjectInBackground()
-        
-        if (fetchedMeal != nil) {
-            fetchedMeal.incrementKey("count")
-            fetchedMeal.saveInBackground()
-            return (true)
-        } else {
-           
-            return (false)
+        do {
+            let fetchedMeals = try mealCheck.findObjects()
+            if fetchedMeals.count > 0 {
+                let fetchedMeal = fetchedMeals[0]
+                fetchedMeal.incrementKey("count")
+                fetchedMeal.saveInBackground()
+                return (true)
+            } else {
+                return (false)
+            }
+        } catch let error as NSError{
+            print(error.localizedDescription)
         }
-        
+        return false
     }
     
     func createMealFromFoodDiaryEntry() {
@@ -49,14 +52,17 @@ extension FoodDiaryEntry {
     }
     
     func createMealIngredientsFromFoodDiaryDetails(meal: PFObject) {
-
-        for ingredient in self.ingredientDetails {
-            let mealIngredient = PFObject(className:"MealIngredients")
-            mealIngredient["ingredientId"] = ingredient.ingredientId
-            mealIngredient["mealId"] = meal
-            mealIngredient["numberOfServings"] = ingredient.quantity
-            mealIngredient.save()
+        
+        do {
+            for ingredient in self.ingredientDetails {
+                let mealIngredient = PFObject(className:"MealIngredients")
+                mealIngredient["ingredientId"] = ingredient.ingredientId
+                mealIngredient["mealId"] = meal
+                mealIngredient["numberOfServings"] = ingredient.quantity
+                try mealIngredient.save()
+            }
+        } catch {
+            print("Unexpected Error: createMealIngredientsFromFoodDiaryDetails")
         }
-       
     }
 }

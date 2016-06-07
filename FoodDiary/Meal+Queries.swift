@@ -20,14 +20,20 @@ extension Meal {
         nearbyMeals.orderByDescending("count")
         nearbyMeals.limit = 15
         
-        let fetchedObjects = nearbyMeals.findObjects()
-        var entries = [Meal]()
-        for fetchedObject in fetchedObjects {
-            let entry = Meal(entity: fetchedObject as! PFObject)
-            entries.append(entry)
+        do {
+            let fetchedObjects = try nearbyMeals.findObjects()
+            var entries = [Meal]()
+            for fetchedObject in fetchedObjects {
+                let entry = Meal(entity: fetchedObject)
+                entries.append(entry)
+            }
+            return entries
+        }
+        catch {
+            print("Unexpected Error in getAllMealsInLocation")
         }
         
-        return entries
+        return [Meal]()
     }
     
     static func searchMeals(searchText: String? = nil) -> [Meal] {
@@ -35,26 +41,18 @@ extension Meal {
         query.whereKey("mealName", containsString: searchText)
         query.limit = 20
         query.orderByDescending("mealName")
-        query.findObjectsInBackgroundWithBlock{
-            (objects:[PFObject]?, error:NSError?) -> Void in
-            if (error == nil && objects != nil) {
-                var entries = [Meal]()
-                for object:PFObject! in objects! {
-                    let entry = Meal(entity: object)
-                    entries.append(entry)
-                }
+        do {
+            let fetchedObjects = try query.findObjects()
+            var entries = [Meal]()
+            for fetchedObject in fetchedObjects {
+                let entry = Meal(entity: fetchedObject)
+                entries.append(entry)
             }
-        /*
-        let fetchedObjects = query.findObjectsInBackgroundWithBlock()
-        var entries = [Meal]()
-        for fetchedObject in fetchedObjects {
-            let entry = Meal(entity: fetchedObject)
-            entries.append(entry)
-        }
-
-        return entries
-        */
             return entries
+        } catch {
+            print("Unexpected error when calling searchMeals")
         }
-
+        return [Meal]()
+    }
+    
 }

@@ -41,7 +41,7 @@ class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
         
         searchMood.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             dispatch_async(dispatch_get_main_queue(),{
-                self.data = results as? [PFObject]
+                self.data = results
                 self.tableView.reloadData()
             })
             

@@ -14,16 +14,21 @@ extension FoodDiaryEntry {
     
     static func fetchFoodDiaryPFObjectsForSummary(startDate:NSDate, endDate:NSDate) -> [PFObject] {
         let summaryFoodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        summaryFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
+       // summaryFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
+        summaryFoodDiaryEntries.whereKey("userId", equalTo: "Z66C62Ev7M")
         summaryFoodDiaryEntries.whereKey("timestamp", greaterThanOrEqualTo: startDate)
         summaryFoodDiaryEntries.whereKey("timestamp", lessThanOrEqualTo: endDate)
         summaryFoodDiaryEntries.orderByAscending("timestamp")
         summaryFoodDiaryEntries.limit = 1000
-    
-        let entries = summaryFoodDiaryEntries.findObjects() as! [PFObject]
-    
-        return entries
-    
+        
+        do {
+            let entries = try summaryFoodDiaryEntries.findObjects()
+            
+            return entries
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return [PFObject]()
     }
     
     static func fetchFoodDiaryEntriesForSummary(startDate:NSDate, endDate:NSDate) -> [FoodDiaryEntry] {

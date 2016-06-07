@@ -22,7 +22,8 @@ extension FoodDiaryEntry {
                 print(error)
             } else if let entry = FoodDiaryEntry {
                 entry.populateWithFoodDiaryEntry(self)
-                entry["userID"] = PFUser.currentUser()
+               // entry["userID"] = PFUser.currentUser()
+                entry["userID"] = "Z66C62Ev7M"
                 
                 entry.saveInBackground()
                 
@@ -31,7 +32,11 @@ extension FoodDiaryEntry {
                 self.deleteAllNotes()
                 self.writeNotesToBackend()
                 
-                entry.fetch()
+                do {
+                  try entry.fetch()
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
@@ -42,7 +47,11 @@ extension FoodDiaryEntry {
         let fetchedDiners = self.getDiners()
         
         for diner in fetchedDiners {
-            diner.delete()
+            do {
+                try diner.delete()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -52,8 +61,11 @@ extension FoodDiaryEntry {
             
             foodDiaryEntryDiner["dinerName"] = diner.name
             foodDiaryEntryDiner["foodDiaryEntryId"] = self.toPFObject
-            
-            foodDiaryEntryDiner.save()
+            do {
+              try foodDiaryEntryDiner.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
             
         }
     }
@@ -64,15 +76,20 @@ extension FoodDiaryEntry {
         getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
         getOtherDiners.limit = 30 // Limit query results just in case
         
-        let fetchedObjects = getOtherDiners.findObjects()
-        var pfObjects = [PFObject]()
-        for object in fetchedObjects! {
-            if let pfObject = object as? PFObject {
-                pfObjects.append(pfObject)
+        do {
+            let fetchedObjects = try getOtherDiners.findObjects()
+            var pfObjects = [PFObject]()
+            for object in fetchedObjects {
+                if let pfObject:PFObject = object {
+                    pfObjects.append(pfObject)
+                }
             }
+            return pfObjects
+ 
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
-        return pfObjects
-        
+       return [PFObject]()
     }
     
     func populateDiners() {
@@ -85,14 +102,14 @@ extension FoodDiaryEntry {
         var otherDinersArray = [OtherDiner]()
         
         getOtherDiners.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             
             if let objs = objects {
                 for object in objs {
                     if error == nil {
                         // The find succeeded.
                         print("Successfully retrieved \(objs.count) diners.")
-                        let diner = OtherDiner(entry: self, entity: object as! PFObject)
+                        let diner = OtherDiner(entry: self, entity: object)
                         otherDinersArray.append(diner)
                         
                     } else {
@@ -113,15 +130,18 @@ extension FoodDiaryEntry {
         getOtherDiners.limit = 30 // Limit query results just in case
         
         var otherDinersArray = [OtherDiner]()
-        let otherDiners = getOtherDiners.findObjects()
-        
-        for object in otherDiners {
-                print("Successfully retrieved \(otherDiners!.count) diners.")
-                let diner = OtherDiner(entry: self, entity: object as! PFObject)
+        do {
+            let otherDiners = try getOtherDiners.findObjects()
+            
+            for object in otherDiners {
+                print("Successfully retrieved \(otherDiners.count) diners.")
+                let diner = OtherDiner(entry: self, entity: object)
                 otherDinersArray.append(diner)
+            }
+            self.diners = otherDinersArray
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
-        self.diners = otherDinersArray
-        
     }
     
     func populateIngredientsSync() {
@@ -132,15 +152,18 @@ extension FoodDiaryEntry {
         getOtherIngredients.limit = 500 // Limit query results just in case
         
         var otherIngredientsArray = [Ingredient]()
-        let otherIngredients = getOtherIngredients.findObjects()
-        
-        for object in otherIngredients! {
-            print("Successfully retrieved \(otherIngredients!.count) ingredients.")
-            let ingredient = Ingredient(entry: self, entity: object as! PFObject)
-            otherIngredientsArray.append(ingredient)
+        do {
+            let otherIngredients = try getOtherIngredients.findObjects()
+            
+            for object in otherIngredients {
+                print("Successfully retrieved \(otherIngredients.count) ingredients.")
+                let ingredient = Ingredient(entry: self, entity: object )
+                otherIngredientsArray.append(ingredient)
+            }
+            self.ingredients = otherIngredientsArray
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
-        self.ingredients = otherIngredientsArray
-        
     }
     
 //MARK: Notes
@@ -149,7 +172,12 @@ extension FoodDiaryEntry {
         let fetchedNotes = self.getNotes()
         
         for note in fetchedNotes {
-            note.delete()
+            do {
+                try note.delete()
+            }
+            catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
         
     }
@@ -160,8 +188,11 @@ extension FoodDiaryEntry {
             
             foodDiaryEntryTag["foodDiaryTag"] = note.note
             foodDiaryEntryTag["foodDiaryEntryId"] = self.toPFObject
-            
-            foodDiaryEntryTag.save()
+            do {
+                try foodDiaryEntryTag.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
         }
         
     }
@@ -172,15 +203,19 @@ extension FoodDiaryEntry {
         getNotes.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
         getNotes.limit = 30 // Limit query results just in case
         
-        let fetchedObjects = getNotes.findObjects()
-        var pfObjects = [PFObject]()
-        for object in fetchedObjects! {
-            if let pfObject = object as? PFObject {
-                pfObjects.append(pfObject)
+        do {
+            let fetchedObjects = try getNotes.findObjects()
+            var pfObjects = [PFObject]()
+            for object in fetchedObjects {
+                if let pfObject:PFObject = object {
+                    pfObjects.append(pfObject)
+                }
             }
+            return pfObjects
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
-        return pfObjects
-        
+        return [PFObject]()
     }
     
     func populateNotes() {
@@ -193,14 +228,14 @@ extension FoodDiaryEntry {
         var notesArray = [Note]()
         
         getNotes.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             
             if let objs = objects {
                 for object in objs {
                     if error == nil {
                         // The find succeeded.
                         print("Successfully retrieved \(objs.count) notes.")
-                        let note = Note(entry: self, entity: object as! PFObject)
+                        let note = Note(entry: self, entity: object)
                         notesArray.append(note)
                         
                     } else {
@@ -215,7 +250,12 @@ extension FoodDiaryEntry {
     
     func getIngredientsAsPFObjectFromFoodDiaryDetail(detail:PFObject) -> PFObject {
         let fetchedIngredient = detail["ingredientId"] as! PFObject
-        fetchedIngredient.fetch()
+        do {
+            try fetchedIngredient.fetch()
+            return fetchedIngredient
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         return fetchedIngredient
     }
     
@@ -229,7 +269,11 @@ extension FoodDiaryEntry {
         var totalGramsSaturatedFat:Float = 0
         
         let fetchedIngredient = detail["ingredientId"] as! PFObject
-        fetchedIngredient.fetch()
+        do {
+          try fetchedIngredient.fetch()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         
         let quantity = detail["numberOfServings"] as! Float
         let calories = fetchedIngredient["calories"] as! Float
@@ -291,17 +335,27 @@ extension FoodDiaryEntry {
         // get from Backend and populate array
         let foodDiaryDetails:PFQuery = PFQuery(className:"FoodDiaryDetail")
         foodDiaryDetails.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        let fetchedDetails = foodDiaryDetails.findObjects()
-        
-        return fetchedDetails
+        do {
+            let fetchedDetails = try foodDiaryDetails.findObjects()
+            
+            return fetchedDetails
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return [AnyObject]()
     }
     
     func fetchOtherDiners() -> [AnyObject]? {
         let otherDiners:PFQuery = PFQuery(className: "FoodDiaryEntryDiners")
         otherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        let fetchedDiners = otherDiners.findObjects()
-        
-        return fetchedDiners
+        do {
+            let fetchedDiners = try otherDiners.findObjects()
+            
+            return fetchedDiners
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return [AnyObject]()
     }
     
     func deleteAllFoodDiaryDetails() {
@@ -357,18 +411,23 @@ extension FoodDiaryEntry {
             foodDiaryDetail["foodDiaryEntryId"] = self.toPFObject
             foodDiaryDetail["ingredientId"] = mealIngredient.getIngredientId()
             foodDiaryDetail["numberOfServings"] = mealIngredient.getNumberOfServings()
-            
-            foodDiaryDetail.save()
+            do {
+               try foodDiaryDetail.save()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
             
         }
-        
-
     }
     
     func archiveMeal() {
         self.isVisible = false
         self.toPFObject!["isVisible"] = false
-        self.toPFObject!.save()
+        do {
+            try self.toPFObject!.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         NSNotificationCenter.defaultCenter().postNotificationName("archiveMealNotification", object: self)
     }
     
@@ -386,7 +445,12 @@ extension FoodDiaryEntry {
     }
     
     func deleteFromBackEnd() {
-        self.toPFObject!.delete()
+        do {
+          try self.toPFObject!.delete()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
     }
     
 }

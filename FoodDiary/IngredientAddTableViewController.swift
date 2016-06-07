@@ -40,7 +40,11 @@ class IngredientAddTableViewController: UITableViewController {
     func updateView() {
         
         self.ingredient = Session.sharedInstance.currentIngredient
-        self.ingredient?.fetch()
+        do {
+           try self.ingredient?.fetch()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
         self.servingSizes = (self.ingredient?.getServingSize())!
         
         let servingSize = ingredient!["unitOfMeasurement"]!
@@ -146,7 +150,7 @@ class IngredientAddTableViewController: UITableViewController {
         if section == 0 {
             let ingredientName = ingredient!["ingredientName"] as? String
             let unitOfMeasurement = ingredient!["unitOfMeasurement"] as? String
-            return ingredientName! + " (" +  unitOfMeasurement! + ")" as? String
+            return ingredientName! + " (" +  unitOfMeasurement! + ")" as String
         } else {
             return "Nutrition Facts"
         }

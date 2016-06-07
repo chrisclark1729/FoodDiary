@@ -28,18 +28,19 @@ class DataManager {
         */
         
         getTimelineData.whereKey("isVisible", equalTo: true)
-        getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
+        //getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
+        getTimelineData.whereKey("userId", equalTo: "Z66C62Ev7M")
         getTimelineData.orderByDescending("timestamp")
         getTimelineData.limit = 25
         
         getTimelineData.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+            (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
                 // The find succeeded.
                 print("Successfully retrieved \(objects!.count) scores.")
                 
-                if let objects = objects as? [PFObject] {
+                if let objects = objects {
                     for object in objects {
                      //   if object.objectForKey("imgURL") != nil {
                         let entry = FoodDiaryEntry(fetchedObject: object)

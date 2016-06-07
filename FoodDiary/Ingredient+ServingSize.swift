@@ -17,9 +17,14 @@ extension PFObject {
         getServingSizes.orderByDescending("unitOfMeasurement")
         getServingSizes.limit = 15
         
-        let servingSizes = getServingSizes.findObjects() as! [PFObject]
-        
-        return servingSizes
+        do {
+           let servingSizes = try getServingSizes.findObjects()
+            return servingSizes
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+
+        return [PFObject]()
 
     }
 }
