@@ -28,8 +28,7 @@ class DataManager {
         */
         
         getTimelineData.whereKey("isVisible", equalTo: true)
-        //getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
-        getTimelineData.whereKey("userId", equalTo: "Z66C62Ev7M")
+        getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
         getTimelineData.orderByDescending("timestamp")
         getTimelineData.limit = 25
         

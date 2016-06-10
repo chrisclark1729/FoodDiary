@@ -68,8 +68,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         let userPhoto = PFObject.createFoodDiaryEntryPFObject()
 
         userPhoto["imageFile"] = imageFile
-        userPhoto["userId"] = "Z66C62Ev7M"
-       // userPhoto["userId"] = PFUser.currentUser()
+        userPhoto["userId"] = PFUser.currentUser()
         userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
         if self.locationNameSuggestions.count > 0 {
             userPhoto["locationName"] = self.locationNameSuggestions[0]

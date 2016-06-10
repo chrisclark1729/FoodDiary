@@ -13,8 +13,8 @@ extension FoodDiaryEntry {
     
     static func getRecentFoodDiaryEntryPFObjects() -> [AnyObject] {
         let getRecentFoodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
-       // getRecentFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
-        getRecentFoodDiaryEntries.whereKey("userId", equalTo: "Z66C62Ev7M")
+        getRecentFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
+       // getRecentFoodDiaryEntries.whereKey("userId", equalTo: "Z66C62Ev7M")
         getRecentFoodDiaryEntries.orderByDescending("timestamp")
         getRecentFoodDiaryEntries.limit = 10
         
@@ -62,8 +62,8 @@ extension FoodDiaryEntry {
         let geoPoint = self.location
         let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
         nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
-        nearbyMeals.whereKey("userId", equalTo: "Z66C62Ev7M")
-       // nearbyMeals.whereKey("userId", equalTo: PFUser.currentUser()!)
+      //  nearbyMeals.whereKey("userId", equalTo: "Z66C62Ev7M")
+        nearbyMeals.whereKey("userId", equalTo: PFUser.currentUser()!)
         
         do {
             let fetchedObjects = try nearbyMeals.findObjects()

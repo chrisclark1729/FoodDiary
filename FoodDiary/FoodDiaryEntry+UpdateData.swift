@@ -22,8 +22,8 @@ extension FoodDiaryEntry {
                 print(error)
             } else if let entry = FoodDiaryEntry {
                 entry.populateWithFoodDiaryEntry(self)
-               // entry["userID"] = PFUser.currentUser()
-                entry["userID"] = "Z66C62Ev7M"
+                entry["userID"] = PFUser.currentUser()
+               // entry["userID"] = "Z66C62Ev7M"
                 
                 entry.saveInBackground()
                 

@@ -24,8 +24,6 @@
 	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Help automate food tracking</string>
-	<key>CFBundleDisplayName</key>
-	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Help automate food tracking</string>
 </dict>

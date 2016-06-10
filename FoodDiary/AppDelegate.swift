@@ -52,8 +52,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        Parse.setLogLevel(PFLogLevel.Debug)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("requestSent:"), name: PFNetworkWillSendURLRequestNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("responseReceived:"), name: PFNetworkDidReceiveURLResponseNotification, object: nil)
+        
+        
+        /*
+ [Parse setLogLevel:PFLogLevelDebug]; [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveWillSendURLRequestNotification:) name:PFNetworkWillSendURLRequestNotification object:nil]; [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveDidReceiveURLResponseNotification:) name:PFNetworkDidReceiveURLResponseNotification object:nil];
+*/
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func requestSent(notification: NSNotification) {
+        print(notification)
+    }
+    
+    func responseReceived(response: NSNotification) {
+        print(response)
     }
 
     func applicationWillResignActive(application: UIApplication) {
