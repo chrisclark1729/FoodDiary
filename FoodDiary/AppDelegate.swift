@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.applicationId = "G6Yn7q96WMpM9jPDPy4rpNZjKUn4TAuB36Dv49sX"
             $0.clientKey = "TFKLutf7v2XWyqV5DvXckoZBRNP1r2sdHJCVCPHt"
             $0.server = "https://secret-bastion-12792.herokuapp.com/parse"
+            
         }
         /*
         let config = ParseClientConfiguration(block: {

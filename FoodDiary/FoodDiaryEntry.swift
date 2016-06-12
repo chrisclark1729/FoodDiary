@@ -146,6 +146,38 @@ class FoodDiaryEntry: NSObject {
         return dayPart
 
     }
+    
+    func getDayOfWeek()->String {
+        
+        let date = self.timestamp
+        let formatter  = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myComponents = myCalendar.components(.Weekday, fromDate: date)
+        let dayOfWeek = myComponents.weekday
+        switch(dayOfWeek) {
+        case 1:
+            return "Sun"
+        case 2:
+            return "Mon"
+        case 3:
+            return "Tue"
+        case 4:
+            return "Wed"
+        case 5:
+            return "Thu"
+        case 6:
+            return "Fri"
+        case 7:
+            return "Sat"
+        default:
+            print("Error fetching days")
+            return "Day"
+        }
+        
+    }
+    
+
    
 }
 

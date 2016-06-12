@@ -10,11 +10,6 @@ import Foundation
 
 class DayPartSummary: NutritionSummary {
     var dayPart: String
-/*
-    override init(entry: FoodDiaryEntry) {
-        self.dayPart = entry.dayPart()
-        super.init(entry: entry)
-    } */
     
      init(entries: [FoodDiaryEntry]) {
         var firstEntry = entries[0]
