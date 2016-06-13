@@ -19,6 +19,8 @@
 		493914DE1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493914DD1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift */; };
 		493D766A1D0DECA9003E9264 /* DayOfWeekSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D76691D0DECA9003E9264 /* DayOfWeekSummary.swift */; };
 		493D766C1D0DF029003E9264 /* DayOfWeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D766B1D0DF029003E9264 /* DayOfWeekTableViewController.swift */; };
+		493D766E1D0F0B52003E9264 /* EnjoymentScoreSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D766D1D0F0B52003E9264 /* EnjoymentScoreSummary.swift */; };
+		493D76701D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */; };
 		495704BC1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495704BB1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift */; };
 		4957B5661CC5719300621335 /* MealSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5651CC5719300621335 /* MealSearchTableViewController.swift */; };
 		4957B5681CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5671CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift */; };
@@ -129,6 +131,8 @@
 		493914DD1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+Queries.swift"; sourceTree = "<group>"; };
 		493D76691D0DECA9003E9264 /* DayOfWeekSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeekSummary.swift; sourceTree = "<group>"; };
 		493D766B1D0DF029003E9264 /* DayOfWeekTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeekTableViewController.swift; sourceTree = "<group>"; };
+		493D766D1D0F0B52003E9264 /* EnjoymentScoreSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnjoymentScoreSummary.swift; sourceTree = "<group>"; };
+		493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnjoymentScoreSummaryTableViewController.swift; sourceTree = "<group>"; };
 		495704BB1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAndEditMealIngredientsTableViewController.swift; sourceTree = "<group>"; };
 		4957B5651CC5719300621335 /* MealSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealSearchTableViewController.swift; sourceTree = "<group>"; };
 		4957B5671CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneToOneNutritionSummaryTableViewController.swift; sourceTree = "<group>"; };
@@ -419,24 +423,26 @@
 		49CB8D3B1C3C1D3A00F0A38D /* Nutrition Summary Data */ = {
 			isa = PBXGroup;
 			children = (
-				49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */,
 				49CB8D391C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift */,
+				4957B56B1CD0119E00621335 /* NutritionSummary.swift */,
+				49DB30B61C02632400DA1E9B /* NutritionSummaryTableViewController.swift */,
 				49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */,
-				4957B56F1CD930C400621335 /* MoodSummary.swift */,
-				4957B56D1CD0138C00621335 /* DayPartSummary.swift */,
 				493D76691D0DECA9003E9264 /* DayOfWeekSummary.swift */,
 				493D766B1D0DF029003E9264 /* DayOfWeekTableViewController.swift */,
+				493D766D1D0F0B52003E9264 /* EnjoymentScoreSummary.swift */,
+				493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */,
 				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
 				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
+				4957B56F1CD930C400621335 /* MoodSummary.swift */,
 				4957B5731CD9325600621335 /* MoodSummaryTableViewController.swift */,
 				49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */,
 				4957B5791CE1120200621335 /* TimeOfDaySummary.swift */,
-				4957B5671CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift */,
-				4957B56B1CD0119E00621335 /* NutritionSummary.swift */,
 				49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */,
 				49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */,
 				4957B5771CDAC21900621335 /* IngredientsSummary.swift */,
 				4957B5751CDAC1B900621335 /* IngredientsSummaryBreakdownTableViewController.swift */,
+				4957B56D1CD0138C00621335 /* DayPartSummary.swift */,
+				4957B5671CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift */,
 			);
 			name = "Nutrition Summary Data";
 			sourceTree = "<group>";
@@ -681,6 +687,7 @@
 				49941ED31BEFE5A80088EE52 /* PFObject+Extension.swift in Sources */,
 				49B99EAE1B8E1A6D00C4C1E0 /* EditMealTagsTableViewController.swift in Sources */,
 				49F2F6561C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift in Sources */,
+				493D766E1D0F0B52003E9264 /* EnjoymentScoreSummary.swift in Sources */,
 				4957B5701CD930C400621335 /* MoodSummary.swift in Sources */,
 				49CB8D3D1C3C276100F0A38D /* FoodDiaryEntry+NutritionSummary.swift in Sources */,
 				49DB30B91C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift in Sources */,
@@ -696,6 +703,7 @@
 				4957B5781CDAC21900621335 /* IngredientsSummary.swift in Sources */,
 				49B2604C1C975A4400984E8F /* Ingredient+ServingSize.swift in Sources */,
 				49AF6F9F1B321AE900AA64DD /* AddImageViewController.swift in Sources */,
+				493D76701D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift in Sources */,
 				49A614B91B81CC2200B66489 /* IngredientsSearchTableViewController.swift in Sources */,
 				49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */,
 				4957B56E1CD0138C00621335 /* DayPartSummary.swift in Sources */,

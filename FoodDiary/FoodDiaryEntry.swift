@@ -177,6 +177,50 @@ class FoodDiaryEntry: NSObject {
         
     }
     
+    func getEnjoymentScoreRange() -> String {
+        let enjoymentScore = self.enjoymentScore
+        
+        switch(enjoymentScore) {
+        case 0..<1:
+            return "0 - 1"
+        case 1..<2:
+            return "1 - 2"
+        case 2..<3:
+            return "2 - 3"
+        case 3..<4:
+            return "3 - 4"
+        case 4..<5:
+            return "4 - 5"
+        default:
+            print("Error fetching enjoyment score")
+            return "0"
+        }
+        
+    }
+    
+    func getEnergyLevelRange() -> String {
+        let energyLevel = self.energyLevel
+        
+        switch(energyLevel) {
+        case 0..<1:
+            return "0 - 1"
+        case 1..<2:
+            return "1 - 2"
+        case 2..<3:
+            return "2 - 3"
+        case 3..<4:
+            return "3 - 4"
+        case 4..<5:
+            return "4 - 5"
+        default:
+            print("Error fetching enjoyment score")
+            return "0"
+        }
+        
+    }
+
+
+    
 
    
 }
