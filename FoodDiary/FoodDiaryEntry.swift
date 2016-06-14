@@ -198,7 +198,7 @@ class FoodDiaryEntry: NSObject {
         
     }
     
-    func getEnergyLevelRange() -> String {
+    func getEnergyLevelScoreRange() -> String {
         let energyLevel = self.energyLevel
         
         switch(energyLevel) {

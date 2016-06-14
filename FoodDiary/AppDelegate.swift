@@ -54,8 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         Parse.setLogLevel(PFLogLevel.Debug)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("requestSent:"), name: PFNetworkWillSendURLRequestNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("responseReceived:"), name: PFNetworkDidReceiveURLResponseNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.requestSent(_:)), name: PFNetworkWillSendURLRequestNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.responseReceived(_:)), name: PFNetworkDidReceiveURLResponseNotification, object: nil)
         
         
         /*

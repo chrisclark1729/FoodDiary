@@ -56,6 +56,8 @@
 		498E8AC51C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E8AC41C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift */; };
 		49941ED01BDC242D0088EE52 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941ECF1BDC242D0088EE52 /* Session.swift */; };
 		49941ED31BEFE5A80088EE52 /* PFObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49941ED21BEFE5A80088EE52 /* PFObject+Extension.swift */; };
+		49A3342D1D1073C700D36E55 /* EnergyLevelScoreSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A3342C1D1073C700D36E55 /* EnergyLevelScoreSummary.swift */; };
+		49A3342F1D10746F00D36E55 /* EnergyLevelScoreSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A3342E1D10746F00D36E55 /* EnergyLevelScoreSummaryTableViewController.swift */; };
 		49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */; };
 		49A614B31B79028600B66489 /* EditMealComponentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */; };
 		49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A614B41B79160E00B66489 /* OtherDiners.swift */; };
@@ -168,6 +170,8 @@
 		498E8AC41C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+MealUpdateData.swift"; sourceTree = "<group>"; };
 		49941ECF1BDC242D0088EE52 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		49941ED21BEFE5A80088EE52 /* PFObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFObject+Extension.swift"; sourceTree = "<group>"; };
+		49A3342C1D1073C700D36E55 /* EnergyLevelScoreSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyLevelScoreSummary.swift; sourceTree = "<group>"; };
+		49A3342E1D10746F00D36E55 /* EnergyLevelScoreSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyLevelScoreSummaryTableViewController.swift; sourceTree = "<group>"; };
 		49A614B01B7838D100B66489 /* EditMealExperienceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealExperienceTableViewController.swift; sourceTree = "<group>"; };
 		49A614B21B79028600B66489 /* EditMealComponentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealComponentsTableViewController.swift; sourceTree = "<group>"; };
 		49A614B41B79160E00B66489 /* OtherDiners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDiners.swift; sourceTree = "<group>"; };
@@ -429,6 +433,8 @@
 				49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */,
 				493D76691D0DECA9003E9264 /* DayOfWeekSummary.swift */,
 				493D766B1D0DF029003E9264 /* DayOfWeekTableViewController.swift */,
+				49A3342C1D1073C700D36E55 /* EnergyLevelScoreSummary.swift */,
+				49A3342E1D10746F00D36E55 /* EnergyLevelScoreSummaryTableViewController.swift */,
 				493D766D1D0F0B52003E9264 /* EnjoymentScoreSummary.swift */,
 				493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */,
 				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
@@ -671,6 +677,7 @@
 				4972BBED1B45EBF10069D44B /* ManuallyAddMealViewController.swift in Sources */,
 				49A614B11B7838D100B66489 /* EditMealExperienceTableViewController.swift in Sources */,
 				4957B56A1CD008DB00621335 /* NSDate+Extentsion.swift in Sources */,
+				49A3342F1D10746F00D36E55 /* EnergyLevelScoreSummaryTableViewController.swift in Sources */,
 				4957B56C1CD0119E00621335 /* NutritionSummary.swift in Sources */,
 				4957B5661CC5719300621335 /* MealSearchTableViewController.swift in Sources */,
 				490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */,
@@ -699,6 +706,7 @@
 				49A614B71B7FBF6000B66489 /* Note.swift in Sources */,
 				49DB30C91C0F547400DA1E9B /* EditMoodTableViewController.swift in Sources */,
 				492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */,
+				49A3342D1D1073C700D36E55 /* EnergyLevelScoreSummary.swift in Sources */,
 				49DB30B71C02632400DA1E9B /* NutritionSummaryTableViewController.swift in Sources */,
 				4957B5781CDAC21900621335 /* IngredientsSummary.swift in Sources */,
 				49B2604C1C975A4400984E8F /* Ingredient+ServingSize.swift in Sources */,
