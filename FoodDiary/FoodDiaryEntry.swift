@@ -218,11 +218,46 @@ class FoodDiaryEntry: NSObject {
         }
         
     }
-
-
     
+    func getMacronutrientCategory() -> String {
+        
+        var macronutrientCategory = ""
+        let total = self.gramsProtein*4.2 + self.gramsCarbs*5.7 + self.gramsFat*9.4
+        let proteinRatio = self.gramsProtein*4.2/total
+        let carbRatio = self.gramsCarbs*5.7/total
+        let fatRatio = self.gramsFat*9.4/total
+        
+        /*
+         High Carb (HC): > 60%
+         Low Carb (LC): < 20%
+         High Protein (HP): 50%
+         High Fat (HF): 65%
+         Low Fat (LF): 20%
+         Low Protein: N/A
+         
+         */
+        
+        while macronutrientCategory.characters.count < 4 {
+            if carbRatio > 0.6 {
+                macronutrientCategory += "HC"
+            } else if carbRatio < 0.2 {
+                macronutrientCategory += "LC"
+            } else if proteinRatio > 0.5 {
+                macronutrientCategory += "HP"
+            } else if fatRatio > 0.65 {
+                macronutrientCategory += "HF"
+            } else if fatRatio < 0.2 {
+                macronutrientCategory += "LF"
+            }
+        }
+        
+        if macronutrientCategory == "" {
+            macronutrientCategory = "Balanced"
+        }
 
-   
+        return macronutrientCategory
+    }
+
 }
 
 // macros calculator 1g Protein = 4.2 calories, 1g Carbohydrate = 5.7 calories, 1g Fat = 9.4 calories
