@@ -234,21 +234,18 @@ class FoodDiaryEntry: NSObject {
          High Fat (HF): 65%
          Low Fat (LF): 20%
          Low Protein: N/A
-         
          */
         
-        while macronutrientCategory.characters.count < 4 {
-            if carbRatio > 0.6 {
-                macronutrientCategory += "HC"
-            } else if carbRatio < 0.2 {
-                macronutrientCategory += "LC"
-            } else if proteinRatio > 0.5 {
-                macronutrientCategory += "HP"
-            } else if fatRatio > 0.65 {
-                macronutrientCategory += "HF"
-            } else if fatRatio < 0.2 {
-                macronutrientCategory += "LF"
-            }
+        if carbRatio > 0.6 {
+            macronutrientCategory += "HC"
+        } else if carbRatio < 0.2 {
+            macronutrientCategory += "LC"
+        } else if proteinRatio > 0.5 {
+            macronutrientCategory += "HP"
+        } else if fatRatio > 0.65 {
+            macronutrientCategory += "HF"
+        } else if fatRatio < 0.2 {
+            macronutrientCategory += "LF"
         }
         
         if macronutrientCategory == "" {

@@ -36,6 +36,8 @@
 		4957B58F1CEAAEC000621335 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957B58E1CEAAEC000621335 /* libsqlite3.0.tbd */; };
 		495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */; };
 		495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */; };
+		496491DA1D12217700BFF05F /* MacronutrientSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496491D91D12217700BFF05F /* MacronutrientSummary.swift */; };
+		496491DC1D1224B800BFF05F /* MacronutrientSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496491DB1D1224B800BFF05F /* MacronutrientSummaryBreakdownTableViewController.swift */; };
 		4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */; };
 		4972BBD31B45B2320069D44B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBD21B45B2320069D44B /* AudioToolbox.framework */; };
 		4972BBD51B45B23C0069D44B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4972BBD41B45B23C0069D44B /* CFNetwork.framework */; };
@@ -150,6 +152,8 @@
 		4957B58E1CEAAEC000621335 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		4958985F1B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FoodDiaryEntry+UpdateData.swift"; sourceTree = "<group>"; };
 		495BFB861B49D44E00D915B9 /* AddMealPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMealPhotoViewController.swift; sourceTree = "<group>"; };
+		496491D91D12217700BFF05F /* MacronutrientSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacronutrientSummary.swift; sourceTree = "<group>"; };
+		496491DB1D1224B800BFF05F /* MacronutrientSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacronutrientSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
 		4972BBCC1B3DB34B0069D44B /* EditMealDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMealDetailTableViewController.swift; sourceTree = "<group>"; };
 		4972BBD21B45B2320069D44B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4972BBD41B45B23C0069D44B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -439,6 +443,8 @@
 				493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */,
 				49CB8D421C596AA600F0A38D /* LocationSummary.swift */,
 				49CB8D401C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift */,
+				496491D91D12217700BFF05F /* MacronutrientSummary.swift */,
+				496491DB1D1224B800BFF05F /* MacronutrientSummaryBreakdownTableViewController.swift */,
 				4957B56F1CD930C400621335 /* MoodSummary.swift */,
 				4957B5731CD9325600621335 /* MoodSummaryTableViewController.swift */,
 				49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */,
@@ -687,6 +693,7 @@
 				49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */,
 				49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */,
 				49A614B51B79160E00B66489 /* OtherDiners.swift in Sources */,
+				496491DC1D1224B800BFF05F /* MacronutrientSummaryBreakdownTableViewController.swift in Sources */,
 				49DB30C11C0E384700DA1E9B /* MealDetails.swift in Sources */,
 				4972BBCD1B3DB34B0069D44B /* EditMealDetailTableViewController.swift in Sources */,
 				49F2F6541C6298240051BA3C /* OtherDinersSummary.swift in Sources */,
@@ -710,6 +717,7 @@
 				49DB30B71C02632400DA1E9B /* NutritionSummaryTableViewController.swift in Sources */,
 				4957B5781CDAC21900621335 /* IngredientsSummary.swift in Sources */,
 				49B2604C1C975A4400984E8F /* Ingredient+ServingSize.swift in Sources */,
+				496491DA1D12217700BFF05F /* MacronutrientSummary.swift in Sources */,
 				49AF6F9F1B321AE900AA64DD /* AddImageViewController.swift in Sources */,
 				493D76701D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift in Sources */,
 				49A614B91B81CC2200B66489 /* IngredientsSearchTableViewController.swift in Sources */,
