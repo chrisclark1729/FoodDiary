@@ -22,10 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        /*
         if self.window!.rootViewController as? UITabBarController != nil {
             let tababarController = self.window!.rootViewController as! UITabBarController
             tababarController.selectedIndex = 3
-        }
+        } */
         
         Parse.setLogLevel(PFLogLevel.Info);
         Parse.enableLocalDatastore()

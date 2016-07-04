@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Parse
 
 class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     
@@ -29,7 +28,7 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         dayFormatter.dateFormat = "MMM dd, yyyy"
         timeFormatter.dateFormat = "h:mm a"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "archiveMeal:", name: "archiveMealNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimelineTableViewController.archiveMeal(_:)), name: "archiveMealNotification", object: nil)
         
     }
     

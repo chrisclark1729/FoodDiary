@@ -7,15 +7,11 @@
 //
 
 import UIKit
-//import Parse
-//import ParseUI
 
 class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     
-    
     var logInViewController: PFLogInViewController! = PFLogInViewController()
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,14 +19,13 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
-            
             // Or Show Logout Button
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-        //    self.returnUserData()
+            //    self.returnUserData()
         }
         else
         {
@@ -40,7 +35,6 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
         }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -50,26 +44,23 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         if (PFUser.currentUser() == nil) {
             
             self.logInViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton,
-                .PasswordForgotten, .DismissButton ]
+                                               .PasswordForgotten, .DismissButton ]
             
             let logInLogoTitle = UILabel()
             logInLogoTitle.text = "Trust Buds"
             
             self.logInViewController.logInView!.logo = logInLogoTitle
-            
             self.logInViewController.delegate = self
             
             let SignUpLogoTitle = UILabel()
             SignUpLogoTitle.text = "Trust Buds"
             
             self.signUpViewController.signUpView!.logo = SignUpLogoTitle
-            
             self.signUpViewController.delegate = self
-            
             self.logInViewController.signUpController = self.signUpViewController
             
         }
-
+        
     }
     
     // Facebook Delegate Methods
@@ -92,7 +83,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
                 // Do work
             }
             
-       //     self.returnUserData()
+            //     self.returnUserData()
         }
         
     }
@@ -121,7 +112,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
             }
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -140,7 +131,8 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     }
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
-         self.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("userDidLogIn", object: nil)
     }
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
@@ -165,25 +157,24 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     // MARK: Actions
     
     @IBAction func simpleAction(sender: AnyObject) {
-        
         self.presentViewController(self.logInViewController, animated: true, completion: nil)
-        
     }
     
-
+    
     @IBAction func logoutAction(sender: AnyObject) {
-        
         PFUser.logOut()
     }
     
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

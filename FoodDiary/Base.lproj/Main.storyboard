@@ -45,12 +45,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8o-FN-bJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87.5" y="1099.5"/>
+            <point key="canvasLocation" x="87.5" y="1149.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Item-->
+        <scene sceneID="NCH-Ot-Tr7">
+            <objects>
+                <viewController id="PGt-RE-AcZ" customClass="SettingsViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SVe-w8-Gqo"/>
+                        <viewControllerLayoutGuide type="bottom" id="kCE-n2-UIQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BHv-hB-ad5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hh-vD-Kcd">
+                                <rect key="frame" x="163" y="258" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="PGt-RE-AcZ" eventType="touchUpInside" id="FkT-YM-dHR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="1rn-pO-4tN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4BW-FC-GFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87.5" y="1915.5"/>
+        </scene>
+        <!--Base Tab Bar Controller-->
         <scene sceneID="7LV-Sc-sJM">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bB4-en-qHx" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="bB4-en-qHx" customClass="BaseTabBarController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -59,10 +87,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="HVW-ce-vwM" kind="relationship" relationship="viewControllers" id="CM5-Bc-OyK"/>
                         <segue destination="AzW-Qz-x2P" kind="relationship" relationship="viewControllers" id="XSu-oN-k7S"/>
                         <segue destination="rip-ZD-cCH" kind="relationship" relationship="viewControllers" id="usy-wK-dcu"/>
                         <segue destination="zkH-2L-Mwv" kind="relationship" relationship="viewControllers" id="TNo-8i-Zaw"/>
+                        <segue destination="HVW-ce-vwM" kind="modal" identifier="showLogInView" id="V6M-yg-N65"/>
+                        <segue destination="PGt-RE-AcZ" kind="relationship" relationship="viewControllers" id="m63-1L-PYG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrb-T3-Fw6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2577,10 +2606,10 @@
         <image name="placeholder" width="360" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tbd-dJ-yoo"/>
-        <segue reference="kim-DO-WLk"/>
-        <segue reference="2YI-vR-XMV"/>
         <segue reference="K8Y-ww-au0"/>
+        <segue reference="kim-DO-WLk"/>
+        <segue reference="tbd-dJ-yoo"/>
+        <segue reference="2YI-vR-XMV"/>
         <segue reference="L96-26-8Ya"/>
     </inferredMetricsTieBreakers>
 </document>

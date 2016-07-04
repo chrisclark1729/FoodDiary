@@ -21,6 +21,8 @@
 		493D766C1D0DF029003E9264 /* DayOfWeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D766B1D0DF029003E9264 /* DayOfWeekTableViewController.swift */; };
 		493D766E1D0F0B52003E9264 /* EnjoymentScoreSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D766D1D0F0B52003E9264 /* EnjoymentScoreSummary.swift */; };
 		493D76701D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */; };
+		494EBBE61D19CB520034FC97 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EBBE51D19CB520034FC97 /* BaseTabBarController.swift */; };
+		494EBBE81D19D1980034FC97 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494EBBE71D19D1980034FC97 /* SettingsViewController.swift */; };
 		495704BC1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495704BB1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift */; };
 		4957B5661CC5719300621335 /* MealSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5651CC5719300621335 /* MealSearchTableViewController.swift */; };
 		4957B5681CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957B5671CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift */; };
@@ -137,6 +139,8 @@
 		493D766B1D0DF029003E9264 /* DayOfWeekTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeekTableViewController.swift; sourceTree = "<group>"; };
 		493D766D1D0F0B52003E9264 /* EnjoymentScoreSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnjoymentScoreSummary.swift; sourceTree = "<group>"; };
 		493D766F1D0F0B6C003E9264 /* EnjoymentScoreSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnjoymentScoreSummaryTableViewController.swift; sourceTree = "<group>"; };
+		494EBBE51D19CB520034FC97 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		494EBBE71D19D1980034FC97 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		495704BB1BCD5B5C0053C949 /* ViewAndEditMealIngredientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAndEditMealIngredientsTableViewController.swift; sourceTree = "<group>"; };
 		4957B5651CC5719300621335 /* MealSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealSearchTableViewController.swift; sourceTree = "<group>"; };
 		4957B5671CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneToOneNutritionSummaryTableViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
 				492E258A1B24DFFC006419EE /* DataManager.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
+				494EBBE71D19D1980034FC97 /* SettingsViewController.swift */,
+				494EBBE51D19CB520034FC97 /* BaseTabBarController.swift */,
 				49CB8D3B1C3C1D3A00F0A38D /* Nutrition Summary Data */,
 				49DB30B81C03BBB500DA1E9B /* MealNameFieldTableViewCell.swift */,
 				49DB30BC1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift */,
@@ -655,6 +661,7 @@
 			files = (
 				4957B5681CD0047D00621335 /* OneToOneNutritionSummaryTableViewController.swift in Sources */,
 				498E8AC51C16360B00AB4268 /* FoodDiaryEntry+MealUpdateData.swift in Sources */,
+				494EBBE61D19CB520034FC97 /* BaseTabBarController.swift in Sources */,
 				49B2604A1C97593900984E8F /* FDLocationManger.swift in Sources */,
 				49DB30BD1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift in Sources */,
 				49DB30C51C0E3ABA00DA1E9B /* Meal+Queries.swift in Sources */,
@@ -723,6 +730,7 @@
 				49A614B91B81CC2200B66489 /* IngredientsSearchTableViewController.swift in Sources */,
 				49C5C4161B068AA6006FA068 /* AppDelegate.swift in Sources */,
 				4957B56E1CD0138C00621335 /* DayPartSummary.swift in Sources */,
+				494EBBE81D19D1980034FC97 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
