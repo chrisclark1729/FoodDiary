@@ -137,6 +137,13 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         print("Failed to login...")
+        let refreshAlert = UIAlertController(title: "Not Able to Login", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+            refreshAlert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        AppDelegate.topViewController().presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
     // MARK: Parse Sign Up

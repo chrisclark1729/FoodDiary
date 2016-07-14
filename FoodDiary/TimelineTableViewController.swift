@@ -22,15 +22,23 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.delegate = self
-        self.dataManager.loadTimelineData()
+        if PFUser.currentUser() != nil {
+          self.dataManager.loadTimelineData()
+        }
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dayFormatter.dateFormat = "MMM dd, yyyy"
         timeFormatter.dateFormat = "h:mm a"
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimelineTableViewController.userDidLogIn(_:)), name: "userDidLogIn", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimelineTableViewController.archiveMeal(_:)), name: "archiveMealNotification", object: nil)
         
     }
+    
+    func userDidLogIn(notification: NSNotification) {
+        self.dataManager.loadTimelineData()
+    }
+    
     
     func archiveMeal(notification: NSNotification) {
         let mealToArchive: FoodDiaryEntry = notification.object as! FoodDiaryEntry

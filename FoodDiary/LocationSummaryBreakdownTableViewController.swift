@@ -26,43 +26,6 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         
     }
     
-    func islocationExisting(locationName: String, summaries: [LocationSummary]) -> Bool {
-        
-        for summary in summaries {
-            if summary.locationName == locationName {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func getLocationSummaryWithName(locationName: String, summaries: [LocationSummary]) -> LocationSummary? {
-        for summary in summaries {
-            if summary.locationName == locationName {
-                return summary
-            }
-        }
-        return nil
-    }
-    
-    func getLocationSummaryFromEntries(entries: [FoodDiaryEntry]) -> [LocationSummary]{
-        var summaries = [LocationSummary]()
-        
-        for entry in entries {
-            if !self.islocationExisting(entry.locationName, summaries: summaries) {
-                let locationSummary = LocationSummary(entry: entry)
-                summaries.append(locationSummary)
-            } else {
-                let locationSummary = self.getLocationSummaryWithName(entry.locationName, summaries: summaries)
-                locationSummary!.updateLocationSummary(entry)
-                
-            }
-            
-        }
-
-        return summaries
-    }
-    
     func getLocationSummary() -> [LocationSummary]  {
         self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate!, endDate: endDate!)
         var totalMeals:Int = 0
@@ -81,6 +44,40 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         }
         
         return locationSummaryData.sort({ $0.attentionScore > $1.attentionScore })
+    }
+    
+    func getLocationSummaryFromEntries(entries: [FoodDiaryEntry]) -> [LocationSummary]{
+        var summaries = [LocationSummary]()
+        
+        for entry in entries {
+            if !self.islocationExisting(entry.locationName, summaries: summaries) {
+                let locationSummary = LocationSummary(entry: entry)
+                summaries.append(locationSummary)
+            } else {
+                let locationSummary = self.getLocationSummaryWithName(entry.locationName, summaries: summaries)
+                locationSummary!.updateLocationSummary(entry)
+            }
+        }
+        return summaries
+    }
+    
+    func islocationExisting(locationName: String, summaries: [LocationSummary]) -> Bool {
+        
+        for summary in summaries {
+            if summary.locationName == locationName {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func getLocationSummaryWithName(locationName: String, summaries: [LocationSummary]) -> LocationSummary? {
+        for summary in summaries {
+            if summary.locationName == locationName {
+                return summary
+            }
+        }
+        return nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,9 +117,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
             } else {
                 return 0
             }
-            
         }
-        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

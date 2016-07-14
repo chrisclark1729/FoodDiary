@@ -6,6 +6,7 @@
 //  Copyright © 2016 Chris Clark. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class LocationSummary {

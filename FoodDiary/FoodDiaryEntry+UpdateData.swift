@@ -247,6 +247,8 @@ extension FoodDiaryEntry {
             }
         }
     }
+
+//MARK: Ingredients
     
     func getIngredientsAsPFObjectFromFoodDiaryDetail(detail:PFObject) -> PFObject {
         let fetchedIngredient = detail["ingredientId"] as! PFObject

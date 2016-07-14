@@ -38,6 +38,7 @@ class BaseTabBarController: UITabBarController {
     
     func userDidLogIn() {
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.selectedIndex = 2
     }
     
     func userDidLogout() {

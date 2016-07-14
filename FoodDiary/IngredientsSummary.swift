@@ -12,7 +12,7 @@ class IngredientsSummary {
     var ingredientCategory: String
     var mealCount: Int
     var entryCount: Int
-    var ingredientTotalCalories: Float
+    var ingredientCategoryTotalCalories: Float
     var caloriesPerMeal: Float
     var percentTotalCalories: Float?
     var enjoymentScore: Float
@@ -24,7 +24,7 @@ class IngredientsSummary {
         self.ingredientCategory = ingredientCategory
         self.mealCount = 0
         self.entryCount = 0
-        self.ingredientTotalCalories = 0
+        self.ingredientCategoryTotalCalories = 0
         self.caloriesPerMeal = 0
         self.enjoymentScore = 0
         self.healthScore = 0
@@ -40,18 +40,18 @@ class IngredientsSummary {
                 self.entryCount += 1
                 self.mealCount += 1
             }
-            self.ingredientTotalCalories += entry.calories
+            self.ingredientCategoryTotalCalories += entry.calories
             self.enjoymentScore += entry.enjoymentScore
             self.healthScore += entry.healthScore
             self.lastTimestamp = entry.timestamp
         }
         
-        self.caloriesPerMeal += self.ingredientTotalCalories/Float(self.mealCount)
+        self.caloriesPerMeal += self.ingredientCategoryTotalCalories/Float(self.mealCount)
         
         if Session.sharedInstance.currentTotalCalories! == 0 {
             self.percentTotalCalories = 0
         } else {
-            self.percentTotalCalories = self.ingredientTotalCalories/Session.sharedInstance.currentTotalCalories!
+            self.percentTotalCalories = self.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCalories!
         }
     }
     
