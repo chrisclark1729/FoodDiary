@@ -188,11 +188,11 @@ extension FoodDiaryEntry {
     func getLocationName() -> String {
         return self.locationName
     }
-    
+    /*
     func getIngredientIdFromFoodDiaryEntry(entry) -> PFObject {
         
     }
-    
+   */ 
     
     /*
     

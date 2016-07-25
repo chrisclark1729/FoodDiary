@@ -9,7 +9,8 @@
 import UIKit
 
 class IngredientsSummaryBreakdownTableViewController: UITableViewController {
-
+    
+    
     var summaries = [IngredientsSummary]()
     var foodDiaryEntries: [FoodDiaryEntry]?
     let startDate = Session.sharedInstance.currentSelectedStartDate
@@ -29,45 +30,70 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate!, endDate: endDate!)
         var totalMeals:Int = 0
         var maxCaloriesPerMeal:Float = 0
+        var foodDiaryDetails = [AnyObject]()
         var ingredientIds = [AnyObject]()
         
+        
         for entry in self.foodDiaryEntries! {
-            let detail = FoodDiaryEntry.fetchFoodDiaryDetails(entry) as! AnyObject
-            let ingredient = FoodDiaryEntry.getIngredientsAsPFObjectFromFoodDiaryDetail(entry)
-          //  let ingredientId = detail["ingredientId"]
-          //  ingredientIds.append(detail)
-        }
-        
-        let ingredients = self.getUniqueIngredients(self.foodDiaryEntries!)
-        
-        for ingredient in ingredients {
+            let detail = entry.fetchFoodDiaryDetails() as! AnyObject
+            foodDiaryDetails.append(detail)
             
-            let filteredEntries = self.getFoodDiaryEntriesWithIngredient(ingredient)
-            let summary = IngredientsSummary(entries: entry, ingredientCategory: ingredient)
-            summaries.append(summary)
-            totalMeals += summary.mealCount
-            
-            if maxCaloriesPerMeal < summary.caloriesPerMeal {
-                maxCaloriesPerMeal = summary.caloriesPerMeal
-            }
+            //  let ingredientId = detail["ingredientId"]
+            //  ingredientIds.append(detail)
         }
         
-        for summary in summaries {
-            summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
-        }
+        self.getIngredientCategoriesFromFoodDiaryDetails(foodDiaryDetails)
+        /*
+         let ingredients = self.getUniqueIngredients(self.foodDiaryEntries!)
+         
+         for ingredient in ingredients {
+         
+         let filteredEntries = self.getFoodDiaryEntriesWithIngredient(ingredient)
+         let summary = IngredientsSummary(entries: entry, ingredientCategory: ingredient)
+         summaries.append(summary)
+         totalMeals += summary.mealCount
+         
+         if maxCaloriesPerMeal < summary.caloriesPerMeal {
+         maxCaloriesPerMeal = summary.caloriesPerMeal
+         }
+         }
+         
+         for summary in summaries {
+         summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
+         } */
         
-        return summaries.sort({ $0.attentionScore > $1.attentionScore })
+        //return summaries.sort({ $0.attentionScore > $1.attentionScore })
+        
+        return [IngredientsSummary]()
         
     }
     
-    func getUniqueIngredients(entries: [FoodDiaryEntry]) -> Set<String> {
-        var ingredientsForSummary = Set<String>()
-        for entry in entries {
-            for ingredient in entry.ingredients {
-                ingredientsForSummary.insert(ingredient.category!)
+    func getIngredientCategoriesFromFoodDiaryDetails(details: [AnyObject]) -> [String] {
+        var categories = [String]()
+        for detail in details {
+            let foodDiaryDetails = detail as! [AnyObject]
+            for foodDiaryDetail in foodDiaryDetails {
+                let foodDiaryDetailPFObject = foodDiaryDetail as! PFObject
+                let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
+                do {
+                    try ingredient.fetch()
+                }  catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                let ingredientCategory = ingredient["ingredientCategory"] as! (String)
+                if !categories.contains(ingredientCategory) {
+                    categories.append(ingredientCategory)
+                }
             }
         }
-        return ingredientsForSummary
+        
+        return categories
+    }
+    
+    func getCaloriesFromDetails(details: [AnyObject], category: String) -> Float {
+        
+        return 1.0
+        
     }
     
     func getFoodDiaryEntriesWithIngredient(Ingredient: String) -> [FoodDiaryEntry] {
@@ -138,51 +164,51 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
             }
         }
     }
-    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-
-
+     /*
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+     
+     /*
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+     
+     /*
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+     
+     /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+     
+     /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+     
+     */
 }
