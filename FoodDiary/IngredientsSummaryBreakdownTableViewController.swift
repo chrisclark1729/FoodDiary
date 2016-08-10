@@ -42,14 +42,21 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
             //  ingredientIds.append(detail)
         }
         
-        self.getIngredientCategoriesFromFoodDiaryDetails(foodDiaryDetails)
-        /*
-         let ingredients = self.getUniqueIngredients(self.foodDiaryEntries!)
+        Session.sharedInstance.currentFetchedDetails = foodDiaryDetails
+        var categories = self.getIngredientCategoriesFromFoodDiaryDetails(Session.sharedInstance.currentFetchedDetails!)
+        
+        for category in categories {
+            var calories = self.getCaloriesFromDetails(Session.sharedInstance.currentFetchedDetails!, category: category)
+            print("\(category): \(calories)")
+    
+        }
+        
+         let ingredients = self.getIngredientCategoriesFromFoodDiaryDetails(self.foodDiaryEntries!)
          
          for ingredient in ingredients {
          
          let filteredEntries = self.getFoodDiaryEntriesWithIngredient(ingredient)
-         let summary = IngredientsSummary(entries: entry, ingredientCategory: ingredient)
+         let summary = IngredientsSummary(entries: filteredEntries, ingredientCategory: ingredient)
          summaries.append(summary)
          totalMeals += summary.mealCount
          
@@ -60,19 +67,20 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
          
          for summary in summaries {
          summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
-         } */
+         }
         
-        //return summaries.sort({ $0.attentionScore > $1.attentionScore })
+        return summaries.sort({ $0.attentionScore > $1.attentionScore })
         
-        return [IngredientsSummary]()
+        //return [IngredientsSummary]()
         
     }
     
     func getIngredientCategoriesFromFoodDiaryDetails(details: [AnyObject]) -> [String] {
         var categories = [String]()
+        var foodDiaryDetails = [AnyObject]()
         for detail in details {
-            let foodDiaryDetails = detail as! [AnyObject]
-            for foodDiaryDetail in foodDiaryDetails {
+            foodDiaryDetails.append(detail as! PFObject) // = detail as! [AnyObject]
+            for foodDiaryDetail in foodDiaryDetails  {
                 let foodDiaryDetailPFObject = foodDiaryDetail as! PFObject
                 let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
                 do {
@@ -91,8 +99,27 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
     }
     
     func getCaloriesFromDetails(details: [AnyObject], category: String) -> Float {
-        
-        return 1.0
+        var totalCalories:Float = 0.0
+        for detail in details {
+            let foodDiaryDetails = detail as! [AnyObject]
+            for foodDiaryDetail in foodDiaryDetails {
+                let foodDiaryDetailPFObject = foodDiaryDetail as! PFObject
+                let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
+                let quantity = foodDiaryDetailPFObject["numberOfServings"] as! Float
+                /*
+                do {
+                    try ingredient.fetch()
+                }  catch let error as NSError {
+                    print(error.localizedDescription)
+                } */
+                let ingredientCategory = ingredient["ingredientCategory"] as! (String)
+                let calories = ingredient["calories"] as! Float
+                if ingredientCategory == category {
+                    totalCalories += quantity*calories
+                }
+            }
+        }
+        return totalCalories
         
     }
     

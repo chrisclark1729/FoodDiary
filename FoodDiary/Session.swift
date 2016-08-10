@@ -21,5 +21,6 @@ class Session {
     var currentOneToOneDimensionForSummary:String?
     var currentIngredient:PFObject?
     var currentSelectedMeal:Meal?
+    var currentFetchedDetails:[AnyObject]?
     
 }

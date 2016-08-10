@@ -78,6 +78,9 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
+            print(PFUser.currentUser())
+            NSNotificationCenter.defaultCenter().postNotificationName("userDidLogIn", object: nil)
+            
             if result.grantedPermissions.contains("email")
             {
                 // Do work
