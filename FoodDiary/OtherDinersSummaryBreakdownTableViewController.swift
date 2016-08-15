@@ -14,22 +14,14 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
     var foodDiaryEntries: [FoodDiaryEntry]?
     let startDate = Session.sharedInstance.currentSelectedStartDate
     let endDate = Session.sharedInstance.currentSelectedEndDate
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.summaries = self.getOtherDinerSummary()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func getOtherDinerSummary() -> [OtherDinersSummary] {
@@ -44,7 +36,6 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
         let diners = self.getUniqueDiners(self.foodDiaryEntries!)
         
         for diner in diners {
-
             let filteredEntries = self.getFoodDiaryEntriesWithDiner(diner)
             let summary = OtherDinersSummary(entries: filteredEntries, dinerName: diner)
             summaries.append(summary)

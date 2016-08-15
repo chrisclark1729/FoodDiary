@@ -20,7 +20,7 @@ class IngredientsSummary {
     var lastTimestamp: NSDate
     var attentionScore: Float?
     
-    init(entries: [FoodDiaryEntry], ingredientCategory: String) {
+    init(entries: [FoodDiaryEntry], ingredientCategory: String, calories: Float) {
         self.ingredientCategory = ingredientCategory
         self.mealCount = 0
         self.entryCount = 0
@@ -40,7 +40,7 @@ class IngredientsSummary {
                 self.entryCount += 1
                 self.mealCount += 1
             }
-            self.ingredientCategoryTotalCalories += entry.calories
+            self.ingredientCategoryTotalCalories += calories
             self.enjoymentScore += entry.enjoymentScore
             self.healthScore += entry.healthScore
             self.lastTimestamp = entry.timestamp

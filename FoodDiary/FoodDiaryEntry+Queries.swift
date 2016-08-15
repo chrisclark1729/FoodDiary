@@ -188,6 +188,25 @@ extension FoodDiaryEntry {
     func getLocationName() -> String {
         return self.locationName
     }
+    
+    func hasIngredientCategory(category: String) -> Bool {
+        let details = self.fetchFoodDiaryDetails()
+        for detail in details! {
+            let foodDiaryDetailPFObject = detail as! PFObject
+            let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
+            do {
+                try ingredient.fetchIfNeeded()
+            }  catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            let fetchedCategory = ingredient["ingredientCategory"] as! (String)
+            if category == fetchedCategory {
+                return true
+            }
+        }
+        return false
+    }
+    
     /*
     func getIngredientIdFromFoodDiaryEntry(entry) -> PFObject {
         

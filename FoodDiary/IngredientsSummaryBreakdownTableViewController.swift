@@ -10,7 +10,6 @@ import UIKit
 
 class IngredientsSummaryBreakdownTableViewController: UITableViewController {
     
-    
     var summaries = [IngredientsSummary]()
     var foodDiaryEntries: [FoodDiaryEntry]?
     let startDate = Session.sharedInstance.currentSelectedStartDate
@@ -31,39 +30,28 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         var totalMeals:Int = 0
         var maxCaloriesPerMeal:Float = 0
         var foodDiaryDetails = [AnyObject]()
-        var ingredientIds = [AnyObject]()
-        
         
         for entry in self.foodDiaryEntries! {
             let detail = entry.fetchFoodDiaryDetails() as! AnyObject
             foodDiaryDetails.append(detail)
-            
-            //  let ingredientId = detail["ingredientId"]
-            //  ingredientIds.append(detail)
         }
         
         Session.sharedInstance.currentFetchedDetails = foodDiaryDetails
-        var categories = self.getIngredientCategoriesFromFoodDiaryDetails(Session.sharedInstance.currentFetchedDetails!)
+        let categories = self.getIngredientCategoriesFromFoodDiaryDetails(Session.sharedInstance.currentFetchedDetails!)
         
         for category in categories {
-            var calories = self.getCaloriesFromDetails(Session.sharedInstance.currentFetchedDetails!, category: category)
+            let calories = self.getCaloriesFromDetails(Session.sharedInstance.currentFetchedDetails!, category: category)
             print("\(category): \(calories)")
-    
+            let filteredEntries = self.getFoodDiaryEntriesWithCategory(category)
+            let summary = IngredientsSummary(entries: filteredEntries, ingredientCategory: category, calories: calories)
+            summaries.append(summary)
+            
+            totalMeals += summary.mealCount
+            
+            if maxCaloriesPerMeal < summary.caloriesPerMeal {
+                maxCaloriesPerMeal = summary.caloriesPerMeal
+            }
         }
-        
-         let ingredients = self.getIngredientCategoriesFromFoodDiaryDetails(self.foodDiaryEntries!)
-         
-         for ingredient in ingredients {
-         
-         let filteredEntries = self.getFoodDiaryEntriesWithIngredient(ingredient)
-         let summary = IngredientsSummary(entries: filteredEntries, ingredientCategory: ingredient)
-         summaries.append(summary)
-         totalMeals += summary.mealCount
-         
-         if maxCaloriesPerMeal < summary.caloriesPerMeal {
-         maxCaloriesPerMeal = summary.caloriesPerMeal
-         }
-         }
          
          for summary in summaries {
          summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
@@ -71,26 +59,35 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         
         return summaries.sort({ $0.attentionScore > $1.attentionScore })
         
-        //return [IngredientsSummary]()
-        
+    }
+    
+    func getFoodDiaryEntriesWithCategory(category: String) -> [FoodDiaryEntry] {
+        var filteredEntries = [FoodDiaryEntry]()
+        for entry in self.foodDiaryEntries! {
+            if entry.hasIngredientCategory(category) {
+                filteredEntries.append(entry)
+            }
+        }
+        return filteredEntries
     }
     
     func getIngredientCategoriesFromFoodDiaryDetails(details: [AnyObject]) -> [String] {
         var categories = [String]()
-        var foodDiaryDetails = [AnyObject]()
+      //  var foodDiaryDetails = [AnyObject]()
         for detail in details {
-            foodDiaryDetails.append(detail as! PFObject) // = detail as! [AnyObject]
-            for foodDiaryDetail in foodDiaryDetails  {
+          //  foodDiaryDetails.append(detail as! PFObject) // = detail as! [AnyObject]
+            for foodDiaryDetail in detail as! NSArray  {
                 let foodDiaryDetailPFObject = foodDiaryDetail as! PFObject
                 let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
                 do {
-                    try ingredient.fetch()
+                    try ingredient.fetchIfNeeded()
                 }  catch let error as NSError {
                     print(error.localizedDescription)
                 }
                 let ingredientCategory = ingredient["ingredientCategory"] as! (String)
                 if !categories.contains(ingredientCategory) {
                     categories.append(ingredientCategory)
+                    print("Category: \(ingredientCategory)")
                 }
             }
         }
