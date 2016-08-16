@@ -41,7 +41,6 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         
         for category in categories {
             let calories = self.getCaloriesFromDetails(Session.sharedInstance.currentFetchedDetails!, category: category)
-            print("\(category): \(calories)")
             let filteredEntries = self.getFoodDiaryEntriesWithCategory(category)
             let summary = IngredientsSummary(entries: filteredEntries, ingredientCategory: category, calories: calories)
             summaries.append(summary)
@@ -73,9 +72,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
     
     func getIngredientCategoriesFromFoodDiaryDetails(details: [AnyObject]) -> [String] {
         var categories = [String]()
-      //  var foodDiaryDetails = [AnyObject]()
         for detail in details {
-          //  foodDiaryDetails.append(detail as! PFObject) // = detail as! [AnyObject]
             for foodDiaryDetail in detail as! NSArray  {
                 let foodDiaryDetailPFObject = foodDiaryDetail as! PFObject
                 let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
@@ -87,11 +84,9 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
                 let ingredientCategory = ingredient["ingredientCategory"] as! (String)
                 if !categories.contains(ingredientCategory) {
                     categories.append(ingredientCategory)
-                    print("Category: \(ingredientCategory)")
                 }
             }
         }
-        
         return categories
     }
     
@@ -103,21 +98,16 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
                 let foodDiaryDetailPFObject = foodDiaryDetail as! PFObject
                 let ingredient = foodDiaryDetailPFObject["ingredientId"] as! PFObject
                 let quantity = foodDiaryDetailPFObject["numberOfServings"] as! Float
-                /*
-                do {
-                    try ingredient.fetch()
-                }  catch let error as NSError {
-                    print(error.localizedDescription)
-                } */
                 let ingredientCategory = ingredient["ingredientCategory"] as! (String)
                 let calories = ingredient["calories"] as! Float
                 if ingredientCategory == category {
                     totalCalories += quantity*calories
                 }
+                
+                print("Calories within function: \(ingredientCategory) is \(totalCalories)")
             }
         }
         return totalCalories
-        
     }
     
     func getFoodDiaryEntriesWithIngredient(Ingredient: String) -> [FoodDiaryEntry] {
@@ -130,7 +120,6 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
                 }
             }
         }
-        
         return filteredEntries
     }
     
@@ -143,7 +132,6 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         } else {
             return 1
         }
-        
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
