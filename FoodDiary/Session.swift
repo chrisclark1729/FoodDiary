@@ -22,5 +22,6 @@ class Session {
     var currentIngredient:PFObject?
     var currentSelectedMeal:Meal?
     var currentFetchedDetails:[AnyObject]?
+    var currentTotalCaloriesForSummary:Float?
     
 }

@@ -30,6 +30,7 @@ class IngredientsSummary {
         self.healthScore = 0
         self.attentionScore = 0
         self.lastTimestamp = NSDate()
+        self.ingredientCategoryTotalCalories += calories
         
         for entry in entries {
             let minutesDifference = NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
@@ -40,19 +41,16 @@ class IngredientsSummary {
                 self.entryCount += 1
                 self.mealCount += 1
             }
-            self.ingredientCategoryTotalCalories += calories
+            
             self.enjoymentScore += entry.enjoymentScore
             self.healthScore += entry.healthScore
             self.lastTimestamp = entry.timestamp
         }
         
         self.caloriesPerMeal += self.ingredientCategoryTotalCalories/Float(self.mealCount)
+        Session.sharedInstance.currentTotalCaloriesForSummary! += calories
         
-        if Session.sharedInstance.currentTotalCalories! == 0 {
-            self.percentTotalCalories = 0
-        } else {
-            self.percentTotalCalories = self.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCalories!
-        }
+        self.percentTotalCalories = self.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCaloriesForSummary!
     }
     
     func calculateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) -> Float {

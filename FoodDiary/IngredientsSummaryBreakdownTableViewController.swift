@@ -38,6 +38,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         
         Session.sharedInstance.currentFetchedDetails = foodDiaryDetails
         let categories = self.getIngredientCategoriesFromFoodDiaryDetails(Session.sharedInstance.currentFetchedDetails!)
+        Session.sharedInstance.currentTotalCaloriesForSummary = 0
         
         for category in categories {
             let calories = self.getCaloriesFromDetails(Session.sharedInstance.currentFetchedDetails!, category: category)
@@ -162,13 +163,13 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             let summaryData = self.summaries[row]
-            cell.textLabel!.text = " \(summaryData.ingredientCategory) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+            cell.textLabel!.text = " \(summaryData.ingredientCategory) (\(100*summaryData.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCaloriesForSummary!) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals)"
             return cell
         } else {
             if self.summaries.count > 5 {
                 let summaryData = self.summaries[row + 5]
-                cell.textLabel!.text = " \(summaryData.ingredientCategory) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
+                cell.textLabel!.text = " \(summaryData.ingredientCategory) (\(100*summaryData.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCaloriesForSummary!) % of total calories)"
                 cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals)"
                 return cell
             } else {
