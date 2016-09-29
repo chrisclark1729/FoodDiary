@@ -13,9 +13,9 @@ extension FoodDiaryEntry {
     
     static func getRecentFoodDiaryEntryPFObjects() -> [AnyObject] {
         let getRecentFoodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        getRecentFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
+        getRecentFoodDiaryEntries.whereKey("userId", equalTo: PFUser.current()!)
        // getRecentFoodDiaryEntries.whereKey("userId", equalTo: "Z66C62Ev7M")
-        getRecentFoodDiaryEntries.orderByDescending("timestamp")
+        getRecentFoodDiaryEntries.order(byDescending: "timestamp")
         getRecentFoodDiaryEntries.limit = 10
         
         do {
@@ -39,7 +39,7 @@ extension FoodDiaryEntry {
         return entries
     }
     
-    func getNearbyFoodDiaryEntries(distance: Double) -> [FoodDiaryEntry] {
+    func getNearbyFoodDiaryEntries(_ distance: Double) -> [FoodDiaryEntry] {
         let geoPoint = self.location
         let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
         nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
@@ -58,12 +58,12 @@ extension FoodDiaryEntry {
         return [FoodDiaryEntry]()
     }
     
-     func getNearbyFoodDiaryEntriesPFObjects(distance: Double) -> [PFObject] {
+     func getNearbyFoodDiaryEntriesPFObjects(_ distance: Double) -> [PFObject] {
         let geoPoint = self.location
         let nearbyMeals:PFQuery = PFQuery(className:"FoodDiaryEntries")
         nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: distance)
       //  nearbyMeals.whereKey("userId", equalTo: "Z66C62Ev7M")
-        nearbyMeals.whereKey("userId", equalTo: PFUser.currentUser()!)
+        nearbyMeals.whereKey("userId", equalTo: PFUser.current()!)
         
         do {
             let fetchedObjects = try nearbyMeals.findObjects()
@@ -81,7 +81,7 @@ extension FoodDiaryEntry {
         return [PFObject]()
     }
     
-    func isDinerNameSelected(dinerName: String) -> Bool {
+    func isDinerNameSelected(_ dinerName: String) -> Bool {
         for diner in self.diners {
             if diner.name == dinerName {
                 return true
@@ -151,12 +151,12 @@ extension FoodDiaryEntry {
         return [String]()
             }
     
-    static func getLocationSuggestions(geoPoint: PFGeoPoint) -> [String] {
+    static func getLocationSuggestions(_ geoPoint: PFGeoPoint) -> [String] {
         let nearbyLocations:PFQuery = PFQuery(className:"FoodDiaryEntries")
         nearbyLocations.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.04)
         nearbyLocations.limit = 10
         nearbyLocations.whereKey("locationName", notEqualTo: "")
-        nearbyLocations.orderByDescending("timestamp")
+        nearbyLocations.order(byDescending: "timestamp")
         nearbyLocations.selectKeys(["locationName"])
         
         do {
@@ -189,7 +189,7 @@ extension FoodDiaryEntry {
         return self.locationName
     }
     
-    func hasIngredientCategory(category: String) -> Bool {
+    func hasIngredientCategory(_ category: String) -> Bool {
         let details = self.fetchFoodDiaryDetails()
         for detail in details! {
             let foodDiaryDetailPFObject = detail as! PFObject

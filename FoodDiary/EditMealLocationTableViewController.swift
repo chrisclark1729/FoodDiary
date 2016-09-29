@@ -25,7 +25,7 @@ class EditMealLocationTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.initLocationNameField()
         self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(self.foodDiaryEntry!.location)
@@ -33,10 +33,10 @@ class EditMealLocationTableViewController: UITableViewController {
         
     }
     
-    @IBAction func updateLocationName(sender: UIButton) {
+    @IBAction func updateLocationName(_ sender: UIButton) {
         self.foodDiaryEntry?.locationName = self.locationNameField!.text!
         foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func initLocationNameField() {
@@ -50,12 +50,12 @@ class EditMealLocationTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
     
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else {
@@ -65,9 +65,9 @@ class EditMealLocationTableViewController: UITableViewController {
 
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("LocationNameCell", forIndexPath: indexPath) as! LocationNameFieldTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LocationNameCell", for: indexPath) as! LocationNameFieldTableViewCell
             if let suggestion = self.selectedSuggestion {
                 cell.locationNameField.text = suggestion
             } else {
@@ -78,15 +78,15 @@ class EditMealLocationTableViewController: UITableViewController {
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("LocationNameSuggestionCell", forIndexPath: indexPath)
-            cell.textLabel!.text = self.locationNameSuggestions[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LocationNameSuggestionCell", for: indexPath)
+            cell.textLabel!.text = self.locationNameSuggestions[(indexPath as NSIndexPath).row]
             return cell
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let locationName = self.locationNameSuggestions[indexPath.row]
+        let locationName = self.locationNameSuggestions[(indexPath as NSIndexPath).row]
         
         self.selectedSuggestion = locationName
         self.tableView.reloadData()

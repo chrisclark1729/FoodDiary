@@ -10,25 +10,25 @@ import UIKit
 
 class EditSummaryDatesTableViewController: UITableViewController {
     
-    var dayFormatter = NSDateFormatter()
+    var dayFormatter = DateFormatter()
     @IBOutlet weak var editSummaryStartDatePicker: UIDatePicker!
     @IBOutlet weak var editSummaryEndDatePicker: UIDatePicker!
 
-    @IBAction func updateNutritionSummaryData(sender: UIButton) {
+    @IBAction func updateNutritionSummaryData(_ sender: UIButton) {
         
         Session.sharedInstance.currentSelectedStartDate = editSummaryStartDatePicker.date
         Session.sharedInstance.currentSelectedEndDate = editSummaryEndDatePicker.date
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.editSummaryStartDatePicker.date = Session.sharedInstance.currentSelectedStartDate!
-        self.editSummaryEndDatePicker.date = Session.sharedInstance.currentSelectedEndDate!
+        self.editSummaryStartDatePicker.date = Session.sharedInstance.currentSelectedStartDate! as Date
+        self.editSummaryEndDatePicker.date = Session.sharedInstance.currentSelectedEndDate! as Date
         
         //User can only review at most one quarter at a time (92 days is length of Q3 & Q4)
-        self.editSummaryStartDatePicker.minimumDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-92*24*60*60)
+        self.editSummaryStartDatePicker.minimumDate = Session.sharedInstance.currentSelectedEndDate?.addingTimeInterval(-92*24*60*60) as Date?
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,12 +44,12 @@ class EditSummaryDatesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 2
     }

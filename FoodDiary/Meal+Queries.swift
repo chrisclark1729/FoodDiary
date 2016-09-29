@@ -11,13 +11,13 @@ import Foundation
 
 extension Meal {
     
-    static func getAllMealsInLocation(geoPoint: PFGeoPoint, dayPart: String) -> [Meal] {
+    static func getAllMealsInLocation(_ geoPoint: PFGeoPoint, dayPart: String) -> [Meal] {
         
         let nearbyMeals:PFQuery = PFQuery(className:"Meal")
         nearbyMeals.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 0.1)
         nearbyMeals.whereKey("isVerified", equalTo: true)
         nearbyMeals.whereKey("dayPart", equalTo: dayPart)
-        nearbyMeals.orderByDescending("count")
+        nearbyMeals.order(byDescending: "count")
         nearbyMeals.limit = 15
         
         do {
@@ -36,11 +36,11 @@ extension Meal {
         return [Meal]()
     }
     
-    static func searchMeals(searchText: String? = nil) -> [Meal] {
+    static func searchMeals(_ searchText: String? = nil) -> [Meal] {
         let query = PFQuery(className: "Meal")
-        query.whereKey("mealName", containsString: searchText)
+        query.whereKey("mealName", contains: searchText)
         query.limit = 20
-        query.orderByDescending("mealName")
+        query.order(byDescending: "mealName")
         do {
             let fetchedObjects = try query.findObjects()
             var entries = [Meal]()

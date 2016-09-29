@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class LocationSummaryBreakdownTableViewController: UITableViewController {
     
@@ -21,7 +41,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         self.locationSummaries = self.getLocationSummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getLocationSummary()
         
     }
@@ -43,10 +63,10 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return locationSummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return locationSummaryData.sorted(by: { $0.attentionScore > $1.attentionScore })
     }
     
-    func getLocationSummaryFromEntries(entries: [FoodDiaryEntry]) -> [LocationSummary]{
+    func getLocationSummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [LocationSummary]{
         var summaries = [LocationSummary]()
         
         for entry in entries {
@@ -61,7 +81,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         return summaries
     }
     
-    func islocationExisting(locationName: String, summaries: [LocationSummary]) -> Bool {
+    func islocationExisting(_ locationName: String, summaries: [LocationSummary]) -> Bool {
         
         for summary in summaries {
             if summary.locationName == locationName {
@@ -71,7 +91,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         return false
     }
     
-    func getLocationSummaryWithName(locationName: String, summaries: [LocationSummary]) -> LocationSummary? {
+    func getLocationSummaryWithName(_ locationName: String, summaries: [LocationSummary]) -> LocationSummary? {
         for summary in summaries {
             if summary.locationName == locationName {
                 return summary
@@ -87,7 +107,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         if locationSummaries.count > 5 {
@@ -98,7 +118,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Primary Focus"
         } else {
@@ -106,7 +126,7 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         if section == 0 {
@@ -120,11 +140,11 @@ class LocationSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("locationData", forIndexPath: indexPath)
-        let row = indexPath.row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "locationData", for: indexPath)
+        let row = (indexPath as NSIndexPath).row
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             let summaryData = self.locationSummaries[row]
             
             cell.textLabel!.text = " \(summaryData.locationName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"

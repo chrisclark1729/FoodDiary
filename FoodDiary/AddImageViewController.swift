@@ -12,7 +12,7 @@ import MobileCoreServices
 
 class AddImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBAction func addFromGallery(sender: AnyObject) {
+    @IBAction func addFromGallery(_ sender: AnyObject) {
     }
     
     
@@ -30,28 +30,28 @@ class AddImageViewController: UIViewController, UIImagePickerControllerDelegate,
     var imageView = UIImageView()
     
     @IBAction func takePhoto() {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let picker = UIImagePickerController()
-            picker.sourceType = .Camera
+            picker.sourceType = .camera
             picker.mediaTypes = [kUTTypeImage as String]
             picker.delegate = self
             picker.allowsEditing = false
-            presentViewController(picker, animated: true, completion: nil)
+            present(picker, animated: true, completion: nil)
             
         }
     }
     
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         imageView.image = image
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 
     

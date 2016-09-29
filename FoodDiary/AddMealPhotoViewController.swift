@@ -8,6 +8,26 @@
 
 import UIKit
 import MobileCoreServices
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 //import Parse
 //import GoogleMaps
 
@@ -19,39 +39,39 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
     var foodDiaryEntry: FoodDiaryEntry?
     
     func noCamera(){
-        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style:.Default, handler: nil)
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
         alertVC.addAction(okAction)
-        presentViewController(alertVC, animated: true, completion: nil)
+        present(alertVC, animated: true, completion: nil)
     }
 
-    @IBAction func takePhoto(sender: AnyObject) {
+    @IBAction func takePhoto(_ sender: AnyObject) {
         
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let picker = UIImagePickerController()
-            picker.sourceType = .Camera
+            picker.sourceType = .camera
             picker.mediaTypes = [kUTTypeImage as String]
             picker.delegate = self
             picker.allowsEditing = true
-            presentViewController(picker, animated: true, completion: nil)
+            present(picker, animated: true, completion: nil)
         
         } else {
             noCamera()
         }
 }
         
-    @IBAction func addFromGallery(sender: AnyObject) {
+    @IBAction func addFromGallery(_ sender: AnyObject) {
         
         let imagePicker:UIImagePickerController = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.delegate = self
        // self.getCurrentLocationName()
         
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
         
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var image = info[UIImagePickerControllerEditedImage] as? UIImage
         if image == nil {
             image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -60,15 +80,15 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         imageView.image = image
         makeRoomForImage()
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
         let imageData = image!.lowestQualityJPEGNSData
-        let imageFile:PFFile = PFFile(data: imageData)!
+        let imageFile:PFFile = PFFile(data: imageData as Data)!
         
         let userPhoto = PFObject.createFoodDiaryEntryPFObject()
 
         userPhoto["imageFile"] = imageFile
-        userPhoto["userId"] = PFUser.currentUser()
+        userPhoto["userId"] = PFUser.current()
         userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
         if self.locationNameSuggestions.count > 0 {
             userPhoto["locationName"] = self.locationNameSuggestions[0]
@@ -78,8 +98,8 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
         
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -88,7 +108,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
 
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         LocationManagerViewController.sharedLocation.refreshLocation()
         self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation))
@@ -109,7 +129,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
             }
         } else {
             extraHeight = -imageView.frame.height
-            imageView.frame = CGRectZero
+            imageView.frame = CGRect.zero
         }
         preferredContentSize = CGSize(width: preferredContentSize.width, height: preferredContentSize.height + extraHeight)
     }

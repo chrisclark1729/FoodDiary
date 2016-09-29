@@ -11,7 +11,7 @@ import UIKit
 
 class NutritionSummaryTableViewController: UITableViewController {
     
-    var dayFormatter = NSDateFormatter()
+    var dayFormatter = DateFormatter()
     var foodDiaryEntries: [FoodDiaryEntry]?
     @IBOutlet weak var unarchivedMealCountLabel: UILabel!
     @IBOutlet weak var startDateLabel: UILabel!
@@ -29,32 +29,32 @@ class NutritionSummaryTableViewController: UITableViewController {
         super.viewDidLoad()
         dayFormatter.dateFormat = "EEEE: MMM dd, yyyy"
         
-        Session.sharedInstance.currentSelectedEndDate = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let unitFlags: NSCalendarUnit = [.Year,.Month,.Day,.Hour,.Minute,.Second]
-        let components = calendar.components(unitFlags, fromDate: Session.sharedInstance.currentSelectedEndDate!)
+        Session.sharedInstance.currentSelectedEndDate = Date()
+        let calendar = Calendar.current
+        let unitFlags: NSCalendar.Unit = [.year,.month,.day,.hour,.minute,.second]
+        var components = (calendar as NSCalendar).components(unitFlags, from: Session.sharedInstance.currentSelectedEndDate! as Date)
         components.hour = 0
         components.minute = 0
         components.second = 0
-        Session.sharedInstance.currentSelectedEndDate = calendar.dateFromComponents(components)
+        Session.sharedInstance.currentSelectedEndDate = calendar.date(from: components)
 
-        self.endDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedEndDate!)
+        self.endDateLabel.text = dayFormatter.string(from: Session.sharedInstance.currentSelectedEndDate! as Date)
   
-        let startDate = Session.sharedInstance.currentSelectedEndDate?.dateByAddingTimeInterval(-7*24*60*60)
+        let startDate = Session.sharedInstance.currentSelectedEndDate?.addingTimeInterval(-7*24*60*60)
         Session.sharedInstance.currentSelectedStartDate = startDate
-        self.startDateLabel.text = dayFormatter.stringFromDate(Session.sharedInstance.currentSelectedStartDate!)
+        self.startDateLabel.text = dayFormatter.string(from: Session.sharedInstance.currentSelectedStartDate! as Date)
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = Calendar.current
         
         if let startDate = Session.sharedInstance.currentSelectedStartDate {
-            self.startDateLabel.text = dayFormatter.stringFromDate(startDate)
+            self.startDateLabel.text = dayFormatter.string(from: startDate as Date)
             if let endDate = Session.sharedInstance.currentSelectedEndDate {
-                let endDateForLabel = calendar.dateByAddingUnit(.Day, value: -1, toDate: endDate, options: [])
-                self.endDateLabel.text = dayFormatter.stringFromDate(endDateForLabel!)
+                let endDateForLabel = (calendar as NSCalendar).date(byAdding: .day, value: -1, to: endDate as Date, options: [])
+                self.endDateLabel.text = dayFormatter.string(from: endDateForLabel!)
                 self.foodDiaryEntries = FoodDiaryEntry.fetchFoodDiaryEntriesForSummary(startDate, endDate: endDate)
                 self.dayCountLabel.text = "Days: \(sumCalories().0)"
                 self.mealCountLabel.text = "Meals: \(sumCalories().1)"
@@ -90,7 +90,7 @@ class NutritionSummaryTableViewController: UITableViewController {
             if entry.isVisible == true {
                 mealsToBeReviewed += 1
             } else {
-                let date = dayFormatter.stringFromDate(entry.timestamp)
+                let date = dayFormatter.string(from: entry.timestamp as Date)
                 if daysArray.contains(date) {
                     print("Day already counted")
                 } else {

@@ -22,25 +22,25 @@ class EditMealExperienceTableViewController: UITableViewController {
     @IBOutlet weak var healthScoreLabel: UILabel!
     
     
-    @IBAction func enjoymentScoreSlider(sender: AnyObject) {
+    @IBAction func enjoymentScoreSlider(_ sender: AnyObject) {
         
         let currentEnjoymentScore = NSString(format: "%.1f",self.editMealEnjoymentScoreSlider.value)
         enjoymentScoreLabel.text = "Enjoyment Score: \(currentEnjoymentScore)/5.0"
     }
-    @IBAction func energyLevelSlider(sender: AnyObject) {
+    @IBAction func energyLevelSlider(_ sender: AnyObject) {
         let currentEnergyLevel = NSString(format: "%.1f", self.editEnergyLevelSlider.value)
         energyLevelLabel.text = "Energy Level: \(currentEnergyLevel)/5.0"
         
     }
     
-    @IBAction func healthScoreSlider(sender: AnyObject) {
+    @IBAction func healthScoreSlider(_ sender: AnyObject) {
         let currentHealthScore = NSString(format: "%.1f",self.editMealHealthScoreSlider.value)
         healthScoreLabel.text = "Health Score: \(currentHealthScore)/5.0"
         
     }
     
     
-    @IBAction func saveMealExperience(sender: AnyObject) {
+    @IBAction func saveMealExperience(_ sender: AnyObject) {
         
         
         
@@ -49,7 +49,7 @@ class EditMealExperienceTableViewController: UITableViewController {
         self.foodDiaryEntry?.healthScore = self.editMealHealthScoreSlider.value
         
         foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     override func viewDidLoad() {
@@ -89,13 +89,13 @@ class EditMealExperienceTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 3
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 1

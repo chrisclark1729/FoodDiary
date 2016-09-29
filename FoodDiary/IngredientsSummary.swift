@@ -17,7 +17,7 @@ class IngredientsSummary {
     var percentTotalCalories: Float?
     var enjoymentScore: Float
     var healthScore: Float
-    var lastTimestamp: NSDate
+    var lastTimestamp: Date
     var attentionScore: Float?
     
     init(entries: [FoodDiaryEntry], ingredientCategory: String, calories: Float) {
@@ -29,13 +29,13 @@ class IngredientsSummary {
         self.enjoymentScore = 0
         self.healthScore = 0
         self.attentionScore = 0
-        self.lastTimestamp = NSDate()
+        self.lastTimestamp = Date()
         self.ingredientCategoryTotalCalories += calories
         
         for entry in entries {
-            let minutesDifference = NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
+            let minutesDifference = (Calendar.current as NSCalendar).components(.minute, from: self.lastTimestamp, to: entry.timestamp as Date, options: []).minute
             
-            if abs(minutesDifference) < 75 {
+            if abs(minutesDifference!) < 75 {
                 self.entryCount += 1
             } else {
                 self.entryCount += 1
@@ -44,7 +44,7 @@ class IngredientsSummary {
             
             self.enjoymentScore += entry.enjoymentScore
             self.healthScore += entry.healthScore
-            self.lastTimestamp = entry.timestamp
+            self.lastTimestamp = entry.timestamp as Date
         }
         
         self.caloriesPerMeal += self.ingredientCategoryTotalCalories/Float(self.mealCount)
@@ -53,7 +53,7 @@ class IngredientsSummary {
         self.percentTotalCalories = self.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCaloriesForSummary!
     }
     
-    func calculateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) -> Float {
+    func calculateAttentionScore(_ maxCaloriesPerMeal: Float, totalMeals: Int) -> Float {
         var experienceScores: Float = 0
         var attentionScore:Float = 0
         var compareAgainstTotal:Float = 0
@@ -69,7 +69,7 @@ class IngredientsSummary {
         return attentionScore
     }
     
-    func populateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) {
+    func populateAttentionScore(_ maxCaloriesPerMeal: Float, totalMeals: Int) {
         self.attentionScore = self.calculateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
     }
     

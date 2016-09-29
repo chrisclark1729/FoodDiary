@@ -25,7 +25,7 @@ class EditMealDetailTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.initMealNameField()
         self.mealNameSuggestions = Meal.getAllMealsInLocation((foodDiaryEntry?.location)!, dayPart: (self.foodDiaryEntry?.dayPart())!)
@@ -35,14 +35,14 @@ class EditMealDetailTableViewController: UITableViewController {
         
     }
    
-    @IBAction func saveMealName(sender: AnyObject) {
+    @IBAction func saveMealName(_ sender: AnyObject) {
         self.foodDiaryEntry?.mealName = self.mealNameField!.text!
         let mealIngredients = Session.sharedInstance.currentSelectedMeal?.getMealIngredients()
         if (mealIngredients != nil){
             self.foodDiaryEntry?.addFoodDiaryDetailFromMealIngredients(mealIngredients!)
         }
         foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func initMealNameField() {
@@ -56,12 +56,12 @@ class EditMealDetailTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 3
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 || section == 1 {
             return 1
         } else {
@@ -70,14 +70,14 @@ class EditMealDetailTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath)
+        if (indexPath as NSIndexPath).section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
             return cell
 
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("MealNameCell", forIndexPath: indexPath) as! MealNameFieldTableViewCell
+        } else if (indexPath as NSIndexPath).section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MealNameCell", for: indexPath) as! MealNameFieldTableViewCell
             if let suggestion = Session.sharedInstance.currentSelectedMeal {
                 cell.mealNameField.text = suggestion.getMealName()
             } else {
@@ -88,20 +88,20 @@ class EditMealDetailTableViewController: UITableViewController {
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("SuggestionCell", forIndexPath: indexPath) 
-            cell.textLabel!.text = self.mealNameSuggestions[indexPath.row].getMealName()
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestionCell", for: indexPath) 
+            cell.textLabel!.text = self.mealNameSuggestions[(indexPath as NSIndexPath).row].getMealName()
             return cell
         }
     
 
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 {
-            self.performSegueWithIdentifier("mealSearch", sender: self)
+        if (indexPath as NSIndexPath).section == 0 {
+            self.performSegue(withIdentifier: "mealSearch", sender: self)
         } else {
-            let meal = self.mealNameSuggestions[indexPath.row]
+            let meal = self.mealNameSuggestions[(indexPath as NSIndexPath).row]
             
             Session.sharedInstance.currentSelectedMeal = meal
             self.tableView.reloadData()

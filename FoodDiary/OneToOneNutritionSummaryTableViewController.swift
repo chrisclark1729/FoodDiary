@@ -88,7 +88,7 @@ class OneToOneNutritionSummaryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         if locationSummaries.count > 5 {
@@ -99,7 +99,7 @@ class OneToOneNutritionSummaryTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Primary Focus"
         }
@@ -107,32 +107,32 @@ class OneToOneNutritionSummaryTableViewController: UITableViewController {
         return "Day Part"
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return self.summaries.count
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("dayPartCell", forIndexPath: indexPath)
-        let row = indexPath.row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dayPartCell", for: indexPath)
+        let row = (indexPath as NSIndexPath).row
         
         let summaryData = self.summaries[row]
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             
             cell.textLabel!.text = "Morning: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
             
-        } else if indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).row == 1 {
             cell.textLabel!.text = "Late Morning: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
             
-        } else if indexPath.row == 2 {
+        } else if (indexPath as NSIndexPath).row == 2 {
             cell.textLabel!.text = "Afternoon: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
-        } else if indexPath.row == 3 {
+        } else if (indexPath as NSIndexPath).row == 3 {
             cell.textLabel!.text = "Evening: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
-        } else if indexPath.row == 4 {
+        } else if (indexPath as NSIndexPath).row == 4 {
             cell.textLabel!.text = "Night: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
-        } else if indexPath.row == 5 {
+        } else if (indexPath as NSIndexPath).row == 5 {
             cell.textLabel!.text = "Late Night: (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
         }
         

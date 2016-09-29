@@ -18,7 +18,7 @@ class LocationSummary {
     var percentTotalCalories: Float?
     var enjoymentScore: Float
     var healthScore: Float
-    var lastTimestamp: NSDate
+    var lastTimestamp: Date
     var attentionScore: Float?
 
     init(entry: FoodDiaryEntry) {
@@ -29,7 +29,7 @@ class LocationSummary {
         self.caloriesPerMeal = entry.calories/Float(self.mealCount)
         self.enjoymentScore = entry.enjoymentScore
         self.healthScore = entry.healthScore
-        self.lastTimestamp = entry.timestamp
+        self.lastTimestamp = entry.timestamp as Date
         if Session.sharedInstance.currentTotalCalories! == 0 {
             self.percentTotalCalories = 0
         } else {
@@ -37,10 +37,10 @@ class LocationSummary {
         }
     }
     
-    func updateLocationSummary(entry: FoodDiaryEntry) {
-        let minutesDifference = NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
+    func updateLocationSummary(_ entry: FoodDiaryEntry) {
+        let minutesDifference = (Calendar.current as NSCalendar).components(.minute, from: self.lastTimestamp, to: entry.timestamp as Date, options: []).minute
         
-        if abs(minutesDifference) < 75 {
+        if abs(minutesDifference!) < 75 {
             self.entryCount += 1
         } else {
             self.entryCount += 1
@@ -52,11 +52,11 @@ class LocationSummary {
         self.enjoymentScore += entry.enjoymentScore
         self.healthScore += entry.healthScore
         self.percentTotalCalories = self.locationTotalCalories/Session.sharedInstance.currentTotalCalories!
-        self.lastTimestamp = entry.timestamp
+        self.lastTimestamp = entry.timestamp as Date
         
     }
     
-    func calculateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) -> Float {
+    func calculateAttentionScore(_ maxCaloriesPerMeal: Float, totalMeals: Int) -> Float {
         var experienceScores: Float = 0
         var attentionScore:Float = 0
         var compareAgainstTotal:Float = 0
@@ -72,7 +72,7 @@ class LocationSummary {
         return attentionScore
     }
     
-    func populateAttentionScore(maxCaloriesPerMeal: Float, totalMeals: Int) {
+    func populateAttentionScore(_ maxCaloriesPerMeal: Float, totalMeals: Int) {
         self.attentionScore = self.calculateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
     }
 

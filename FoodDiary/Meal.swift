@@ -15,7 +15,7 @@ class Meal: BaseEntity {
         return self.entity["mealId"] as! String
     }
     
-    func setMealName(name: String) {
+    func setMealName(_ name: String) {
         self.entity["mealId"] = name
 
     }

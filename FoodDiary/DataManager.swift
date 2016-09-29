@@ -17,7 +17,7 @@ class DataManager {
     var delegate:TimelineTableViewController?
     
     func loadTimelineData () {
-        foodDiaryEntryArray.removeAll(keepCapacity: false)
+        foodDiaryEntryArray.removeAll(keepingCapacity: false)
         
         let getTimelineData:PFQuery = PFQuery(className:"FoodDiaryEntries")
         
@@ -28,12 +28,12 @@ class DataManager {
         */
         
         getTimelineData.whereKey("isVisible", equalTo: true)
-        getTimelineData.whereKey("userId", equalTo: PFUser.currentUser()!)
-        getTimelineData.orderByDescending("timestamp")
-        getTimelineData.limit = 25
+        getTimelineData.whereKey("userId", equalTo: PFUser.current()!)
+        getTimelineData.order(byDescending: "timestamp")
+        getTimelineData.limit = 20
         
-        getTimelineData.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        getTimelineData.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
             
             if error == nil {
                 // The find succeeded.
@@ -52,7 +52,7 @@ class DataManager {
                 }
             } else {
                 // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
+                print("Error: \(error!) \(error!.localizedDescription)")
             }
             
         }

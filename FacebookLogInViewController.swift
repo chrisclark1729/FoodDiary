@@ -9,6 +9,16 @@
 import UIKit
 
 class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+    /*!
+     @abstract Sent to the delegate when the button was used to login.
+     @param loginButton the sender
+     @param result The results of the login
+     @param error The error (if any) from the login
+ 
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        <#code#>
+    }
+*/
     
     var logInViewController: PFLogInViewController! = PFLogInViewController()
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()
@@ -16,7 +26,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (FBSDKAccessToken.currentAccessToken() != nil)
+        if (FBSDKAccessToken.current() != nil)
         {
             // User is already logged in, do work such as go to next view controller.
             // Or Show Logout Button
@@ -37,14 +47,14 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
-        if (PFUser.currentUser() == nil) {
+        if (PFUser.current() == nil) {
             
-            self.logInViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton,
-                                               .PasswordForgotten, .DismissButton ]
+            self.logInViewController.fields = [.usernameAndPassword, .logInButton, .signUpButton,
+                                               .passwordForgotten, .dismissButton ]
             
             let logInLogoTitle = UILabel()
             logInLogoTitle.text = "Trust Buds"
@@ -65,7 +75,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     
     // Facebook Delegate Methods
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User Logged In")
         
         if ((error) != nil)
@@ -78,8 +88,8 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
-            print(PFUser.currentUser())
-            NSNotificationCenter.defaultCenter().postNotificationName("userDidLogIn", object: nil)
+            print(PFUser.current())
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "userDidLogIn"), object: nil)
             
             if result.grantedPermissions.contains("email")
             {
@@ -91,14 +101,14 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
     
     func returnUserData()
     {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             
             if ((error) != nil)
             {
@@ -108,9 +118,9 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
             else
             {
                 print("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
+                let userName : NSString = (result! as AnyObject).value(forKey: "name") as! NSString
                 print("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
+                let userEmail : NSString = (result! as AnyObject).value(forKey: "email") as! NSString
                 print("User Email is: \(userEmail)")
             }
         })
@@ -123,7 +133,7 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
     
     // MARK: Parse Login
     
-    func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
+    func log(_ logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         
         if (!username.isEmpty || !password.isEmpty) {
             return true
@@ -133,45 +143,45 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         
     }
     
-    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+    func log(_ logInController: PFLogInViewController, didLogIn user: PFUser) {
         //self.dismissViewControllerAnimated(true, completion: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("userDidLogIn", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "userDidLogIn"), object: nil)
     }
     
-    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
+    func log(_ logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
         print("Failed to login...")
-        let refreshAlert = UIAlertController(title: "Not Able to Login", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        let refreshAlert = UIAlertController(title: "Not Able to Login", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
         
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
-            refreshAlert.dismissViewControllerAnimated(true, completion: nil)
+            refreshAlert.dismiss(animated: true, completion: nil)
         }))
-        AppDelegate.topViewController().presentViewController(refreshAlert, animated: true, completion: nil)
+        AppDelegate.topViewController().present(refreshAlert, animated: true, completion: nil)
     }
     
     // MARK: Parse Sign Up
     
     
-    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func signUpViewController(_ signUpController: PFSignUpViewController, didSignUp user: PFUser) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
+    func signUpViewController(_ signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
         print("Failed to sign up...")
     }
     
-    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
+    func signUpViewControllerDidCancelSignUp(_ signUpController: PFSignUpViewController) {
         print("User dismissed sign up.")
     }
     
     // MARK: Actions
     
-    @IBAction func simpleAction(sender: AnyObject) {
-        self.presentViewController(self.logInViewController, animated: true, completion: nil)
+    @IBAction func simpleAction(_ sender: AnyObject) {
+        self.present(self.logInViewController, animated: true, completion: nil)
     }
     
     
-    @IBAction func logoutAction(sender: AnyObject) {
+    @IBAction func logoutAction(_ sender: AnyObject) {
         PFUser.logOut()
     }
     

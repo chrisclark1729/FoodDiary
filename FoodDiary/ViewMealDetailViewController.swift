@@ -7,12 +7,11 @@
 //
 
 import UIKit
-//import Parse
 
 class ViewMealDetailViewController: UITableViewController {
     
     var foodDiaryEntry: FoodDiaryEntry?
-    var dayFormatter = NSDateFormatter()
+    var dayFormatter = DateFormatter()
     
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var mealLocationName: UILabel!
@@ -28,7 +27,7 @@ class ViewMealDetailViewController: UITableViewController {
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
     
-    @IBAction func archiveMeal(sender: AnyObject) {
+    @IBAction func archiveMeal(_ sender: AnyObject) {
         
         self.foodDiaryEntry?.archiveMeal()
         let ingredientCount = self.foodDiaryEntry?.ingredientDetails.count
@@ -38,7 +37,7 @@ class ViewMealDetailViewController: UITableViewController {
         } else {
             self.foodDiaryEntry?.createMealFromFoodDiaryEntry()
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
 
@@ -55,13 +54,12 @@ class ViewMealDetailViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         foodDiaryEntry?.save()
         if let entry = foodDiaryEntry {
             
             Session.sharedInstance.currentFoodDiaryEntry = entry
             
-   
             entry.populateDiners()
             entry.populateIngredients()
             entry.populateNotes()
@@ -73,7 +71,7 @@ class ViewMealDetailViewController: UITableViewController {
             
             self.mealName.text = entry.mealName
             self.mealLocationName.text = entry.locationName
-            self.timeLabel.text = dayFormatter.stringFromDate(entry.timestamp)
+            self.timeLabel.text = dayFormatter.string(from: entry.timestamp as Date)
             self.moodLabel.text = entry.mood
             self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", entry.enjoymentScore) as String)
             self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",entry.energyLevel) as String)
@@ -103,59 +101,59 @@ class ViewMealDetailViewController: UITableViewController {
     } */
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "editFoodDiaryEntry"
         {
-            let destination = segue.destinationViewController as! EditMealDetailTableViewController
+            let destination = segue.destination as! EditMealDetailTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealExperience" {
-            let destination = segue.destinationViewController as! EditMealExperienceTableViewController
+            let destination = segue.destination as! EditMealExperienceTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealComponents" {
-            let destination = segue.destinationViewController as! EditMealComponentsTableViewController
+            let destination = segue.destination as! EditMealComponentsTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMood" {
-            let destination = segue.destinationViewController as! EditMoodTableViewController
+            let destination = segue.destination as! EditMoodTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editMealTags" {
-            let destination = segue.destinationViewController as! EditMealTagsTableViewController
+            let destination = segue.destination as! EditMealTagsTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "showSearchIngredients" {
-            let destination = segue.destinationViewController as! IngredientsSearchTableViewController
+            let destination = segue.destination as! IngredientsSearchTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             
         } else if segue.identifier == "showIngredientList" {
-            let destination = segue.destinationViewController as! ViewAndEditMealIngredientsTableViewController
+            let destination = segue.destination as! ViewAndEditMealIngredientsTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             
         } else if segue.identifier == "editLocation" {
-            let destination = segue.destinationViewController as! EditMealLocationTableViewController
+            let destination = segue.destination as! EditMealLocationTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         } else if segue.identifier == "editTimestamp" {
-            let destination = segue.destinationViewController as! EditTimestampTableViewController
+            let destination = segue.destination as! EditTimestampTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
         }
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let shortPath = (indexPath.section, indexPath.row)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let shortPath = ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row)
         switch shortPath {
         case (0, 3):
             if self.foodDiaryEntry!.hasIngredients()  {
-                self.performSegueWithIdentifier("showIngredientList", sender: self)
+                self.performSegue(withIdentifier: "showIngredientList", sender: self)
             } else {
-                self.performSegueWithIdentifier("showSearchIngredients", sender: self)
+                self.performSegue(withIdentifier: "showSearchIngredients", sender: self)
             }
             break
         default:

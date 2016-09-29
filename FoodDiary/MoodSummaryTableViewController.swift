@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MoodSummaryBreakdownTableViewController: UITableViewController {
     
@@ -21,12 +41,12 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
         self.moodSummaries = self.getMoodSummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getMoodSummary()
         
     }
     
-    func isMoodExisting(mood: String, summaries: [MoodSummary]) -> Bool {
+    func isMoodExisting(_ mood: String, summaries: [MoodSummary]) -> Bool {
         
         for summary in summaries {
             if summary.mood == mood {
@@ -36,7 +56,7 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
         return false
     }
     
-    func getMoodSummaryWithName(mood: String, summaries: [MoodSummary]) -> MoodSummary? {
+    func getMoodSummaryWithName(_ mood: String, summaries: [MoodSummary]) -> MoodSummary? {
         for summary in summaries {
             if summary.mood == mood {
                 return summary
@@ -45,7 +65,7 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
         return nil
     }
     
-    func getMoodSummaryFromEntries(entries: [FoodDiaryEntry]) -> [MoodSummary]{
+    func getMoodSummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [MoodSummary]{
         var summaries = [MoodSummary]()
         
         for entry in entries {
@@ -80,7 +100,7 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return moodSummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return moodSummaryData.sorted(by: { $0.attentionScore > $1.attentionScore })
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,7 +110,7 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         if moodSummaries.count > 5 {
@@ -101,7 +121,7 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Primary Focus"
         } else {
@@ -109,7 +129,7 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         if section == 0 {
@@ -125,11 +145,11 @@ class MoodSummaryBreakdownTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("moodData", forIndexPath: indexPath)
-        let row = indexPath.row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "moodData", for: indexPath)
+        let row = (indexPath as NSIndexPath).row
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             let summaryData = self.moodSummaries[row]
             
             cell.textLabel!.text = " \(summaryData.mood) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"

@@ -12,7 +12,7 @@ import Foundation
 //Pass a food diary entry object and this populates the properties
 
 extension PFObject {
-    func populateWithFoodDiaryEntry(entry:FoodDiaryEntry) {
+    func populateWithFoodDiaryEntry(_ entry:FoodDiaryEntry) {
         self["mealName"] = entry.mealName
         self["locationName"] = entry.locationName
         self["timestamp"] = entry.timestamp
@@ -37,7 +37,7 @@ extension PFObject {
 
         userPhoto["mealName"] = ""
         userPhoto["locationName"] = ""
-        userPhoto["timestamp"] = NSDate()
+        userPhoto["timestamp"] = Date()
         userPhoto["wasEaten"] = true
         userPhoto["otherDiners"] = ""
         userPhoto["mood"] = ""
@@ -51,7 +51,7 @@ extension PFObject {
         userPhoto["gramsSaturatedFat"] = 0
         userPhoto["gramsFiber"] = 0
         userPhoto["healthScore"] = 0
-        userPhoto["timezone"] = NSTimeZone.localTimeZone().abbreviation!
+        userPhoto["timezone"] = NSTimeZone.local.abbreviation()!
         userPhoto["isVisible"] = true
         userPhoto["ingredients"] = ""
         

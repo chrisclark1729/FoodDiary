@@ -51,7 +51,7 @@ extension FoodDiaryEntry {
         }
     }
     
-    func createMealIngredientsFromFoodDiaryDetails(meal: PFObject) {
+    func createMealIngredientsFromFoodDiaryDetails(_ meal: PFObject) {
         
         do {
             for ingredient in self.ingredientDetails {

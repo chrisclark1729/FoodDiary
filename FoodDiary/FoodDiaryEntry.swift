@@ -13,7 +13,7 @@ class FoodDiaryEntry: NSObject {
     
     var mealID:String
     var mealName:String
-    var timestamp:NSDate
+    var timestamp:Date
     var locationName:String
     var imgURL:AnyObject?
     var calories:Float
@@ -36,7 +36,7 @@ class FoodDiaryEntry: NSObject {
     var ingredientDetails = [FoodDiaryDetail]()
     var toPFObject: PFObject?
 
-    init(mealID:String,mealName:String,timestamp:NSDate,locationName:String,imgURL:AnyObject?,calories:Float,gramsCarbs:Float,gramsProtein:Float,gramsFat:Float,gramsFiber:Float,gramsSaturatedFat:Float,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
+    init(mealID:String,mealName:String,timestamp:Date,locationName:String,imgURL:AnyObject?,calories:Float,gramsCarbs:Float,gramsProtein:Float,gramsFat:Float,gramsFiber:Float,gramsSaturatedFat:Float,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -62,9 +62,9 @@ class FoodDiaryEntry: NSObject {
     init(fetchedObject: PFObject){
         self.mealID=fetchedObject.objectId!
         self.mealName=fetchedObject["mealName"] as! String
-        self.timestamp=fetchedObject["timestamp"] as! NSDate
+        self.timestamp=fetchedObject["timestamp"] as! Date
         self.locationName=fetchedObject["locationName"] as! String
-        self.imgURL=fetchedObject["imageFile"]
+        self.imgURL=fetchedObject["imageFile"] as AnyObject?
         self.calories=fetchedObject["calories"] as! Float
         self.gramsCarbs=fetchedObject["gramsCarbs"] as! Float
         self.gramsProtein=fetchedObject["gramsProtein"] as! Float
@@ -83,17 +83,17 @@ class FoodDiaryEntry: NSObject {
         
     }
     
-    func addDiner(diner: OtherDiner) {
+    func addDiner(_ diner: OtherDiner) {
         
         self.diners.append(diner)
     }
     
-    func addNote(note: Note) {
+    func addNote(_ note: Note) {
         
         self.notes.append(note)
     }
     
-    func addIngredient(ingredient: Ingredient) {
+    func addIngredient(_ ingredient: Ingredient) {
         self.ingredients.append(ingredient)
     }
     
@@ -112,9 +112,9 @@ class FoodDiaryEntry: NSObject {
         //TODO: Base Day part on user preferences
         let date = self.timestamp
        // let calendar = NSCalendar.currentCalendar()
-        let timeFormatter = NSDateFormatter()
+        let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
-        let timeOfDay = timeFormatter.stringFromDate(date)
+        let timeOfDay = timeFormatter.string(from: date)
 
         var dayPart = ""
         /*
@@ -150,11 +150,11 @@ class FoodDiaryEntry: NSObject {
     func getDayOfWeek()->String {
         
         let date = self.timestamp
-        let formatter  = NSDateFormatter()
+        let formatter  = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let myComponents = myCalendar.components(.Weekday, fromDate: date)
-        let dayOfWeek = myComponents.weekday
+        let myCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let myComponents = (myCalendar as NSCalendar).components(.weekday, from: date)
+        let dayOfWeek = myComponents.weekday!
         switch(dayOfWeek) {
         case 1:
             return "Sun"

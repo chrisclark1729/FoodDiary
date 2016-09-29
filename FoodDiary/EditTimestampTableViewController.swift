@@ -14,10 +14,10 @@ class EditTimestampTableViewController: UITableViewController {
 
     @IBOutlet weak var editTimestampPicker: UIDatePicker!
     
-    @IBAction func saveMealTimestamp(sender: UIButton) {
+    @IBAction func saveMealTimestamp(_ sender: UIButton) {
         self.foodDiaryEntry?.timestamp = self.editTimestampPicker.date
         foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class EditTimestampTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.initTimestampPicker()
     }
@@ -40,10 +40,10 @@ class EditTimestampTableViewController: UITableViewController {
             editTimestampPickerField.becomeFirstResponder()
             
             if let entry = foodDiaryEntry {
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
                 
-                self.editTimestampPicker.date = entry.timestamp
+                self.editTimestampPicker.date = entry.timestamp as Date
                 
             } else {
                 print("No Food Entry")
@@ -58,12 +58,12 @@ class EditTimestampTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 2
     }

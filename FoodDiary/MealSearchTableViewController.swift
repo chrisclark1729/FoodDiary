@@ -30,17 +30,17 @@ class MealSearchTableViewController: UITableViewController, UISearchBarDelegate 
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return searchResults.count
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Searching for: \(searchText)")
         let searchResults = Meal.searchMeals(searchText)
         print("Search results : \(searchResults)")
@@ -49,19 +49,19 @@ class MealSearchTableViewController: UITableViewController, UISearchBarDelegate 
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mealCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mealCell", for: indexPath)
         
-        let meal = self.searchResults[indexPath.row]
+        let meal = self.searchResults[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = meal.getMealName()
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let meal = self.searchResults[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let meal = self.searchResults[(indexPath as NSIndexPath).row]
         Session.sharedInstance.currentSelectedMeal = meal
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
 
     }
 

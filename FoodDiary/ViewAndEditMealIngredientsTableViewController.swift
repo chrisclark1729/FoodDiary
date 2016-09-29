@@ -30,14 +30,14 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.foodDiaryEntry?.populateIngredientDetails()
         self.foodDiaryEntry?.populateIngredients()
         self.ingredientList.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Session.sharedInstance.currentSelectedFoodDiaryDetail = nil
     }
@@ -49,20 +49,20 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return self.foodDiaryEntry!.ingredientDetails.count
 
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
-        let row = indexPath.row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
+        let row = (indexPath as NSIndexPath).row
         let ingredientDetail = self.foodDiaryEntry!.ingredientDetails[row]
         let ingredientId = ingredientDetail.ingredientId
         do {
@@ -99,7 +99,7 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
 
     
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         return true
     }
@@ -107,24 +107,24 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[(indexPath as NSIndexPath).row]
             self.foodDiaryEntry?.deleteFoodDiaryDetail(foodDiaryDetail)
-            self.foodDiaryEntry!.ingredientDetails.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            self.foodDiaryEntry!.ingredientDetails.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let foodDiaryDetail = self.foodDiaryEntry!.ingredientDetails[(indexPath as NSIndexPath).row]
         Session.sharedInstance.currentSelectedFoodDiaryDetail = foodDiaryDetail
         Session.sharedInstance.currentIngredient = foodDiaryDetail.ingredientId
         print("selected ingredient \(foodDiaryDetail)")
       
-        self.performSegueWithIdentifier("editIngredientQuantity", sender: self)
+        self.performSegue(withIdentifier: "editIngredientQuantity", sender: self)
        // let destination = segue.destinationViewController as! IngredientAddTableViewController
         
      //   destination.foodDiaryEntry = self.foodDiaryEntry
@@ -150,7 +150,7 @@ class ViewAndEditMealIngredientsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

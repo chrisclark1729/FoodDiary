@@ -12,13 +12,13 @@ import Foundation
 
 extension FoodDiaryEntry {
     
-    static func fetchFoodDiaryPFObjectsForSummary(startDate:NSDate, endDate:NSDate) -> [PFObject] {
+    static func fetchFoodDiaryPFObjectsForSummary(_ startDate:Date, endDate:Date) -> [PFObject] {
         let summaryFoodDiaryEntries:PFQuery = PFQuery(className:"FoodDiaryEntries")
-        summaryFoodDiaryEntries.whereKey("userId", equalTo: PFUser.currentUser()!)
+        summaryFoodDiaryEntries.whereKey("userId", equalTo: PFUser.current()!)
        // summaryFoodDiaryEntries.whereKey("userId", equalTo: "Z66C62Ev7M")
         summaryFoodDiaryEntries.whereKey("timestamp", greaterThanOrEqualTo: startDate)
         summaryFoodDiaryEntries.whereKey("timestamp", lessThanOrEqualTo: endDate)
-        summaryFoodDiaryEntries.orderByAscending("timestamp")
+        summaryFoodDiaryEntries.order(byAscending: "timestamp")
         summaryFoodDiaryEntries.limit = 1000
         
         do {
@@ -31,7 +31,7 @@ extension FoodDiaryEntry {
         return [PFObject]()
     }
     
-    static func fetchFoodDiaryEntriesForSummary(startDate:NSDate, endDate:NSDate) -> [FoodDiaryEntry] {
+    static func fetchFoodDiaryEntriesForSummary(_ startDate:Date, endDate:Date) -> [FoodDiaryEntry] {
         let entryObjects = fetchFoodDiaryPFObjectsForSummary(startDate, endDate: endDate)
         var foodDiaryEntries = [FoodDiaryEntry]()
         for entry in entryObjects {

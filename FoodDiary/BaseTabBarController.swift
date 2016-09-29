@@ -12,8 +12,8 @@ class BaseTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseTabBarController.userDidLogIn), name: "userDidLogIn", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BaseTabBarController.userDidLogout), name: "userDidLogout", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseTabBarController.userDidLogIn), name: NSNotification.Name(rawValue: "userDidLogIn"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(BaseTabBarController.userDidLogout), name: NSNotification.Name(rawValue: "userDidLogout"), object: nil)
 
         // Do any additional setup after loading the view.
     }
@@ -23,26 +23,26 @@ class BaseTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if isLoggedIn() {
             print("User is logged in.")
         } else {
-            self.performSegueWithIdentifier("showLogInView", sender: self)
+            self.performSegue(withIdentifier: "showLogInView", sender: self)
         }
     }
     
     func isLoggedIn() -> Bool {
         
-        return (PFUser.currentUser() != nil)
+        return (PFUser.current() != nil)
     }
     
     func userDidLogIn() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         self.selectedIndex = 2
     }
     
     func userDidLogout() {
-        self.performSegueWithIdentifier("showLogInView", sender: self)
+        self.performSegue(withIdentifier: "showLogInView", sender: self)
     }
     
 

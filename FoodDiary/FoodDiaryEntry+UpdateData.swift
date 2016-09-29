@@ -8,23 +8,21 @@
 
 import Foundation
 import UIKit
-//import Parse
 
 extension FoodDiaryEntry {
     
-    
     func save() {
         let query = PFQuery(className:"FoodDiaryEntries")
-        query.getObjectInBackgroundWithId(self.mealID) {
-            (FoodDiaryEntry: PFObject?, error: NSError?) -> Void in
+        
+        
+        query.getObjectInBackground(withId: self.mealID) {
+            (FoodDiaryEntry: PFObject?, error: Error?) -> Void in
 
             if error != nil {
                 print(error)
             } else if let entry = FoodDiaryEntry {
                 entry.populateWithFoodDiaryEntry(self)
-                entry["userID"] = PFUser.currentUser()
-               // entry["userID"] = "Z66C62Ev7M"
-                
+                entry["userID"] = PFUser.current()
                 entry.saveInBackground()
                 
                 self.deleteAllDiners()
@@ -96,13 +94,13 @@ extension FoodDiaryEntry {
         let getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
         getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        getOtherDiners.orderByAscending("dinerName")
+        getOtherDiners.order(byAscending: "dinerName")
         getOtherDiners.limit = 30 // Limit query results just in case
         
         var otherDinersArray = [OtherDiner]()
         
-        getOtherDiners.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        getOtherDiners.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
             
             if let objs = objects {
                 for object in objs {
@@ -114,7 +112,7 @@ extension FoodDiaryEntry {
                         
                     } else {
                         // Log details of the failure
-                        print("Error: \(error!) \(error!.userInfo)")
+                        print("Error: \(error!) \(error!.localizedDescription)")
                     }
                 }
                 self.diners = otherDinersArray
@@ -126,7 +124,7 @@ extension FoodDiaryEntry {
         let getOtherDiners:PFQuery = PFQuery(className:"FoodDiaryEntryDiners")
         
         getOtherDiners.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        getOtherDiners.orderByAscending("dinerName")
+        getOtherDiners.order(byAscending: "dinerName")
         getOtherDiners.limit = 30 // Limit query results just in case
         
         var otherDinersArray = [OtherDiner]()
@@ -148,7 +146,7 @@ extension FoodDiaryEntry {
         let getOtherIngredients:PFQuery = PFQuery(className:"FoodDiaryDetail")
         
         getOtherIngredients.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        getOtherIngredients.orderByAscending("ingredientId")
+        getOtherIngredients.order(byAscending: "ingredientId")
         getOtherIngredients.limit = 500 // Limit query results just in case
         
         var otherIngredientsArray = [Ingredient]()
@@ -222,13 +220,13 @@ extension FoodDiaryEntry {
         let getNotes:PFQuery = PFQuery(className:"FoodDiaryTags")
         
         getNotes.whereKey("foodDiaryEntryId", equalTo: self.toPFObject!)
-        getNotes.orderByAscending("dinerName")
+        getNotes.order(byAscending: "dinerName")
         getNotes.limit = 30 // Limit query results just in case
         
         var notesArray = [Note]()
         
-        getNotes.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        getNotes.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
             
             if let objs = objects {
                 for object in objs {
@@ -240,7 +238,7 @@ extension FoodDiaryEntry {
                         
                     } else {
                         // Log details of the failure
-                        print("Error: \(error!) \(error!.userInfo)")
+                        print("Error: \(error!) \(error!.localizedDescription)")
                     }
                 }
                 self.notes = notesArray
@@ -250,7 +248,7 @@ extension FoodDiaryEntry {
 
 //MARK: Ingredients
     
-    func getIngredientsAsPFObjectFromFoodDiaryDetail(detail:PFObject) -> PFObject {
+    func getIngredientsAsPFObjectFromFoodDiaryDetail(_ detail:PFObject) -> PFObject {
         let fetchedIngredient = detail["ingredientId"] as! PFObject
         do {
             try fetchedIngredient.fetch()
@@ -261,7 +259,7 @@ extension FoodDiaryEntry {
         return fetchedIngredient
     }
     
-    func getTotalCaloriesForIngredient(detail:PFObject, ingredient:PFObject) -> (Float, Float, Float, Float, Float, Float) {
+    func getTotalCaloriesForIngredient(_ detail:PFObject, ingredient:PFObject) -> (Float, Float, Float, Float, Float, Float) {
         
         var totalCalories:Float = 0
         var totalGramsFat:Float = 0
@@ -295,7 +293,7 @@ extension FoodDiaryEntry {
         return (totalCalories, totalGramsFat, totalGramsProtein, totalGramsCarbs, totalGramsFiber, totalGramsSaturatedFat)
     }
     
-    func populateIngredients() -> Int {
+    func populateIngredients() {
         
         var totalCalories: Float = 0
         var totalGramsFat: Float = 0
@@ -328,9 +326,7 @@ extension FoodDiaryEntry {
             self.gramsCarbs = totalGramsCarbs
             self.gramsFiber = totalGramsFiber
             self.gramsSaturatedFat = totalGramsSaturatedFat
-            
         }
-        return ingredientCount
     }
     
     func fetchFoodDiaryDetails() -> [AnyObject]? {
@@ -368,13 +364,13 @@ extension FoodDiaryEntry {
         }
     }
     
-    func deleteFoodDiaryDetail(foodDiaryDetail: FoodDiaryDetail) {
+    func deleteFoodDiaryDetail(_ foodDiaryDetail: FoodDiaryDetail) {
         let details = self.fetchFoodDiaryDetails()
       //  let detailObjectId = foodDiaryDetail.objectId
         
         for detail in details! {
             let fetchedObjectId = detail.objectId
-            if foodDiaryDetail.objectId == fetchedObjectId {
+            if foodDiaryDetail.objectId == fetchedObjectId! {
                 detail.deleteInBackground()
             }
 
@@ -402,11 +398,11 @@ extension FoodDiaryEntry {
         }
     }
     
-    func deleteIngredientFromFoodDiaryDetail(ingredientForDeletion: PFObject) {
+    func deleteIngredientFromFoodDiaryDetail(_ ingredientForDeletion: PFObject) {
         ingredientForDeletion.deleteInBackground()
     }
     
-    func addFoodDiaryDetailFromMealIngredients(mealIngredients: [MealIngredients]) {
+    func addFoodDiaryDetailFromMealIngredients(_ mealIngredients: [MealIngredients]) {
         
         for mealIngredient in mealIngredients {
             let foodDiaryDetail = PFObject(className:"FoodDiaryDetail")
@@ -430,17 +426,17 @@ extension FoodDiaryEntry {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("archiveMealNotification", object: self)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "archiveMealNotification"), object: self)
     }
     
-    func addDinerWithName(dinerNameString: String) {
+    func addDinerWithName(_ dinerNameString: String) {
         let diner = OtherDiner(entry: self, name: dinerNameString)
         self.addDiner(diner)
         self.save()
 
     }
     
-    func addNoteWithName(tagString: String) {
+    func addNoteWithName(_ tagString: String) {
         let tag = Note(entry: self, note: tagString)
         self.addNote(tag)
         self.save()

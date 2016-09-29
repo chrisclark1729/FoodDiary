@@ -19,13 +19,13 @@ class DayOfWeekSummaryTableViewController: UITableViewController {
         self.dayOfWeekSummaries = self.getDayOfWeekSummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getDayOfWeekSummary()
         
     }
     
     
-    func isDayOfWeekExisting(dayOfWeek: String, summaries: [DayOfWeekSummary]) -> Bool {
+    func isDayOfWeekExisting(_ dayOfWeek: String, summaries: [DayOfWeekSummary]) -> Bool {
         
         for summary in summaries {
             if summary.dayOfWeek == dayOfWeek {
@@ -35,7 +35,7 @@ class DayOfWeekSummaryTableViewController: UITableViewController {
         return false
     }
     
-    func getDayOfWeekSummaryWithName(dayOfWeek: String, summaries: [DayOfWeekSummary]) -> DayOfWeekSummary? {
+    func getDayOfWeekSummaryWithName(_ dayOfWeek: String, summaries: [DayOfWeekSummary]) -> DayOfWeekSummary? {
         for summary in summaries {
             if summary.dayOfWeek == dayOfWeek {
                 return summary
@@ -44,7 +44,7 @@ class DayOfWeekSummaryTableViewController: UITableViewController {
         return nil
     }
     
-    func getDayOfWeekSummaryFromEntries(entries: [FoodDiaryEntry]) -> [DayOfWeekSummary]{
+    func getDayOfWeekSummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [DayOfWeekSummary]{
         var summaries = [DayOfWeekSummary]()
         var dayOfWeekCheck = [String]()
         
@@ -80,7 +80,7 @@ class DayOfWeekSummaryTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return dayOfWeekSummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return dayOfWeekSummaryData.sorted(by: { $0.attentionScore! > $1.attentionScore! })
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,24 +90,24 @@ class DayOfWeekSummaryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Time Of Day"
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return 7
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("dayOfWeekData", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dayOfWeekData", for: indexPath)
         
         var sundayPercent = Float(0)
         var sundayCaloriesPerMeal = Float(0)
@@ -164,26 +164,26 @@ class DayOfWeekSummaryTableViewController: UITableViewController {
             
         }
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             cell.textLabel!.text = "Sunday: (\(Int(100*sundayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(sundayCaloriesPerMeal)) (\(sundayMealCount) meals) "
             
-        } else if indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).row == 1 {
             cell.textLabel!.text = "Monday: (\(Int(100*mondayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(mondayCaloriesPerMeal)) (\(mondayMealCount) meals) "
-        } else if indexPath.row == 2 {
+        } else if (indexPath as NSIndexPath).row == 2 {
             cell.textLabel!.text = "Tuesday: (\(Int(100*tuesdayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(tuesdayCaloriesPerMeal)) (\(tuesdayMealCount) meals) "
-        } else if indexPath.row == 3 {
+        } else if (indexPath as NSIndexPath).row == 3 {
             cell.textLabel!.text = "Wednesday: (\(Int(100*wednesdayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(wednesdayCaloriesPerMeal)) (\(wednesdayMealCount) meals) "
-        } else if indexPath.row == 4 {
+        } else if (indexPath as NSIndexPath).row == 4 {
             cell.textLabel!.text = "Thursday: (\(Int(100*thursdayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(thursdayCaloriesPerMeal)) (\(thursdayMealCount) meals) "
-        } else if indexPath.row == 5 {
+        } else if (indexPath as NSIndexPath).row == 5 {
             cell.textLabel!.text = "Friday: (\(Int(100*fridayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(fridayCaloriesPerMeal)) (\(fridayMealCount) meals) "
-        } else if indexPath.row == 6 {
+        } else if (indexPath as NSIndexPath).row == 6 {
             cell.textLabel!.text = "Saturday: (\(Int(100*saturdayPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(saturdayCaloriesPerMeal)) (\(saturdayMealCount) meals) "
         }

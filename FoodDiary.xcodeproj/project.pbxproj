@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		119CF68614EC79AE3F63C494 /* libPods-FoodDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EC4D59E4FB3BEFEE1FC3FC /* libPods-FoodDiary.a */; };
 		490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */; };
 		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
 		492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25881B24DE1A006419EE /* TimelineTableViewController.swift */; };
@@ -109,7 +110,6 @@
 		8898858B1B5EBE5900ECD82F /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898858A1B5EBE5900ECD82F /* libc++.dylib */; };
 		8898858D1B5EBE6700ECD82F /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898858C1B5EBE6700ECD82F /* libicucore.dylib */; };
 		8898858F1B5EBE6E00ECD82F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8898858E1B5EBE6E00ECD82F /* OpenGLES.framework */; };
-		A82E729BD1E98B25979C8C62 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E69FBFD3A483213460480A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +123,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E69FBFD3A483213460480A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddMealPhoto+UIImageSize.swift"; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
@@ -224,6 +223,7 @@
 		49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDinersSummaryBreakdownTableViewController.swift; sourceTree = "<group>"; };
 		49F2F6531C6298240051BA3C /* OtherDinersSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherDinersSummary.swift; sourceTree = "<group>"; };
 		49F2F6551C62A0CC0051BA3C /* NutritionSummaryDetailStartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NutritionSummaryDetailStartTableViewController.swift; sourceTree = "<group>"; };
+		64EC4D59E4FB3BEFEE1FC3FC /* libPods-FoodDiary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodDiary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodDiary-Bridging-Header.h"; sourceTree = "<group>"; };
 		8898857E1B5EBE0100ECD82F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		889885801B5EBE2100ECD82F /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -234,8 +234,8 @@
 		8898858A1B5EBE5900ECD82F /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		8898858C1B5EBE6700ECD82F /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		8898858E1B5EBE6E00ECD82F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		A928695219479361D72E085E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		AE847F1546DD4C74E911B593 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		92BF883A2E690BB38D2C9E6F /* Pods-FoodDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodDiary/Pods-FoodDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		B20716BCAD0E4FABAAB927FD /* Pods-FoodDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodDiary/Pods-FoodDiary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,7 +269,7 @@
 				8898857F1B5EBE0100ECD82F /* CoreData.framework in Frameworks */,
 				4972BBE31B45B27D0069D44B /* SystemConfiguration.framework in Frameworks */,
 				4972BBE11B45B2730069D44B /* StoreKit.framework in Frameworks */,
-				A82E729BD1E98B25979C8C62 /* libPods.a in Frameworks */,
+				119CF68614EC79AE3F63C494 /* libPods-FoodDiary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +308,7 @@
 				4957B58C1CEAAEAD00621335 /* libz.tbd */,
 				4982BF681C34520000EBF6C7 /* Accelerate.framework */,
 				4982BF651C344B6200EBF6C7 /* CoreBluetooth.framework */,
+				64EC4D59E4FB3BEFEE1FC3FC /* libPods-FoodDiary.a */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -362,8 +363,8 @@
 				49C5C4121B068AA6006FA068 /* FoodDiary */,
 				49C5C4281B068AA7006FA068 /* FoodDiaryTests */,
 				49C5C4111B068AA6006FA068 /* Products */,
-				DD6643C584F64CE908AE2953 /* Pods */,
 				B6D3DB1A5FEE6358085C2FCE /* Frameworks */,
+				4CD4E45A46C4FA6DA8597DA0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -465,6 +466,15 @@
 			name = "Nutrition Summary Data";
 			sourceTree = "<group>";
 		};
+		4CD4E45A46C4FA6DA8597DA0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				92BF883A2E690BB38D2C9E6F /* Pods-FoodDiary.debug.xcconfig */,
+				B20716BCAD0E4FABAAB927FD /* Pods-FoodDiary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B6D3DB1A5FEE6358085C2FCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,18 +502,8 @@
 				4972BBD61B45B2430069D44B /* CoreGraphics.framework */,
 				4972BBD41B45B23C0069D44B /* CFNetwork.framework */,
 				4972BBD21B45B2320069D44B /* AudioToolbox.framework */,
-				2E69FBFD3A483213460480A5 /* libPods.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DD6643C584F64CE908AE2953 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AE847F1546DD4C74E911B593 /* Pods.debug.xcconfig */,
-				A928695219479361D72E085E /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,12 +513,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49C5C42F1B068AA7006FA068 /* Build configuration list for PBXNativeTarget "FoodDiary" */;
 			buildPhases = (
-				56930E211DB1C4FB6C8B7C88 /* Check Pods Manifest.lock */,
+				17730E2AEC5D47C623D986D2 /* [CP] Check Pods Manifest.lock */,
 				49C5C40C1B068AA6006FA068 /* Sources */,
 				49C5C40D1B068AA6006FA068 /* Frameworks */,
 				49C5C40E1B068AA6006FA068 /* Resources */,
-				169A452A965A5B10DD426ED3 /* Copy Pods Resources */,
-				0D13B19E9C8EAC705182680B /* Embed Pods Frameworks */,
+				700C4A782B3DAA49CFF7A3E1 /* [CP] Embed Pods Frameworks */,
+				907A5C2B97B43D32FB4C1C44 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -554,15 +554,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Chris Clark";
 				TargetAttributes = {
 					49C5C40F1B068AA6006FA068 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = U988Y2XRVT;
+						LastSwiftMigration = 0800;
 					};
 					49C5C4241B068AA7006FA068 = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 0800;
 						TestTargetID = 49C5C40F1B068AA6006FA068;
 					};
 				};
@@ -607,49 +609,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D13B19E9C8EAC705182680B /* Embed Pods Frameworks */ = {
+		17730E2AEC5D47C623D986D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		169A452A965A5B10DD426ED3 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		56930E211DB1C4FB6C8B7C88 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		700C4A782B3DAA49CFF7A3E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodDiary/Pods-FoodDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		907A5C2B97B43D32FB4C1C44 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodDiary/Pods-FoodDiary-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -785,8 +787,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -797,6 +801,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -831,8 +836,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -842,6 +849,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -851,13 +859,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		49C5C4301B068AA7006FA068 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE847F1546DD4C74E911B593 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 92BF883A2E690BB38D2C9E6F /* Pods-FoodDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -879,13 +888,14 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodDiary/FoodDiary-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		49C5C4311B068AA7006FA068 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A928695219479361D72E085E /* Pods.release.xcconfig */;
+			baseConfigurationReference = B20716BCAD0E4FABAAB927FD /* Pods-FoodDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -908,6 +918,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "FoodDiary/FoodDiary-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -929,6 +940,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodDiary.app/FoodDiary";
 			};
 			name = Debug;
@@ -946,6 +958,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.trustbuds.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodDiary.app/FoodDiary";
 			};
 			name = Release;

@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class TimeOfDaySummaryTableViewController: UITableViewController {
 
@@ -21,13 +41,13 @@ class TimeOfDaySummaryTableViewController: UITableViewController {
         self.timeOfDaySummaries = self.getTimeOfDaySummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getTimeOfDaySummary()
         
     }
     
     
-    func isTimeOfDayExisting(timeOfDay: String, summaries: [TimeOfDaySummary]) -> Bool {
+    func isTimeOfDayExisting(_ timeOfDay: String, summaries: [TimeOfDaySummary]) -> Bool {
         
         for summary in summaries {
             if summary.timeOfDay == timeOfDay {
@@ -37,7 +57,7 @@ class TimeOfDaySummaryTableViewController: UITableViewController {
         return false
     }
     
-    func getTimeOfDaySummaryWithName(timeOfDay: String, summaries: [TimeOfDaySummary]) -> TimeOfDaySummary? {
+    func getTimeOfDaySummaryWithName(_ timeOfDay: String, summaries: [TimeOfDaySummary]) -> TimeOfDaySummary? {
         for summary in summaries {
             if summary.timeOfDay == timeOfDay {
                 return summary
@@ -46,7 +66,7 @@ class TimeOfDaySummaryTableViewController: UITableViewController {
         return nil
     }
     
-    func getTimeOfDaySummaryFromEntries(entries: [FoodDiaryEntry]) -> [TimeOfDaySummary]{
+    func getTimeOfDaySummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [TimeOfDaySummary]{
         var summaries = [TimeOfDaySummary]()
         var dayPartCheck = [String]()
         
@@ -89,7 +109,7 @@ class TimeOfDaySummaryTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return timeOfDaySummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return timeOfDaySummaryData.sorted(by: { $0.attentionScore > $1.attentionScore })
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,24 +119,24 @@ class TimeOfDaySummaryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             return "Time Of Day"
            }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return 6
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("timeOfDayData", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "timeOfDayData", for: indexPath)
        // let row = indexPath.row
     //    let summaryCount = self.timeOfDaySummaries.count - 1
       //  let summaryData = self.timeOfDaySummaries[summaryCount]
@@ -169,23 +189,23 @@ class TimeOfDaySummaryTableViewController: UITableViewController {
 
         }
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
                 cell.textLabel!.text = "Morning: (\(Int(100*morningPercent)) % of total calories)"
                 cell.detailTextLabel!.text = "Calories per Meal: \(Int(morningCaloriesPerMeal)) (\(morningMealCount) meals) "
             
-        } else if indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).row == 1 {
             cell.textLabel!.text = "Late Morning: (\(Int(100*lateMorningPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(lateMorningCaloriesPerMeal)) (\(lateMorningMealCount) meals) "
-        } else if indexPath.row == 2 {
+        } else if (indexPath as NSIndexPath).row == 2 {
             cell.textLabel!.text = "Afternoon: (\(Int(100*afternoonPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(afternoonCaloriesPerMeal)) (\(afternoonMealCount) meals) "
-        } else if indexPath.row == 3 {
+        } else if (indexPath as NSIndexPath).row == 3 {
             cell.textLabel!.text = "Evening: (\(Int(100*eveningPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(eveningCaloriesPerMeal)) (\(eveningMealCount) meals) "
-        } else if indexPath.row == 4 {
+        } else if (indexPath as NSIndexPath).row == 4 {
             cell.textLabel!.text = "Night: (\(Int(100*nightPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(nightCaloriesPerMeal)) (\(nightMealCount) meals) "
-        } else if indexPath.row == 5 {
+        } else if (indexPath as NSIndexPath).row == 5 {
             cell.textLabel!.text = "Late Night: (\(Int(100*lateNightPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(lateNightCaloriesPerMeal)) (\(lateNightMealCount) meals) "
         }

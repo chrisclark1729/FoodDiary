@@ -33,14 +33,14 @@ class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
     var selectedSuggestion:String?
     var moodField: UITextField?
     
-    func search(searchText: String? = nil) {
+    func search(_ searchText: String? = nil) {
         let searchMood = PFQuery(className: "Mood")
-            searchMood.whereKey("mood", containsString: searchText)
+            searchMood.whereKey("mood", contains: searchText)
             searchMood.limit = 10
-            searchMood.orderByAscending("facebookMobileRank")
+            searchMood.order(byAscending: "facebookMobileRank")
         
-        searchMood.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(),{
+        searchMood.findObjectsInBackground { (results, error) -> Void in
+            DispatchQueue.main.async(execute: {
                 self.data = results
                 self.tableView.reloadData()
             })
@@ -53,7 +53,7 @@ class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.initMoodField()
     }
@@ -76,12 +76,12 @@ class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(self.data != nil){
             return self.data.count
         }
@@ -89,10 +89,10 @@ class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("moodCell", forIndexPath: indexPath)
-        let obj = self.data[indexPath.row]
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "moodCell", for: indexPath)
+        let obj = self.data[(indexPath as NSIndexPath).row]
         let mood = obj["mood"] as? String
         
         cell.textLabel!.text = mood
@@ -100,31 +100,31 @@ class EditMoodTableViewController: UITableViewController, UISearchBarDelegate {
 
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         search(searchText)
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let mood = self.data[indexPath.row]["mood"]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mood = self.data[(indexPath as NSIndexPath).row]["mood"]
         self.foodDiaryEntry?.mood = mood! as! String
         foodDiaryEntry!.save()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     /*

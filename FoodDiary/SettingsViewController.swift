@@ -10,9 +10,9 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
+    @IBAction func logoutButtonPressed(_ sender: AnyObject) {
         PFUser.logOut()
-        NSNotificationCenter.defaultCenter().postNotificationName("userDidLogout", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "userDidLogout"), object: nil)
     }
     
     override func viewDidLoad() {

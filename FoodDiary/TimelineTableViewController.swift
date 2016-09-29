@@ -12,52 +12,52 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     
     
     var dataManager = DataManager()
-    var dateFormatter = NSDateFormatter()
-    var dayFormatter = NSDateFormatter()
-    var timeFormatter = NSDateFormatter()
+    var dateFormatter = DateFormatter()
+    var dayFormatter = DateFormatter()
+    var timeFormatter = DateFormatter()
     var meals:[FoodDiaryEntry]?
-    var rowToDelete: NSIndexPath?
+    var rowToDelete: IndexPath?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.delegate = self
-        if PFUser.currentUser() != nil {
+        if PFUser.current() != nil {
           self.dataManager.loadTimelineData()
         }
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dayFormatter.dateFormat = "MMM dd, yyyy"
         timeFormatter.dateFormat = "h:mm a"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimelineTableViewController.userDidLogIn(_:)), name: "userDidLogIn", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TimelineTableViewController.userDidLogIn(_:)), name: NSNotification.Name(rawValue: "userDidLogIn"), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimelineTableViewController.archiveMeal(_:)), name: "archiveMealNotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TimelineTableViewController.archiveMeal(_:)), name: NSNotification.Name(rawValue: "archiveMealNotification"), object: nil)
         
     }
     
-    func userDidLogIn(notification: NSNotification) {
+    func userDidLogIn(_ notification: Notification) {
         self.dataManager.loadTimelineData()
     }
     
     
-    func archiveMeal(notification: NSNotification) {
+    func archiveMeal(_ notification: Notification) {
         let mealToArchive: FoodDiaryEntry = notification.object as! FoodDiaryEntry
         var indexToArchive: Int?
-        for (index, element) in meals!.enumerate() {
+        for (index, element) in meals!.enumerated() {
             print("Item \(index): \(element)")
             if element == mealToArchive {
                 indexToArchive = index
                 break
             }
                     }
-        self.meals!.removeAtIndex(indexToArchive!)
+        self.meals!.remove(at: indexToArchive!)
         self.tableView.reloadData()
 
     }
     
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
     }
@@ -69,37 +69,37 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    @IBAction func deleteFoodDiaryEntry(button: UIButton) {
+    @IBAction func deleteFoodDiaryEntry(_ button: UIButton) {
         let alert: UIAlertView = UIAlertView()
         
             if let superview = button.superview {
                 if let cell = superview.superview as? TimelineTableViewCell {
-                    let indexPath = self.tableView.indexPathForCell(cell)
+                    let indexPath = self.tableView.indexPath(for: cell)
                     self.rowToDelete = indexPath
                 }
         }
         
         alert.title = "Delete"
         alert.message = "Are you sure you want to delete this entry?"
-        alert.addButtonWithTitle("Yes")
-        alert.addButtonWithTitle("No")
+        alert.addButton(withTitle: "Yes")
+        alert.addButton(withTitle: "No")
         alert.delegate = self  // set the delegate here
         alert.show()
     
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        let buttonTitle = alertView.buttonTitleAtIndex(buttonIndex)
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+        let buttonTitle = alertView.buttonTitle(at: buttonIndex)
         print("\(buttonTitle!) pressed")
         if buttonTitle == "Yes" {
             // TODO: Figure out how I know what the current food Diary Entry Id is?
-            let entry = self.meals![self.rowToDelete!.row]
+            let entry = self.meals![(self.rowToDelete! as NSIndexPath).row]
             entry.deleteFromBackEnd()
-            self.meals!.removeAtIndex(self.rowToDelete!.row)
+            self.meals!.remove(at: (self.rowToDelete! as NSIndexPath).row)
             tableView.reloadData()
             
         }
@@ -107,7 +107,7 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let meals = self.meals {
             return meals.count
         } else {
@@ -116,18 +116,18 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell", for: indexPath) as! TimelineTableViewCell
         
-        let meal = meals![indexPath.row]
+        let meal = meals![(indexPath as NSIndexPath).row]
         
         var mealImageFile:PFFile?
         mealImageFile = meal.imgURL as? PFFile
         
         if mealImageFile != nil {
-            mealImageFile!.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
+            mealImageFile!.getDataInBackground {
+                (imageData: Data?, error: Error?) -> Void in
                 if error == nil {
                     if let imageData = imageData {
                         let image = UIImage(data:imageData)
@@ -143,15 +143,15 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
-        cell.mealDate.text = dayFormatter.stringFromDate(meal.timestamp)
-        cell.mealTime.text = timeFormatter.stringFromDate(meal.timestamp)
+        cell.mealDate.text = dayFormatter.string(from: meal.timestamp as Date)
+        cell.mealTime.text = timeFormatter.string(from: meal.timestamp as Date)
         cell.mealScore.text = "Score: \(meal.mealScore())% (\(calories) cal.)"
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showDetail", sender: self)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetail", sender: self)
     }
     
     
@@ -194,13 +194,13 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showDetail" {
             
-            let destination = segue.destinationViewController as! ViewMealDetailViewController
+            let destination = segue.destination as! ViewMealDetailViewController
             let selectedIndexPath = tableView.indexPathForSelectedRow
-            let meal = meals![selectedIndexPath!.row]
+            let meal = meals![(selectedIndexPath! as NSIndexPath).row]
             
             destination.foodDiaryEntry = meal
             

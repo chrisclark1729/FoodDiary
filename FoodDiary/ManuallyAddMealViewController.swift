@@ -14,14 +14,14 @@ class ManuallyAddMealViewController: UIViewController {
     @IBOutlet weak var manualEntryMealNameTextView: UITextField!
     @IBOutlet weak var manualEntryLocationTextView: UITextField!
     @IBOutlet weak var manualEntryMood: UITextField!
-    @IBAction func sendManualFoodDiaryEntry(sender: AnyObject) {
+    @IBAction func sendManualFoodDiaryEntry(_ sender: AnyObject) {
         
         let foodDiaryEntry:PFObject = PFObject(className:"FoodDiaryEntries")
         
         foodDiaryEntry["mealName"] = manualEntryMealNameTextView.text
         foodDiaryEntry["locationName"] = manualEntryLocationTextView.text
      //   foodDiaryEntry["imageFile"] =
-        foodDiaryEntry["timestamp"] = NSDate()
+        foodDiaryEntry["timestamp"] = Date()
         foodDiaryEntry["healthScore"] = 0
         foodDiaryEntry["calories"] = 0
         foodDiaryEntry["gramsFat"] = 0
@@ -34,12 +34,12 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["energyLevel"] = 0
         foodDiaryEntry["wasEaten"] = true
         foodDiaryEntry["isVisible"] = true
-        foodDiaryEntry["timezone"] = NSTimeZone.localTimeZone().abbreviation!
+        foodDiaryEntry["timezone"] = NSTimeZone.local.abbreviation()!
         foodDiaryEntry["location"] = PFGeoPoint(latitude: 0, longitude: 0)
-        foodDiaryEntry["userId"] = PFUser.currentUser()
+        foodDiaryEntry["userId"] = PFUser.current()
         
         foodDiaryEntry.saveInBackground()
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popToRootViewController(animated: true)
         
         
     }

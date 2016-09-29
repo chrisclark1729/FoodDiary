@@ -9,6 +9,6 @@
 import Foundation
 //import Parse
 
-extension NSDate {
+extension Date {
     
 }

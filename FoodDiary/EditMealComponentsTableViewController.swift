@@ -34,16 +34,16 @@ class EditMealComponentsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    @IBAction func addDiner(sender: AnyObject) {
+    @IBAction func addDiner(_ sender: AnyObject) {
         
         var inputTextField: UITextField?
         
-        let actionSheetController: UIAlertController = UIAlertController(title: "Add Diner", message: "", preferredStyle: .Alert)
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+        let actionSheetController: UIAlertController = UIAlertController(title: "Add Diner", message: "", preferredStyle: .alert)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             //Do some stuff
         }
         actionSheetController.addAction(cancelAction)
-        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .Default) { action -> Void in
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .default) { action -> Void in
             
             let diner = OtherDiner(entry: self.foodDiaryEntry!, name: inputTextField!.text)
             self.foodDiaryEntry?.addDiner(diner)
@@ -51,10 +51,10 @@ class EditMealComponentsTableViewController: UITableViewController {
             self.foodDiaryEntry!.save()
         }
         actionSheetController.addAction(nextAction)
-        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+        actionSheetController.addTextField { textField -> Void in
             inputTextField = textField
         }
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,7 +64,7 @@ class EditMealComponentsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         // Return the number of sections.
         if self.suggestedDiners.count > 0 {
@@ -74,7 +74,7 @@ class EditMealComponentsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             return "Frequent Diners"
         } else {
@@ -82,7 +82,7 @@ class EditMealComponentsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         if section == 0 {
             return self.foodDiaryEntry!.diners.count
@@ -93,15 +93,15 @@ class EditMealComponentsTableViewController: UITableViewController {
         return 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath)
-        let row = indexPath.row
-        if indexPath.section == 0 {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
+        let row = (indexPath as NSIndexPath).row
+        if (indexPath as NSIndexPath).section == 0 {
             let diner = self.foodDiaryEntry!.diners[row]
             cell.textLabel?.text = diner.name!
             
             return cell
-        } else if indexPath.section == 1 {
+        } else if (indexPath as NSIndexPath).section == 1 {
             let dinerNameString = self.suggestedDiners[row]
             cell.textLabel?.text = dinerNameString
             
@@ -112,11 +112,11 @@ class EditMealComponentsTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 {
-            let dinerNameString = self.suggestedDiners[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 1 {
+            let dinerNameString = self.suggestedDiners[(indexPath as NSIndexPath).row]
             self.foodDiaryEntry!.addDinerWithName(dinerNameString)
-            self.suggestedDiners.removeAtIndex(indexPath.row)
+            self.suggestedDiners.remove(at: (indexPath as NSIndexPath).row)
             self.tableView.reloadData()
         }
     }
@@ -129,13 +129,13 @@ class EditMealComponentsTableViewController: UITableViewController {
     return true
     }
     */
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
     // Delete the row from the data source
-        self.foodDiaryEntry!.diners.removeAtIndex(indexPath.row)
+        self.foodDiaryEntry!.diners.remove(at: (indexPath as NSIndexPath).row)
         self.foodDiaryEntry!.save()
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
+    tableView.deleteRows(at: [indexPath], with: .fade)
+    } else if editingStyle == .insert {
     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
     }

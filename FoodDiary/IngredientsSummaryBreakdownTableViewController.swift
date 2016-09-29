@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class IngredientsSummaryBreakdownTableViewController: UITableViewController {
     
@@ -32,7 +52,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         var foodDiaryDetails = [AnyObject]()
         
         for entry in self.foodDiaryEntries! {
-            let detail = entry.fetchFoodDiaryDetails() as! AnyObject
+            let detail = entry.fetchFoodDiaryDetails() as AnyObject
             foodDiaryDetails.append(detail)
         }
         
@@ -57,11 +77,11 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
          summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
          }
         
-        return summaries.sort({ $0.attentionScore > $1.attentionScore })
+        return summaries.sorted(by: { $0.attentionScore > $1.attentionScore })
         
     }
     
-    func getFoodDiaryEntriesWithCategory(category: String) -> [FoodDiaryEntry] {
+    func getFoodDiaryEntriesWithCategory(_ category: String) -> [FoodDiaryEntry] {
         var filteredEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             if entry.hasIngredientCategory(category) {
@@ -71,7 +91,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         return filteredEntries
     }
     
-    func getIngredientCategoriesFromFoodDiaryDetails(details: [AnyObject]) -> [String] {
+    func getIngredientCategoriesFromFoodDiaryDetails(_ details: [AnyObject]) -> [String] {
         var categories = [String]()
         for detail in details {
             for foodDiaryDetail in detail as! NSArray  {
@@ -91,7 +111,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         return categories
     }
     
-    func getCaloriesFromDetails(details: [AnyObject], category: String) -> Float {
+    func getCaloriesFromDetails(_ details: [AnyObject], category: String) -> Float {
         var totalCalories:Float = 0.0
         for detail in details {
             let foodDiaryDetails = detail as! [AnyObject]
@@ -111,7 +131,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         return totalCalories
     }
     
-    func getFoodDiaryEntriesWithIngredient(Ingredient: String) -> [FoodDiaryEntry] {
+    func getFoodDiaryEntriesWithIngredient(_ Ingredient: String) -> [FoodDiaryEntry] {
         var filteredEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             for ingredient in entry.ingredients {
@@ -126,7 +146,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if summaries.count > 5 {
             return 2
@@ -135,7 +155,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Primary Focus"
         } else {
@@ -143,7 +163,7 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0 {
             return min(5, self.summaries.count)
@@ -156,12 +176,12 @@ class IngredientsSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ingredientsSummaryCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientsSummaryCell", for: indexPath)
         
-        let row = indexPath.row
+        let row = (indexPath as NSIndexPath).row
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             let summaryData = self.summaries[row]
             cell.textLabel!.text = " \(summaryData.ingredientCategory) (\(100*summaryData.ingredientCategoryTotalCalories/Session.sharedInstance.currentTotalCaloriesForSummary!) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(summaryData.caloriesPerMeal)) (\(summaryData.mealCount) meals)"

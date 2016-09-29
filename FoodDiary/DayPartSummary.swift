@@ -25,10 +25,10 @@ class DayPartSummary: NutritionSummary {
 
     }
     
-     func updateDayPartSummary(entry: FoodDiaryEntry) {
-        let minutesDifference = NSCalendar.currentCalendar().components(.Minute, fromDate: self.lastTimestamp, toDate: entry.timestamp, options: []).minute
+     func updateDayPartSummary(_ entry: FoodDiaryEntry) {
+        let minutesDifference = (Calendar.current as NSCalendar).components(.minute, from: self.lastTimestamp, to: entry.timestamp, options: []).minute
         
-        if abs(minutesDifference) < 75 {
+        if abs(minutesDifference!) < 75 {
             self.entryCount += 1
         } else {
             self.entryCount += 1

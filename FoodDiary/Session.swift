@@ -14,8 +14,8 @@ class Session {
     var currentFoodDiaryEntry: FoodDiaryEntry?
     var currentMeals:[FoodDiaryEntry]?
     var currentSelectedFoodDiaryDetail:FoodDiaryDetail?
-    var currentSelectedStartDate:NSDate?
-    var currentSelectedEndDate:NSDate?
+    var currentSelectedStartDate:Date?
+    var currentSelectedEndDate:Date?
     var currentTotalCalories:Float?
     var currentMealCount:Int?
     var currentOneToOneDimensionForSummary:String?

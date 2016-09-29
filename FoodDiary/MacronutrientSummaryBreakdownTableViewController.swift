@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
 
@@ -21,12 +41,12 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
         self.macronutrientCategorySummaries = self.getMacronutrientCategorySummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getMacronutrientCategorySummary()
         
     }
     
-    func isMacronutrientCategoryExisting(macronutrientCategory: String, summaries: [MacronutrientSummary]) -> Bool {
+    func isMacronutrientCategoryExisting(_ macronutrientCategory: String, summaries: [MacronutrientSummary]) -> Bool {
         
         for summary in summaries {
             if summary.macronutrientCategory == macronutrientCategory {
@@ -36,7 +56,7 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
         return false
     }
     
-    func getMacronutrientCategorySummaryWithName(macronutrientCategory: String, summaries: [MacronutrientSummary]) -> MacronutrientSummary? {
+    func getMacronutrientCategorySummaryWithName(_ macronutrientCategory: String, summaries: [MacronutrientSummary]) -> MacronutrientSummary? {
         for summary in summaries {
             if summary.macronutrientCategory == macronutrientCategory {
                 return summary
@@ -45,7 +65,7 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
         return nil
     }
     
-    func getMacronutrientCategorySummaryFromEntries(entries: [FoodDiaryEntry]) -> [MacronutrientSummary]{
+    func getMacronutrientCategorySummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [MacronutrientSummary]{
         var summaries = [MacronutrientSummary]()
         
         for entry in entries {
@@ -80,7 +100,7 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return macronutrientCategorySummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return macronutrientCategorySummaryData.sorted(by: { $0.attentionScore > $1.attentionScore })
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,7 +110,7 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         if macronutrientCategorySummaries.count > 5 {
@@ -101,7 +121,7 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Primary Focus"
         } else {
@@ -109,7 +129,7 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         if section == 0 {
@@ -125,11 +145,11 @@ class MacronutrientSummaryBreakdownTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("macronutrientCategoryData", forIndexPath: indexPath)
-        let row = indexPath.row
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "macronutrientCategoryData", for: indexPath)
+        let row = (indexPath as NSIndexPath).row
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             let summaryData = self.macronutrientCategorySummaries[row]
             
             cell.textLabel!.text = " \(summaryData.macronutrientCategory) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"

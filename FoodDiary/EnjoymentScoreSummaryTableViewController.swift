@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class EnjoymentScoreSummaryTableViewController: UITableViewController {
     
@@ -21,13 +41,13 @@ class EnjoymentScoreSummaryTableViewController: UITableViewController {
         self.enjoymentScoreSummaries = self.getEnjoymentScoreSummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getEnjoymentScoreSummary()
         
     }
     
     
-    func isEnjoymentScoreExisting(enjoymentScore: String, summaries: [EnjoymentScoreSummary]) -> Bool {
+    func isEnjoymentScoreExisting(_ enjoymentScore: String, summaries: [EnjoymentScoreSummary]) -> Bool {
         
         for summary in summaries {
             if summary.enjoymentScoreRange == enjoymentScore {
@@ -37,7 +57,7 @@ class EnjoymentScoreSummaryTableViewController: UITableViewController {
         return false
     }
     
-    func getEnjoymentScoreSummaryWithName(enjoymentScore: String, summaries: [EnjoymentScoreSummary]) -> EnjoymentScoreSummary? {
+    func getEnjoymentScoreSummaryWithName(_ enjoymentScore: String, summaries: [EnjoymentScoreSummary]) -> EnjoymentScoreSummary? {
         for summary in summaries {
             if summary.enjoymentScoreRange == enjoymentScore {
                 return summary
@@ -46,7 +66,7 @@ class EnjoymentScoreSummaryTableViewController: UITableViewController {
         return nil
     }
     
-    func getEnjoymentScoreSummaryFromEntries(entries: [FoodDiaryEntry]) -> [EnjoymentScoreSummary]{
+    func getEnjoymentScoreSummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [EnjoymentScoreSummary]{
         var summaries = [EnjoymentScoreSummary]()
         var enjoymentScoreCheck = [String]()
         
@@ -82,7 +102,7 @@ class EnjoymentScoreSummaryTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return enjoymentScoreSummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return enjoymentScoreSummaryData.sorted(by: { $0.attentionScore > $1.attentionScore })
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,24 +112,24 @@ class EnjoymentScoreSummaryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Enjoyment Score"
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return 5
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("enjoymentScoreData", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "enjoymentScoreData", for: indexPath)
         
         var zeroToOnePercent = Float(0)
         var zeroToOneCaloriesPerMeal = Float(0)
@@ -151,20 +171,20 @@ class EnjoymentScoreSummaryTableViewController: UITableViewController {
             }
         }
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             cell.textLabel!.text = "0 - 1: (\(Int(100*zeroToOnePercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(zeroToOneCaloriesPerMeal)) (\(zeroToOneMealCount) meals) "
             
-        } else if indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).row == 1 {
             cell.textLabel!.text = "1 - 2: (\(Int(100*oneToTwoPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(oneToTwoCaloriesPerMeal)) (\(oneToTwoMealCount) meals) "
-        } else if indexPath.row == 2 {
+        } else if (indexPath as NSIndexPath).row == 2 {
             cell.textLabel!.text = "2 - 3: (\(Int(100*twoToThreePercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(twoToThreeCaloriesPerMeal)) (\(twoToThreeMealCount) meals) "
-        } else if indexPath.row == 3 {
+        } else if (indexPath as NSIndexPath).row == 3 {
             cell.textLabel!.text = "3 - 4: (\(Int(100*threeToFourPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(threeToFourCaloriesPerMeal)) (\(threeToFourMealCount) meals) "
-        } else if indexPath.row == 4 {
+        } else if (indexPath as NSIndexPath).row == 4 {
             cell.textLabel!.text = "4 - 5: (\(Int(100*fourToFivePercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(fourToFiveCaloriesPerMeal)) (\(fourToFiveMealCount) meals) "
         }

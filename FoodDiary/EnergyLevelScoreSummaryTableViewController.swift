@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class EnergyLevelScoreSummaryTableViewController: UITableViewController {
     
@@ -21,13 +41,13 @@ class EnergyLevelScoreSummaryTableViewController: UITableViewController {
         self.energyLevelScoreSummaries = self.getEnergyLevelScoreSummary()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.getEnergyLevelScoreSummary()
         
     }
     
     
-    func isEnergyLevelScoreExisting(energyLevelScore: String, summaries: [EnergyLevelScoreSummary]) -> Bool {
+    func isEnergyLevelScoreExisting(_ energyLevelScore: String, summaries: [EnergyLevelScoreSummary]) -> Bool {
         
         for summary in summaries {
             if summary.energyLevelScoreRange == energyLevelScore {
@@ -37,7 +57,7 @@ class EnergyLevelScoreSummaryTableViewController: UITableViewController {
         return false
     }
     
-    func getEnergyLevelScoreSummaryWithName(energyLevelScore: String, summaries: [EnergyLevelScoreSummary]) -> EnergyLevelScoreSummary? {
+    func getEnergyLevelScoreSummaryWithName(_ energyLevelScore: String, summaries: [EnergyLevelScoreSummary]) -> EnergyLevelScoreSummary? {
         for summary in summaries {
             if summary.energyLevelScoreRange == energyLevelScore {
                 return summary
@@ -46,7 +66,7 @@ class EnergyLevelScoreSummaryTableViewController: UITableViewController {
         return nil
     }
     
-    func getEnergyLevelScoreSummaryFromEntries(entries: [FoodDiaryEntry]) -> [EnergyLevelScoreSummary]{
+    func getEnergyLevelScoreSummaryFromEntries(_ entries: [FoodDiaryEntry]) -> [EnergyLevelScoreSummary]{
         var summaries = [EnergyLevelScoreSummary]()
         var energyLevelScoreCheck = [String]()
         
@@ -82,7 +102,7 @@ class EnergyLevelScoreSummaryTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return energyLevelScoreSummaryData.sort({ $0.attentionScore > $1.attentionScore })
+        return energyLevelScoreSummaryData.sorted(by: { $0.attentionScore > $1.attentionScore })
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,24 +112,24 @@ class EnergyLevelScoreSummaryTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Energy Level"
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         return 5
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("energyLevelScoreData", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "energyLevelScoreData", for: indexPath)
         
         var zeroToOnePercent = Float(0)
         var zeroToOneCaloriesPerMeal = Float(0)
@@ -151,20 +171,20 @@ class EnergyLevelScoreSummaryTableViewController: UITableViewController {
             }
         }
         
-        if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).row == 0 {
             cell.textLabel!.text = "0 - 1: (\(Int(100*zeroToOnePercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(zeroToOneCaloriesPerMeal)) (\(zeroToOneMealCount) meals) "
             
-        } else if indexPath.row == 1 {
+        } else if (indexPath as NSIndexPath).row == 1 {
             cell.textLabel!.text = "1 - 2: (\(Int(100*oneToTwoPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(oneToTwoCaloriesPerMeal)) (\(oneToTwoMealCount) meals) "
-        } else if indexPath.row == 2 {
+        } else if (indexPath as NSIndexPath).row == 2 {
             cell.textLabel!.text = "2 - 3: (\(Int(100*twoToThreePercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(twoToThreeCaloriesPerMeal)) (\(twoToThreeMealCount) meals) "
-        } else if indexPath.row == 3 {
+        } else if (indexPath as NSIndexPath).row == 3 {
             cell.textLabel!.text = "3 - 4: (\(Int(100*threeToFourPercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(threeToFourCaloriesPerMeal)) (\(threeToFourMealCount) meals) "
-        } else if indexPath.row == 4 {
+        } else if (indexPath as NSIndexPath).row == 4 {
             cell.textLabel!.text = "4 - 5: (\(Int(100*fourToFivePercent)) % of total calories)"
             cell.detailTextLabel!.text = "Calories per Meal: \(Int(fourToFiveCaloriesPerMeal)) (\(fourToFiveMealCount) meals) "
         }

@@ -34,14 +34,14 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         // Dispose of any resources that can be recreated.
     }
     
-    func search(searchText: String? = nil){
+    func search(_ searchText: String? = nil){
         let query = PFQuery(className: "Ingredients")
-            query.whereKey("ingredientName", containsString: searchText)
+            query.whereKey("ingredientName", contains: searchText)
             query.limit = 100
-            query.orderByDescending("ingredientName")
+            query.order(byDescending: "ingredientName")
         
-        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(),{
+        query.findObjectsInBackground { (results, error) -> Void in
+            DispatchQueue.main.async(execute: {
                 self.data = results
                 self.tableView.reloadData()
             })
@@ -53,11 +53,11 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(self.data != nil){
             return self.data.count
         }
@@ -65,9 +65,9 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
-        let obj = self.data[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
+        let obj = self.data[(indexPath as NSIndexPath).row]
         
         
         let ingredientName = obj["ingredientName"] as? String
@@ -78,23 +78,23 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
         return cell
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = true;
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         search(searchText)
     }
     
@@ -144,17 +144,17 @@ class IngredientsSearchTableViewController: UITableViewController, UISearchBarDe
     }
     */
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "addIngredientDetail"
             
         {
             
-            let destination = segue.destinationViewController as! IngredientAddTableViewController
+            let destination = segue.destination as! IngredientAddTableViewController
             
             destination.foodDiaryEntry = self.foodDiaryEntry
             let selectedIndexPath = self.tableView.indexPathForSelectedRow
-            let obj = self.data[selectedIndexPath!.row]
+            let obj = self.data[(selectedIndexPath! as NSIndexPath).row]
             destination.ingredient = obj
             Session.sharedInstance.currentIngredient = obj
             

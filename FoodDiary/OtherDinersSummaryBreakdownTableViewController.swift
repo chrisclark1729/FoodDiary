@@ -7,6 +7,26 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
     
@@ -51,11 +71,11 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
             summary.populateAttentionScore(maxCaloriesPerMeal, totalMeals: totalMeals)
         }
         
-        return summaries.sort({ $0.attentionScore > $1.attentionScore })
+        return summaries.sorted(by: { $0.attentionScore > $1.attentionScore })
 
     }
     
-    func getUniqueDiners(entries: [FoodDiaryEntry]) -> Set<String> {
+    func getUniqueDiners(_ entries: [FoodDiaryEntry]) -> Set<String> {
         var dinersForSummary = Set<String>()
         for entry in entries {
             for diner in entry.diners {
@@ -65,7 +85,7 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
         return dinersForSummary
     }
     
-    func getFoodDiaryEntriesWithDiner(dinerName: String) -> [FoodDiaryEntry] {
+    func getFoodDiaryEntriesWithDiner(_ dinerName: String) -> [FoodDiaryEntry] {
         var filteredEntries = [FoodDiaryEntry]()
         for entry in self.foodDiaryEntries! {
             for diner in entry.diners {
@@ -81,7 +101,7 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if summaries.count > 5 {
             return 2
@@ -91,7 +111,7 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
 
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Primary Focus"
         } else {
@@ -99,7 +119,7 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0 {
             return min(5, self.summaries.count)
@@ -114,12 +134,12 @@ class OtherDinersSummaryBreakdownTableViewController: UITableViewController {
 
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("dinerSummaryCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dinerSummaryCell", for: indexPath)
         
-        let row = indexPath.row
+        let row = (indexPath as NSIndexPath).row
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             let summaryData = self.summaries[row]
             
             cell.textLabel!.text = " \(summaryData.dinerName) (\(Int(100*summaryData.percentTotalCalories!)) % of total calories)"
