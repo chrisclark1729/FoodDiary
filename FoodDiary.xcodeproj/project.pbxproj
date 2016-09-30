@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		119CF68614EC79AE3F63C494 /* libPods-FoodDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EC4D59E4FB3BEFEE1FC3FC /* libPods-FoodDiary.a */; };
+		15CDE0401D9DA98100188270 /* UIColor+FTMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */; };
+		15CDE0591D9DDCA500188270 /* Tofino Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0511D9DDCA500188270 /* Tofino Black.otf */; };
+		15CDE05A1D9DDCA500188270 /* Tofino Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0521D9DDCA500188270 /* Tofino Bold.otf */; };
+		15CDE05B1D9DDCA500188270 /* Tofino Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0531D9DDCA500188270 /* Tofino Book.otf */; };
+		15CDE05C1D9DDCA500188270 /* Tofino Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0541D9DDCA500188270 /* Tofino Light.otf */; };
+		15CDE05D1D9DDCA500188270 /* Tofino Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0551D9DDCA500188270 /* Tofino Medium.otf */; };
+		15CDE05E1D9DDCA500188270 /* Tofino Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0561D9DDCA500188270 /* Tofino Regular.otf */; };
+		15CDE05F1D9DDCA500188270 /* Tofino Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0571D9DDCA500188270 /* Tofino Thin.otf */; };
+		15CDE0601D9DDCA500188270 /* Tofino Ultra.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0581D9DDCA500188270 /* Tofino Ultra.otf */; };
 		490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */; };
 		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
 		492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25881B24DE1A006419EE /* TimelineTableViewController.swift */; };
@@ -95,7 +104,7 @@
 		49DB30C91C0F547400DA1E9B /* EditMoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30C81C0F547400DA1E9B /* EditMoodTableViewController.swift */; };
 		49DB30CB1C0F597B00DA1E9B /* MoodFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30CA1C0F597A00DA1E9B /* MoodFieldTableViewCell.swift */; };
 		49DB30CD1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DB30CC1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift */; };
-		49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */; };
+		49DD19C91B5F0B34004199C2 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19C81B5F0B34004199C2 /* LogInViewController.swift */; };
 		49DD19D71B65AB6B004199C2 /* LocationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */; };
 		49F2F6501C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F64F1C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift */; };
 		49F2F6521C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2F6511C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift */; };
@@ -123,6 +132,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FTMAdditions.swift"; sourceTree = "<group>"; };
+		15CDE0511D9DDCA500188270 /* Tofino Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Black.otf"; sourceTree = "<group>"; };
+		15CDE0521D9DDCA500188270 /* Tofino Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Bold.otf"; sourceTree = "<group>"; };
+		15CDE0531D9DDCA500188270 /* Tofino Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Book.otf"; sourceTree = "<group>"; };
+		15CDE0541D9DDCA500188270 /* Tofino Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Light.otf"; sourceTree = "<group>"; };
+		15CDE0551D9DDCA500188270 /* Tofino Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Medium.otf"; sourceTree = "<group>"; };
+		15CDE0561D9DDCA500188270 /* Tofino Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Regular.otf"; sourceTree = "<group>"; };
+		15CDE0571D9DDCA500188270 /* Tofino Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Thin.otf"; sourceTree = "<group>"; };
+		15CDE0581D9DDCA500188270 /* Tofino Ultra.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Ultra.otf"; sourceTree = "<group>"; };
 		490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddMealPhoto+UIImageSize.swift"; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
@@ -215,7 +233,7 @@
 		49DB30C81C0F547400DA1E9B /* EditMoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMoodTableViewController.swift; sourceTree = "<group>"; };
 		49DB30CA1C0F597A00DA1E9B /* MoodFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodFieldTableViewCell.swift; sourceTree = "<group>"; };
 		49DB30CC1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimestampTableViewController.swift; sourceTree = "<group>"; };
-		49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacebookLogInViewController.swift; path = ../FacebookLogInViewController.swift; sourceTree = "<group>"; };
+		49DD19C81B5F0B34004199C2 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ../LogInViewController.swift; sourceTree = "<group>"; };
 		49DD19D21B62DD73004199C2 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		49DD19D41B62DE2B004199C2 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
 		49DD19D61B65AB6B004199C2 /* LocationManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerViewController.swift; sourceTree = "<group>"; };
@@ -380,10 +398,19 @@
 		49C5C4121B068AA6006FA068 /* FoodDiary */ = {
 			isa = PBXGroup;
 			children = (
+				15CDE0511D9DDCA500188270 /* Tofino Black.otf */,
+				15CDE0521D9DDCA500188270 /* Tofino Bold.otf */,
+				15CDE0531D9DDCA500188270 /* Tofino Book.otf */,
+				15CDE0541D9DDCA500188270 /* Tofino Light.otf */,
+				15CDE0551D9DDCA500188270 /* Tofino Medium.otf */,
+				15CDE0561D9DDCA500188270 /* Tofino Regular.otf */,
+				15CDE0571D9DDCA500188270 /* Tofino Thin.otf */,
+				15CDE0581D9DDCA500188270 /* Tofino Ultra.otf */,
 				49941ED11BEFE31B0088EE52 /* Extensions */,
 				495704BD1BD5871E0053C949 /* Entities */,
 				49941ECE1BDC22A00088EE52 /* Ingredients */,
-				49DD19C81B5F0B34004199C2 /* FacebookLogInViewController.swift */,
+				49DD19C81B5F0B34004199C2 /* LogInViewController.swift */,
+				15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */,
 				885CB8021B30C12A007647B2 /* FoodDiary-Bridging-Header.h */,
 				49AE09B41C238A24004240FA /* Edit Meal Details */,
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
@@ -593,9 +620,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15CDE05D1D9DDCA500188270 /* Tofino Medium.otf in Resources */,
+				15CDE05C1D9DDCA500188270 /* Tofino Light.otf in Resources */,
 				49C5C41B1B068AA6006FA068 /* Main.storyboard in Resources */,
 				49C5C4201B068AA7006FA068 /* LaunchScreen.xib in Resources */,
+				15CDE0601D9DDCA500188270 /* Tofino Ultra.otf in Resources */,
+				15CDE05E1D9DDCA500188270 /* Tofino Regular.otf in Resources */,
+				15CDE05B1D9DDCA500188270 /* Tofino Book.otf in Resources */,
+				15CDE05A1D9DDCA500188270 /* Tofino Bold.otf in Resources */,
 				49C5C41D1B068AA7006FA068 /* Images.xcassets in Resources */,
+				15CDE05F1D9DDCA500188270 /* Tofino Thin.otf in Resources */,
+				15CDE0591D9DDCA500188270 /* Tofino Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,7 +715,7 @@
 				493D766C1D0DF029003E9264 /* DayOfWeekTableViewController.swift in Sources */,
 				492E25951B263C46006419EE /* ViewMealDetailViewController.swift in Sources */,
 				49376FC31BA61B2A0075426C /* String+Extension.swift in Sources */,
-				49DD19C91B5F0B34004199C2 /* FacebookLogInViewController.swift in Sources */,
+				49DD19C91B5F0B34004199C2 /* LogInViewController.swift in Sources */,
 				49CB8D3A1C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift in Sources */,
 				49A614B31B79028600B66489 /* EditMealComponentsTableViewController.swift in Sources */,
 				4957B5741CD9325600621335 /* MoodSummaryTableViewController.swift in Sources */,
@@ -718,6 +753,7 @@
 				495BFB871B49D44E00D915B9 /* AddMealPhotoViewController.swift in Sources */,
 				4957B5761CDAC1B900621335 /* IngredientsSummaryBreakdownTableViewController.swift in Sources */,
 				49941ED01BDC242D0088EE52 /* Session.swift in Sources */,
+				15CDE0401D9DA98100188270 /* UIColor+FTMAdditions.swift in Sources */,
 				4957B57A1CE1120200621335 /* TimeOfDaySummary.swift in Sources */,
 				49A614B71B7FBF6000B66489 /* Note.swift in Sources */,
 				49DB30C91C0F547400DA1E9B /* EditMoodTableViewController.swift in Sources */,

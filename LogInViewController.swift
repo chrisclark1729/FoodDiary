@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class LogInViewController: UIViewController, FBSDKLoginButtonDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
     /*!
      @abstract Sent to the delegate when the button was used to login.
      @param loginButton the sender
@@ -19,6 +19,8 @@ class FacebookLogInViewController: UIViewController, FBSDKLoginButtonDelegate, P
         <#code#>
     }
 */
+
+
     
     var logInViewController: PFLogInViewController! = PFLogInViewController()
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()
