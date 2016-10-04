@@ -8,16 +8,21 @@
 
 import UIKit
 
-class NewLogInViewController: UIViewController, PFSignUpViewControllerDelegate, PFLogInViewControllerDelegate {
+class LandingScreenViewController: UIViewController, PFSignUpViewControllerDelegate, PFLogInViewControllerDelegate {
     
     var logInViewController: PFLogInViewController! = PFLogInViewController()
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()
     
     @IBAction func facebookLogInButtonPressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func emailLogInButtonPressed(_ sender: UIButton) {
-        self.present(self.logInViewController, animated: true, completion: nil)
+        PFFacebookUtils.logInInBackground(withPublishPermissions: ["publish_actions"], block: {
+            (resultUser, error) in
+            if let error = error {
+                print(error)
+            } else {
+                //user here. successful login
+                print(resultUser)
+            }
+        })
     }
     
     
@@ -25,6 +30,17 @@ class NewLogInViewController: UIViewController, PFSignUpViewControllerDelegate, 
         self.present(self.signUpViewController, animated: true, completion: nil)
     }
     
+    /*
+    override func viewWillAppear(_ animated: Bool) {
+        if (PFUser.current() == nil) {
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EmailLogIn")
+                self.present(viewController, animated: true, completion: nil)
+            })
+        }
+    } */
+  /*
     func initSignUpView() {
         let SignUpLogoTitle = UILabel()
         SignUpLogoTitle.text = "Fit Map"
@@ -45,11 +61,11 @@ class NewLogInViewController: UIViewController, PFSignUpViewControllerDelegate, 
         
         self.logInViewController.logInView!.logo = logInLogoTitle
         self.logInViewController.delegate = self
-    }
+    } */
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initSignUpView()
+       // initSignUpView()
 
     }
 

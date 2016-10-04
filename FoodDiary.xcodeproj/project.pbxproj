@@ -17,7 +17,9 @@
 		15CDE05E1D9DDCA500188270 /* Tofino Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0561D9DDCA500188270 /* Tofino Regular.otf */; };
 		15CDE05F1D9DDCA500188270 /* Tofino Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0571D9DDCA500188270 /* Tofino Thin.otf */; };
 		15CDE0601D9DDCA500188270 /* Tofino Ultra.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0581D9DDCA500188270 /* Tofino Ultra.otf */; };
-		15CDE0641DA2E50100188270 /* NewLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE0631DA2E50100188270 /* NewLogInViewController.swift */; };
+		15CDE0641DA2E50100188270 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE0631DA2E50100188270 /* LandingScreenViewController.swift */; };
+		15CDE0681DA2EB7600188270 /* EmailLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE0671DA2EB7600188270 /* EmailLogInViewController.swift */; };
+		15CDE06A1DA2F9BE00188270 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE0691DA2F9BE00188270 /* SignUpViewController.swift */; };
 		490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */; };
 		492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25841B20A774006419EE /* FoodDiaryEntry.swift */; };
 		492E25891B24DE1A006419EE /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492E25881B24DE1A006419EE /* TimelineTableViewController.swift */; };
@@ -142,7 +144,9 @@
 		15CDE0561D9DDCA500188270 /* Tofino Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Regular.otf"; sourceTree = "<group>"; };
 		15CDE0571D9DDCA500188270 /* Tofino Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Thin.otf"; sourceTree = "<group>"; };
 		15CDE0581D9DDCA500188270 /* Tofino Ultra.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Ultra.otf"; sourceTree = "<group>"; };
-		15CDE0631DA2E50100188270 /* NewLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLogInViewController.swift; sourceTree = "<group>"; };
+		15CDE0631DA2E50100188270 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
+		15CDE0671DA2EB7600188270 /* EmailLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLogInViewController.swift; sourceTree = "<group>"; };
+		15CDE0691DA2F9BE00188270 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		490B5C5E1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddMealPhoto+UIImageSize.swift"; sourceTree = "<group>"; };
 		4923314B1B0F87B600AA212E /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		492E25841B20A774006419EE /* FoodDiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiaryEntry.swift; sourceTree = "<group>"; };
@@ -408,7 +412,9 @@
 				15CDE0561D9DDCA500188270 /* Tofino Regular.otf */,
 				15CDE0571D9DDCA500188270 /* Tofino Thin.otf */,
 				15CDE0581D9DDCA500188270 /* Tofino Ultra.otf */,
-				15CDE0631DA2E50100188270 /* NewLogInViewController.swift */,
+				15CDE0631DA2E50100188270 /* LandingScreenViewController.swift */,
+				15CDE0691DA2F9BE00188270 /* SignUpViewController.swift */,
+				15CDE0671DA2EB7600188270 /* EmailLogInViewController.swift */,
 				49941ED11BEFE31B0088EE52 /* Extensions */,
 				495704BD1BD5871E0053C949 /* Entities */,
 				49941ECE1BDC22A00088EE52 /* Ingredients */,
@@ -704,6 +710,7 @@
 				494EBBE61D19CB520034FC97 /* BaseTabBarController.swift in Sources */,
 				49B2604A1C97593900984E8F /* FDLocationManger.swift in Sources */,
 				49DB30BD1C03D47000DA1E9B /* LocationNameFieldTableViewCell.swift in Sources */,
+				15CDE0681DA2EB7600188270 /* EmailLogInViewController.swift in Sources */,
 				49DB30C51C0E3ABA00DA1E9B /* Meal+Queries.swift in Sources */,
 				49DB30CD1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift in Sources */,
 				492E25971B28A652006419EE /* TimelineTableViewCell.swift in Sources */,
@@ -724,6 +731,7 @@
 				4957B5741CD9325600621335 /* MoodSummaryTableViewController.swift in Sources */,
 				49DB30C71C0E413300DA1E9B /* MealIngredients.swift in Sources */,
 				49AE09B21C23890B004240FA /* Mood.swift in Sources */,
+				15CDE06A1DA2F9BE00188270 /* SignUpViewController.swift in Sources */,
 				49376FC51BA6A6C40075426C /* FoodDiaryDetail.swift in Sources */,
 				49F2F6501C6296E90051BA3C /* TimeOfDaySummaryTableViewController.swift in Sources */,
 				495898601B55597A0094AF65 /* FoodDiaryEntry+UpdateData.swift in Sources */,
@@ -736,7 +744,7 @@
 				490B5C5F1B932B7E00D95885 /* AddMealPhoto+UIImageSize.swift in Sources */,
 				49DB30CB1C0F597B00DA1E9B /* MoodFieldTableViewCell.swift in Sources */,
 				49DB30C31C0E3A4100DA1E9B /* BaseEntity.swift in Sources */,
-				15CDE0641DA2E50100188270 /* NewLogInViewController.swift in Sources */,
+				15CDE0641DA2E50100188270 /* LandingScreenViewController.swift in Sources */,
 				49CB8D431C596AA600F0A38D /* LocationSummary.swift in Sources */,
 				49B99E7C1B8BB71200C4C1E0 /* Ingredient.swift in Sources */,
 				49DB30BB1C03C3EC00DA1E9B /* EditMealLocationTableViewController.swift in Sources */,
