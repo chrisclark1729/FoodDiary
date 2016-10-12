@@ -15,6 +15,15 @@ class EmailLogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let bottomLine = CALayer()
+     //   let rect = CGrect(x: 0, y: 0, width: 100, height: 100)
+      //  let rect = CGrect(x: 0, y: usernameField.frame.height - 1, usernameField.frame.width, 1)
+        
+        bottomLine.frame = rect
+        bottomLine.backgroundColor = UIColor.gray.cgColor
+        usernameField.borderStyle = UITextBorderStyle.none
+        usernameField.layer.addSublayer(bottomLine)
 
         // Do any additional setup after loading the view.
     }
@@ -36,9 +45,7 @@ class EmailLogInViewController: UIViewController {
             let alert = UIAlertView(title: "Invalid", message: "Password must be greater than 8 characters", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         } else {
-            
             // Run a spinner to show a task in progress
-            
             let logInSpinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
             logInSpinner.startAnimating()
             
@@ -54,24 +61,12 @@ class EmailLogInViewController: UIViewController {
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Timeline") 
                         self.present(viewController, animated: true, completion: nil)
                     })
-
                 }
-                
             })
-
             // Stop the spinner
             logInSpinner.stopAnimating()
-            
-
         }
-        
-        
     }
-    
-
-    
-    
-
     /*
     // MARK: - Navigation
 
