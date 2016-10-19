@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		119CF68614EC79AE3F63C494 /* libPods-FoodDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EC4D59E4FB3BEFEE1FC3FC /* libPods-FoodDiary.a */; };
+		151593301DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515932F1DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift */; };
+		151593321DAEC9B800ED5929 /* userDataOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151593311DAEC9B800ED5929 /* userDataOnboardingViewController.swift */; };
+		151593341DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151593331DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift */; };
 		15CDE0401D9DA98100188270 /* UIColor+FTMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */; };
 		15CDE0591D9DDCA500188270 /* Tofino Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0511D9DDCA500188270 /* Tofino Black.otf */; };
 		15CDE05A1D9DDCA500188270 /* Tofino Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0521D9DDCA500188270 /* Tofino Bold.otf */; };
@@ -135,6 +138,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1515932F1DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingGoalsViewController.swift; sourceTree = "<group>"; };
+		151593311DAEC9B800ED5929 /* userDataOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userDataOnboardingViewController.swift; sourceTree = "<group>"; };
+		151593331DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userWeightDataOnboardingViewController.swift; sourceTree = "<group>"; };
 		15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FTMAdditions.swift"; sourceTree = "<group>"; };
 		15CDE0511D9DDCA500188270 /* Tofino Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Black.otf"; sourceTree = "<group>"; };
 		15CDE0521D9DDCA500188270 /* Tofino Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Bold.otf"; sourceTree = "<group>"; };
@@ -425,6 +431,9 @@
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
 				492E258A1B24DFFC006419EE /* DataManager.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
+				1515932F1DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift */,
+				151593311DAEC9B800ED5929 /* userDataOnboardingViewController.swift */,
+				151593331DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift */,
 				494EBBE71D19D1980034FC97 /* SettingsViewController.swift */,
 				494EBBE51D19CB520034FC97 /* BaseTabBarController.swift */,
 				49CB8D3B1C3C1D3A00F0A38D /* Nutrition Summary Data */,
@@ -713,6 +722,7 @@
 				15CDE0681DA2EB7600188270 /* EmailLogInViewController.swift in Sources */,
 				49DB30C51C0E3ABA00DA1E9B /* Meal+Queries.swift in Sources */,
 				49DB30CD1C0F7FE800DA1E9B /* EditTimestampTableViewController.swift in Sources */,
+				151593301DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift in Sources */,
 				492E25971B28A652006419EE /* TimelineTableViewCell.swift in Sources */,
 				49CB8D411C56F5A000F0A38D /* LocationSummaryBreakdownTableViewController.swift in Sources */,
 				492E25851B20A774006419EE /* FoodDiaryEntry.swift in Sources */,
@@ -720,6 +730,7 @@
 				49F2F6521C6297F00051BA3C /* OtherDinersSummaryBreakdownTableViewController.swift in Sources */,
 				49DB30BF1C0E370F00DA1E9B /* Meal.swift in Sources */,
 				493D766A1D0DECA9003E9264 /* DayOfWeekSummary.swift in Sources */,
+				151593321DAEC9B800ED5929 /* userDataOnboardingViewController.swift in Sources */,
 				493914DE1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift in Sources */,
 				49376FC11BA611F80075426C /* IngredientAddTableViewController.swift in Sources */,
 				493D766C1D0DF029003E9264 /* DayOfWeekTableViewController.swift in Sources */,
@@ -729,6 +740,7 @@
 				49CB8D3A1C3AD81700F0A38D /* EditSummaryDatesTableViewController.swift in Sources */,
 				49A614B31B79028600B66489 /* EditMealComponentsTableViewController.swift in Sources */,
 				4957B5741CD9325600621335 /* MoodSummaryTableViewController.swift in Sources */,
+				151593341DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift in Sources */,
 				49DB30C71C0E413300DA1E9B /* MealIngredients.swift in Sources */,
 				49AE09B21C23890B004240FA /* Mood.swift in Sources */,
 				15CDE06A1DA2F9BE00188270 /* SignUpViewController.swift in Sources */,

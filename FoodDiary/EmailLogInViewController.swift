@@ -15,16 +15,17 @@ class EmailLogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        /*
         let bottomLine = CALayer()
      //   let rect = CGrect(x: 0, y: 0, width: 100, height: 100)
       //  let rect = CGrect(x: 0, y: usernameField.frame.height - 1, usernameField.frame.width, 1)
         
-        bottomLine.frame = rect
+   //     bottomLine.frame = rect
         bottomLine.backgroundColor = UIColor.gray.cgColor
         usernameField.borderStyle = UITextBorderStyle.none
         usernameField.layer.addSublayer(bottomLine)
-
+*/
         // Do any additional setup after loading the view.
     }
 
@@ -57,10 +58,12 @@ class EmailLogInViewController: UIViewController {
                     alert.show()
                 } else {
                     print(resultUser)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "userDidLogIn"), object: nil)
+                    /*
                     DispatchQueue.main.async(execute: { () -> Void in
                         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Timeline") 
                         self.present(viewController, animated: true, completion: nil)
-                    })
+                    }) */
                 }
             })
             // Stop the spinner

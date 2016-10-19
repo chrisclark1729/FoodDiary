@@ -64,6 +64,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="HVW-ce-vwM" eventType="touchUpInside" id="jL5-bR-6pr"/>
+                                    <segue destination="qfA-c4-9Ru" kind="modal" id="i2l-lU-Xps"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,12 +84,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8o-FN-bJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1218" y="1126"/>
+            <point key="canvasLocation" x="-2052" y="1152"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Onboarding Goals View Controller-->
         <scene sceneID="lBI-u9-INK">
             <objects>
-                <viewController id="QgB-kU-Gbw" customClass="SignUpViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QgB-kU-Gbw" customClass="OnboardingGoalsViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zbw-qe-gUY"/>
                         <viewControllerLayoutGuide type="bottom" id="nRc-ga-d2t"/>
@@ -98,65 +99,88 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERa-zN-X0i">
-                                <frame key="frameInset" minX="75" minY="128" width="225" height="45"/>
+                                <frame key="frameInset" minX="75" minY="159" width="225" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Lose Weight">
                                     <color key="titleColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="goalLoseWeightButtonPressed:" destination="QgB-kU-Gbw" eventType="touchUpInside" id="fA9-E9-h3x"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZzC-Zs-lAP">
-                                <frame key="frameInset" minX="75" minY="181" width="225" height="45"/>
+                                <frame key="frameInset" minX="75" minY="212" width="225" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Maintain Weight">
                                     <color key="titleColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="goalMaintainWeightButtonPressed:" destination="QgB-kU-Gbw" eventType="touchUpInside" id="fBX-D9-LCX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7px-Ax-DtS">
-                                <frame key="frameInset" minX="75" minY="234" width="225" height="45"/>
+                                <frame key="frameInset" minX="75" minY="265" width="225" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Gain Weight">
                                     <color key="titleColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="goalGainWeightButtonPressed:" destination="QgB-kU-Gbw" eventType="touchUpInside" id="bi9-5k-oQ1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJa-6Q-ZC5">
-                                <frame key="frameInset" minX="75" minY="287" width="225" height="45"/>
+                                <frame key="frameInset" minX="75" minY="318" width="225" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Increase Energy">
                                     <color key="titleColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="goalIncreaseEnergyButtonPressed:" destination="QgB-kU-Gbw" eventType="touchUpInside" id="yng-zG-0LM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is your primary goal?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YL-WM-INQ">
-                                <frame key="frameInset" minX="75" minY="69" width="225" height="21"/>
+                                <frame key="frameInset" minX="75" minY="100" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="414-FP-1Ba">
-                                <frame key="frameInset" minX="75" minY="340" width="225" height="45"/>
+                                <frame key="frameInset" minX="75" minY="371" width="225" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Reduce Pain">
                                     <color key="titleColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="goalReducePainButtonPressed:" destination="QgB-kU-Gbw" eventType="touchUpInside" id="0qD-FM-cKV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="TX6-NZ-mw9"/>
+                    <connections>
+                        <outlet property="gainWeightButton" destination="7px-Ax-DtS" id="nJr-PS-vON"/>
+                        <outlet property="increaseEnergyButton" destination="JJa-6Q-ZC5" id="oIg-Vx-xwa"/>
+                        <outlet property="loseWeightButton" destination="ERa-zN-X0i" id="VeG-7d-pB5"/>
+                        <outlet property="maintainWeightButton" destination="ZzC-Zs-lAP" id="opT-fy-2ZM"/>
+                        <outlet property="reducePainButton" destination="414-FP-1Ba" id="tAR-jo-SAO"/>
+                        <segue destination="aFF-lt-l1J" kind="push" identifier="userDataOnboarding" id="Lz1-Z0-9WM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBO-Bo-N53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2115" y="1995"/>
+            <point key="canvasLocation" x="-2051" y="2722"/>
         </scene>
-        <!--View Controller-->
+        <!--User Data Onboarding View Controller-->
         <scene sceneID="VD9-VV-V6e">
             <objects>
-                <viewController id="aFF-lt-l1J" sceneMemberID="viewController">
+                <viewController id="aFF-lt-l1J" customClass="userDataOnboardingViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mdh-P1-3vK"/>
                         <viewControllerLayoutGuide type="bottom" id="rMO-Ok-XDU"/>
@@ -166,13 +190,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gac-VO-1Mw">
-                                <frame key="frameInset" minX="34" minY="90" width="225" height="21"/>
+                                <frame key="frameInset" minX="75" minY="90" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When were you born?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyQ-Ce-Ofq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When was your birthday?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyQ-Ce-Ofq">
                                 <frame key="frameInset" minX="44" minY="176" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -180,48 +204,70 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Where do you live?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmv-VI-LDL">
-                                <frame key="frameInset" minX="54" minY="241" width="225" height="21"/>
+                                <frame key="frameInset" minX="55" minY="358" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="United States" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-0n-PFs">
-                                <frame key="frameInset" minX="93" minY="293" width="186" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip/Postal Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWr-gH-fMH">
-                                <frame key="frameInset" minX="93" minY="343" width="186" height="30"/>
+                                <frame key="frameInset" minX="94" minY="425" width="186" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sep 9, 1979" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Vw-WR-2Fc">
-                                <frame key="frameInset" minX="93" minY="203" width="176" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtC-Kq-wog">
+                                <frame key="frameInset" minX="164" minY="487" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="userDataSubmitButtonPressed:" destination="aFF-lt-l1J" eventType="touchUpInside" id="m7h-8J-W57"/>
+                                </connections>
+                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WoN-o9-E3v">
-                                <frame key="frameInset" minX="148" minY="119" width="121" height="29"/>
+                                <frame key="frameInset" minX="78" minY="119" width="236" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Male"/>
                                     <segment title="Female"/>
+                                    <segment title="Other"/>
                                 </segments>
+                                <connections>
+                                    <action selector="genderSelectionPressed:" destination="aFF-lt-l1J" eventType="valueChanged" id="lhs-je-Tyl"/>
+                                </connections>
                             </segmentedControl>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxE-BH-IZh">
+                                <frame key="frameInset" minX="55" minY="197" height="143" maxX="47"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="-599541060.58685803">
+                                    <!--1982-01-01 20:48:59 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-3187256400">
+                                    <!--1900-01-01 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="United States" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fg-0n-PFs">
+                                <frame key="frameInset" minX="94" minY="387" width="186" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7ew-Yc-CdV"/>
+                    <connections>
+                        <outlet property="birthDate" destination="hxE-BH-IZh" id="DbQ-Mz-IkK"/>
+                        <outlet property="gender" destination="WoN-o9-E3v" id="MrM-Np-LQt"/>
+                        <outlet property="postalCode" destination="MWr-gH-fMH" id="bRJ-bx-q5D"/>
+                        <segue destination="ydB-yS-LLf" kind="push" identifier="userWeightDataOnboarding" id="Cgd-3I-BtB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vfz-D3-itn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1680" y="1995"/>
+            <point key="canvasLocation" x="-1598" y="2722"/>
         </scene>
         <!--Email Log In View Controller-->
         <scene sceneID="SSQ-Yk-XcL">
@@ -261,16 +307,16 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xxO-he-2Ko">
                                 <frame key="frameInset" minX="71" minY="451" width="225" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Tofino-Medium" family="Tofino" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDS-k4-nBW">
                                 <frame key="frameInset" minX="71" minY="489" width="225" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Tofino-Medium" family="Tofino" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -283,12 +329,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXm-Lw-qdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-682.5" y="1125.5"/>
+            <point key="canvasLocation" x="-1599" y="1152"/>
         </scene>
-        <!--View Controller-->
+        <!--User Weight Data Onboarding View Controller-->
         <scene sceneID="9bR-ds-jPn">
             <objects>
-                <viewController id="ydB-yS-LLf" sceneMemberID="viewController">
+                <viewController id="ydB-yS-LLf" customClass="userWeightDataOnboardingViewController" customModule="FoodDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dg5-dx-S1q"/>
                         <viewControllerLayoutGuide type="bottom" id="7OW-kb-cTz"/>
@@ -297,55 +343,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCy-C7-LSH">
+                                <frame key="frameInset" minX="172" minY="498" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="userWeightDataSubmitButtonPressed:" destination="ydB-yS-LLf" eventType="touchUpInside" id="UGE-Bw-iXe"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How much do you weigh?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTR-Xc-KOc">
-                                <frame key="frameInset" minX="60" minY="134" width="225" height="21"/>
+                                <frame key="frameInset" minX="61" minY="201" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is your target weight?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRd-Sp-AyC">
-                                <frame key="frameInset" minX="68" minY="212" width="225" height="21"/>
+                                <frame key="frameInset" minX="69" minY="279" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkl-D0-b6P">
-                                <frame key="frameInset" minX="147" minY="163" width="97" height="30"/>
+                                <frame key="frameInset" minX="148" minY="230" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGW-TL-RLQ">
-                                <frame key="frameInset" minX="147" minY="77" width="97" height="30"/>
+                                <frame key="frameInset" minX="148" minY="144" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVP-vc-GDT">
-                                <frame key="frameInset" minX="147" minY="241" width="97" height="30"/>
+                                <frame key="frameInset" minX="148" minY="308" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How tall are you?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGZ-ui-OEN">
-                                <frame key="frameInset" minX="50" minY="56" width="225" height="21"/>
+                                <frame key="frameInset" minX="51" minY="123" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Uqi-kG-i0i"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3i-cA-1dl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1219" y="1995"/>
+            <point key="canvasLocation" x="-1124" y="2722"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aCc-sP-je9">
+            <objects>
+                <navigationController id="agL-be-bch" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kZb-hG-rkC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QgB-kU-Gbw" kind="relationship" relationship="rootViewController" id="5NL-am-aZX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bNC-2j-9ft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2052" y="1905"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ayF-zH-DB3">
@@ -368,7 +439,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="we9-37-DaH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="we9-37-DaH">
                                 <frame key="frameInset" minX="75" minY="68" width="225" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -376,14 +447,14 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Choose a password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IaV-Zd-DN0">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IaV-Zd-DN0">
                                 <frame key="frameInset" minX="75" minY="119" width="225" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Choose a User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vwP-wb-OiG">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vwP-wb-OiG">
                                 <frame key="frameInset" minX="75" minY="207" width="225" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -397,13 +468,19 @@
                                 <color key="textColor" red="0.35686274509999999" green="0.38431372549999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz9-Wn-D6U">
+                                <frame key="frameInset" minX="164" minY="386" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="a3H-Ix-dPk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyN-XN-7HR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-739" y="1995"/>
+            <point key="canvasLocation" x="-1599" y="1905"/>
         </scene>
         <!--Item-->
         <scene sceneID="NCH-Ot-Tr7">
@@ -451,6 +528,7 @@
                         <segue destination="zkH-2L-Mwv" kind="relationship" relationship="viewControllers" id="TNo-8i-Zaw"/>
                         <segue destination="HVW-ce-vwM" kind="modal" identifier="showLogInView" id="V6M-yg-N65"/>
                         <segue destination="PGt-RE-AcZ" kind="relationship" relationship="viewControllers" id="m63-1L-PYG"/>
+                        <segue destination="agL-be-bch" kind="modal" identifier="showOnboarding" id="1Ai-6c-o4i"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrb-T3-Fw6" userLabel="First Responder" sceneMemberID="firstResponder"/>

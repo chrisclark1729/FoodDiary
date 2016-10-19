@@ -39,6 +39,7 @@ class BaseTabBarController: UITabBarController {
     func userDidLogIn() {
         self.dismiss(animated: true, completion: nil)
         self.selectedIndex = 2
+        self.performSegue(withIdentifier: "showOnboarding", sender: nil)
     }
     
     func userDidLogout() {
