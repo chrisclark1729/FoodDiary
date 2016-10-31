@@ -14,15 +14,22 @@ class LandingScreenViewController: UIViewController, PFSignUpViewControllerDeleg
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()
     
     @IBAction func facebookLogInButtonPressed(_ sender: UIButton) {
-        PFFacebookUtils.logInInBackground(withPublishPermissions: ["publish_actions"], block: {
-            (resultUser, error) in
-            if let error = error {
-                print(error)
+        let permissions = ["public_profile", "email", "user_friends"]
+        PFFacebookUtils.logInInBackground(withReadPermissions: permissions, block: {
+            (user, error) in
+            if let user = user {
+                if user.isNew {
+                    print("User signed up and logged in through Facebook!")
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "userDidLogIn"), object: nil)
+                } else {
+                    print("User logged in through Facebook!")
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "userDidLogIn"), object: nil)
+                }
             } else {
-                //user here. successful login
-                print(resultUser)
+                print("Uh oh. The user cancelled the Facebook login.")
             }
         })
+
     }
     
     

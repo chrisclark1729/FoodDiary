@@ -11,6 +11,7 @@
 		151593301DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1515932F1DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift */; };
 		151593321DAEC9B800ED5929 /* userDataOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151593311DAEC9B800ED5929 /* userDataOnboardingViewController.swift */; };
 		151593341DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151593331DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift */; };
+		151593371DBE613C00ED5929 /* UserCoachSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151593361DBE613C00ED5929 /* UserCoachSelectionViewController.swift */; };
 		15CDE0401D9DA98100188270 /* UIColor+FTMAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */; };
 		15CDE0591D9DDCA500188270 /* Tofino Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0511D9DDCA500188270 /* Tofino Black.otf */; };
 		15CDE05A1D9DDCA500188270 /* Tofino Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15CDE0521D9DDCA500188270 /* Tofino Bold.otf */; };
@@ -141,6 +142,8 @@
 		1515932F1DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingGoalsViewController.swift; sourceTree = "<group>"; };
 		151593311DAEC9B800ED5929 /* userDataOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userDataOnboardingViewController.swift; sourceTree = "<group>"; };
 		151593331DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userWeightDataOnboardingViewController.swift; sourceTree = "<group>"; };
+		151593351DB806FA00ED5929 /* FoodDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodDiary.entitlements; sourceTree = "<group>"; };
+		151593361DBE613C00ED5929 /* UserCoachSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoachSelectionViewController.swift; sourceTree = "<group>"; };
 		15CDE03F1D9DA98100188270 /* UIColor+FTMAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+FTMAdditions.swift"; sourceTree = "<group>"; };
 		15CDE0511D9DDCA500188270 /* Tofino Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Black.otf"; sourceTree = "<group>"; };
 		15CDE0521D9DDCA500188270 /* Tofino Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tofino Bold.otf"; sourceTree = "<group>"; };
@@ -410,6 +413,7 @@
 		49C5C4121B068AA6006FA068 /* FoodDiary */ = {
 			isa = PBXGroup;
 			children = (
+				151593351DB806FA00ED5929 /* FoodDiary.entitlements */,
 				15CDE0511D9DDCA500188270 /* Tofino Black.otf */,
 				15CDE0521D9DDCA500188270 /* Tofino Bold.otf */,
 				15CDE0531D9DDCA500188270 /* Tofino Book.otf */,
@@ -431,6 +435,7 @@
 				49C5C4151B068AA6006FA068 /* AppDelegate.swift */,
 				492E258A1B24DFFC006419EE /* DataManager.swift */,
 				49C5C4191B068AA6006FA068 /* Main.storyboard */,
+				151593361DBE613C00ED5929 /* UserCoachSelectionViewController.swift */,
 				1515932F1DAEC7EE00ED5929 /* OnboardingGoalsViewController.swift */,
 				151593311DAEC9B800ED5929 /* userDataOnboardingViewController.swift */,
 				151593331DAEC9E100ED5929 /* userWeightDataOnboardingViewController.swift */,
@@ -606,6 +611,11 @@
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = U988Y2XRVT;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					49C5C4241B068AA7006FA068 = {
 						CreatedOnToolsVersion = 6.2;
@@ -733,6 +743,7 @@
 				151593321DAEC9B800ED5929 /* userDataOnboardingViewController.swift in Sources */,
 				493914DE1BFA7E420091A4B6 /* FoodDiaryEntry+Queries.swift in Sources */,
 				49376FC11BA611F80075426C /* IngredientAddTableViewController.swift in Sources */,
+				151593371DBE613C00ED5929 /* UserCoachSelectionViewController.swift in Sources */,
 				493D766C1D0DF029003E9264 /* DayOfWeekTableViewController.swift in Sources */,
 				492E25951B263C46006419EE /* ViewMealDetailViewController.swift in Sources */,
 				49376FC31BA61B2A0075426C /* String+Extension.swift in Sources */,
@@ -930,6 +941,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FoodDiary/FoodDiary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -959,6 +971,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FoodDiary/FoodDiary.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

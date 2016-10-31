@@ -1,14 +1,14 @@
 //
-//  userDataOnboardingViewController.swift
+//  UserCoachSelectionViewController.swift
 //  FoodDiary
 //
-//  Created by chris clark on 10/12/16.
+//  Created by chris clark on 10/24/16.
 //  Copyright © 2016 Chris Clark. All rights reserved.
 //
 
 import UIKit
 
-class userDataOnboardingViewController: UIViewController {
+class UserCoachSelectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,17 +19,6 @@ class userDataOnboardingViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBOutlet weak var gender: UISegmentedControl!
-    @IBOutlet weak var birthDate: UIDatePicker!
-    @IBOutlet weak var postalCode: UITextField!
-    
-    @IBAction func userDataSubmitButtonPressed(_ sender: UIButton) {
-        PFUser.current()?.add(gender.selectedSegmentIndex, forKey: "gender")
-        PFUser.current()?.add(birthDate.date, forKey: "birthDate")
-        PFUser.current()?.add(postalCode.text, forKey: "postalCode")
-        self.performSegue(withIdentifier: "userCoachSelection", sender: nil)
     }
     
 
