@@ -16,8 +16,7 @@ class TimelineTableViewCell: UITableViewCell {
     @IBOutlet weak var mealLocationName: UILabel!
     @IBOutlet weak var mealDate: UILabel!
     @IBOutlet weak var mealTime: UILabel!
-    @IBOutlet weak var mealScore: UILabel!
-    
+    @IBOutlet weak var calorieLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -32,7 +32,6 @@ class LandingScreenViewController: UIViewController, PFSignUpViewControllerDeleg
 
     }
     
-    
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
         self.present(self.signUpViewController, animated: true, completion: nil)
     }

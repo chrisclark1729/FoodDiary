@@ -22,6 +22,9 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.delegate = self
+        navigationController?.navigationBar.barTintColor = UIColor( red: 114/255, green: 180/255, blue:201/255, alpha: 1.0 )
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tofino-Book", size: 15)!]
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         if PFUser.current() != nil {
           self.dataManager.loadTimelineData()
         }
@@ -39,7 +42,6 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         self.dataManager.loadTimelineData()
     }
     
-    
     func archiveMeal(_ notification: Notification) {
         let mealToArchive: FoodDiaryEntry = notification.object as! FoodDiaryEntry
         var indexToArchive: Int?
@@ -54,8 +56,6 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         self.tableView.reloadData()
 
     }
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -105,8 +105,6 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         }
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let meals = self.meals {
             return meals.count
@@ -145,7 +143,11 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         cell.mealLocationName.text = meal.locationName
         cell.mealDate.text = dayFormatter.string(from: meal.timestamp as Date)
         cell.mealTime.text = timeFormatter.string(from: meal.timestamp as Date)
-        cell.mealScore.text = "Score: \(meal.mealScore())% (\(calories) cal.)"
+        cell.calorieLabel.text = calories as String
+        
+        cell.contentView.layer.borderWidth = 13.5
+        cell.contentView.layer.borderColor = UIColor( red: 114/255, green: 180/255, blue:201/255, alpha: 1.0 ).cgColor
+        cell.contentView.layer.masksToBounds  = true
         
         return cell
     }

@@ -10,7 +10,6 @@ import UIKit
 
 class SignUpViewController: UIViewController, PFSignUpViewControllerDelegate {
 
-    
     @IBOutlet weak var emailAddressSignUpField: UITextField!
     @IBOutlet weak var passwordSignUpField: UITextField!
     var signUpViewController: PFSignUpViewController! = PFSignUpViewController()

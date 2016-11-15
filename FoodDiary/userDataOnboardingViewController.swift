@@ -28,10 +28,15 @@ class userDataOnboardingViewController: UIViewController {
     @IBAction func userDataSubmitButtonPressed(_ sender: UIButton) {
         PFUser.current()?.add(gender.selectedSegmentIndex, forKey: "gender")
         PFUser.current()?.add(birthDate.date, forKey: "birthDate")
-        PFUser.current()?.add(postalCode.text, forKey: "postalCode")
+        PFUser.current()?.add(postalCode.text!, forKey: "postalCode")
+        do {
+            try PFUser.current()?.save()
+        } catch let error as NSError {
+            print(error)
+        }
         self.performSegue(withIdentifier: "userCoachSelection", sender: nil)
+        
     }
-    
 
     /*
     // MARK: - Navigation
