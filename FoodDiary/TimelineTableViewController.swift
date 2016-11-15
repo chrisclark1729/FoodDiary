@@ -18,13 +18,13 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     var meals:[FoodDiaryEntry]?
     var rowToDelete: IndexPath?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.delegate = self
         navigationController?.navigationBar.barTintColor = UIColor( red: 114/255, green: 180/255, blue:201/255, alpha: 1.0 )
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tofino-Book", size: 15)!]
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+       //  navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+     //   navigationController?.navigationBar.tintColor = UIColor.white
         if PFUser.current() != nil {
           self.dataManager.loadTimelineData()
         }
