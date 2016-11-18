@@ -4,6 +4,8 @@
 <dict>
 	<key></key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>FitMap uses photos</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>UILaunchStoryboardName</key>
@@ -18,10 +20,10 @@
 	<string>1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>FacebookAppID</key>
 	<string>505866466230493</string>
 	<key>NSAppTransportSecurity</key>
@@ -54,6 +56,17 @@
 	<string></string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Tofino Black.otf</string>
+		<string>Tofino Bold.otf</string>
+		<string>Tofino Book.otf</string>
+		<string>Tofino Light.otf</string>
+		<string>Tofino Medium.otf</string>
+		<string>Tofino Regular.otf</string>
+		<string>Tofino Thin.otf</string>
+		<string>Tofino Ultra.otf</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
@@ -66,16 +79,5 @@
 	<string>test</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>testWhenInUse</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Tofino Black.otf</string>
-		<string>Tofino Bold.otf</string>
-		<string>Tofino Book.otf</string>
-		<string>Tofino Light.otf</string>
-		<string>Tofino Medium.otf</string>
-		<string>Tofino Regular.otf</string>
-		<string>Tofino Thin.otf</string>
-		<string>Tofino Ultra.otf</string>
-	</array>
 </dict>
 </plist>

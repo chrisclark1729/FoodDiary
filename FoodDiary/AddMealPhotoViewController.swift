@@ -94,8 +94,7 @@ class AddMealPhotoViewController: UIViewController, UIImagePickerControllerDeleg
             userPhoto["locationName"] = self.locationNameSuggestions[0]
         }
         userPhoto.saveInBackground()
-        
-        
+    
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

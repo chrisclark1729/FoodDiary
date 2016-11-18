@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        initAppearance()
+        
         /*
         if self.window!.rootViewController as? UITabBarController != nil {
             let tababarController = self.window!.rootViewController as! UITabBarController
@@ -111,6 +113,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return topController!
     
+    }
+    
+    func initAppearance () {
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tofino-Book", size: 19)!, NSForegroundColorAttributeName: UIColor.white]
+        
     }
 
 }

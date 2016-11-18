@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
-    
+class TimelineTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate {
     
     var dataManager = DataManager()
     var dateFormatter = DateFormatter()
@@ -17,25 +17,35 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     var timeFormatter = DateFormatter()
     var meals:[FoodDiaryEntry]?
     var rowToDelete: IndexPath?
+    var imageView = UIImageView()
+    var locationNameSuggestions:[String] = []
+    
+    @IBAction func addMealPhotoWithCameraButtonPressed(_ sender: UIButton) {
+        
+        print("Camera button pressed")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.delegate = self
-        navigationController?.navigationBar.barTintColor = UIColor( red: 114/255, green: 180/255, blue:201/255, alpha: 1.0 )
-        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tofino-Book", size: 15)!]
-       //  navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-     //   navigationController?.navigationBar.tintColor = UIColor.white
+
         if PFUser.current() != nil {
           self.dataManager.loadTimelineData()
         }
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dayFormatter.dateFormat = "MMM dd, yyyy"
+        dayFormatter.dateFormat = "EE, h:mm a"
         timeFormatter.dateFormat = "h:mm a"
         NotificationCenter.default.addObserver(self, selector: #selector(TimelineTableViewController.userDidLogIn(_:)), name: NSNotification.Name(rawValue: "userDidLogIn"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(TimelineTableViewController.archiveMeal(_:)), name: NSNotification.Name(rawValue: "archiveMealNotification"), object: nil)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func userDidLogIn(_ notification: Notification) {
@@ -60,6 +70,8 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
+        LocationManagerViewController.sharedLocation.refreshLocation()
+        self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation))
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,6 +125,16 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         }
         
     }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell")
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 78
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -142,13 +164,8 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
         cell.mealName.text = meal.mealName
         cell.mealLocationName.text = meal.locationName
         cell.mealDate.text = dayFormatter.string(from: meal.timestamp as Date)
-        cell.mealTime.text = timeFormatter.string(from: meal.timestamp as Date)
         cell.calorieLabel.text = calories as String
-        
-        cell.contentView.layer.borderWidth = 13.5
-        cell.contentView.layer.borderColor = UIColor( red: 114/255, green: 180/255, blue:201/255, alpha: 1.0 ).cgColor
-        cell.contentView.layer.masksToBounds  = true
-        
+      
         return cell
     }
     
@@ -221,5 +238,106 @@ class TimelineTableViewController: UITableViewController, UIAlertViewDelegate {
             }
         }
     }
+
+//MARK: Camera
+
+    func noCamera(){
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true, completion: nil)
+    }
     
+    @IBAction func takePhotoWithCameraButtonPressed(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.mediaTypes = [kUTTypeImage as String]
+            picker.delegate = self
+            picker.allowsEditing = true
+            present(picker, animated: true, completion: nil)
+            
+        } else {
+            noCamera()
+        }
+
+    }
+    
+    
+    @IBAction func addPhotoFromGalleryButtonPressed(_ sender: UIButton) {
+        let imagePicker:UIImagePickerController = UIImagePickerController()
+        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.delegate = self
+        // self.getCurrentLocationName()
+        
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var image = info[UIImagePickerControllerEditedImage] as? UIImage
+        if image == nil {
+            image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        }
+        
+        imageView.image = image
+        makeRoomForImage()
+        
+        dismiss(animated: true, completion: nil)
+        
+        let imageData = image!.lowestQualityJPEGNSData
+        let imageFile:PFFile = PFFile(data: imageData as Data)!
+        
+        let userPhoto = PFObject.createFoodDiaryEntryPFObject()
+        
+        userPhoto["imageFile"] = imageFile
+        userPhoto["userId"] = PFUser.current()
+        userPhoto["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
+        if self.locationNameSuggestions.count > 0 {
+            userPhoto["locationName"] = self.locationNameSuggestions[0]
+        }
+        userPhoto.saveInBackground()
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func makeRoomForImage() {
+        var extraHeight: CGFloat = 0
+        if (imageView.image?.scale)! > CGFloat(0)  {
+            if let width = imageView.superview?.frame.size.width {
+                let height = width / imageView.image!.scale
+                extraHeight = height - imageView.frame.height
+                imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            }
+        } else {
+            extraHeight = -imageView.frame.height
+            imageView.frame = CGRect.zero
+        }
+        preferredContentSize = CGSize(width: preferredContentSize.width, height: preferredContentSize.height + extraHeight)
+    }
+    
+    // MARK: - Location
+    /*
+     func getCurrentLocationName() {
+     
+     self.placesClient?.currentPlaceWithCallback({ (placeLikelihoods: GMSPlaceLikelihoodList?, error) -> Void in
+     if error != nil {
+     print("Current Place error: \(error!.localizedDescription)")
+     return
+     }
+     
+     for likelihood in placeLikelihoods!.likelihoods {
+     if let likelihood = likelihood as? GMSPlaceLikelihood {
+     let place = likelihood.place
+     print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
+     print("Current Place address \(place.formattedAddress)")
+     print("Current Place attributions \(place.attributions)")
+     print("Current PlaceID \(place.placeID)")
+     }
+     }
+     })
+     } */
+ 
 }
