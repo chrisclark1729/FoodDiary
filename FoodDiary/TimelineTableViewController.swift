@@ -20,11 +20,6 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     var imageView = UIImageView()
     var locationNameSuggestions:[String] = []
     
-    @IBAction func addMealPhotoWithCameraButtonPressed(_ sender: UIButton) {
-        
-        print("Camera button pressed")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.delegate = self
@@ -96,7 +91,7 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         alert.title = "Delete"
-        alert.message = "Are you sure you want to delete this entry?"
+        alert.message = "Are you sure you want to permanently delete this entry?"
         alert.addButton(withTitle: "Yes")
         alert.addButton(withTitle: "No")
         alert.delegate = self  // set the delegate here
@@ -113,7 +108,6 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
             entry.deleteFromBackEnd()
             self.meals!.remove(at: (self.rowToDelete! as NSIndexPath).row)
             tableView.reloadData()
-            
         }
     }
     
@@ -269,6 +263,7 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         imagePicker.delegate = self
         // self.getCurrentLocationName()
+        self.tableView.reloadData()
         
         self.present(imagePicker, animated: true, completion: nil)
     }

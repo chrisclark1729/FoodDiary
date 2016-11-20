@@ -37,7 +37,7 @@ class ViewMealDetailViewController: UITableViewController {
         } else {
             self.foodDiaryEntry?.createMealFromFoodDiaryEntry()
         }
-        self.navigationController?.popViewController(animated: true)
+      //  self.navigationController?.popViewController(animated: true)
         
     }
 
@@ -49,43 +49,26 @@ class ViewMealDetailViewController: UITableViewController {
         foodDiaryEntry?.populateNotes()
         foodDiaryEntry?.populateIngredientDetails()
         foodDiaryEntry?.save()
+        let entry = foodDiaryEntry
+        Session.sharedInstance.currentFoodDiaryEntry = entry
+        
+        let dinersCountAsString = String(foodDiaryEntry!.diners.count)
+        let notesCountAsString = String(foodDiaryEntry!.notes.count)
+        let ingredientsCountAsString = String(foodDiaryEntry!.ingredientDetails.count)
         
         dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        foodDiaryEntry?.save()
-        if let entry = foodDiaryEntry {
-            
-            Session.sharedInstance.currentFoodDiaryEntry = entry
-            
-            entry.populateDiners()
-            entry.populateIngredients()
-            entry.populateNotes()
-            entry.populateIngredientDetails()
-            
-            let dinersCountAsString = String(foodDiaryEntry!.diners.count)
-            let notesCountAsString = String(foodDiaryEntry!.notes.count)
-            let ingredientsCountAsString = String(foodDiaryEntry!.ingredientDetails.count)
-            
-            self.mealName.text = entry.mealName
-            self.mealLocationName.text = entry.locationName
-            self.timeLabel.text = dayFormatter.string(from: entry.timestamp as Date)
-            self.moodLabel.text = entry.mood
-            self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", entry.enjoymentScore) as String)
-            self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",entry.energyLevel) as String)
-            self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", entry.healthScore) as String)
-            self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
-            self.notesLabel.text = "Notes: " + notesCountAsString
-            self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
-            self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",entry.calories) as String)
-            self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",entry.gramsCarbs) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",entry.gramsProtein) as String) + "g, Fat: "  + (NSString(format: "%.0f",entry.gramsFat) as String) + "g"
-            
-        }
-        else {
-            print("No Food Entry")
-        }
+        self.mealName.text = entry?.mealName
+        self.mealLocationName.text = entry?.locationName
+        self.timeLabel.text = dayFormatter.string(from: (entry?.timestamp)! as Date)
+        self.moodLabel.text = entry?.mood
+        self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", (entry?.enjoymentScore)!) as String)
+        self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",(entry?.energyLevel)!) as String)
+        self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", (entry?.healthScore)!) as String)
+        self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
+        self.notesLabel.text = "Notes: " + notesCountAsString
+        self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
+        self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",(entry?.calories)!) as String)
+        self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",(entry?.gramsCarbs)!) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",(entry?.gramsProtein)!) as String) + "g, Fat: "  + (NSString(format: "%.0f",(entry?.gramsFat)!) as String) + "g"
         
     }
     
