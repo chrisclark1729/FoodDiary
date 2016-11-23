@@ -117,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initAppearance () {
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Tofino-Book", size: 19)!, NSForegroundColorAttributeName: UIColor.white]
+        UIApplication.shared.statusBarStyle = .lightContent
         
     }
 

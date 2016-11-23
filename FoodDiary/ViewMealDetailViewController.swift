@@ -44,6 +44,23 @@ class ViewMealDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO: Add loader here
+        DispatchQueue.global(qos: .background).async {
+            self.initDetailFields()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
+    
+    func initDetailFields() {
         foodDiaryEntry?.populateDiners()
         foodDiaryEntry?.populateIngredients()
         foodDiaryEntry?.populateNotes()
@@ -55,22 +72,25 @@ class ViewMealDetailViewController: UITableViewController {
         let dinersCountAsString = String(foodDiaryEntry!.diners.count)
         let notesCountAsString = String(foodDiaryEntry!.notes.count)
         let ingredientsCountAsString = String(foodDiaryEntry!.ingredientDetails.count)
+        DispatchQueue.main.async {
+            self.dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
+            self.mealName.text = entry?.mealName
+            self.mealLocationName.text = entry?.locationName
+            self.timeLabel.text = self.dayFormatter.string(from: (entry?.timestamp)! as Date)
+            self.moodLabel.text = entry?.mood
+            self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", (entry?.enjoymentScore)!) as String)
+            self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",(entry?.energyLevel)!) as String)
+            self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", (entry?.healthScore)!) as String)
+            self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
+            self.notesLabel.text = "Notes: " + notesCountAsString
+            self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
+            self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",(entry?.calories)!) as String)
+            self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",(entry?.gramsCarbs)!) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",(entry?.gramsProtein)!) as String) + "g, Fat: "  + (NSString(format: "%.0f",(entry?.gramsFat)!) as String) + "g"
+            //TODO: Stop loader here
+        }
         
-        dayFormatter.dateFormat = "MMM dd, yyyy: h:mm a"
-        self.mealName.text = entry?.mealName
-        self.mealLocationName.text = entry?.locationName
-        self.timeLabel.text = dayFormatter.string(from: (entry?.timestamp)! as Date)
-        self.moodLabel.text = entry?.mood
-        self.enjoymentScoreLabel.text = "Enjoyment Score: " + (NSString(format: "%.1f", (entry?.enjoymentScore)!) as String)
-        self.energyLevelLabel.text = "Energy Level: " + (NSString(format: "%.1f",(entry?.energyLevel)!) as String)
-        self.healthScoreLabel.text = "Health Score: " + (NSString(format: "%.1f", (entry?.healthScore)!) as String)
-        self.otherDinersLabel.text = "Other Diners: " + dinersCountAsString
-        self.notesLabel.text = "Notes: " + notesCountAsString
-        self.ingredientsLabel.text = "Ingredients: " + ingredientsCountAsString
-        self.caloriesLabel.text = "Calories: " + (NSString(format: "%.0f",(entry?.calories)!) as String)
-        self.macrosLabel.text = "Carbs: " + (NSString(format: "%.0f",(entry?.gramsCarbs)!) as String) + "g, " + "Protein: "  + (NSString(format: "%.0f",(entry?.gramsProtein)!) as String) + "g, Fat: "  + (NSString(format: "%.0f",(entry?.gramsFat)!) as String) + "g"
         
-    }
+           }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

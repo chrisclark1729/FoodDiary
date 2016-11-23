@@ -1442,7 +1442,7 @@
                             <tableViewSection headerTitle="Notes" id="iKP-C2-Kvm">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="notes" textLabel="uOD-cN-ew4" style="IBUITableViewCellStyleDefault" id="gGf-Mg-Zch">
-                                        <rect key="frame" x="0.0" y="499" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="500" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gGf-Mg-Zch" id="Pj2-qt-qH3">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -1466,7 +1466,7 @@
                             <tableViewSection headerTitle="Scoring" id="NPs-dQ-1Dc">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="calories" textLabel="Yx5-06-9ag" detailTextLabel="XRs-n8-Dkx" style="IBUITableViewCellStyleSubtitle" id="wjq-KS-14u">
-                                        <rect key="frame" x="0.0" y="591" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="593" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wjq-KS-14u" id="ysc-C0-j1u">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1490,7 +1490,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="macros" textLabel="lpP-bH-t9l" detailTextLabel="54R-5n-xfj" style="IBUITableViewCellStyleSubtitle" id="sEh-Ra-AWR">
-                                        <rect key="frame" x="0.0" y="635" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="637" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sEh-Ra-AWR" id="Bhc-eV-Utv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
