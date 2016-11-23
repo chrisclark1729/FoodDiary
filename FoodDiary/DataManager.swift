@@ -13,7 +13,6 @@ class DataManager {
     
     var foodDiaryEntryArray = [FoodDiaryEntry]()
     var otherDinersArray: [String] = []
-    
     var delegate:TimelineTableViewController?
     
     func loadTimelineData () {
@@ -41,10 +40,8 @@ class DataManager {
                 
                 if let objects = objects {
                     for object in objects {
-                     //   if object.objectForKey("imgURL") != nil {
                         let entry = FoodDiaryEntry(fetchedObject: object)
                         self.foodDiaryEntryArray.append(entry)
-                   //     }
                     }
                     self.delegate!.meals = self.foodDiaryEntryArray
                     self.delegate!.tableView.reloadData()
@@ -56,8 +53,6 @@ class DataManager {
             }
             
         }
-        
     }
-    
    }
 
