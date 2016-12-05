@@ -648,7 +648,7 @@
             <objects>
                 <navigationController id="AzW-Qz-x2P" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ide-5f-UmI"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pXM-QV-y0U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pXM-QV-y0U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.44705882349999998" green="0.70588235290000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1183,7 +1183,7 @@
             <objects>
                 <navigationController id="rip-ZD-cCH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="hun-Ai-gBL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xYV-jJ-IOb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xYV-jJ-IOb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

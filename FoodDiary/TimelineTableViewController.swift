@@ -80,15 +80,15 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
         return 1
     }
     
-    @IBAction func deleteFoodDiaryEntry(_ button: UIButton) {
+   func deleteFoodDiaryEntry() {
         let alert: UIAlertView = UIAlertView()
-        
+        /*
             if let superview = button.superview {
                 if let cell = superview.superview as? TimelineTableViewCell {
                     let indexPath = self.tableView.indexPath(for: cell)
                     self.rowToDelete = indexPath
                 }
-        }
+        } */
         
         alert.title = "Delete"
         alert.message = "Are you sure you want to permanently delete this entry?"
@@ -176,17 +176,19 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     }
     */
     
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)  {
+    if editingStyle == .delete {
+        
     // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
+        self.deleteFoodDiaryEntry()
+    tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
+    } else if editingStyle == .insert {
     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
     }
-    */
+    
     
     /*
     // Override to support rearranging the table view.
