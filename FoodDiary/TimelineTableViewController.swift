@@ -19,6 +19,7 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     var rowToDelete: IndexPath?
     var imageView = UIImageView()
     var locationNameSuggestions:[String] = []
+    var lastSelectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,7 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tableView.reloadData()
+        self.updateLastSelectedIndexPath()
         LocationManagerViewController.sharedLocation.refreshLocation()
         self.locationNameSuggestions = FoodDiaryEntry.getLocationSuggestions(PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation))
     }
@@ -82,13 +84,6 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     
    func deleteFoodDiaryEntry() {
         let alert: UIAlertView = UIAlertView()
-        /*
-            if let superview = button.superview {
-                if let cell = superview.superview as? TimelineTableViewCell {
-                    let indexPath = self.tableView.indexPath(for: cell)
-                    self.rowToDelete = indexPath
-                }
-        } */
         
         alert.title = "Delete"
         alert.message = "Are you sure you want to permanently delete this entry?"
@@ -96,18 +91,16 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
         alert.addButton(withTitle: "No")
         alert.delegate = self  // set the delegate here
         alert.show()
-    
     }
     
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         let buttonTitle = alertView.buttonTitle(at: buttonIndex)
         print("\(buttonTitle!) pressed")
         if buttonTitle == "Yes" {
-            // TODO: Figure out how I know what the current food Diary Entry Id is?
             let entry = self.meals![(self.rowToDelete! as NSIndexPath).row]
             entry.deleteFromBackEnd()
-            self.meals!.remove(at: (self.rowToDelete! as NSIndexPath).row)
-            tableView.reloadData()
+            self.meals?.remove(at: (self.rowToDelete?.row)!)
+            tableView.deleteRows(at: [self.rowToDelete!], with: .fade)
         }
     }
     
@@ -164,7 +157,15 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.lastSelectedIndexPath = indexPath
         self.performSegue(withIdentifier: "showDetail", sender: self)
+    }
+    
+    func updateLastSelectedIndexPath () {
+        if let indexPath = self.lastSelectedIndexPath {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            self.lastSelectedIndexPath = nil
+        }
     }
     
     
@@ -180,10 +181,10 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)  {
     if editingStyle == .delete {
-        
     // Delete the row from the data source
+    //    self.meals?.remove(at: indexPath.row)
+        self.rowToDelete = indexPath
         self.deleteFoodDiaryEntry()
-    tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
     } else if editingStyle == .insert {
     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }

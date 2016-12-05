@@ -648,7 +648,7 @@
             <objects>
                 <navigationController id="AzW-Qz-x2P" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ide-5f-UmI"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pXM-QV-y0U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pXM-QV-y0U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.44705882349999998" green="0.70588235290000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -750,7 +750,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gY-Br-Dsx">
-                                                    <rect key="frame" x="223" y="144.5" width="92" height="8"/>
+                                                    <rect key="frame" x="223" y="145" width="109" height="8"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Tofino-Medium" family="Tofino" pointSize="10"/>
                                                     <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -775,16 +775,6 @@
                                                     <rect key="frame" x="250" y="14" width="10" height="10"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-oD-WIs">
-                                                    <rect key="frame" x="320" y="140" width="20" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Delete" image="trash-icon">
-                                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="deleteFoodDiaryEntry:" destination="u9u-yO-AXa" eventType="touchUpInside" id="3O0-nV-ZXz"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gHd-W2-A0E">
                                                     <rect key="frame" x="0.0" y="0.0" width="175" height="175"/>
                                                     <gestureRecognizers/>
@@ -1183,7 +1173,7 @@
             <objects>
                 <navigationController id="rip-ZD-cCH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="hun-Ai-gBL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xYV-jJ-IOb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xYV-jJ-IOb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3333,7 +3323,6 @@
         <image name="marker" width="40" height="40"/>
         <image name="placeholder" width="360" height="240"/>
         <image name="time_icon" width="25" height="25"/>
-        <image name="trash-icon" width="128" height="128"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
