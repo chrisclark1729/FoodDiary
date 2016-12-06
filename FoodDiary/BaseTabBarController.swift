@@ -24,6 +24,7 @@ class BaseTabBarController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if isLoggedIn() {
             print("User is logged in.")
         } else {

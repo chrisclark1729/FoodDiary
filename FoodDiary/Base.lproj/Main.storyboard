@@ -17,9 +17,6 @@
         <array key="Tofino Medium.otf">
             <string>Tofino-Medium</string>
         </array>
-        <array key="Tofino Regular.otf">
-            <string>Tofino-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Item-->
@@ -679,48 +676,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhD-0v-Uyy" userLabel="Camera">
-                                            <rect key="frame" x="74.5" y="12" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhD-0v-Uyy" userLabel="Camera">
+                                            <rect key="frame" x="56" y="12" width="70" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="add-meal-camera-shutter"/>
+                                            <state key="normal" image="open-camera-button"/>
                                             <connections>
                                                 <action selector="takePhotoWithCameraButtonPressed:" destination="u9u-yO-AXa" eventType="touchUpInside" id="hwk-Ub-z65"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCI-de-2SG" userLabel="Gallery">
-                                            <rect key="frame" x="171" y="12" width="30" height="30"/>
+                                            <rect key="frame" x="154.5" y="12" width="70" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="add-meal-mountain-range"/>
+                                            <state key="normal" image="open-gallery-button"/>
                                             <connections>
                                                 <action selector="addPhotoFromGalleryButtonPressed:" destination="u9u-yO-AXa" eventType="touchUpInside" id="4Ax-Il-5pS"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSr-TY-2c6" userLabel="Manually">
-                                            <rect key="frame" x="267" y="12" width="30" height="30"/>
+                                            <rect key="frame" x="245.5" y="12" width="76" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="add-meal-keyboard"/>
+                                            <state key="normal" image="enter-manually"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhE-VC-jtK">
-                                            <rect key="frame" x="56" y="52" width="70" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Tofino-Regular" family="Tofino" pointSize="10.5"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From Gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8P3-yX-dnU">
-                                            <rect key="frame" x="154.5" y="52" width="70" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Tofino-Regular" family="Tofino" pointSize="10.5"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Manually" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggp-fh-S6U">
-                                            <rect key="frame" x="245.5" y="52" width="76" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Tofino-Regular" family="Tofino" pointSize="10.5"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.44705882349999998" green="0.70588235290000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -817,8 +793,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="u9u-yO-AXa" id="wf7-iB-gFn"/>
-                            <outlet property="delegate" destination="u9u-yO-AXa" id="kVe-1S-F2k"/>
+                            <outlet property="dataSource" destination="u9u-yO-AXa" id="A6J-ei-mfk"/>
+                            <outlet property="delegate" destination="u9u-yO-AXa" id="vTz-hL-wPB"/>
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -3313,14 +3289,14 @@
     <resources>
         <image name="LogInBackArrow" width="50" height="35"/>
         <image name="SignUpImage" width="749" height="776"/>
-        <image name="add-meal-camera-shutter" width="60" height="60"/>
-        <image name="add-meal-keyboard" width="60" height="60"/>
-        <image name="add-meal-mountain-range" width="60" height="60"/>
         <image name="camera-icon" width="512" height="512"/>
         <image name="emailLoginHeader" width="750" height="709"/>
+        <image name="enter-manually" width="147" height="102"/>
         <image name="feedback_icon" width="40" height="40"/>
         <image name="login-image" width="750" height="796"/>
         <image name="marker" width="40" height="40"/>
+        <image name="open-camera-button" width="134" height="101"/>
+        <image name="open-gallery-button" width="126" height="102"/>
         <image name="placeholder" width="360" height="240"/>
         <image name="time_icon" width="25" height="25"/>
     </resources>
