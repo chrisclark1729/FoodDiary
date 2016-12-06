@@ -235,6 +235,33 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
             }
         }
     }
+    
+
+    @IBAction func addFoodDiaryEntryManually(_ sender: UIButton) {
+        var inputTextField: UITextField?
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: "Enter Meal Name", message: "", preferredStyle: .alert)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        let nextAction: UIAlertAction = UIAlertAction(title: "Add", style: .default) { action -> Void in
+            
+            let manualMealEntry = PFObject.createFoodDiaryEntryPFObject()
+            
+            manualMealEntry["userId"] = PFUser.current()
+            manualMealEntry["location"] = PFGeoPoint(location: LocationManagerViewController.sharedLocation.lastKnownLocation)
+            manualMealEntry["mealName"] = inputTextField!.text
+            manualMealEntry.saveInBackground()
+        }
+        actionSheetController.addAction(nextAction)
+        actionSheetController.addTextField { textField -> Void in
+            inputTextField = textField
+        }
+        self.present(actionSheetController, animated: true, completion: nil)
+
+    }
+    
 
 //MARK: Camera
 
