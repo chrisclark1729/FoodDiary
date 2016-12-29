@@ -29,6 +29,7 @@ extension PFObject {
         self["energyLevel"] = entry.energyLevel
         self["timezone"] = entry.timezone
         self["isVisible"] = entry.isVisible
+     //   self["notesFromCoach"] = entry.notesFromCoach
         // WARNING: Do **NOT** Update Location during editing. This will overwrite geoLocation Data.
     }
     
@@ -54,6 +55,7 @@ extension PFObject {
         userPhoto["timezone"] = NSTimeZone.local.abbreviation()!
         userPhoto["isVisible"] = true
         userPhoto["ingredients"] = ""
+    //    userPhoto["notesFromCoach"] = ""
         
         return userPhoto
     }

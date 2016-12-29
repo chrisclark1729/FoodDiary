@@ -37,6 +37,7 @@ class ManuallyAddMealViewController: UIViewController {
         foodDiaryEntry["timezone"] = NSTimeZone.local.abbreviation()!
         foodDiaryEntry["location"] = PFGeoPoint(latitude: 0, longitude: 0)
         foodDiaryEntry["userId"] = PFUser.current()
+     //   foodDiaryEntry["notesFromCoach"] = ""
         
         foodDiaryEntry.saveInBackground()
         self.navigationController?.popToRootViewController(animated: true)

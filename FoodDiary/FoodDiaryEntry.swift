@@ -35,8 +35,9 @@ class FoodDiaryEntry: NSObject {
     var ingredients = [Ingredient]()
     var ingredientDetails = [FoodDiaryDetail]()
     var toPFObject: PFObject?
+    //var notesFromCoach:String
 
-    init(mealID:String,mealName:String,timestamp:Date,locationName:String,imgURL:AnyObject?,calories:Float,gramsCarbs:Float,gramsProtein:Float,gramsFat:Float,gramsFiber:Float,gramsSaturatedFat:Float,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint) {
+    init(mealID:String,mealName:String,timestamp:Date,locationName:String,imgURL:AnyObject?,calories:Float,gramsCarbs:Float,gramsProtein:Float,gramsFat:Float,gramsFiber:Float,gramsSaturatedFat:Float,enjoymentScore:Float,healthScore:Float,mood:String,energyLevel:Float, timezone:String,isVisible:Bool,userId:PFUser,location:PFGeoPoint /*notesFromCoach:String*/ ) {
         self.mealID=mealID
         self.mealName=mealName
         self.timestamp=timestamp
@@ -56,7 +57,7 @@ class FoodDiaryEntry: NSObject {
         self.isVisible=isVisible
         self.userId=userId
         self.location=location
-
+      //  self.notesFromCoach=notesFromCoach
     }
     
     init(fetchedObject: PFObject){
@@ -80,6 +81,7 @@ class FoodDiaryEntry: NSObject {
         self.userId=fetchedObject["userId"] as! PFUser
         self.location=fetchedObject["location"] as! PFGeoPoint
         self.toPFObject = fetchedObject
+    //    self.notesFromCoach=fetchedObject["notesFromCoach"] as! String
         
     }
     

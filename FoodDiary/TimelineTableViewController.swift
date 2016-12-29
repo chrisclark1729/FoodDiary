@@ -284,9 +284,7 @@ class TimelineTableViewController: UITableViewController, UIImagePickerControlle
         } else {
             noCamera()
         }
-
     }
-    
     
     @IBAction func addPhotoFromGalleryButtonPressed(_ sender: UIButton) {
         let imagePicker:UIImagePickerController = UIImagePickerController()
